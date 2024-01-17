@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20231002 14:28:03.464" rpa="false" schemaversion="4">
+<suite id="s1" name="Appium Robot Framework" source="C:\Users\edwinwan\OneDrive - myidemia\Documents\Projects\appium_robot_framework">
+<suite id="s1-s1" name="Tests" source="C:\Users\edwinwan\OneDrive - myidemia\Documents\Projects\appium_robot_framework\tests">
+<suite id="s1-s1-s1" name="Android Tests" source="C:\Users\edwinwan\OneDrive - myidemia\Documents\Projects\appium_robot_framework\tests\android_tests.robot">
+<test id="s1-s1-s1-t1" name="[Documentation] starting an app" line="6">
+<status status="FAIL" starttime="20231002 14:28:03.967" endtime="20231002 14:28:03.968">Test cannot be empty.</status>
+</test>
+<status status="FAIL" starttime="20231002 14:28:03.512" endtime="20231002 14:28:03.969"/>
+</suite>
+<status status="FAIL" starttime="20231002 14:28:03.509" endtime="20231002 14:28:03.970"/>
+</suite>
+<status status="FAIL" starttime="20231002 14:28:03.475" endtime="20231002 14:28:03.972"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Appium Robot Framework">Appium Robot Framework</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Tests">Appium Robot Framework.Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Android Tests">Appium Robot Framework.Tests.Android Tests</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231002 14:28:03.964" level="ERROR">Error in file 'C:\Users\edwinwan\OneDrive - myidemia\Documents\Projects\appium_robot_framework\tests\android_tests.robot' on line 3: Error in file 'C:\Users\edwinwan\OneDrive - myidemia\Documents\Projects\appium_robot_framework\Resources\commands.robot' on line 18: Resource file with 'Test Cases' section is invalid.</msg>
+</errors>
+</robot>
