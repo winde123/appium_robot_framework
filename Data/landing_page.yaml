@@ -1,0 +1,6 @@
+# selectors for relavant landing page
+PASSPORT-QR-CODE-BUTTON: //android.view.ViewGroup[@resource-id='HomePassport QR Code']
+PASSPORT-QR-CODE-TAB: //android.view.ViewGroup[@content-desc='Passport QR Code, NEW, Self-generate QR Code for travel via Woodlands or Tuas Checkpoint' and @focusable='true' ]
+GENERATE-PERSONAL-QR-CODE-BUTTON: //android.view.ViewGroup[@content-desc='Create profile to generate QR code']
+HOME-ANNOUCEMENT-BANNER: //android.view.ViewGroup[@resource-id='HomeAnnouncement' and @clickable ='true']
+CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@resource-id='HomeCargo Clearance' and @clickable ='true' ]
