@@ -1,0 +1,14 @@
+VEHICLES_PROFILE_ICON: //android.view.ViewGroup[@resource-id="CargoClearanceVehicleProfiles"]
+CARGO_CLEARANCE_ICON: //android.view.ViewGroup[@content-desc="CargoClearanceCargoClearance"]
+CARGO_CONVOY_ICON: //android.view.ViewGroup[@content-desc="CargoClearanceCargoConvoys"]
+VIEW_ALL_CARGO_CLEARANCE_SUBMISSION_BUTTON: //android.view.ViewGroup[@resource-id="CargoClearanceViewAllCargoClearanceSubmissions"]
+
+CARGO_CLEARANCE_PLUS_SIGN_BUTTON : //android.widget.Button[android.view.ViewGroup/android.view.ViewGroup/@displayed='true']
+
+#INSIDE THE PLUS BUTTON
+PLUS_ADD_VEHICLE_PROFILE_BUTTON : //android.widget.Button[android.view.ViewGroup/@content-desc="Add Vehicle Profile"]
+PLUS_CARGO_SUBMISSION_BUTTON :
+
+PLUS_NEW_CONVOY_SUBMISSION_BUTTON :
+PLUS_LOOKUP_SUBMISSION_BUTTON :
+CROSS_BUTTON :

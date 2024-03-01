@@ -1,0 +1,10 @@
+VEHICLE_PROFILES_PAGE_BACK_ARROW: //android.widget.Button[@resource-id="back"]
+ADD_VEHICLE: //android.view.ViewGroup[@content-desc="VehicleProfilesAddVehicle"]
+VEHICLE_PROFILES_HEADER: //android.widget.TextView[@text="Vehicle Profiles"]
+KEBAB_MENU :   //android.view.ViewGroup[@content-desc="SK3861D, *****773A"]/android.view.ViewGroup
+EDIT_BUTTON : //android.view.ViewGroup[@content-desc="Edit"]
+test-data-vehicleNo. : SK3861D
+test-data-nric: S7122773A
+#//android.view.ViewGroup[@content-desc="SK3861D, *****773A"]/android.view.ViewGroup
+test-data : SK3861D, *****773A
+test-data-email: n@gmail.com
