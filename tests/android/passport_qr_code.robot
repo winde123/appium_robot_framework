@@ -24,7 +24,7 @@ test case 1
     Sleep    3s
     ## checking for the presence of the favorite icon for passport qrcode and passport qr tab
     
-    Click on element                ${HOME-ANNOUCEMENT-BANNER}
+    #Click on element                ${HOME-ANNOUCEMENT-BANNER}
     Page Should Contain Element     ${PASSPORT-QR-CODE-BUTTON}
     Page Should Contain Element     ${PASSPORT-QR-CODE-TAB} 
     Click on element                ${PASSPORT-QR-CODE-TAB}
@@ -70,7 +70,7 @@ test case 2
 ...    [Documentation]    Straight through case of creating group qr code for car for 15pax
     Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
     Sleep    3s
-    Click on element                ${HOME-ANNOUCEMENT-BANNER}
+    #Click on element                ${HOME-ANNOUCEMENT-BANNER}
     Page Should Contain Element     ${PASSPORT-QR-CODE-BUTTON}
     Page Should Contain Element     ${PASSPORT-QR-CODE-TAB} 
     Click on element                ${PASSPORT-QR-CODE-TAB}
