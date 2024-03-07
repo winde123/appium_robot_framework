@@ -1,6 +1,12 @@
 # selectors for relavant landing page
-PASSPORT-QR-CODE-BUTTON: //android.view.ViewGroup[@resource-id='HomePassport QR Code']
-PASSPORT-QR-CODE-TAB: //android.view.ViewGroup[@content-desc='Passport QR Code, NEW, Self-generate QR Code for travel via Woodlands or Tuas Checkpoint' and @focusable='true' ]
-GENERATE-PERSONAL-QR-CODE-BUTTON: //android.view.ViewGroup[@content-desc='Create profile to generate QR code']
-#HOME-ANNOUCEMENT-BANNER: //android.view.ViewGroup[@resource-id='HomeAnnouncement' and @clickable ='true']
-CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeCargo Clearance"]
+CITIZEN-RESIDENT-ESERVICE-BUTTON: //android.view.ViewGroup[@resource-id="HomeForeignVisitors"]
+FORIEGN-VISITOR-ESERVICE-BUTTON: //android.view.ViewGroup[@content-desc="HomeForeignVisitors"]
+
+#FAV BUTTONS
+CITIZEN&RESIDENT-SGARRIVAL-CARD-FAV-BUTTON : //android.view.ViewGroup[@content-desc="HomeCitizen & Resident - SG Arrival Card"]
+FORIEGNVISITOR-SGARRIVAL-CARD-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeForeign Visitor - SG Arrival Card"]
+QR-CODE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeQR Code"]
+#CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeCargo Clearance"]
+REGISTER-REREGISTER-REPLACE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeRegister / Re-register / Replace Identity Card"]
+OTHER-E-SERVICES-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeOther e-Services"]
+CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeCargo Clearance" and @resource-id="HomeCargo Clearance"]

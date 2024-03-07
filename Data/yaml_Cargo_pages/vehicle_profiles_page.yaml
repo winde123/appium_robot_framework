@@ -3,9 +3,13 @@ ADD_VEHICLE: //android.view.ViewGroup[@content-desc="VehicleProfilesAddVehicle"]
 VEHICLE_PROFILES_HEADER: //android.widget.TextView[@text="Vehicle Profiles"]
 KEBAB_MENU :   //android.view.ViewGroup[@content-desc="${test-data}"]/android.view.ViewGroup
 EDIT_BUTTON : //android.view.ViewGroup[@content-desc="Edit"]
+DELETE_PROFILE: //android.view.ViewGroup[com.horcrux.svg.SvgView and  @index='1']
+EDIT_PROFILE: //android.view.ViewGroup[@content-desc="Edit"]
 test-data-vehicleNo. : SK3861D
 test-data-passport-no : K2000444N
 test-data-nric: S7122773A
 test-data : SK3861D, *****773A
 test-data1 : SK3861D, K2000444N
 test-data-email: n@gmail.com
+
+test-data-invalid-vehicleNo : SK3863H
