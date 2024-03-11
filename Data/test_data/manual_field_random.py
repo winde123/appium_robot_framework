@@ -4,6 +4,23 @@ from random import randrange
 
 fake = Faker()
 
+
+def vehicleno_join_nric(vehicleno, nric):
+    p=list(nric)
+    p[5:]
+    s="".join(p[5:])
+    R= vehicleno + "," + " " + "*****" +s
+    return R;
+
+k=vehicleno_join_nric("SK3861D","s7688901G")
+
+def vehicleno_join_passport(vehicleno, passport):
+    S = vehicleno + "," +" " + passport
+    return S;
+p= vehicleno_join_passport("SK3861D","K123G")
+
+
+print(k)
 ## generating random name
 def generateRandomName():
     randomName = str(fake.name())
@@ -60,7 +77,7 @@ def generaterandomPPNumber():
 
 PPNUM = generaterandomPPNumber()
 
-print(PPNUM+' '+NRIC)
+#print(PPNUM+' '+NRIC)
 
 def generatelistofDOBS(n):
     listOfDOBs = []
