@@ -1,6 +1,10 @@
 *** Settings ***
 Library     AppiumLibrary
+Library     String
+Library    ../../Data/test_data/manual_field_random.py
+Library    ../../Resources/helper_func.py
 Resource    ../../Resources/commands.robot
+Variables    ../../Data/test_data/input_fields_test_data.yaml
 Variables   ../../Data/landing_page.yaml
 Variables    ../../Data/yaml_Cargo_pages/cargo_clearance_home_page.yaml
 Variables    ../../Data/yaml_Cargo_pages/add_vehicle_page.yaml
@@ -8,126 +12,128 @@ Variables    ../../Data/yaml_Cargo_pages/vehicle_profiles_page.yaml
 Test Teardown    Close Application
 
 *** Variables ***
-
+${xpath-kebab-menu-display-text}       //android.widget.TextView[@text="
+${xpath-kebab-menu}    //android.view.ViewGroup[@content-desc="
+${xpath-kebab-menu-2}    /android.view.ViewGroup
 
 *** Keywords ***
-create vehicle profile with arg
+
+Create vehicle profile with arg
+
+    [Arguments]    ${field-val}
     [Documentation]     Creating vehicle profile in favorites-Cargo Clearance page(PASSPORT)
-    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
-    Sleep        3s
     Click On Element    ${CARGO-CLEARANCE-FAV-BUTTON}
     Click On Element    ${CARGO_CLEARANCE_PLUS_SIGN_BUTTON}
     Click On Element    ${PLUS_ADD_VEHICLE_PROFILE_BUTTON}
     #Edit text VehicleNo, passport, email
-    Type Text        ${ADD_VEHICLE_VEHICLE_NUMBER_TEXT_FIELD}     ${test-data-vehicleNo.}
-    Log            ${test-val-suite}
+    Type Text        ${ADD_VEHICLE_NUMBER_TEXT_FIELD}     ${VEHICLENO-TEST-DATA}
 
     # Evalutes if passport test case / nric test case needs to be created
-    IF    "${test-val-suite}" == "passport"
+    IF    "${field-val}" == "passport"
         Log To Console  "Creating vehicle profile using passport No."
         Click On Element    ${ADD_VEHICLE_USE_PASSPORT_NUMBER_OPTION}
-        Type Text      ${ADD_VEHICLE_PASSPORT_NUMBER_TEXT_FIELD}        ${test-data-passport-no}
-        Type Text        ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}       ${test-data-email}
+        ${passport-testdata}=   manual_field_random.generaterandomPPNumber
+        Type Text      ${ADD_VEHICLE_PASSPORT_NUMBER_TEXT_FIELD}        ${passport-testdata}
+        Type Text        ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}       ${EMAIL-TEST-DATA}
         Click On Element    ${ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON}
+        RETURN     ${passport-testdata}
 
-    ELSE IF    "${test-val-suite}" == "nric"
+    ELSE IF    "${field-val}" == "nric"
         Log To Console  "Creating vehicle profile using NRIC"
-        Type Text        ${ADD_VEHICLE_NRIC_TEXT_FIELD}               ${test-data-nric}
-        Type Text        ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}       ${test-data-email}
+        ${nric-testdata}=   manual_field_random.generaterandomNRIC
+        Type Text        ${ADD_VEHICLE_NRIC_TEXT_FIELD}               ${nric-testdata}
+        Type Text        ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}       ${EMAIL-TEST-DATA}
         Click On Element    ${ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON}
+        RETURN    ${nric-testdata}
     END
-
-#create test case using passport
-#    [Documentation]     Creating vehicle profile in favorites-Cargo Clearance page(PASSPORT)
-#    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
-#    Sleep        3s
-#    Click On Element    ${CARGO-CLEARANCE-FAV-BUTTON}
-#    Click On Element    ${CARGO_CLEARANCE_PLUS_SIGN_BUTTON}
-#    Click On Element    ${PLUS_ADD_VEHICLE_PROFILE_BUTTON}
-#    #Edit text VehicleNo, passport, email
-#    Type Text        ${ADD_VEHICLE_VEHICLE_NUMBER_TEXT_FIELD}     ${test-data-vehicleNo.}
-#    Click On Element    ${ADD_VEHICLE_USE_PASSPORT_NUMBER_OPTION}
-#    Type Text      ${ADD_VEHICLE_PASSPORT_NUMBER_TEXT_FIELD}        ${test-data-passport-no}
-#    Type Text        ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}       ${test-data-email}
-#    Click On Element    ${ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON}
-#
-#create test case using nric
-#    [Documentation]     Creating vehicle profile in favorites-Cargo Clearance page(NRIC)
-#    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
-#    Sleep        3s
-#    Click On Element    ${CARGO-CLEARANCE-FAV-BUTTON}
-#    Click On Element    ${CARGO_CLEARANCE_PLUS_SIGN_BUTTON}
-#    Click On Element    ${PLUS_ADD_VEHICLE_PROFILE_BUTTON}
-#    #Edit text VehicleNo, NRIC, email
-#    Type Text        ${ADD_VEHICLE_VEHICLE_NUMBER_TEXT_FIELD}     ${test-data-vehicleNo.}
-#    Type Text        ${ADD_VEHICLE_NRIC_TEXT_FIELD}               ${test-data-nric}
-#    Type Text        ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}       ${test-data-email}
-#    Click On Element    ${ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON}
 
 *** Test Cases ***
 test case 1        #SG_BC_MHA_SGAC-414
+    
     [Documentation]     Creating vehicle profile in favorites-Cargo Clearance page(NRIC)
-    Set Suite Variable    ${test-val-suite}        nric
-    Create Vehicle Profile With Arg
+    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Sleep    3s
+    Create Vehicle Profile With arg    nric
 
 test case 2        #SG_BC_MHA_SGAC-419
+
     [Documentation]    Editing vehicle profile in favorites- Cargo clearance page -passport Number
     #Creating test case with NRIC field
-    Create Vehicle Profile With Arg
+    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Sleep        3s
+    ${nric-testdata}=     Create Vehicle Profile With Arg        nric
+    ${masked-nric}=    helper_func.masking_string    ${nric-testdata}
     Click On Element    ${VEHICLES_PROFILE_ICON}
-    Click On Element    //android.view.ViewGroup[@content-desc="${test-data}"]/android.view.ViewGroup
+    ${xpath-kebabmenu}=    Catenate    SEPARATOR=    ${xpath-kebab-menu}   ${VEHICLENO-TEST-DATA}  ,    ${SPACE}  ${masked-nric}   "]    ${xpath-kebab-menu-2}
+    Click On Element     ${xpath-kebabmenu}
     Click On Element    ${EDIT_BUTTON}
     Click On Element    ${ADD_VEHICLE_USE_PASSPORT_NUMBER_OPTION}
     #Add passport number
-    Type Text      ${ADD_VEHICLE_PASSPORT_NUMBER_TEXT_FIELD}        ${test-data-passport-no}
+    ${passport-testdata}=  manual_field_random.generaterandomPPNumber
+    Type Text      ${ADD_VEHICLE_PASSPORT_NUMBER_TEXT_FIELD}        ${passport-testdata}
     Click On Element    ${ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON}
-    Wait Until Page Contains Element    //android.widget.TextView[@text="${test-data-passport-no}"]  timeout=10s
-    Element Should Contain Text    //android.widget.TextView[@text="${test-data-passport-no}"]    ${test-data-passport-no}
+    ${passport-kebab-menu}=       Catenate    SEPARATOR=    ${xpath-kebab-menu-display-text}    ${passport-testdata}    "]
+    Wait Until Page Contains Element    ${passport-kebab-menu}    timeout=5s
+    ${passport-kebab-menu-display-text}=    Catenate    SEPARATOR=    ${xpath-kebab-menu-display-text}    ${passport-testdata}  "]
+    Element Should Contain Text     ${passport-kebab-menu-display-text}      ${passport-testdata}
+    
 
 test case 3    #SG_BC_MHA_SGAC-417
     [Documentation]    Editing vehicle profile in favorites- Cargo clearance page - nric No.
+    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Sleep        3s
     #Creating test case with passport field
-    Set Suite Variable    ${test-val-suite}        passport
-    Create Vehicle Profile With Arg
+    ${passport-testdata}=    Create Vehicle Profile With Arg    passport
     Click On Element    ${VEHICLES_PROFILE_ICON}
-    Click On Element    //android.view.ViewGroup[@content-desc="${test-data1}"]/android.view.ViewGroup
+    ${xpath-kebabmenu-passport}=    Catenate    SEPARATOR=    ${xpath-kebab-menu}    ${VEHICLENO-TEST-DATA}     ,    ${SPACE}     ${passport-testdata}   "]    ${xpath-kebab-menu-2}
+    Click On Element    ${xpath-kebabmenu-passport}
     Click On Element    ${EDIT_BUTTON}
     Click On Element    ${ADD_VEHICLE_USE_NRIC_OPTION}
-    Type Text        ${ADD_VEHICLE_NRIC_TEXT_FIELD}               ${test-data-nric}
+    ${nric-testdata}=   manual_field_random.generaterandomNRIC
+    Type Text        ${ADD_VEHICLE_NRIC_TEXT_FIELD}               ${nric-testdata}
+    ${masked-nric}=    helper_func.masking_string    ${nric-testdata}
+    ${VEHICLENO-JOIN-NRIC}=    Catenate    SEPARATOR=    ${VEHICLENO-TEST-DATA}    ,    ${SPACE}    ${masked-nric}
+    ${xpath-kebabmenu-nric}=    Catenate    SEPARATOR=    ${xpath-kebab-menu}       ${VEHICLENO-JOIN-NRIC}    "]
     Click On Element    ${ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON}
 #Assert
-    Wait Until Page Contains Element    //android.widget.TextView[@text="*****773A"]  timeout=10s
-    Element Should Contain Text    //android.widget.TextView[@text="*****773A"]    *****773A
+    Wait Until Page Contains Element      ${xpath-kebabmenu-nric}  timeout=10s
+    Element Attribute Should Match    ${xpath-kebabmenu-nric}    content-desc    ${VEHICLENO-JOIN-NRIC}
+
 
 test case 4
-    [Documentation]    Testing invalid vehicle number
+    [Documentation]    testing with invalid vehicle number
+
     Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
     Sleep        3s
     Click On Element    ${CARGO-CLEARANCE-FAV-BUTTON}
     Click On Element    ${CARGO_CLEARANCE_PLUS_SIGN_BUTTON}
     Click On Element    ${PLUS_ADD_VEHICLE_PROFILE_BUTTON}
-    Click On Element    ${ADD_VEHICLE_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${ADD_VEHICLE_VEHICLE_NUMBER_TEXT_FIELD}      ${test-data-invalid-vehicleNo}
+    Click On Element    ${ADD_VEHICLE_NUMBER_TEXT_FIELD}
+    Type Text        ${ADD_VEHICLE_NUMBER_TEXT_FIELD}      ${INVALID-VEHICLENO-TEST-DATA}
     Press Keycode       42
-    Click On Element     ${ADD_VEHICLE_VEHICLE_NUMBER_TEXT_FIELD}
+    Click On Element     ${ADD_VEHICLE_NUMBER_TEXT_FIELD}
     Click On Element    ${ADD_VEHICLE_NRIC_TEXT_FIELD}
-    Type Text        ${ADD_VEHICLE_NRIC_TEXT_FIELD}               ${test-data-nric}
+    ${nric-testdata}=   manual_field_random.generaterandomNRIC
+    Type Text        ${ADD_VEHICLE_NRIC_TEXT_FIELD}               ${nric-testdata}
     Click On Element     ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}
-    Type Text         ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}    ${test-data-email}
-    Wait Until Page Contains Element    //android.widget.TextView[@text="VEHICLE COULD NOT BE VALIDATED"]    timeout=3s
-    Element Attribute Should Match    //android.widget.TextView[@text="VEHICLE COULD NOT BE VALIDATED"]    text  VEHICLE COULD NOT BE VALIDATED
+    Type Text         ${ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD}    ${EMAIL-TEST-DATA}
+    Wait Until Page Contains Element    ${INVALIDATE_VEHICLES_TEXTFIELD}    timeout=3s
+    Element Attribute Should Match    ${INVALIDATE_VEHICLES_TEXT_FIELD}    text  VEHICLE COULD NOT BE VALIDATED
     Hide Keyboard    key_name=none
     Click On Element    ${ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON}
 
 test case 5
     [Documentation]    Deleting vehicle profile
     #Creating vehicle profile with NRIC
-    Set Suite Variable    ${test-val-suite}        nric
-    create vehicle profile with arg
+    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Sleep        3s
+    ${nric-testdata}=     create vehicle profile with arg     nric
+    ${masked-nric}=    helper_func.masking_string    ${nric-testdata}
     Click On Element    ${VEHICLES_PROFILE_ICON}
-    Wait Until Page Contains Element     //android.view.ViewGroup[@content-desc="${test-data}"]/android.view.ViewGroup
-    Click On Element    //android.view.ViewGroup[@content-desc="${test-data}"]/android.view.ViewGroup
+    ${xpath-kebabmenu}=    Catenate    SEPARATOR=    ${xpath-kebab-menu}    ${VEHICLENO-TEST-DATA}    ,    ${SPACE}    ${masked-nric}    "]    ${xpath-kebab-menu-2}
+    Wait Until Page Contains Element      ${xpath-kebabmenu}
+    Click On Element     ${xpath-kebabmenu}
     Click On Element    ${DELETE_PROFILE}
-    Click On Element    //android.widget.Button[@resource-id="android:id/button1"]
-    Wait Until Page Contains Element    //android.view.ViewGroup[@content-desc="No vehicle profiles"]
-    Element Attribute Should Match    //android.widget.TextView[@text="No vehicle profiles"]    text        No vehicle profiles
+    Click On Element    ${DELETE_PROFILE_BUTTON}
+    Wait Until Page Contains Element    ${NO_VEHICLE_PROFILES_TEXT_FIELD}
+    Element Attribute Should Match      ${NO_VEHICLE_PROFILES_TEXT_FIELD}   content-desc        No vehicle profiles

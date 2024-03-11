@@ -4,6 +4,7 @@ from random import randrange
 
 fake = Faker()
 
+
 ## generating random name
 def generateRandomName():
     randomName = str(fake.name())
@@ -60,7 +61,7 @@ def generaterandomPPNumber():
 
 PPNUM = generaterandomPPNumber()
 
-print(PPNUM+' '+NRIC)
+#print(PPNUM+' '+NRIC)
 
 def generatelistofDOBS(n):
     listOfDOBs = []

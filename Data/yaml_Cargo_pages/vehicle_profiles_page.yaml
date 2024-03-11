@@ -5,11 +5,6 @@ KEBAB_MENU :   //android.view.ViewGroup[@content-desc="${test-data}"]/android.vi
 EDIT_BUTTON : //android.view.ViewGroup[@content-desc="Edit"]
 DELETE_PROFILE: //android.view.ViewGroup[com.horcrux.svg.SvgView and  @index='1']
 EDIT_PROFILE: //android.view.ViewGroup[@content-desc="Edit"]
-test-data-vehicleNo. : SK3861D
-test-data-passport-no : K2000444N
-test-data-nric: S7122773A
-test-data : SK3861D, *****773A
-test-data1 : SK3861D, K2000444N
-test-data-email: n@gmail.com
-
-test-data-invalid-vehicleNo : SK3863H
+INVALIDATE_VEHICLES_TEXT_FIELD: //android.widget.TextView[@text="VEHICLE COULD NOT BE VALIDATED"]
+NO_VEHICLE_PROFILES_TEXT_FIELD: //android.view.ViewGroup[@content-desc="No vehicle profiles"]
+DELETE_PROFILE_BUTTON: //android.widget.Button[@resource-id="android:id/button1"]
