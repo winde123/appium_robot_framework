@@ -10,18 +10,14 @@ Variables    ../../Data/yaml_Cargo_pages/cargo_clearance_home_page.yaml
 Variables    ../../Data/yaml_Cargo_pages/add_vehicle_page.yaml
 Variables    ../../Data/yaml_Cargo_pages/vehicle_profiles_page.yaml
 Test Teardown    Close Application
-Test Setup    perform logging
 
 
 *** Variables ***
 ${xpath-kebab-menu-display-text}       //android.widget.TextView[@text="
 ${xpath-kebab-menu}    //android.view.ViewGroup[@content-desc="
 ${xpath-kebab-menu-2}    /android.view.ViewGroup
-#${nric-testdata}
-*** Keywords ***
-perform logging
 
-     Log To Console    "logging key"
+*** Keywords ***
 
 Create vehicle profile with arg
 
@@ -57,12 +53,9 @@ Create vehicle profile with arg
 test case 1        #SG_BC_MHA_SGAC-414
     
     [Documentation]     Creating vehicle profile in favorites-Cargo Clearance page(NRIC)
-    [Setup]    Perform Logging
-
     Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
     Sleep    3s
     Create Vehicle Profile With arg    nric
-    
 
 test case 2        #SG_BC_MHA_SGAC-419
 
@@ -94,9 +87,7 @@ test case 3    #SG_BC_MHA_SGAC-417
     #Creating test case with passport field
     ${passport-testdata}=    Create Vehicle Profile With Arg    passport
     Click On Element    ${VEHICLES_PROFILE_ICON}
-    
     ${vehicleno-passport-testdata}=     manual_field_random.vehicleno_join_passport    ${VEHICLENO-TEST-DATA}    ${passport-testdata}
-    Log To Console    ${vehicleno-passport-testdata}
     ${xpath-kebabmenu}=    Catenate    SEPARATOR=    ${xpath-kebab-menu}    ${vehicleno-passport-testdata}    "]    ${xpath-kebab-menu-2}
     Click On Element    ${xpath-kebabmenu}
     Click On Element    ${EDIT_BUTTON}
@@ -108,7 +99,6 @@ test case 3    #SG_BC_MHA_SGAC-417
     Click On Element    ${ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON}
 #Assert
     Wait Until Page Contains Element      ${xpath-kebabmenu}  timeout=10s
-    Log To Console     ${xpath-kebabmenu}
     Element Attribute Should Match    ${xpath-kebabmenu}    content-desc    ${vehicleNo-nric-test-data}
 
 
