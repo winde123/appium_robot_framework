@@ -1,0 +1,11 @@
+ADD_VEHICLE_NUMBER_TEXT_FIELD: //android.widget.EditText[@resource-id="AddVehicleVehicleNumber"]
+ADD_VEHICLE_NRIC_TEXT_FIELD: //android.widget.EditText[@resource-id="AddVehicleNricFin"]
+ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD: //android.widget.EditText[@resource-id="InfoAndVehiclesAddEmail"]
+ADD_VEHICLE_USE_PASSPORT_NUMBER_OPTION: //android.view.ViewGroup[@resource-id="AddVehicleUsePassportNumber"]
+ADD_VEHICLE_USE_NRIC_OPTION: //android.view.ViewGroup[@resource-id="AddVehicleUseNricFin"]
+ADD_VEHICLE_PASSPORT_NUMBER_TEXT_FIELD: //android.widget.EditText[@resource-id="AddVehiclePassportNumber"]
+ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON: //android.widget.Button[@resource-id="AddVehicleSaveVehicleProfile"]
+ADD_VEHICLE_BACK_BUTTON : //android.widget.Button[@resource-id="back"]
+INVALID-VEHICLE-NUMBER-POPUP-MESSAGE: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]
+
+assert-passport-number-field : //android.widget.TextView[@text="${test-data-passport-no}"]
