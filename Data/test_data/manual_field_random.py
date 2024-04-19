@@ -87,6 +87,16 @@ def generateListofPPNum(n):
         listofPPNum.append(generaterandomPPNumber())
     return listofPPNum
 
+def main():
+    NRIC = generaterandomNRIC()
+    PPnum =  generaterandomPPNumber()
+
+    nric_ppnum_string = f'{NRIC} {PPnum}'
+    print(nric_ppnum_string)
+
+if __name__ == '__main__':
+    main() 
+
 
 
 
