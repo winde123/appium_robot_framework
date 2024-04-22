@@ -1,0 +1,7 @@
+ADD_PERMIT_BUTTON : //android.view.ViewGroup[@resource-id="PermitsAddPermit"]
+SUBMIT_CARGO_CONVOY_BUTTON : //android.widget.Button[@resource-id="PermitsSubmitCargoConvoy"]
+BACK_BUTTON : //android.view.ViewGroup[@resource-id="back"]
+ENTER_PERMIT_NUMBER_MANUALLY_BUTTON : //android.view.ViewGroup[@resource-id="AddPermitEnterPermitNoManually"]
+ADD_PERMIT_NUMBER_TEXT_FIELD : //android.widget.EditText[@resource_id="AddPermitPermitNumber"]
+SCAN_PERMIT_WITH_CAMERA_BUTTON : //android.view.ViewGroup[@resource-id="AddPermitScanPermitWithCamera"]
+SAVE_PERMIT_BUTTON : //android.view.ViewGroup[@resource-id="AddPermitScanPermitWithCamera"]
