@@ -1,0 +1,9 @@
+/results/*
+
+/icaApp/*
+
+/Output/*
+
+/Resources/__pycache__/*
+
+/Data/test_data/__pycache__/*

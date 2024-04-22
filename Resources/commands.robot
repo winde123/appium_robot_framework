@@ -4,16 +4,18 @@ Library    Collections
 Library    helper_func.py
 #Library    RPA.Email.ImapSmtp
 #Library    SeleniumLibrary
+Variables   ../robotconfig.yaml
+Variables   getabspath.py
 
 *** Variables ***
 
-${ANDROID_AUTOMATION_NAME}    UIAutomator2
-${ANDROID_APP}                ${CURDIR}/../icaApp/app-staging-release_22_dec.apk
-${ANDROID_PLATFORM_NAME}      Android
-${ANDROID_PLATFORM_VERSION}   %{ANDROID_PLATFORM_VERSION=14}
-${ANDROID_APP_PACKAGE}        sg.gov.ica.mobile.app
-${ANDROID_DEVICE_NAME}        RFCN90WD11Y
-${ANDROID_EMULATOR_NAME}      emulator-5554
+#${ANDROID_AUTOMATION_NAME}    UIAutomator2
+#${ANDROID_APP}                 ${CURDIR}/../icaApp/app-staging-release-5Apr.apk
+#${ANDROID_PLATFORM_NAME}      Android
+#${ANDROID_PLATFORM_VERSION}   %{ANDROID_PLATFORM_VERSION=14}
+#${ANDROID_APP_PACKAGE}        sg.gov.ica.mobile.app
+#${ANDROID_DEVICE_NAME}        RFCN90WD11Y
+#${ANDROID_EMULATOR_NAME}      emulator-5554
 
 *** Keywords ***
 Open Android App in emulator
