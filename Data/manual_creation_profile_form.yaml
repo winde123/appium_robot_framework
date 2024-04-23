@@ -1,5 +1,5 @@
 ## Add profile methods page
-FILL-MANUALLY-BUTTON: //android.view.ViewGroup[@resource-id='ProfileAddProfile' and @clickable='true' and @index='5']
+FILL-MANUALLY-BUTTON: //android.view.ViewGroup[@resource-id='ProfileAddProfile' and @clickable='true' and @index='3']
 ## Add profile page
 #NRIC-DROPDOWN-BUTTON: //android.widget.EditText[@resource-id='ResidentDropDown']
 NRIC-DROPDOWN-YES-OPTION: //android.view.ViewGroup[@content-desc='YES']

@@ -9,13 +9,7 @@ Variables   getabspath.py
 
 *** Variables ***
 
-#${ANDROID_AUTOMATION_NAME}    UIAutomator2
-#${ANDROID_APP}                 ${CURDIR}/../icaApp/app-staging-release-5Apr.apk
-#${ANDROID_PLATFORM_NAME}      Android
-#${ANDROID_PLATFORM_VERSION}   %{ANDROID_PLATFORM_VERSION=14}
-#${ANDROID_APP_PACKAGE}        sg.gov.ica.mobile.app
-#${ANDROID_DEVICE_NAME}        RFCN90WD11Y
-#${ANDROID_EMULATOR_NAME}      emulator-5554
+
 
 *** Keywords ***
 Open Android App in emulator
@@ -28,13 +22,13 @@ Open Android App in Android Phone
 Click on element
     [Arguments]    ${elementid}
     #${CLICK-ELEMENT-STATUS}    Set Variable    ${KEYWORD STATUS}
-    AppiumLibrary.Wait Until Page Contains Element    locator=${elementid}    timeout=${10}
+    Wait Until Keyword Succeeds    1min     5sec    AppiumLibrary.Wait Until Page Contains Element    locator=${elementid}    timeout=${10}
     AppiumLibrary.Click element  locator=${elementid}
     #[Teardown]    ${CLICK-ELEMENT-STATUS}    Set Variable    ${KEYWORD STATUS}  
 
 Type text
     [Arguments]    ${elementid}    ${textstring}                      
-    AppiumLibrary.Wait Until Page Contains Element    locator=${elementid}    timeout=${10}
+    Wait Until Keyword Succeeds     1min     5sec     AppiumLibrary.Wait Until Page Contains Element    locator=${elementid}
     AppiumLibrary.Input Text    locator=${elementid}    text=${textstring}
 
 Generate dynamic group qr checkbox element locator for n group members
