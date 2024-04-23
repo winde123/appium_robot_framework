@@ -7,3 +7,7 @@
 /Resources/__pycache__/*
 
 /Data/test_data/__pycache__/*
+
+robotconfig.yaml
+
+/Resources/getabspath.py
