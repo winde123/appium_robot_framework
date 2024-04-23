@@ -1,0 +1,3 @@
+ACCESS-QR-INFO-CONFIRM-BUTTON: //android.widget.Button[@resource-id='android:id/button2']
+QR-CODE-PERSONAL:  //com.horcrux.svg.SvgView[@enabled='true']
+PERSONAL-QR-CODE-BACK-BUTTON: //android.widget.Button[@resource-id='back']
