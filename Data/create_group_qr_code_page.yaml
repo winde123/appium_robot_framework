@@ -1,8 +1,0 @@
-GROUP-NAME-TEXT-FIELD: //android.widget.EditText[@resource-id='passportGroupQrName']
-VECHICLE-TYPE-DROPDOWN-BUTTON: //android.widget.EditText[@resource-id='passportGroupQrVehicleType']
-VECHICLE-TYPE-DROPDOWN-CAR-OPTION: //android.view.View[@content-desc='Car']
-VECHICLE-TYPE-DROPDOWN-MC-OPTION: //android.view.View[@content-desc='Motorcycle']
-CAR-OPTION-RES-MSG: //android.widget.TextView[@text='(Minimum 2, Maximum 15)']
-ADD-PROFILE-GROUP-BUTTON: //android.view.ViewGroup[@content-desc='ADD PROFILE' and @clickable='true' ]
-GENERATE-GROUP-QR-CODE-BUTTON: //android.widget.Button[@content-desc='GENERATE PASSPORT QR CODE' and @clickable='true']
-PROFILE-CONFIRMATION-MSG-WIDGET: //android.widget.TextView[@enabled='true' and @index='0' ]
