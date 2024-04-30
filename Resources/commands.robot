@@ -5,6 +5,8 @@ Library    helper_func.py
 #Library    RPA.Email.ImapSmtp
 #Library    SeleniumLibrary
 Variables   ../robotconfig.yaml
+Variables   ../Data/landing_page.yaml
+Variables   ../Data/yaml_tutorial_flow_pages/passport_qr_tutorial_flow.yaml 
 Variables   getabspath.py
 
 *** Variables ***
@@ -23,7 +25,7 @@ Click on element
     [Arguments]    ${elementid}
     #${CLICK-ELEMENT-STATUS}    Set Variable    ${KEYWORD STATUS}
     Wait Until Keyword Succeeds    1min     5sec    AppiumLibrary.Wait Until Page Contains Element    locator=${elementid}    timeout=${10}
-    AppiumLibrary.Click element  locator=${elementid}
+    Wait Until Keyword Succeeds    1min     5sec    AppiumLibrary.Click element  locator=${elementid}
     #[Teardown]    ${CLICK-ELEMENT-STATUS}    Set Variable    ${KEYWORD STATUS}  
 
 Type text
@@ -42,7 +44,12 @@ Generate dynamic group qr checkbox element locator for n group members
     [Return]    @{GROUP-CHECKBOX-LOCATOR}
 
 Scroll down on the screen
-    Swipe By Percent    50    90    50    10    duration=${500}
+    Swipe By Percent    50    50    50    10    duration=${500}
+
+Navigate to QR Code page without tutorial flow
+    Click on element                ${QR-CODE-FAV-BUTTON}
+    # Click on tutorial interface no option
+    Click on element                ${NO-THANKS-OPTION}
  
 
      

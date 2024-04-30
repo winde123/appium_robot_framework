@@ -16,6 +16,7 @@ FULL-NAME-FIELD: //android.view.ViewGroup[@focusable='true']//android.widget.Tex
 DOB-FIELD: //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='7']
 NRIC-FIELD: //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='13']
 PASSPORT-NUMBER-FIELD:  //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='16']
+PASSPORT-DATE-EXPIRY-HEADER: //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index ='18']
 PASSPORT-DATE-EXPIRY-FIELD:  //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='19']
 PASSPORT-DETAILS-SAVE-BUTTON: //android.view.ViewGroup[@resource-id='save']
 TOC-PRIVACY-POLICY-CHECKBOX: //android.widget.TextView[@text='I have read and accepted the ' and @enabled='true' ]
