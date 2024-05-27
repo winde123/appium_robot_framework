@@ -3,6 +3,13 @@ from datetime import date
 from random import randrange 
 
 fake = Faker()
+def readfromfile():
+    f = open("C:/Users/niharaze/appium_robot_framework/Cargo_Test_Data.txt", encoding='utf-8-sig', mode='r')
+    lines = f.read()
+    data_into_lines= lines.split("\n")
+    return data_into_lines
+data=readfromfile()
+print(data)
 
 
 ## generating random name
