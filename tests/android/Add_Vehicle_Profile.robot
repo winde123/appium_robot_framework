@@ -19,18 +19,6 @@ ${xpath-kebab-menu}    //android.view.ViewGroup[@content-desc="
 ${xpath-kebab-menu-2}    /android.view.ViewGroup
 
 *** Keywords ***
-test_keyword       
-    
-    ${element_size}=    Get Element Size    ${ADD_PERMIT_BUTTON}
-    ${element_location}=    Get Element Location    ${ADD_PERMIT_BUTTON}
-    ${start_x}=         Evaluate      ${element_location['x']} + (${element_size['width']} * 0.5)
-    ${start_y}=         Evaluate      ${element_location['y']} + (${element_size['height']} * 0.3)
-    ${end_x}=           Evaluate      ${element_location['x']} + (${element_size['width']} * 0.5)
-    ${end_y}=           Evaluate      ${element_location['y']} + (${element_size['height']} * 0.7)
-    Log To Console     ${start_y}     ${end_y}
-    Log To Console    ${start_x}    ${end_x}
-    Swipe               ${start_x}    ${start_y}  ${end_x}  ${end_y}  500
-    Sleep  1
 
 Create vehicle profile with arg
 
@@ -159,90 +147,6 @@ test case 5
     Wait Until Page Contains Element    ${NO_VEHICLE_PROFILES_TEXT_FIELD}
     Element Attribute Should Match      ${NO_VEHICLE_PROFILES_TEXT_FIELD}   content-desc        No vehicle profiles
 
-test case 6
-    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
-    Sleep    3s
-    Scroll Down On The Screen
-    
-    Wait Until Keyword Succeeds    1 minute    10     Click On Element    ${CARGO-CLEARANCE-FAV-BUTTON}
-    Click On Element    ${CARGO_CLEARANCE_PLUS_SIGN_BUTTON}
-    #Sleep     3s
-    Click On Element    ${PLUS_NEW_CONVOY_SUBMISSION_BUTTON}
-    ${nric-testdata}=   manual_field_random.generaterandomNRIC
-
-    Click On Element     ${CARGO_CONVOY_NRIC_TEXT_FIELD}   
-    Type Text    ${CARGO_CONVOY_NRIC_TEXT_FIELD}    ${nric-testdata}
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_EMAIL_TEXT_FIELD}
-    Type Text    ${CARGO_CONVOY_EMAIL_TEXT_FIELD}     ${EMAIL-TEST-DATA}
-    Press Keycode    66
-
-    Click On Element   ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK1000K
-    Press Keycode    66
-
-    Click On Element   ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK999K
-    Press Keycode    66
-    
-    Click On Element   ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK998M
-    Press Keycode    66
-    
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK997R
-    Press Keycode    66
-    
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK996T
-    Press Keycode    66
-    
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK995X
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK994Z
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK993B
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK997R
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK992D
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-    Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK3861D
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-     Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK991G
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-     Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK990J
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-     Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK989P
-    Press Keycode    66
-
-    Click On Element    ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}
-     Type Text        ${CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD}    SK988S
-    Press Keycode    66
-    Click On Element    ${ADD_VEHICLE_NEXT_BUTTON}
-
-    Click On Element    ${ADD_PERMIT_BUTTON}
-    Click On Element    ${ALLOW_CAMERA_BUTTON}
-    Click On Element    ${ENTER_PERMIT_NUMBER_MANUALLY_BUTTON}
-     Sleep    5s
 
 Test case 6A
     Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
@@ -366,14 +270,6 @@ Test case 6A
     Click On Element        ${SUBMIT_CARGO_CONVOY_BUTTON}
     Sleep    10s
 
-
-TEST CASE 7
-    Open Android App in emulator     appActivity=sg.gov.ica.mobile.app.MainActivity
-    sleep     3s
-    Click On Element    ${CARGO-CLEARANCE-FAV-BUTTON}
-    Click On Element    ${CARGO_CONVOY_ICON}
-    Click On Element    ${CARGO_CONVOY_DRAFT_TAB}
-    Sleep    5s
 
 
 
