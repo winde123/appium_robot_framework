@@ -68,7 +68,6 @@ def generaterandomPPNumber():
 
 PPNUM = generaterandomPPNumber()
 
-#print(PPNUM+' '+NRIC)
 
 def generatelistofDOBS(n):
     listOfDOBs = []

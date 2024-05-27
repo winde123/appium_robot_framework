@@ -1,2 +1,0 @@
-GENERATE-PERSONAL-QR-CODE-OPTION: //android.view.ViewGroup[@content-desc='Create profile to generate QR code']
-GENERATE-GROUP-QR-CODE-OPTION: //android.view.ViewGroup[@content-desc='Create a group QR code'] 
