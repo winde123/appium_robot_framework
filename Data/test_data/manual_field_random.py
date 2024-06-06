@@ -1,6 +1,8 @@
 from faker import Faker
 from datetime import date
-from random import randrange 
+from random import randrange
+from random import choice
+import string 
 
 fake = Faker()
 
@@ -59,6 +61,42 @@ def generaterandomPPNumber():
     #randomPPnumber = 'F' + str(randomintstring) + 'K'
     return randomPPnumber
 
+## generate random car license plate number
+
+def generaterandomCarPlateNumber():
+    weights = (10,15,14,15,16,17)
+    lookup_list= ['A','B','C','D','E','G','H','J','K','L','M','P','R','S','T','U','X','Y','Z']
+    running_sum = 0
+    alpha_starting_char = "S"
+    char_seq_list  = list(string.ascii_uppercase)
+    num_seq_list = []
+    for num in range(1,27):
+        num_seq_list.append(num)
+    
+    ### license plate prefix letter to number dict
+    alphabet_conv_dict = { char_seq_list: num_seq_list for char_seq_list , num_seq_list in zip(char_seq_list,num_seq_list) }
+    
+    ### generating random carplate number and running sum
+    for index,seq_i in enumerate(range(6)):
+        if index <=1:
+            random_char = choice(string.ascii_uppercase)
+            alpha_starting_char = alpha_starting_char + random_char
+            running_sum += alphabet_conv_dict[random_char] * weights[seq_i]
+        
+        elif index > 1:
+            random_int=randrange(10)
+            alpha_starting_char += str(random_int)
+            running_sum += random_int*weights[seq_i]
+    
+    ## generating checksum char
+    lookup_index = running_sum % 19
+    alpha_starting_char += lookup_list[lookup_index]
+
+    return alpha_starting_char
+
+    
+    
+
 PPNUM = generaterandomPPNumber()
 
 
@@ -89,9 +127,10 @@ def generateListofPPNum(n):
 def main():
     NRIC = generaterandomNRIC()
     PPnum =  generaterandomPPNumber()
-
-    nric_ppnum_string = f'{NRIC} {PPnum}'
+    CARnum = generaterandomCarPlateNumber()
+    nric_ppnum_string = f'{NRIC} {PPnum} {CARnum}'
     print(nric_ppnum_string)
+
 
 if __name__ == '__main__':
     main() 
