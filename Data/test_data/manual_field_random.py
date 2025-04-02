@@ -16,6 +16,12 @@ def generateRandomName():
 
 NAME = generateRandomName()
 
+def generateRandomEmail():
+    name = generateRandomName()
+    random_email = name.replace(" ","_") + '@' + 'test.co'
+    return random_email
+
+
 ## generating random valid date
 def generaterandomDOB():
     startdate=date.fromisoformat('1965-01-01')
@@ -99,6 +105,12 @@ def generaterandomCarPlateNumber():
 
 PPNUM = generaterandomPPNumber()
 
+def generateForeignPassportNum():
+    randomForeignPPNum = fake.passport_number()
+    return randomForeignPPNum
+
+FOREIGNPPNUM = generateForeignPassportNum()  
+
 
 def generatelistofDOBS(n):
     listOfDOBs = []
@@ -128,7 +140,8 @@ def main():
     NRIC = generaterandomNRIC()
     PPnum =  generaterandomPPNumber()
     CARnum = generaterandomCarPlateNumber()
-    nric_ppnum_string = f'{NRIC} {PPnum} {CARnum}'
+    random_email = generateRandomEmail()
+    nric_ppnum_string = f'{NRIC} {PPnum} {CARnum} {random_email}'
     print(nric_ppnum_string)
 
 
