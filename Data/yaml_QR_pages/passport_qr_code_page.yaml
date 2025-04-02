@@ -1,3 +1,4 @@
 GENERATE-PERSONAL-QR-CODE-OPTION: //android.view.ViewGroup[@content-desc='Create a personal profile to generate My QR code']
 IND-QR-CODE-SHORTCUT: //android.view.ViewGroup[@resource-id='QrIndividualQrCode' and @content-desc ='QrIndividualQrCode']
-GENERATE-GROUP-QR-CODE-OPTION: //android.view.ViewGroup[@content-desc='Create a group QR code'] 
+GENERATE-GROUP-QR-CODE-OPTION: //android.view.ViewGroup[@content-desc='Create a group QR code']
+QR-CODE-BANNER: //android.widget.Button[@content-desc='close banner']

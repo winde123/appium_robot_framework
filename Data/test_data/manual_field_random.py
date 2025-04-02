@@ -5,6 +5,13 @@ from random import choice
 import string 
 
 fake = Faker()
+def readfromfile():
+    f = open("C:/Users/niharaze/appium_robot_framework/Cargo_Test_Data.txt", encoding='utf-8-sig', mode='r')
+    lines = f.read()
+    data_into_lines= lines.split("\n")
+    return data_into_lines
+data=readfromfile()
+print(data)
 
 
 ## generating random name
@@ -15,6 +22,12 @@ def generateRandomName():
     return randomName
 
 NAME = generateRandomName()
+
+def generateRandomEmail():
+    name = generateRandomName()
+    random_email = name.replace(" ","_") + '@' + 'test.co'
+    return random_email
+
 
 ## generating random valid date
 def generaterandomDOB():
@@ -99,6 +112,12 @@ def generaterandomCarPlateNumber():
 
 PPNUM = generaterandomPPNumber()
 
+def generateForeignPassportNum():
+    randomForeignPPNum = fake.passport_number()
+    return randomForeignPPNum
+
+FOREIGNPPNUM = generateForeignPassportNum()  
+
 
 def generatelistofDOBS(n):
     listOfDOBs = []
@@ -128,7 +147,10 @@ def main():
     NRIC = generaterandomNRIC()
     PPnum =  generaterandomPPNumber()
     CARnum = generaterandomCarPlateNumber()
-    nric_ppnum_string = f'{NRIC} {PPnum} {CARnum}'
+
+    random_email = generateRandomEmail()
+    nric_ppnum_string = f'{NRIC} {PPnum} {CARnum} {random_email}'
+
     print(nric_ppnum_string)
 
 

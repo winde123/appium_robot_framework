@@ -9,6 +9,6 @@ CARGO_CLEARANCE_PLUS_SIGN_BUTTON : //android.widget.Button[android.view.ViewGrou
 PLUS_ADD_VEHICLE_PROFILE_BUTTON : //android.widget.Button[android.view.ViewGroup/@content-desc="Add Vehicle Profile"]
 PLUS_CARGO_SUBMISSION_BUTTON :
 
-PLUS_NEW_CONVOY_SUBMISSION_BUTTON :
-PLUS_LOOKUP_SUBMISSION_BUTTON :
+PLUS_NEW_CONVOY_SUBMISSION_BUTTON : //android.view.ViewGroup[@content-desc="New Convoy Submission"]
+PLUS_LOOKUP_SUBMISSION_BUTTON : //android.view.ViewGroup[@content-desc="Lookup Submission"]
 CROSS_BUTTON :

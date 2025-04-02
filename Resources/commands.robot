@@ -11,6 +11,7 @@ Variables   getabspath.py
 
 *** Variables ***
 
+#${ANDROID_PLATFORM_VERSION}       %{ANDROID_PLATFORM_VERSION=13}
 
 
 *** Keywords ***
@@ -33,23 +34,24 @@ Type text
     Wait Until Keyword Succeeds     1min     5sec     AppiumLibrary.Wait Until Page Contains Element    locator=${elementid}
     AppiumLibrary.Input Text    locator=${elementid}    text=${textstring}
 
-Generate dynamic group qr checkbox element locator for n group members
-    [Arguments]    @{list_of_names}    ${elementindex}
-    @{GROUP-CHECKBOX-LOCATOR}    Set Variable     ${None}
-    FOR  ${checkbox}  IN RANGE    ${elementindex}
-        ${NTH-CHECKBOX-LOCATOR}=    Catenate    SEPARATOR=    //android.widget.TextView[@text='    ${list_of_names}[${0}][${checkbox}]    'and @enabled='true']
-        Append To List     ${GROUP-CHECKBOX-LOCATOR}    ${NTH-CHECKBOX-LOCATOR}         
+#Generate dynamic group qr checkbox element locator for n group members
+    #[Arguments]    @{list_of_names}    ${elementindex}
+    #@{GROUP-CHECKBOX-LOCATOR}    Set Variable     ${None}
+    #FOR  ${checkbox}  IN RANGE    ${elementindex}
+        #${NTH-CHECKBOX-LOCATOR}=    Catenate    SEPARATOR=    //android.widget.TextView[@text='    ${list_of_names}[${0}][${checkbox}]    'and @enabled='true']
+        #Append To List     ${GROUP-CHECKBOX-LOCATOR}    ${NTH-CHECKBOX-LOCATOR}         
         
-    END
-    [Return]    @{GROUP-CHECKBOX-LOCATOR}
+    #END
+    #[Return]    @{GROUP-CHECKBOX-LOCATOR}
 
 Scroll down on the screen
-    Swipe By Percent    50    50    50    10    duration=${500}
+    [Arguments]    ${duration}=${500}
+    Swipe By Percent    50    50    50    10    duration=${duration}
 
-Navigate to QR Code page without tutorial flow
-    Click on element                ${QR-CODE-FAV-BUTTON}
-    # Click on tutorial interface no option
-    Click on element                ${NO-THANKS-OPTION}
+
+
+    
+    
  
 
      

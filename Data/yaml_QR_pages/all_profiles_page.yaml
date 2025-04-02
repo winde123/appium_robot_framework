@@ -1,1 +1,1 @@
-ADD-PROFILE-BUTTON: //android.view.ViewGroup[@content-desc='ProfileAddProfile']
+ADD-PROFILE-BUTTON: //android.widget.Button[@resource-id='ProfileAddProfile']
