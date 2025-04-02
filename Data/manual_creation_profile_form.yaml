@@ -1,22 +1,29 @@
 ## Add profile methods page
-FILL-MANUALLY-BUTTON: //android.view.ViewGroup[@resource-id='ProfileAddProfile' and @clickable='true' and @index='3']
+FILL-MANUALLY-BUTTON: //android.widget.Button[@resource-id='ProfileAddProfile' and @content-desc='fill manually']
 ## Add profile page
 #NRIC-DROPDOWN-BUTTON: //android.widget.EditText[@resource-id='ResidentDropDown']
-NRIC-DROPDOWN-YES-OPTION: //android.view.ViewGroup[@content-desc='YES']
+NRIC-FLAG-YES-OPTION: //android.widget.Button[@content-desc='yes']
+NRIC-FLAG-NO-OPTION: //android.widget.Button[@content-desc='no']
 FULL-NAME-TEXT-FIELD: //android.widget.EditText[@resource-id='PassportDetailsFullName']
 DOB-TEXT-FIELD: //android.widget.EditText[@resource-id='PassportDetailsDateOfBirth']
 NAT-CITIZEN-DROPDOWN-BUTTON: //android.widget.TextView[@resource-id='PassportDetailsNationality']
-CITIZEN-SG-OPTION: //android.view.ViewGroup[@content-desc='SINGAPOREAN' and @focusable='true']
+CITIZEN-SG-OPTION: //android.view.ViewGroup[@content-desc='searchable dropdown accessible label 0' and @focusable='true']
 NRIC-TEXT-FIELD: //android.widget.EditText[@resource-id='PassportDetailsNricFin']
 PASSPORT-NO-FIELD: //android.widget.EditText[@resource-id='PassportDetailsPassportNumber']
 PASSPORT-DATE-EXPIRY-TEXT-FIELD: //android.widget.EditText[@resource-id='PassportDetailsDatePassportExpiry']
 PROFILE-PAGE-NEXT-BUTTON: //android.view.ViewGroup[@resource-id='next']
-##Passport details confirm page
-FULL-NAME-FIELD: //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='4']
-DOB-FIELD: //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='7']
-NRIC-FIELD: //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='13']
-PASSPORT-NUMBER-FIELD:  //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='16']
-PASSPORT-DATE-EXPIRY-HEADER: //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index ='18']
-PASSPORT-DATE-EXPIRY-FIELD:  //android.view.ViewGroup[@focusable='true']//android.widget.TextView[@index='19']
+##Passport details confirm page for both profiles
+FULL-NAME-FIELD: //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index='4']
+DOB-FIELD: //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index='7']
+##Passport details confirm page for SC profile
+NRIC-FIELD: //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index='13']
+PASSPORT-NUMBER-FIELD:  //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index='16']
+PASSPORT-DATE-EXPIRY-HEADER: //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index ='18']
+PASSPORT-DATE-EXPIRY-FIELD:  //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index='19']
 PASSPORT-DETAILS-SAVE-BUTTON: //android.view.ViewGroup[@resource-id='save']
-TOC-PRIVACY-POLICY-CHECKBOX: //android.widget.TextView[@text='I have read and accepted the ' and @enabled='true' ]
+TOC-PRIVACY-POLICY-CHECKBOX: //android.view.ViewGroup[@content-desc='QR code term and condition' and @enabled='true']
+
+## Passport details field for Foreigner profile
+FOREIGNER-PASSPORT-NUMBER-FIELD: //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index='13']
+FOREIGNER-PASSPORT-DATE-EXPIRY-HEADER: //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index ='15']
+FORIEGNER-PASSPORT-DATE-EXPIRY-FIELD: //android.view.ViewGroup[@resource-id='card']//android.widget.TextView[@index='16']
