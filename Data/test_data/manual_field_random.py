@@ -150,8 +150,10 @@ def main():
     NRIC = generaterandomNRIC()
     PPnum =  generaterandomPPNumber()
     CARnum = generaterandomCarPlateNumber()
+
     random_email = generateRandomEmail()
     nric_ppnum_string = f'{NRIC} {PPnum} {CARnum} {random_email}'
+
     print(nric_ppnum_string)
 
 
