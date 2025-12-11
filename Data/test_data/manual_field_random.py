@@ -10,8 +10,8 @@ def readfromfile():
     lines = f.read()
     data_into_lines= lines.split("\n")
     return data_into_lines
-data=readfromfile()
-print(data)
+#data=readfromfile()
+#print(data)
 
 
 ## generating random name
@@ -107,6 +107,7 @@ def generaterandomCarPlateNumber():
 
     return alpha_starting_char
 
+#####mykad(malaysiaic) gen function
     
     
 
@@ -142,6 +143,8 @@ def generateListofPPNum(n):
     for i in range(n):
         listofPPNum.append(generaterandomPPNumber())
     return listofPPNum
+
+
 
 def main():
     NRIC = generaterandomNRIC()
