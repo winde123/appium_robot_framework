@@ -2,10 +2,11 @@
 Library    AppiumLibrary
 Library    Collections
 Library    ../Data/test_data/manual_field_random.py
-Variables    ../Data/yaml_QR_pages/passport_qr_code_page.yaml
-Variables    ../Data/yaml_QR_pages/all_profiles_page.yaml
-Variables    ../Data/manual_creation_profile_form.yaml
-Variables    ../Data/yaml_QR_pages/create_group_qr_code_page.yaml
+Variables    ../Data/android/landing_page.yaml
+Variables    ../Data/android/yaml_QR_pages/passport_qr_code_page.yaml
+Variables    ../Data/android/yaml_QR_pages/all_profiles_page.yaml
+Variables    ../Data/android/manual_creation_profile_form.yaml
+Variables    ../Data/android/yaml_QR_pages/create_group_qr_code_page.yaml
 Variables    ../Data/test_data/manual_field_random.py
 Variables    ../Data/test_data/input_fields_test_data.yaml
 Resource    commands.robot
@@ -69,7 +70,7 @@ Create resident manual profile n times
     END
 
     #[Return]    ${NAME} ${arg}
-    [Return]    @{NAME-LIST}
+    RETURN    @{NAME-LIST}
 
 Generate dynamic group qr checkbox element locator for n group members
     [Arguments]    @{list_of_names}    ${elementindex}
@@ -80,7 +81,7 @@ Generate dynamic group qr checkbox element locator for n group members
         Append To List     ${GROUP-CHECKBOX-LOCATOR}    ${NTH-CHECKBOX-LOCATOR}         
         
     END
-    [Return]    @{GROUP-CHECKBOX-LOCATOR}
+    RETURN    @{GROUP-CHECKBOX-LOCATOR}
 
 Click on n checkboxes on the profiles on the QR group page
     [Arguments]    @{dynamic_locators}    ${n_members}

@@ -5,8 +5,9 @@ Library    helper_func.py
 #Library    RPA.Email.ImapSmtp
 #Library    SeleniumLibrary
 Variables   ../robotconfig.yaml
-Variables   ../Data/landing_page.yaml
-Variables   ../Data/yaml_tutorial_flow_pages/passport_qr_tutorial_flow.yaml 
+#Variables   ../Data/android/landing_page.yaml
+#Variables   ../Data/ios/landing_page.yaml
+Variables   ../Data/android/yaml_tutorial_flow_pages/passport_qr_tutorial_flow.yaml
 Variables   getabspath.py
 
 *** Variables ***
@@ -47,6 +48,13 @@ Type text
 Scroll down on the screen
     [Arguments]    ${duration}=${500}
     Swipe By Percent    50    50    50    10    duration=${duration}
+
+
+
+########################IOS##################################################################################################################
+Open ios App on device
+    #Open Application    http://127.0.0.1:4723    platformName=iOS    appium:platformVersion=18.4.1    appium:deviceName='Edwin's iPad'    appium:automationName=XCUITest    appium:udid=00008122-000A08312186801C    appium:noReset=${True}    appium:showXcodeLog=${True}    appium:app=${IOS_APP}    appium:xcodeOrgId=W6PMZD7K72    appium:includeSafariInWebviews=${True}    appium:newCommandTimeout=${3600}    appium:connectHardwareKeyboard=${True}
+    Open Application    ${APPIUM_SERVER_URL}     platformName=${IOS_PLATFORM_NAME}    appium:platformVersion=${IOS_PLATFORM_VERSION}    appium:deviceName=${IOS_DEVICE_NAME}    appium:automationName=${IOS_AUTOMATION_NAME}    appium:udid=${IOS_DEVICE_UDID}    appium:noReset=${True}    appium:showXcodeLog=${True}    appium:app=${IOS_APP}    appium:xcodeOrgId=${IOS_XCODE_ORGID}    appium:includeSafariInWebviews=${True}    appium:newCommandTimeout=${3600}    appium:connectHardwareKeyboard=${True}
 
 
 

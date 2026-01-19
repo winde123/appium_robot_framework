@@ -1,6 +1,11 @@
 import os
 
-def getabspath():
-     return (os.path.abspath('icaApp/308.apk'))
+def getandroidabspath():
+     return (os.path.abspath('icaApp/app-staging-release.apk'))
 
-ANDROID_APP = getabspath()
+def getiosabspath():
+     return (os.path.abspath('icaApp/sgac_test.ipa'))
+
+
+ANDROID_APP = getandroidabspath()
+IOS_APP = getiosabspath()
