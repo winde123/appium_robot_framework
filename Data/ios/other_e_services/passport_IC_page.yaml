@@ -1,0 +1,7 @@
+APPLY-TRAVEL-DOC-TAB: //XCUIElementTypeOther[@name="service list Apply for Travel Document 5 - 10 minutes"]
+APPLY-TRAVEL-WEBPAGE-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Travel Document"]
+REPORT-LOST-PASSPORT-TAB: //XCUIElementTypeOther[@name="service list Report Lost Passport 5 - 10 minutes"]
+LOST-PASSPORT-WEBPAGE-HEADER-ELEM: //XCUIElementTypeOther[@name="Online Report"]
+REGISTER-REPLACE-IDENTITY-CARD-TAB: //XCUIElementTypeOther[@name="service list Register / Re-register / Replace Identity Card 15 - 20 minutes"]
+REGISTER-REPLACE-IDENTITY-WEBPAGE-HEADER-ELEM: //XCUIElementTypeOther[@name="Register/Replace Identity Card"]
+REPORT-LOST-IDENTITY-CARD-TAB: //XCUIElementTypeOther[@name="service list Report Lost Identity Card 15 - 20 minutes"]

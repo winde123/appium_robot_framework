@@ -1,0 +1,11 @@
+## options on the other e services page
+E-SERVICES-PASSPORT-IDENTITY-CARD: //XCUIElementTypeOther[@name="EServicesPassportandIdentityCard"]
+E-SERVICES-SGAC-ENTRY-VISA-EPASS-ENQUIRY-PORTAL: //XCUIElementTypeOther[@name="EServicesSGArrivalCard,EntryVisa,e-PassEnquiryPortalandExtensionofVisitPass"]
+E-SERVICES-CHECK-VALIDITY-VERIFY: //XCUIElementTypeOther[@name="EServicesCheckValidity/Verify"]
+E-SERVICES-REPORT-CHANGE-RESIDENTIAL-ADDRESS: //XCUIElementTypeOther[@name="EServicesReportChangeofResidentialAddress"]
+E-SERVICES-SINGAPORE-CITIZENSHIP-PERMANENT-RESIDENCE: //XCUIElementTypeOther[@name="EServicesSingaporeCitizenshipandPermanentResidence"]
+E-SERVICES-LONG-TERM-VISIT-PASS-STUDENTS-PASS: //XCUIElementTypeOther[@name="EServicesLong-TermVisitPassandStudent’sPass"]
+E-SERVICES-BIRTH-DEATH: //XCUIElementTypeOther[@name="EServicesBirthandDeath"]
+E-SERVICES-OTHERS: //XCUIElementTypeOther[@name="EServicesOthers"]
+E-SERVICES-APPOINTMENT: //XCUIElementTypeOther[@name="EServicesAppointment"]
+E-SERVICES-CUSTOMS-DECLARATION: //XCUIElementTypeOther[@name="EServicesCustomsDeclaration"]
