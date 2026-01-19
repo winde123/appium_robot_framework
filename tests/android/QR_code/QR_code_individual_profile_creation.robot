@@ -4,11 +4,11 @@ Library       ../../../Data/test_data/manual_field_random.py
 Library       ../../../Resources/helper_func.py
 Resource      ../../../Resources/commands.robot
 Resource      ../../../Resources/QRcommands.robot
-Variables     ../../../Data/yaml_QR_pages/passport_qr_code_page.yaml
-Variables     ../../../Data/manual_creation_profile_form.yaml
-Variables     ../../../Data/yaml_QR_pages/personal_qr_code_page.yaml
-Variables     ../../../Data/yaml_QR_pages/create_group_qr_code_page.yaml
-Variables     ../../../Data/yaml_QR_pages/all_profiles_page.yaml
+Variables     ../../../Data/android/yaml_QR_pages/passport_qr_code_page.yaml
+Variables     ../../../Data/android/manual_creation_profile_form.yaml
+Variables     ../../../Data/android/yaml_QR_pages/personal_qr_code_page.yaml
+Variables     ../../../Data/android/yaml_QR_pages/create_group_qr_code_page.yaml
+Variables     ../../../Data/android/yaml_QR_pages/all_profiles_page.yaml
 Variables     ../../../Data/test_data/input_fields_test_data.yaml
 Test Setup       Open Android App in emulator    appActivity=sg.gov.ica.mobile.app.MainActivity    
 Test Teardown    Close Application

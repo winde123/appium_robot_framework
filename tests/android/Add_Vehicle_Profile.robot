@@ -5,7 +5,7 @@ Library    ../../Data/test_data/manual_field_random.py
 Library    ../../Resources/helper_func.py
 Resource    ../../Resources/commands.robot
 Variables    ../../Data/test_data/input_fields_test_data.yaml
-Variables   ../../Data/landing_page.yaml
+Variables   ../../Data/android/landing_page.yaml
 Variables    ../../Data/yaml_Cargo_pages/cargo_clearance_home_page.yaml
 Variables    ../../Data/yaml_Cargo_pages/add_vehicle_page.yaml
 Variables    ../../Data/yaml_Cargo_pages/vehicle_profiles_page.yaml
