@@ -1,3 +1,4 @@
+from datetime import timedelta
 def remove_whitespaces(string):
     string = str(string)
     string=string.replace(' ','')
@@ -20,6 +21,12 @@ def string_splitter(string:str,chars:int)-> list:
     
     return group_char_list
 
+def convert_int_to_ms(numsecs:int):
+    duration = timedelta(milliseconds=numsecs)
+    return duration
+
+#test = convert_int_to_ms(500)
+#print(test)
 
 
 
