@@ -1,0 +1,11 @@
+# selectors for Citizen and Resident page
+CITIZEN-RES-HEADER: //XCUIElementTypeStaticText[@name="Citizen and Resident"]
+CITIZEN-RES-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+CITIZEN-RES-MYICA-CARD: //XCUIElementTypeOther[@name="MyICA Access other e-Services via your personalised dashboard here"]
+CITIZEN-RES-SG-ARRIVAL-CARD: //XCUIElementTypeOther[@name="citizen & resident - SG arrival card"]
+CITIZEN-RES-SUBMIT-CARGO-CLEARANCE-CARD: //XCUIElementTypeOther[@name="submit cargo clearance card"]
+CITIZEN-RES-QR-CODE-LAND-CHECKPOINTS-CARD: //XCUIElementTypeOther[@name="QR Code at Land Checkpoints"]
+CITIZEN-RES-APPOINTMENT-CARD: //XCUIElementTypeOther[@name="Appointment"]
+CITIZEN-RES-CUSTOMS-DECLARATION-CARD: //XCUIElementTypeOther[@name="Customs Declaration card"]
+CITIZEN-RES-SUBMIT-CASH-CBNI-DECLARATION-CARD: //XCUIElementTypeOther[@name="Submit Cash (CBNI) Declaration"]
+CITIZEN-RES-RETRIEVE-VOID-CASH-CBNI-DECLARATION-CARD: //XCUIElementTypeOther[@name="Retrieve/Void Cash (CBNI) declaration card"]

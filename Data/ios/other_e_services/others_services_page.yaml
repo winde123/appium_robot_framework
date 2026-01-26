@@ -1,0 +1,5 @@
+OTHERS-APEC-BUSINESS-TRAVEL-CARD-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for APEC Business Travel Card")]
+OTHERS-APEC-BUSINESS-TRAVEL-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Apply for APEC Business Travel Card (ABTC)"]
+OTHERS-US-TRUSTED-TRAVELLER-PROGRAMME-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Singapore - United States of America Trusted Traveller Programme")]
+OTHERS-CHANGE-RACE-DIALECT-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply to Change Race / Dialect")]
+OTHERS-CHANGE-RACE-DIALECT-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Application for Change of Race / Dialect (Singapore Citizens Only)"]

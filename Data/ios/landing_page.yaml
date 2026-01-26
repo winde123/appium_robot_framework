@@ -1,5 +1,5 @@
 # selectors for relavant landing page
-#CITIZEN-RESIDENT-ESERVICE-BUTTON: //android.view.ViewGroup[@content-desc="HomeResidentsCitizens"]
+CITIZEN-RESIDENT-ESERVICE-BUTTON: (//XCUIElementTypeOther[@name="card"])[1]
 #FORIEGN-VISITOR-ESERVICE-BUTTON: //android.view.ViewGroup[@content-desc="HomeForeignVisitors"]
 
 #FAV BUTTONS
@@ -9,4 +9,7 @@
 #CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeCargo Clearance"]
 #REGISTER-REREGISTER-REPLACE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeRegister / Re-register / Replace Identity Card"]
 OTHER-E-SERVICES-FAV-BUTTON:  //XCUIElementTypeOther[@name="HomeOther e-Services"]
-#CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeCargo Clearance"]
+CARGO-CLEARANCE-FAV-BUTTON: //XCUIElementTypeOther[@name="HomeCargo Clearance"]
+
+MYICA-SCAM-BANNER: //XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther[14]
+MYICA-SCAM-BANNER-HEADER-ELEM: //XCUIElementTypeOther[@name="Government Officials Impersonation Scams"]

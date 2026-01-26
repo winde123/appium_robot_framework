@@ -1,0 +1,3 @@
+REPORT-CHANGE-RES-ADDRESS-IC-HOLDER-TAB: //XCUIElementTypeOther[contains(@name,"service list For IC holder")]
+REPORT-CHANGE-RES-ADDRESS-LTVP-STP-HOLDER-TAB: //XCUIElementTypeOther[contains(@name,"service list For LTVP / STP holder")]
+REPORT-CHANGE-RES-ADDRESS-HEADER-ELEM: //XCUIElementTypeOther[@name="Change of Residential Address"]

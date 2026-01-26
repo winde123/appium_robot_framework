@@ -1,0 +1,3 @@
+CAPTCHA-INPUT-FIELD: //XCUIElementTypeOther[@name="captcha code text inputtext input"]
+CAPTCHA-VERIFY-BTN: //XCUIElementTypeButton[@name="CaptchaModalConfirm" and @label="VERIFY"]
+KEYBOARD-DONE-BTN: //XCUIElementTypeButton[@name="Done"]

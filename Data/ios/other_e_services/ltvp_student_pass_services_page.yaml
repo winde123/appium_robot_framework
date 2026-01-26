@@ -1,0 +1,7 @@
+LTVP-APPLY-RENEW-LTVP-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply / Renew Long-Term Visit Pass")]
+LTVP-APPLY-RENEW-LTVP-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Long-Term Visit Pass"]
+LTVP-APPLY-PMLA-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Pre-Marriage Long-Term Visit Pass Assessment (PMLA)")]
+LTVP-APPLY-PMLA-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Submit for Pre-Marriage Long-Term Visit Pass Assessment (PMLA)"]
+LTVP-APPLY-RENEW-STUDENT-PASS-IHL-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply / Renew Student's Pass for Institutes of Higher Learning")]
+LTVP-APPLY-RENEW-STUDENT-PASS-IHL-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Apply for Student's Pass"]
+LTVP-APPLY-RENEW-STUDENT-PASS-OTHER-SCHOOLS-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply / Renew Student's Pass for Other Schools")]

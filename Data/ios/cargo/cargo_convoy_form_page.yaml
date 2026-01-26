@@ -1,0 +1,11 @@
+# selectors for Cargo Convoy form page
+CARGO-CONVOY-FORM-EMAIL-INPUT: //XCUIElementTypeOther[@name="convoy email address text inputtext input"]
+CARGO-CONVOY-FORM-MOBILE-INPUT: //XCUIElementTypeOther[@name="convoy mobile number text inputtext input"]
+CARGO-CONVOY-FORM-VEHICLE-NUMBER-INPUT: //XCUIElementTypeOther[@name="convoy vehicle number text inputtext input"]
+CARGO-CONVOY-FORM-NEXT-BUTTON: //XCUIElementTypeOther[@name="next"]
+CARGO-CONVOY-FORM-EMAIL-ERROR: //XCUIElementTypeStaticText[contains(@label,"convoy email address required error message")]
+CARGO-CONVOY-FORM-MOBILE-ERROR: //XCUIElementTypeStaticText[contains(@label,"convoy mobile number required error message")]
+CARGO-CONVOY-FORM-VEHICLE-NUMBER-ERROR: //XCUIElementTypeStaticText[contains(@label,"convoy vehicle number required error message")]
+CARGO-CONVOY-FORM-STEP-INDICATOR: //XCUIElementTypeOther[@name="Step 1 of 2"]
+CARGO-CONVOY-FORM-PROGRESS-BAR: //XCUIElementTypeOther[@name="progress-bar"]
+CARGO-CONVOY-FORM-PROGRESS-BAR-FILL: //XCUIElementTypeOther[@name="progress-bar-fill"]

@@ -1,0 +1,2 @@
+## successful submission
+CARGO-SUCCESS-TEXT: (//XCUIElementTypeStaticText[@name="SUBMISSION SUCCESSFUL"])[2]

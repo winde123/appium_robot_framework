@@ -1,0 +1,6 @@
+SC-PR-APPLY-SINGAPORE-CITIZENSHIP-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Singapore Citizenship")]
+SC-PR-APPLY-SINGAPORE-CITIZENSHIP-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Singapore Citizenship"]
+SC-PR-APPLY-PR-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Permanent Residence")]
+SC-PR-APPLY-PR-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Permanent Residence (PR)"]
+SC-PR-REENTRY-PERMIT-RENEWAL-TRANSFER-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply Renewal / Transfer of Re-entry Permit")]
+SC-PR-REENTRY-PERMIT-RENEWAL-TRANSFER-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Apply for/Renew/Transfer of Re-Entry Permit"]
