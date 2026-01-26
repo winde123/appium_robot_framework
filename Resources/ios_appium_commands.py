@@ -25,6 +25,6 @@ def terminate_app():
     driver = webdriver.Remote(appium_server_url, options=options)
     driver.terminate_app('sg.gov.ica.mobile.app')
 
-#terminate_app()
+
 
 
