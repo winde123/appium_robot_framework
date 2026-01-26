@@ -28,6 +28,8 @@ def generateRandomEmail():
     random_email = name.replace(" ","_") + '@' + 'test.co'
     return random_email
 
+EMAIL = generateRandomEmail()
+
 
 ## generating random valid date
 def generaterandomDOB():
@@ -143,6 +145,21 @@ def generateListofPPNum(n):
     for i in range(n):
         listofPPNum.append(generaterandomPPNumber())
     return listofPPNum
+
+def generateListofVehno(n):
+    listofVehno =[]
+    for i in range(n):
+        listofVehno.append(generaterandomCarPlateNumber())
+    return listofVehno
+
+def generateListofPermit(n):
+    listofPermitno =[]
+    for i in range(n):
+        if i < 10:
+            listofPermitno.append(f'OO5E990000{i}')
+        else:
+            listofPermitno.append(f'OO5E99000{i}')
+    return listofPermitno
 
 
 
