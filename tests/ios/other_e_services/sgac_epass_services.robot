@@ -18,6 +18,7 @@ Navigating to SGAC and epass enquiry page
     Xpath Should Match X Times    //XCUIElementTypeOther[@name="card"]    4
     Click on element              ${SUBMIT-SG-ARRIVAL-CARD-TAB}
     Expect Element    ${SUBMIT-SG-ARRIVAL-CARD-HEADER-ELEM}    visible
+    Close iOS Chrome Browser
 
 Navigating to apply to entry visa page
     [Documentation]     sgac epass e services
@@ -27,6 +28,7 @@ Navigating to apply to entry visa page
     Xpath Should Match X Times    //XCUIElementTypeOther[@name="card"]    4
     Click on element              ${APPLY-ENTRY-VISA-TAB}
     Expect Element    ${APPLY-ENTRY-VISA-CARD-HEADER-ELEM}    visible
+    Close iOS Chrome Browser
 
 Navigating to epass enquiry portal page
     [Documentation]     sgac epass e services
@@ -36,6 +38,7 @@ Navigating to epass enquiry portal page
     Xpath Should Match X Times    //XCUIElementTypeOther[@name="card"]    4
     Click on element              ${RETRIEVE-E-PASS-RECORD-TAB}
     Expect Element    ${RETRIEVE-E-PASS-RECORD-HEADER-ELEM}    visible
+    Close iOS Chrome Browser
 
 Navigating to extension of visit pass portal page
     [Documentation]     sgac epass e services
@@ -45,3 +48,4 @@ Navigating to extension of visit pass portal page
     Xpath Should Match X Times    //XCUIElementTypeOther[@name="card"]    4
     Click on element              ${APPLY-EXTENSION-OF-VISIT-PASS-TAB}
     Expect Element    ${APPLY-EXTENSION-OF-VISIT-PASS-HEADER-ELEM}    visible
+    Close iOS Chrome Browser

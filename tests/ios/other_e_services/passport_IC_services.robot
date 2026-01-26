@@ -18,6 +18,7 @@ Navigating to the passport and ic page
     Xpath Should Match X Times    //XCUIElementTypeOther[@name="card"]    4
     Click on element        ${APPLY-TRAVEL-DOC-TAB}
     Expect Element    ${APPLY-TRAVEL-WEBPAGE-HEADER-ELEM}    visible
+    Close iOS Chrome Browser
 
 Navigating to report lost passport page
     [Documentation]     passport IC e services
@@ -27,6 +28,7 @@ Navigating to report lost passport page
     Xpath Should Match X Times    //XCUIElementTypeOther[@name="card"]    4
     Click on element              ${REPORT-LOST-PASSPORT-TAB}
     Expect Element    ${LOST-PASSPORT-WEBPAGE-HEADER-ELEM}    visible
+    Close iOS Chrome Browser
 
 Navigating to register IC page
     [Documentation]     passport IC e services
@@ -36,6 +38,7 @@ Navigating to register IC page
     Xpath Should Match X Times    //XCUIElementTypeOther[@name="card"]    4
     Click on element              ${REGISTER-REPLACE-IDENTITY-CARD-TAB}
     Expect Element    ${REGISTER-REPLACE-IDENTITY-WEBPAGE-HEADER-ELEM}    visible
+    Close iOS Chrome Browser
 
 Navigating to report lost IC page
     [Documentation]     passport IC e services
@@ -45,4 +48,5 @@ Navigating to report lost IC page
     Xpath Should Match X Times    //XCUIElementTypeOther[@name="card"]    4
     Click on element              ${REPORT-LOST-IDENTITY-CARD-TAB}
     Expect Element    ${REGISTER-REPLACE-IDENTITY-WEBPAGE-HEADER-ELEM}    visible
+    Close iOS Chrome Browser
 
