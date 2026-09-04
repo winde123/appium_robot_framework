@@ -17,12 +17,18 @@ Variables   getabspath.py
 *** Variables ***
 
 #${ANDROID_PLATFORM_VERSION}       %{ANDROID_PLATFORM_VERSION=13}
+${REMOTE_PLATFORM_NAME}            %{DEVICEFARM_DEVICE_PLATFORM_NAME}
+${REMOTE_DEVICE_NAME}              %{DEVICEFARM_DEVICE_NAME}
+${REMOTE_APP}                      %{DEVICEFARM_APP_PATH}
 
 
 *** Keywords ***
+Open Android App remotely
+    [Arguments]    ${appActivity}=${EMPTY}
+    Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${REMOTE_APP}    platformName=${REMOTE_PLATFORM_NAME}   deviceName=${REMOTE_DEVICE_NAME}    appPackage=${ANDROID_APP_PACKAGE}      appActivity=${appActivity} 
 Open Android App in emulator
     [Arguments]    ${appActivity}=${EMPTY}
-    Open Application    http://127.0.0.1:4723   automationName=${ANDROID_AUTOMATION_NAME}    app=${ANDROID_APP}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_EMULATOR_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${appActivity}     
+    Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${ANDROID_APP}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_EMULATOR_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${appActivity}     
 
 Open Android App in Android Phone
     [Arguments]    ${appActivity}=${EMPTY}
@@ -50,12 +56,25 @@ Type text
     #[Return]    @{GROUP-CHECKBOX-LOCATOR}
 
 Scroll down on the screen
-    [Arguments]    ${duration}=${500}
-    Swipe By Percent    50    50    50    10    duration=${duration}
+    [Arguments]    ${duration}=${1}
+    ${DUR}=    helper_func.Convert Int To Secs    ${duration}
+    Swipe By Percent    50    50    50    10    duration=${DUR}
+
 
 Close Android Chrome Browser
     [Documentation]    Close Chrome by terminating the Android Chrome app.
     AppiumLibrary.Terminate Application    com.android.chrome
+
+Input NRIC into input field for android device
+    [Documentation]    this is for inputting  nric field into secure fields. Need to enable insecure adb shell
+    [Arguments]    ${nric_field_locator}    ${textstring}
+    Click on element        ${nric_field_locator}
+    @{split_nric_str} =     helper_func.String Splitter    ${textstring}    ${2}
+    FOR    ${split_str}    IN    @{split_nric_str}
+        Execute Adb Shell    input text    ${split_str}
+        Sleep    1s
+            
+    END
 
 
 

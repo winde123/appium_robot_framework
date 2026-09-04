@@ -1,0 +1,16 @@
+# selectors for SGAC Select Profile (Submission) page
+SGAC-SEL-PROFILE-HEADER: //android.widget.TextView[@text="Select Profile"]
+SGAC-SEL-PROFILE-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+
+# Profile card
+SGAC-SEL-PROFILE-CARD-BUTTON: //android.view.ViewGroup[@resource-id="card"]
+#SGAC-SEL-PROFILE-CARD-LABEL: //android.widget.TextView[@text="TEST"]
+SGAC-SEL-PROFILE-CARD-RIGHT-ICON: //android.widget.Button[@content-desc="select profile card right icon"]
+
+SGAC-SEL-PROFILE-ADD-PROFILE-BUTTON: //android.widget.Button[@resource-id="ProfileAddProfile"]
+SGAC-SEL-PROFILE-ADD-PROFILE-LABEL: //android.widget.TextView[@text="ADD PROFILE"]
+
+SGAC-SEL-PROFILE-FOOTER-BACK-BUTTON: //android.view.ViewGroup[@resource-id="back"]
+SGAC-SEL-PROFILE-FOOTER-BACK-LABEL: //android.widget.TextView[@text="BACK"]
+SGAC-SEL-PROFILE-FOOTER-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]
+SGAC-SEL-PROFILE-FOOTER-NEXT-LABEL: //android.widget.TextView[@text="NEXT"]

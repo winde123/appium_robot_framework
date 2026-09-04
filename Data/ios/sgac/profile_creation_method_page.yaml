@@ -1,0 +1,9 @@
+# selectors for SGAC Profile Creation Method page (iOS)
+PROFILE-CREATION-METHOD-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+PROFILE-CREATION-METHOD-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
+PROFILE-CREATION-METHOD-TITLE: //XCUIElementTypeStaticText[@name="Choose profile creation method"]
+
+# Method buttons
+PROFILE-CREATION-METHOD-SINGPASS: //XCUIElementTypeButton[@name="retrieve myinfo with singpass"]
+PROFILE-CREATION-METHOD-SCAN-PASSPORT-MRZ: //XCUIElementTypeButton[@label="scan passport mrz"]
+PROFILE-CREATION-METHOD-FILL-MANUALLY: //XCUIElementTypeButton[@label="fill manually"]

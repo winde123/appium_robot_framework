@@ -1,0 +1,41 @@
+# selectors for SGAC Resident Profile Creation Form page
+RES-PROFILE-CREATION-HEADER: //android.widget.TextView[@text="Add Profile"]
+RES-PROFILE-CREATION-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+
+RES-PROFILE-CREATION-SECTION-TITLE: //android.widget.TextView[@text="Profile Details"]
+RES-PROFILE-CREATION-REMINDER: //android.widget.TextView[@text="Profile retrieved from Singpass is not editable."]
+
+RES-PROFILE-NAME-INPUT: //android.widget.EditText[@resource-id="PassportDetailsFullName"]
+RES-PROFILE-NAME-LABEL: //android.widget.TextView[@resource-id="PassportDetailsFullName-label-inactive"]
+RES-PROFILE-NAME-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]
+
+RES-PROFILE-NRIC-FIN-INPUT: //android.widget.EditText[@resource-id="PassportDetailsNricFin"]
+RES-PROFILE-NRIC-FIN-LABEL: //android.widget.TextView[@resource-id="PassportDetailsNricFin-label-inactive"]
+RES-PROFILE-NRIC-FIN-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]
+
+RES-PROFILE-DOB-INPUT: //android.widget.EditText[@resource-id="PassportDetailsDateOfBirth"]
+RES-PROFILE-DOB-LABEL: //android.widget.TextView[@resource-id="PassportDetailsDateOfBirth-label-inactive"]
+RES-PROFILE-DOB-CALENDAR-BUTTON: //android.widget.Button[@resource-id="right-icon-adornment"]
+RES-PROFILE-DOB-REQUIRED: //android.widget.TextView[@text="Required"]
+
+RES-PROFILE-FOOTER-BACK-BUTTON: //android.view.ViewGroup[@resource-id="back"]
+RES-PROFILE-FOOTER-BACK-LABEL: //android.widget.TextView[@text="BACK"]
+RES-PROFILE-FOOTER-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]
+RES-PROFILE-FOOTER-NEXT-LABEL: //android.widget.TextView[@text="NEXT"]
+
+# Contact Details section
+RES-PROFILE-CONTACT-SECTION-TITLE: //android.widget.TextView[@text="Contact Details"]
+
+RES-PROFILE-CONTACT-COUNTRY-CODE-INPUT: //android.widget.EditText[@resource-id="ContactDetailsCountryCode"]
+RES-PROFILE-CONTACT-COUNTRY-CODE-LABEL: //android.widget.TextView[@resource-id="ContactDetailsCountryCode-label-inactive"]
+RES-PROFILE-CONTACT-COUNTRY-CODE-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]
+
+RES-PROFILE-CONTACT-MOBILE-NUMBER-INPUT: //android.widget.EditText[@resource-id="ContactDetailsMobileNumber"]
+RES-PROFILE-CONTACT-MOBILE-NUMBER-LABEL: //android.widget.TextView[@resource-id="ContactDetailsMobileNumber-label-inactive"]
+RES-PROFILE-CONTACT-MOBILE-NUMBER-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]
+
+RES-PROFILE-CONTACT-EMAIL-INPUT: //android.widget.EditText[@resource-id="ContactDetailsEmailAddress"]
+RES-PROFILE-CONTACT-EMAIL-LABEL: //android.widget.TextView[@resource-id="ContactDetailsEmailAddress-label-inactive"]
+RES-PROFILE-CONTACT-EMAIL-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]
+
+

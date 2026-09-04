@@ -1,0 +1,37 @@
+# selectors for SGAC Resident Submission Form page (iOS)
+RES-SUBMISSION-FORM-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+RES-SUBMISSION-FORM-HEADER: //XCUIElementTypeStaticText[@name="Date of Arrival (DD/MM/YYYY)"]
+RES-SUBMISSION-FORM-HEADER-SAVE: //XCUIElementTypeOther[@name="save" and @label="save"]
+
+# Trip section
+RES-SUBMISSION-FORM-TRIP-TITLE: //XCUIElementTypeStaticText[@name="Trip 1"]
+RES-SUBMISSION-FORM-TRIP-NOTE: //XCUIElementTypeStaticText[contains(@name,"Declaration can only be done within 3 days prior")]
+
+# Date of arrival
+RES-SUBMISSION-FORM-DATE-LABEL: //XCUIElementTypeStaticText[contains(@name,"date of arrival")]
+RES-SUB-FORM-DATE-OPTION-1: (//XCUIElementTypeOther[starts-with(@name,"unselected radio selection") or starts-with(@name,"selected radio selection")])[1]
+RES-SUB-FORM-DATE-OPTION-2: (//XCUIElementTypeOther[starts-with(@name,"unselected radio selection") or starts-with(@name,"selected radio selection")])[2]
+RES-SUB-FORM-DATE-OPTION-3: (//XCUIElementTypeOther[starts-with(@name,"unselected radio selection") or starts-with(@name,"selected radio selection")])[3]
+RES-SUBMISSION-FORM-DATE-REQUIRED: //XCUIElementTypeStaticText[@name="Required"]
+
+# Footer navigation
+#RES-SUBMISSION-FORM-FOOTER-BACK: //XCUIElementTypeOther[@name="back" and @label="back"]
+RES-SUBMISSION-FORM-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 1 of 5"]
+RES-SUBMISSION-FORM-FOOTER-PROGRESS: //XCUIElementTypeOther[@name="progress-bar"]
+#RES-SUBMISSION-FORM-FOOTER-NEXT: //XCUIElementTypeOther[@name="next" and @label="next"]
+
+# Declaration step
+RES-SUBMISSION-FORM-DECLARATION-HEADER: //XCUIElementTypeStaticText[@name="Declaration"]
+RES-SUBMISSION-FORM-DECLARATION-HEADER-SAVE: //XCUIElementTypeOther[@name="save" and @label="save"]
+RES-SUBMISSION-FORM-DECLARATION-TRIP-TITLE: //XCUIElementTypeStaticText[@name="Trip 1"]
+RES-SUBMISSION-FORM-DECLARATION-TRIP-DATE: (//XCUIElementTypeStaticText[@name="Trip 1"]/following::XCUIElementTypeStaticText)[1]
+RES-SUBMISSION-FORM-DECLARATION-Q1: //XCUIElementTypeStaticText[contains(@name,"fever, cough, shortness of breath")]
+RES-SUBMISSION-FORM-DECLARATION-Q1-YES: //XCUIElementTypeOther[@name="declaration question answer yes"]
+RES-SUBMISSION-FORM-DECLARATION-Q1-NO: //XCUIElementTypeOther[@name="declaration question answer no"]
+
+## Question 2
+RES-SUBMISSION-FORM-DECLARATION-Q2: //XCUIElementTypeStaticText[contains(@name,"West Bengal") and contains(@name,"Latin America")]
+RES-SUBMISSION-FORM-DECLARATION-Q2-YES: (//XCUIElementTypeOther[@name="declaration question answer yes"])[2]
+RES-SUBMISSION-FORM-DECLARATION-Q2-NO: (//XCUIElementTypeOther[@name="declaration question answer no"])[2]
+RES-SUBMISSION-FORM-DECLARATION-Q2-ALT: //XCUIElementTypeStaticText[contains(@name,"listed countries") and contains(@name,"Africa") and contains(@name,"Latin America")]
+RES-SUBMISSION-FORM-DECLARATION-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 2 of 5"]

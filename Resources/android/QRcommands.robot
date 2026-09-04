@@ -2,14 +2,14 @@
 Library    AppiumLibrary
 Library    Collections
 Library    ../Data/test_data/manual_field_random.py
-Variables    ../Data/android/landing_page.yaml
-Variables    ../Data/android/yaml_QR_pages/passport_qr_code_page.yaml
-Variables    ../Data/android/yaml_QR_pages/all_profiles_page.yaml
-Variables    ../Data/android/manual_creation_profile_form.yaml
-Variables    ../Data/android/yaml_QR_pages/create_group_qr_code_page.yaml
-Variables    ../Data/test_data/manual_field_random.py
-Variables    ../Data/test_data/input_fields_test_data.yaml
-Resource    commands.robot
+Variables    ../../Data/android/landing_page.yaml
+Variables    ../../Data/android/yaml_QR_pages/passport_qr_code_page.yaml
+Variables    ../../Data/android/yaml_QR_pages/all_profiles_page.yaml
+Variables    ../../Data/android/manual_creation_profile_form.yaml
+Variables    ../../Data/android/yaml_QR_pages/create_group_qr_code_page.yaml
+Variables    ../../Data/test_data/manual_field_random.py
+Variables    ../../Data/test_data/input_fields_test_data.yaml
+Resource    ../commands.robot
 
 *** Keywords ***
 

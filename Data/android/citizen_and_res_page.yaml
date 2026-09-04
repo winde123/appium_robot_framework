@@ -1,0 +1,11 @@
+# selectors for Citizen and Resident page
+CITIZEN-RES-HEADER: //android.widget.TextView[@text="Citizen and Resident"]
+CITIZEN-RES-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+CITIZEN-RES-MYICA-CARD: //android.view.ViewGroup[@content-desc="MyICA Access other e-Services via your personalised dashboard here"]
+CITIZEN-RES-SGAC: //android.view.ViewGroup[@content-desc="citizen & resident - SG arrival card"]
+CITIZEN-RES-SUBMIT-CARGO-CLEARANCE-CARD: //android.view.ViewGroup[@content-desc="submit cargo clearance card"]
+CITIZEN-RES-QR-CODE-LAND-CHECKPOINTS-CARD: //android.view.ViewGroup[@content-desc="QR Code at Land Checkpoints"]
+CITIZEN-RES-APPOINTMENT-CARD: //android.view.ViewGroup[@content-desc="Appointment"]
+CITIZEN-RES-CUSTOMS-DECLARATION-CARD: //android.view.ViewGroup[@content-desc="Customs Declaration card"]
+CITIZEN-RES-SUBMIT-CASH-CBNI-DECLARATION-CARD: //android.view.ViewGroup[@content-desc="Submit Cash (CBNI) Declaration"]
+CITIZEN-RES-RETRIEVE-VOID-CASH-CBNI-DECLARATION-CARD: //android.view.ViewGroup[@content-desc="Retrieve/Void Cash (CBNI) declaration card"]

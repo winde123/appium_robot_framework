@@ -1,6 +1,6 @@
 # selectors for relavant landing page
-CITIZEN-RESIDENT-ESERVICE-BUTTON: //android.view.ViewGroup[@content-desc="HomeResidentsCitizens"]
-FORIEGN-VISITOR-ESERVICE-BUTTON: //android.view.ViewGroup[@content-desc="HomeForeignVisitors"]
+CITIZEN-RESIDENT-ESERVICE-BUTTON: //android.widget.TextView[@text="Citizen and Resident"]
+FORIEGN-VISITOR-ESERVICE-BUTTON: //android.widget.TextView[@text="Foreign Visitor"]
 
 #FAV BUTTONS
 CITIZEN&RESIDENT-SGARRIVAL-CARD-FAV-BUTTON : //android.view.ViewGroup[@content-desc="HomeCitizen & Resident - SG Arrival Card"]
@@ -10,3 +10,5 @@ QR-CODE-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeQR Code at Land C
 REGISTER-REREGISTER-REPLACE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeRegister / Re-register / Replace Identity Card"]
 OTHER-E-SERVICES-FAV-BUTTON: //android.view.ViewGroup[@content-desc="Other e-Services"]
 CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeCargo Clearance"]
+MYICA-SCAM-BANNER: //android.widget.ImageView
+MYICA-SCAM-BANNER-HEADER-ELEM: //android.view.View[@text="Government Officials Impersonation Scams"]

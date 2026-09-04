@@ -1,0 +1,3 @@
+CUSTOMS-BUTTON: //android.widget.Button[@content-desc="SUBMIT CUSTOMS DECLARATION"]
+CUSTOMS-BUTTON-LABEL: //android.widget.TextView[@text="SUBMIT CUSTOMS DECLARATION"]
+CUSTOMS-WEB-ELEM-HEADER: //android.widget.TextView[@text="Customs@SG Web Application"]

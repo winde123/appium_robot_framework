@@ -1,0 +1,17 @@
+# selectors for SGAC Declaration page
+SGAC-DECLARATION-HEADER: //android.widget.TextView[@text="Declaration"]
+SGAC-DECLARATION-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+
+SGAC-DECLARATION-TEXT: //android.widget.TextView[contains(@text,"I hereby confirm")]
+SGAC-DECLARATION-CONSENT-TEXT: //android.widget.TextView[contains(@text,"Consent to data sharing")]
+
+SGAC-DECLARATION-CHECKBOX: //android.view.ViewGroup[contains(@content-desc,"I have read and agreed to the declaration")]
+SGAC-DECLARATION-CHECKBOX-LABEL: //android.widget.TextView[@text="I have read and agreed to the declaration."]
+SGAC-DECLARATION-CHECKBOX-CHECKED: //android.view.ViewGroup[@content-desc="checkedI have read and agreed to the declaration."]
+
+SGAC-DECLARATION-FOOTER-BACK-BUTTON: //android.view.ViewGroup[@resource-id="back"]
+SGAC-DECLARATION-FOOTER-BACK-LABEL: //android.widget.TextView[@text="BACK"]
+SGAC-DECLARATION-PROGRESS-BAR: //android.view.View[@resource-id="progress-bar"]
+SGAC-DECLARATION-FOOTER-SUBMIT-BUTTON: //android.view.ViewGroup[@resource-id="save"]
+SGAC-DECLARATION-FOOTER-SUBMIT-LABEL: //android.widget.TextView[@text="SUBMIT"]
+

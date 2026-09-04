@@ -1,6 +1,6 @@
 # selectors for relavant landing page
 CITIZEN-RESIDENT-ESERVICE-BUTTON: (//XCUIElementTypeOther[@name="card"])[1]
-#FORIEGN-VISITOR-ESERVICE-BUTTON: //android.view.ViewGroup[@content-desc="HomeForeignVisitors"]
+FORIEGN-VISITOR-ESERVICE-BUTTON: (//XCUIElementTypeOther[@name="card"])[2]
 
 #FAV BUTTONS
 #CITIZEN&RESIDENT-SGARRIVAL-CARD-FAV-BUTTON : //android.view.ViewGroup[@content-desc="HomeCitizen & Resident - SG Arrival Card"]

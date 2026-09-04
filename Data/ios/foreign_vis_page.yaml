@@ -1,0 +1,40 @@
+# selectors for Foreign Visitor page (iOS)
+FOREIGN-VIS-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+FOREIGN-VIS-HEADER: //XCUIElementTypeStaticText[@name="Foreign Visitor"]
+
+# Main cards
+FOREIGN-VIS-SGAC-CARD: //XCUIElementTypeOther[@name="foreign visitor - SG arrival card"]
+FOREIGN-VIS-SGAC-TITLE: //XCUIElementTypeStaticText[@name="Foreign Visitor - SG Arrival Card"]
+FOREIGN-VIS-SGAC-RIGHT-ICON: //XCUIElementTypeButton[@name="foreign visitor - SG arrival card right icon"]
+
+FOREIGN-VIS-CARGO-CLEARANCE-CARD: //XCUIElementTypeOther[@name="submit cargo clearance card"]
+FOREIGN-VIS-CARGO-CLEARANCE-TITLE: //XCUIElementTypeStaticText[@name="Submit Cargo Clearance"]
+FOREIGN-VIS-CARGO-CLEARANCE-RIGHT-ICON: //XCUIElementTypeButton[@name="submit cargo clearance card right icon"]
+
+FOREIGN-VIS-QR-CODE-CARD: //XCUIElementTypeOther[@name="QR Code at Land Checkpoints"]
+FOREIGN-VIS-QR-CODE-TITLE: //XCUIElementTypeStaticText[@name="QR Code at Land Checkpoints"]
+FOREIGN-VIS-QR-CODE-RIGHT-ICON: //XCUIElementTypeButton[@name="QR Code at Land Checkpoints right icon"]
+
+FOREIGN-VIS-EXTEND-STAY-CARD: //XCUIElementTypeOther[@name="extend stay card"]
+FOREIGN-VIS-EXTEND-STAY-TITLE: //XCUIElementTypeStaticText[@name="Extend Stay"]
+FOREIGN-VIS-EXTEND-STAY-RIGHT-ICON: //XCUIElementTypeButton[@name="extend stay card right icon"]
+
+FOREIGN-VIS-LTVP-CARD: //XCUIElementTypeOther[@name="long term visit pass card"]
+FOREIGN-VIS-LTVP-TITLE: //XCUIElementTypeStaticText[@name="Long-Term Visit Pass"]
+FOREIGN-VIS-LTVP-RIGHT-ICON: //XCUIElementTypeButton[@name="long term visit pass card right icon"]
+
+FOREIGN-VIS-VISITOR-ESERVICES-CARD: //XCUIElementTypeOther[@name="visitor e-services card"]
+FOREIGN-VIS-VISITOR-ESERVICES-TITLE: //XCUIElementTypeStaticText[@name="Visitor e-Services"]
+FOREIGN-VIS-VISITOR-ESERVICES-RIGHT-ICON: //XCUIElementTypeButton[@name="visitor e-services card right icon"]
+
+FOREIGN-VIS-CUSTOMS-DECLARATION-CARD: //XCUIElementTypeOther[@name="Customs Declaration card"]
+FOREIGN-VIS-CUSTOMS-DECLARATION-TITLE: //XCUIElementTypeStaticText[@name="Customs Declaration"]
+FOREIGN-VIS-CUSTOMS-DECLARATION-RIGHT-ICON: //XCUIElementTypeButton[@name="Customs Declaration card right icon"]
+
+FOREIGN-VIS-CBNI-SUBMIT-CARD: //XCUIElementTypeOther[@name="Submit Cash (CBNI) Declaration"]
+FOREIGN-VIS-CBNI-SUBMIT-TITLE: //XCUIElementTypeStaticText[@name="Submit Cash (CBNI) Declaration"]
+FOREIGN-VIS-CBNI-SUBMIT-RIGHT-ICON: //XCUIElementTypeButton[@name="Submit Cash (CBNI) Declaration right icon"]
+
+FOREIGN-VIS-CBNI-RETRIEVE-VOID-CARD: //XCUIElementTypeOther[@name="Retrieve/Void Cash (CBNI) Declaration"]
+FOREIGN-VIS-CBNI-RETRIEVE-VOID-TITLE: //XCUIElementTypeStaticText[@name="Retrieve/Void Cash (CBNI) Declaration"]
+FOREIGN-VIS-CBNI-RETRIEVE-VOID-RIGHT-ICON: //XCUIElementTypeButton[@name="Retrieve/Void Cash (CBNI) Declaration right icon"]

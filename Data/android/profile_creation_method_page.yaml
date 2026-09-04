@@ -1,0 +1,12 @@
+# selectors for Profile Creation Method page
+PROFILE-CREATION-HEADER: //android.widget.TextView[@text="Add Profile"]
+PROFILE-CREATION-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+PROFILE-CREATION-TITLE: //android.widget.TextView[@text="Choose profile creation method"]
+
+PROFILE-CREATION-SINGPASS-BUTTON: //android.widget.Button[@content-desc="retrieve myinfo with singpass"]
+PROFILE-CREATION-SINGPASS-LABEL: //android.widget.TextView[@text="RETRIEVE MYINFO WITH SINGPASS"]
+PROFILE-CREATION-SCAN-PASSPORT-BUTTON: //android.widget.Button[@content-desc="scan passport mrz"]
+PROFILE-CREATION-FILL-MANUALLY-BUTTON: //android.widget.Button[@content-desc="fill manually"]
+
+#PROFILE-CREATION-SCAN-PASSPORT-LABEL: //android.widget.TextView[@text="SCAN PASSPORT"]
+#PROFILE-CREATION-FILL-MANUALLY-LABEL: //android.widget.TextView[@text="FILL MANUALLY"]

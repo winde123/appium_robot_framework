@@ -1,0 +1,10 @@
+# selectors for SGAC Individual Profile List page
+SGAC-PROFILE-LIST-HEADER: //android.widget.TextView[@text="Profile"]
+SGAC-PROFILE-LIST-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+
+SGAC-PROFILE-LIST-EMPTY-STATE: //android.widget.TextView[@text="No profiles"]
+SGAC-ADD-PROFILE-BUTTON: //android.widget.Button[@resource-id="ProfileAddProfile"]
+SGAC-ADD-PROFILE-LABEL: //android.widget.TextView[@text="ADD PROFILE"]
+
+SGAC-PROFILE-LIST-GO-BACK-DASHBOARD-BUTTON: //android.view.ViewGroup[@resource-id="SgacGoBackToDashboard"]
+SGAC-PROFILE-LIST-GO-BACK-DASHBOARD-LABEL: //android.widget.TextView[@text="GO BACK TO DASHBOARD"]

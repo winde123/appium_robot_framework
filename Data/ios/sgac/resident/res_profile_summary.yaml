@@ -1,0 +1,37 @@
+# selectors for SGAC Resident Declaration Summary page (iOS)
+RES-DECL-SUMMARY-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+RES-DECL-SUMMARY-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
+
+# Passport details card
+RES-DECL-SUMMARY-PASSPORT-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[1]
+RES-DECL-SUMMARY-PASSPORT-HEADER: //XCUIElementTypeStaticText[@name="Passport Details"]
+RES-DECL-SUMMARY-NAME-LABEL: //XCUIElementTypeStaticText[@name="Name"]
+RES-DECL-SUMMARY-NAME-VALUE: (//XCUIElementTypeStaticText[@name="Name"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-DOB-LABEL: //XCUIElementTypeStaticText[@name="Date of Birth"]
+RES-DECL-SUMMARY-DOB-VALUE: (//XCUIElementTypeStaticText[@name="Date of Birth"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-NRIC-LABEL: //XCUIElementTypeStaticText[@name="NRIC/FIN"]
+RES-DECL-SUMMARY-NRIC-VALUE: (//XCUIElementTypeStaticText[@name="NRIC/FIN"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-PASSPORT-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[1]
+
+# Contact details card
+RES-DECL-SUMMARY-CONTACT-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[2]
+RES-DECL-SUMMARY-CONTACT-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
+RES-DECL-SUMMARY-COUNTRY-CODE-LABEL: //XCUIElementTypeStaticText[@name="Country/Region Code"]
+RES-DECL-SUMMARY-COUNTRY-CODE-VALUE: (//XCUIElementTypeStaticText[@name="Country/Region Code"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-MOBILE-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
+RES-DECL-SUMMARY-MOBILE-VALUE: (//XCUIElementTypeStaticText[@name="Mobile Number"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-EMAIL-LABEL: //XCUIElementTypeStaticText[@name="Email Address"]
+RES-DECL-SUMMARY-EMAIL-VALUE: (//XCUIElementTypeStaticText[@name="Email Address"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-CONTACT-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[2]
+
+# Terms & checkbox
+RES-DECL-SUMMARY-TERMS-CHECKBOX-UNCHECKED: //XCUIElementTypeOther[@name="uncheckterms of use checkbox"]
+RES-DECL-SUMMARY-TERMS-CHECKBOX-CHECKED: //XCUIElementTypeOther[@name="checkedterms of use checkbox"]
+RES-DECL-SUMMARY-TERMS-TEXT: //XCUIElementTypeOther[@name="I have read and accepted the Terms of Use and Privacy Policy"]
+RES-DECL-SUMMARY-TERMS-LINK: //XCUIElementTypeOther[@name="Terms of Use and Privacy Policy"]
+
+# Footer navigation
+RES-DECL-SUMMARY-FOOTER-BACK: //XCUIElementTypeOther[@name="back" and @label="back"]
+RES-DECL-SUMMARY-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 3 of 3"]
+RES-DECL-SUMMARY-FOOTER-PROGRESS: //XCUIElementTypeOther[@name="progress-bar"]
+RES-DECL-SUMMARY-FOOTER-SAVE: //XCUIElementTypeOther[@name="save" and @label="SAVE"]

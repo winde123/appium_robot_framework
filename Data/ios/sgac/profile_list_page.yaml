@@ -1,0 +1,14 @@
+# selectors for SGAC Resident Profile List page (iOS)
+RES-PROFILE-LIST-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+RES-PROFILE-LIST-HEADER: //XCUIElementTypeStaticText[@name="Profile"]
+
+# Profile card list
+RES-PROFILE-LIST-FIRST-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[1]
+#RES-PROFILE-LIST-FIRST-NAME: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[1]//XCUIElementTypeStaticText
+RES-PROFILE-LIST-CARD-ACTION: //XCUIElementTypeButton[@name="profile right card"]
+
+# Add profile button
+ADD-PROFILE-BTN: //XCUIElementTypeButton[@name="ProfileAddProfile"]
+
+# Back to dashboard button
+RES-PROFILE-LIST-BACK-TO-DASHBOARD: //XCUIElementTypeOther[@name="SgacGoBackToDashboard"]

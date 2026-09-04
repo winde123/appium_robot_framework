@@ -1,5 +1,5 @@
 from faker import Faker
-from datetime import date
+from datetime import date , timedelta
 from random import randrange
 from random import choice
 import string 
@@ -12,6 +12,24 @@ def readfromfile():
     return data_into_lines
 #data=readfromfile()
 #print(data)
+def generateRandomCtyCode(cty=''):
+    rand_cty_code = 0
+    if cty.upper() == 'SG':
+        rand_cty_code += 65
+    else:
+        rand_cty_code += randrange(1,999)
+    
+    return rand_cty_code
+
+CTYCODE = generateRandomCtyCode()
+        
+
+
+def generateRandomPhNo():
+    rand_ph_num = choice(range(1000000,9999999,1))
+    return rand_ph_num
+
+PHNO = generateRandomPhNo()
 
 
 ## generating random name
@@ -33,14 +51,27 @@ EMAIL = generateRandomEmail()
 
 ## generating random valid date
 def generaterandomDOB():
-    startdate=date.fromisoformat('1965-01-01')
-    enddate=date.fromisoformat('2023-01-01')
-    randomdate =fake.date_between(startdate,enddate)
-    formatdate = "%d/%m/%Y"
-    randomdate_formatted = date.strftime(randomdate,formatdate)
+    start_date=date.fromisoformat('1965-01-01')
+    end_date=date.fromisoformat('2023-01-01')
+    random_date =fake.date_between(start_date,end_date)
+    format_date = "%d/%m/%Y"
+    randomdate_formatted = date.strftime(random_date,format_date)
     return randomdate_formatted
 
 DOB = generaterandomDOB()
+
+def generatePPDateExp():
+    start_dt = date.today() + timedelta(weeks=52)
+    end_dt = start_dt + timedelta(weeks = 100)
+    random_dt = fake.date_between(start_dt,end_dt)
+    format_date = "%d/%m/%Y"
+    random_dt_formatted = date.strftime(random_dt,format_date)
+    return random_dt_formatted
+
+PPEXPDT = generatePPDateExp()
+
+
+
 
 ## Generate random NRIC
 
@@ -76,6 +107,8 @@ def generaterandomPPNumber():
     #randomPPnumber = 'F' + str(randomintstring) + 'K'
     return randomPPnumber
 
+PPNUM = generaterandomPPNumber()
+
 ## generate random car license plate number
 
 def generaterandomCarPlateNumber():
@@ -110,10 +143,7 @@ def generaterandomCarPlateNumber():
     return alpha_starting_char
 
 #####mykad(malaysiaic) gen function
-    
-    
 
-PPNUM = generaterandomPPNumber()
 
 def generateForeignPassportNum():
     randomForeignPPNum = fake.passport_number()

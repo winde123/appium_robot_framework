@@ -1,0 +1,46 @@
+# selectors for SGAC Foreigner Profile Summary (iOS)
+FOR-PROFILE-SUMMARY-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
+FOR-PROFILE-SUMMARY-BACK: //XCUIElementTypeButton[@name="back"]
+
+# Passport Details card
+FOR-PROFILE-SUMMARY-PASSPORT-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[1]
+FOR-PROFILE-SUMMARY-PASSPORT-TITLE: //XCUIElementTypeStaticText[@name="Passport Details"]
+FOR-PROFILE-SUMMARY-FULL-NAME-LABEL: //XCUIElementTypeStaticText[@name="Full Name (In Passport)"]
+#FOR-PROFILE-SUMMARY-FULL-NAME-VALUE: //XCUIElementTypeStaticText[@name="TEST"]
+FOR-PROFILE-SUMMARY-SEX-LABEL: //XCUIElementTypeStaticText[@name="Sex as indicated in passport"]
+#FOR-PROFILE-SUMMARY-SEX-VALUE: //XCUIElementTypeStaticText[@name="M"]
+FOR-PROFILE-SUMMARY-DOB-LABEL: //XCUIElementTypeStaticText[@name="Date of Birth"]
+#FOR-PROFILE-SUMMARY-DOB-VALUE: //XCUIElementTypeStaticText[@name="29 / 01 / 2000"]
+FOR-PROFILE-SUMMARY-BIRTH-PLACE-LABEL: //XCUIElementTypeStaticText[@name="Country/Place of Birth"]
+#FOR-PROFILE-SUMMARY-BIRTH-PLACE-VALUE: //XCUIElementTypeStaticText[@name="ARMENIA"]
+FOR-PROFILE-SUMMARY-NATIONALITY-LABEL: //XCUIElementTypeStaticText[@name="Nationality/Citizenship"]
+#FOR-PROFILE-SUMMARY-NATIONALITY-VALUE: //XCUIElementTypeStaticText[@name="ALBANIAN"]
+FOR-PROFILE-SUMMARY-PASSPORT-NUMBER-LABEL: //XCUIElementTypeStaticText[@name="Passport Number"]
+#FOR-PROFILE-SUMMARY-PASSPORT-NUMBER-VALUE: //XCUIElementTypeStaticText[@name="T1183838"]
+FOR-PROFILE-SUMMARY-PASSPORT-EXPIRY-LABEL: //XCUIElementTypeStaticText[@name="Date of Passport Expiry"]
+#FOR-PROFILE-SUMMARY-PASSPORT-EXPIRY-VALUE: //XCUIElementTypeStaticText[@name="01 / 01 / 2029"]
+FOR-PROFILE-SUMMARY-PASSPORT-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[1]
+
+# Contact Details card
+FOR-PROFILE-SUMMARY-CONTACT-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[2]
+FOR-PROFILE-SUMMARY-CONTACT-TITLE: //XCUIElementTypeStaticText[@name="Contact Details"]
+FOR-PROFILE-SUMMARY-RESIDENCE-LABEL: //XCUIElementTypeStaticText[@name="Place of Residence"]
+FOR-PROFILE-SUMMARY-RESIDENCE-VALUE: //XCUIElementTypeStaticText[@name="AFGHANISTAN, OTHERS IN AFGHANISTAN, OTHERS IN AFGHANISTAN"]
+FOR-PROFILE-SUMMARY-CODE-LABEL: //XCUIElementTypeStaticText[@name="Country/Region Code"]
+#FOR-PROFILE-SUMMARY-CODE-VALUE: //XCUIElementTypeStaticText[@name="+223"]
+FOR-PROFILE-SUMMARY-MOBILE-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
+#FOR-PROFILE-SUMMARY-MOBILE-VALUE: //XCUIElementTypeStaticText[@name="8 3 7 4 7 4 8 4 8 4 8"]
+FOR-PROFILE-SUMMARY-EMAIL-LABEL: //XCUIElementTypeStaticText[@name="Email Address"]
+#FOR-PROFILE-SUMMARY-EMAIL-VALUE: //XCUIElementTypeStaticText[@name="TEST@TEST.CO"]
+FOR-PROFILE-SUMMARY-CONTACT-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[2]
+
+# Terms of Use
+FOR-PROFILE-SUMMARY-TERMS-CHECKBOX: //XCUIElementTypeOther[@name="uncheckterms of use checkbox"]
+FOR-PROFILE-SUMMARY-TERMS-CHECKBOX-CHECKED: //XCUIElementTypeOther[@name="checkedterms of use checkbox"]
+FOR-PROFILE-SUMMARY-TERMS-LABEL: //XCUIElementTypeOther[@name="I have read and accepted the Terms of Use and Privacy Policy"]
+FOR-PROFILE-SUMMARY-TERMS-LINK: //XCUIElementTypeOther[@name="Terms of Use and Privacy Policy"]
+
+# Footer
+#FOR-PROFILE-SUMMARY-FOOTER-BACK: //XCUIElementTypeOther[@name="back"]
+FOR-PROFILE-SUMMARY-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 3 of 3"]
+FOR-PROFILE-SUMMARY-FOOTER-SAVE: //XCUIElementTypeOther[@name="save"]
