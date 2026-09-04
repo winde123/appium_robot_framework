@@ -1,0 +1,70 @@
+version: 0.1
+
+android_test_host: amazon_linux_2
+
+phases:
+  install:
+    commands:
+      - devicefarm-cli use node 20
+      - node --version
+
+      - devicefarm-cli use appium 3
+      - appium --version
+
+      - export APPIUM_BASE_PATH=/wd/hub
+
+      - devicefarm-cli use python 3.11
+      - python --version
+
+      - cd "$DEVICEFARM_TEST_PACKAGE_PATH"
+      - python -m pip install --upgrade pip
+      - python -m pip install -r requirements.txt
+
+  pre_test:
+    commands:
+      - |-
+        appium --base-path=$APPIUM_BASE_PATH --log-timestamp \
+          --log-no-colors --relaxed-security --default-capabilities \
+          "{\"appium:deviceName\": \"$DEVICEFARM_DEVICE_NAME\", \
+          \"platformName\": \"$DEVICEFARM_DEVICE_PLATFORM_NAME\", \
+          \"appium:app\": \"$DEVICEFARM_APP_PATH\", \
+          \"appium:udid\":\"$DEVICEFARM_DEVICE_UDID\", \
+          \"appium:platformVersion\": \"$DEVICEFARM_DEVICE_OS_VERSION\", \
+          \"appium:chromedriverExecutableDir\": \"$DEVICEFARM_CHROMEDRIVER_EXECUTABLE_DIR\", \
+          \"appium:automationName\": \"UiAutomator2\"}" \
+          >> $DEVICEFARM_LOG_DIR/appium.log 2>&1 &
+
+      - |-
+        appium_initialization_time=0;
+        until curl --silent --fail "http://127.0.0.1:4723${APPIUM_BASE_PATH}/status"; do
+          if [[ $appium_initialization_time -gt 30 ]]; then
+            echo "Appium did not start within 30 seconds. Exiting...";
+            exit 1;
+          fi;
+          appium_initialization_time=$((appium_initialization_time + 1));
+          echo "Waiting for Appium to start on port 4723...";
+          sleep 1;
+        done;
+
+  test:
+    commands:
+      - cd "$DEVICEFARM_TEST_PACKAGE_PATH"
+      - export TEST_SUITE_PATH=tests/android/other_e_services/sgac_epass_services.robot
+      - echo "Starting the Appium Robot test (Android)"
+      - |-
+        robot \
+          -d "$DEVICEFARM_LOG_DIR" \
+          --variable APPIUM_SERVER_URL:http://127.0.0.1:4723/wd/hub \
+          --variable REMOTE_PLATFORM_NAME:Android \
+          --variable ANDROID_AUTOMATION_NAME:UIAutomator2 \
+          --variable ANDROID_PLATFORM_VERSION:"$DEVICEFARM_DEVICE_OS_VERSION" \
+          --variable ANDROID_EMULATOR_NAME:"$DEVICEFARM_DEVICE_NAME" \
+          --variable REMOTE_DEVICE_NAME:"$DEVICEFARM_DEVICE_NAME" \
+          --variable REMOTE_APP:"$DEVICEFARM_APP_PATH" \
+          "$TEST_SUITE_PATH"
+
+  post_test:
+    commands:
+
+artifacts:
+  - $DEVICEFARM_LOG_DIR
