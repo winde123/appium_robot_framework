@@ -7,8 +7,14 @@ Robot Framework + Appium test suite for the MyICA Mobile app on Android and iOS.
 - `Resources/` Shared Robot keywords and Python helper utilities.
 - `Data/` Page object YAML locators and test data.
 - `icaApp/` App binaries used by tests.
+- `docs/` Durable project documentation for humans and agents.
+- `todo/` Shared, file-based task queue and handoff history.
 - `robotconfig.yaml` Device/Appium configuration values.
 - `Output/` Default Robot Framework output directory.
+
+Repository-wide contributor guidance lives in [`AGENTS.md`](AGENTS.md). Start at
+[`docs/README.md`](docs/README.md) for project knowledge and [`todo/README.md`](todo/README.md)
+to create or pick up work.
 
 **Prerequisites**
 - Python 3.x with `robotframework`, `AppiumLibrary`, `appium-python-client`, and `PyYAML`.
