@@ -14,9 +14,26 @@ Do not silently skip either startup step. If one is unavailable, tell the user b
 
 Robot Framework + Appium test suite for the MyICA mobile app (`sg.gov.ica.mobile.app`, Singapore ICA), covering Android and iOS. Tests run three ways: locally against an Android emulator/physical device, locally against a real iOS device via XCUITest, and remotely on AWS Device Farm.
 
-## Planned refactor: SGAC1.0 / SGAC2.0 forks (planned 2026-09, NOT yet implemented)
+## Fork model: SGAC1.0 / SGAC2.0
 
-The MyICA app has two major forks, SGAC1.0 and SGAC2.0; everything in this repo today is SGAC1.0-only. A refactor to make one codebase drive both forks is planned — the concurrent-agent task board and target architecture (an `APP_FORK` selector resolved by a new `Resources/fork_config.py`, per-fork `icaApp/` and `Data/{sgac1,sgac2}/` trees, one parameterized `tests/` tree, `fork:*` tags) live in `docs/refactor/sgac-fork-refactor-tasks.md`. Read that board before making structural changes; task file ownership and merge order there are binding. Until Wave 2 lands, the layout described below is still current.
+The MyICA app has two forks; one codebase drives both, selected by the `APP_FORK` env var
+(`sgac1` default | `sgac2`). The contract — variable names, per-fork layout, tag scheme,
+dispatch pattern — is [`docs/refactor/fork-conventions.md`](docs/refactor/fork-conventions.md);
+the work queue and merge order are [`docs/refactor/sgac-fork-refactor-tasks.md`](docs/refactor/sgac-fork-refactor-tasks.md).
+
+- Run: `APP_FORK=sgac2 robot tests/android/sgac/crud_profile.robot` (unset ⇒ sgac1, today's behavior).
+- `Resources/fork_config.py` is the single resolver exporting `${APP_FORK}`, `${ANDROID_APP}`,
+  `${IOS_APP}`, `${ANDROID_APP_PACKAGE}`, `${ANDROID_APP_ACTIVITY}`, `${IOS_BUNDLE_ID}`,
+  `${FORK_DATA_DIR}`. Import it first in every file; nothing else hardcodes fork-specific values.
+- Locators live in per-fork trees `Data/{sgac1,sgac2}/{android,ios}/`; suites import via
+  `Variables    ${FORK_DATA_DIR}/android/….yaml`. `Data/test_data/` stays shared.
+- Tags: `fork:both` (default), `fork:sgac1-only`, `fork:sgac2-only`; runs exclude the other
+  fork's tags (`--exclude fork:sgac2-only`).
+- Divergent flows dispatch inside `Resources/**` behind stable keyword names
+  (`Run Keyword … for ${APP_FORK}`), never inline in suites.
+
+**Status:** contract finalized (T01). Implementation rolls out in waves (T10–T21); until then
+the repo is still SGAC1.0-only and the layout below is current.
 
 ## Running tests
 
@@ -26,6 +43,7 @@ Start Appium first (`appium`), then:
 robot tests/android/sgac/crud_profile.robot        # single suite
 robot tests/android                                # whole platform
 ANDROID_PLATFORM_VERSION=16 robot tests/android/...  # override Android version
+APP_FORK=sgac2 robot tests/android/sgac/crud_profile.robot  # SGAC2.0 fork (default sgac1)
 ```
 
 - Outputs go to `Output/` by default (`-d` to override).

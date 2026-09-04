@@ -22,11 +22,16 @@ to create or pick up work.
 - Android SDK (for emulator/device) and/or Xcode + iOS device tooling.
 
 **App binaries**
-Paths are resolved in `Resources/getabspath.py`:
-- Android: `icaApp/app-staging-release.apk`
-- iOS: `icaApp/sgac_test.ipa`
+The MyICA app has two forks (SGAC1.0 / SGAC2.0); one codebase drives both, selected by the
+`APP_FORK` env var (`sgac1` default | `sgac2`). See
+[`docs/refactor/fork-conventions.md`](docs/refactor/fork-conventions.md) for the contract and
+[`docs/refactor/sgac-fork-refactor-tasks.md`](docs/refactor/sgac-fork-refactor-tasks.md) for
+the rollout plan.
 
-Update those files or adjust `Resources/getabspath.py` if your app filenames differ.
+Target layout: binaries per fork with stable names — `icaApp/{sgac1,sgac2}/app.apk` (Android)
+and `icaApp/{sgac1,sgac2}/app.ipa` (iOS) — resolved by `Resources/fork_config.py` (single
+resolver). Until the refactor waves land, `Resources/getabspath.py` still resolves the current
+SGAC1.0 files: `icaApp/1.15.0_(3)_368.apk` and `icaApp/sgac_test.ipa`.
 
 **Configuration**
 Edit `robotconfig.yaml` for device and platform details. It is loaded by the shared keywords in `Resources/commands.robot`.
@@ -40,6 +45,7 @@ Start Appium, then run Robot Framework with a suite or a directory:
 ```sh
 robot tests/android/other_e_services.robot
 robot tests/ios/other_e_services.robot
+APP_FORK=sgac2 robot tests/android/sgac/crud_profile.robot   # select the SGAC2.0 fork
 ```
 
 **Android emulator runs**
