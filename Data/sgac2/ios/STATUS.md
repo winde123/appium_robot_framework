@@ -64,7 +64,7 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 | sgac/foreigner/for_profile_form.yaml | copied | |
 | sgac/foreigner/for_profile_summary.yaml | copied | |
 | sgac/indv_submission_page.yaml | copied | |
-| sgac/profile_creation_method_page.yaml | copied | |
+| sgac/profile_creation_method_page.yaml | verified | 6/6 unchanged (mirrors Android) |
 | sgac/profile_list_page.yaml | copied | |
 | sgac/resident/res_declaration_summary.yaml | copied | |
 | sgac/resident/res_profile_form_page.yaml | copied | |
