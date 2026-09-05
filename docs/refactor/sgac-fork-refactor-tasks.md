@@ -5,9 +5,12 @@
 refactor, one codebase drives both forks, selected at run time, with SGAC1.0 remaining the default
 so existing runs keep working.
 
-**Status:** T01 (fork contract) is done and committed (`713dca5`,
-`docs/refactor/fork-conventions.md`). Implementation waves have not started. This board is the
-work queue for concurrent agents.
+**Status:** T01 done (`713dca5`). Wave 1 IN PROGRESS (2026-09-05): T13 done and merged
+(`c8bedd0`); T10 and T11 running on Claude subagents; T40 running on OpenCode kimi-k2.7-code.
+This board is the work queue for concurrent agents.
+
+**Orchestration:** the Claude Code session is dev lead / solution architect (Edwin, 2026-09-05):
+it assigns tasks, reviews every agent diff, and performs all merges and pushes. See rule 6.
 
 **Scope change (2026-09-05):** AWS Device Farm is NOT in use for now — all Device Farm
 integration work is deferred. `testspec.yml` / `testspec-android.yml` stay in the repo untouched
@@ -239,9 +242,14 @@ Device Farm project decisions remain deferred with T12 and are not required to c
 3. **One branch (or worktree) per task**, named `refactor/<task-id>-<slug>`.
 4. **Definition of done for every task:** `robot --dryrun tests/` still resolves, the parity
    linter (once it exists) passes, and the T01 contract doc was followed verbatim.
-5. **Uncommitted work warning:** the working tree currently holds a large uncommitted SGAC batch
-   (see `git status`). **Commit or stash it before any Wave 2 task starts** — tree moves on top
-   of uncommitted modifications will make a mess.
+5. **Uncommitted work warning:** RESOLVED — the SGAC batch was committed (`de12a73`…`eee80f4`).
+   Keep the tree clean before Wave 2 tree moves all the same.
+6. **Multi-vendor allocation (Edwin, 2026-09-05):** Wave 1 (T10/T11/T13) → Claude subagents;
+   T40 → OpenCode `kimi-k2.7-code` (writes the file only; dev lead reviews and commits);
+   Wave 1 cross-review → Codex `gpt-6-astra` + `deepseek/deepseek-v4-pro` review the merged
+   Wave 1 diff BEFORE Wave 2 launches; Wave 2 → T20 Codex `gpt-6-astra`, T21 Claude subagent.
+   External CLIs run headless in dedicated worktrees, never push, and the dev lead session
+   merges everything.
 
 ## Open questions for Edwin (answers slot into T00/T01)
 

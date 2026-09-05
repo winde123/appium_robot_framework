@@ -53,7 +53,7 @@ APP_FORK=sgac2 robot tests/android/sgac/crud_profile.robot  # SGAC2.0 fork (defa
 
 - Outputs go to `Output/` by default (`-d` to override).
 - **iOS is real-device only**: simulator testing is blocked for the iOS platform. The iPad is connected via Xcode (WDA signed with `IOS_XCODE_ORGID` from `robotconfig.yaml`) and driven over XCUITest; don't attempt simulator-based runs. The app under test is whatever TestFlight build is installed on the device — the repo's `.ipa` (passed as `appium:app` with `noReset`) is only a springboard that launches the installed app, and it carries the SGAC1.0 bundle ID.
-- Android secure fields (NRIC input) require Appium started with `--allow-insecure UiAutomator2:adb_shell` — `subprocess_call.py` does this (currently Windows/PowerShell specific).
+- Android secure fields (NRIC input) require Appium started with `--allow-insecure UiAutomator2:adb_shell` — `subprocess_call.py` does this (macOS-native; supports `--dry-run` and forwards extra args like `--port`).
 - Device/Appium config lives in `robotconfig.yaml` (Appium URL, device names, UDIDs, platform versions). `ANDROID_PLATFORM_VERSION` defaults to 16, overridable via env var.
 - App binaries resolved by `Resources/getabspath.py`: Android `icaApp/1.15.0_(3)_368.apk`, iOS `icaApp/sgac_test.ipa` (springboard only — launches the installed TestFlight build, SGAC1.0 bundle ID). (README mentions `app-staging-release.apk` — `getabspath.py` is the source of truth.)
 
