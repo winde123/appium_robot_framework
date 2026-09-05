@@ -1,10 +1,12 @@
 *** Settings ***
+Variables    ../../../Resources/fork_config.py
 Library     AppiumLibrary
 Resource    ../../../Resources/commands.robot
-Variables   ../../../Data/android/landing_page.yaml
-Variables   ../../../Data/android/eservices_landing_page.yaml
-Variables    ../../../Data/android/other_e_services/sgac_epass_enquiry.yaml
-Test Setup       Open Android App remotely   appActivity=sg.gov.ica.mobile.app.MainActivity 
+Variables   ${FORK_DATA_DIR}/android/landing_page.yaml
+Variables   ${FORK_DATA_DIR}/android/eservices_landing_page.yaml
+Variables    ${FORK_DATA_DIR}/android/other_e_services/sgac_epass_enquiry.yaml
+Force Tags    fork:both
+Test Setup       Open MyICA App Remotely
 Test Teardown    Close Application
 
 *** Test Cases *** 

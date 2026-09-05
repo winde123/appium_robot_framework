@@ -1,11 +1,12 @@
 *** Settings ***
+Variables    ../../Resources/fork_config.py
 Library     AppiumLibrary
 Library    ../../Resources/helper_func.py
 Library    ../../Data/test_data/manual_field_random.py    
 #Library    RPA.Robocorp.WorkItems
 #Library    RPA.Excel.Files
 Resource    ../../Resources/commands.robot
-Resource    ../../Resources/QRcommands.robot
+Resource    ../../Resources/android/QRcommands.robot
 #Variables   ../../Data/landing_page.yaml
 #Variables   ../../Data/yaml_QR_pages/passport_qr_code_page.yaml
 #Variables    ../../Data/manual_creation_profile_form.yaml
@@ -15,7 +16,8 @@ Resource    ../../Resources/QRcommands.robot
 #Variables    ../../Data/yaml_tutorial_flow_pages/passport_qr_tutorial_flow.yaml
 #Variables    ../../Data/test_data/input_fields_test_data.yaml
 #Variables    ../../Data/test_data/manual_field_random.py
-Test Setup     Open Android App in emulator    appActivity=sg.gov.ica.mobile.app.MainActivity    
+Force Tags    fork:both
+Test Setup     Open MyICA App on Android Emulator
 Test Teardown    Close Application
 
 *** Variables ***
@@ -26,7 +28,6 @@ Test Teardown    Close Application
 *** Test Cases ***
 SG_BC_MHA_SGAC-836
 ...    [Documentation]    Straight through case of creating group qr code for car for 10pax
-    #Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
     #Sleep    3s
     #Click on element                ${HOME-ANNOUCEMENT-BANNER}
     #Page Should Contain Element     ${QR-CODE-FAV-BUTTON}
@@ -335,11 +336,8 @@ SG_BC_MHA_SGAC-1110
 
 
 
-
     
     
-
-
 
 
 
@@ -353,4 +351,4 @@ SG_BC_MHA_SGAC-1110
     
     
                  
-    
+     

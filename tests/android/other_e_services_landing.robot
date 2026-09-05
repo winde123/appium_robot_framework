@@ -1,10 +1,12 @@
 *** Settings ***
+Variables    ../../Resources/fork_config.py
 Library       AppiumLibrary
 Resource      ../../Resources/commands.robot
 Variables     ../../Data/test_data/input_fields_test_data.yaml
-Variables     ../../Data/android/landing_page.yaml
-Variables     ../../Data/android/eservices_landing_page.yaml
-Test Setup       Open Android App in emulator    appActivity=sg.gov.ica.mobile.app.MainActivity    
+Variables     ${FORK_DATA_DIR}/android/landing_page.yaml
+Variables     ${FORK_DATA_DIR}/android/eservices_landing_page.yaml
+Force Tags    fork:both
+Test Setup       Open MyICA App on Android Emulator
 Test Teardown    Close Application
 *** Test Cases ***
 

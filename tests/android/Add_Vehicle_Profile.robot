@@ -1,16 +1,18 @@
 *** Settings ***
+Variables    ../../Resources/fork_config.py
 Library     AppiumLibrary
 Library     String
 Library    ../../Data/test_data/manual_field_random.py
 Library    ../../Resources/helper_func.py
 Resource    ../../Resources/commands.robot
 Variables    ../../Data/test_data/input_fields_test_data.yaml
-Variables   ../../Data/android/landing_page.yaml
-Variables    ../../Data/yaml_Cargo_pages/cargo_clearance_home_page.yaml
-Variables    ../../Data/yaml_Cargo_pages/add_vehicle_page.yaml
-Variables    ../../Data/yaml_Cargo_pages/vehicle_profiles_page.yaml
-Variables    ../../Data/yaml_Cargo_pages/cargo_convoy_page.yaml
-Variables    ../../Data/yaml_Cargo_pages/add_permit_page.yaml
+Variables    ${FORK_DATA_DIR}/android/landing_page.yaml
+Variables    ${FORK_DATA_DIR}/android/cargo/cargo_clearance_home_page.yaml
+Variables    ${FORK_DATA_DIR}/android/cargo/add_vehicle_page.yaml
+Variables    ${FORK_DATA_DIR}/android/cargo/vehicle_profiles_page.yaml
+Variables    ${FORK_DATA_DIR}/android/cargo/cargo_convoy_page.yaml
+Variables    ${FORK_DATA_DIR}/android/cargo/add_permit_page.yaml
+Force Tags    fork:both
 Test Teardown    Close Application
 
 *** Variables ***
@@ -54,7 +56,7 @@ Create vehicle profile with arg
 test case 1        #SG_BC_MHA_SGAC-414
 
     [Documentation]     Creating vehicle profile in favorites-Cargo Clearance page(NRIC)
-    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Open MyICA App on Android Emulator
     Sleep    3s
     Create Vehicle Profile With arg    nric
 
@@ -62,7 +64,7 @@ test case 2        #SG_BC_MHA_SGAC-419
 
     [Documentation]    Editing vehicle profile in favorites- Cargo clearance page -passport Number
     #Creating test case with NRIC field
-    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Open MyICA App on Android Emulator
     Sleep        3s
     ${nric-testdata}=     Create Vehicle Profile With Arg        nric
     ${masked-nric}=    helper_func.masking_string    ${nric-testdata}
@@ -83,7 +85,7 @@ test case 2        #SG_BC_MHA_SGAC-419
 
 test case 3    #SG_BC_MHA_SGAC-417
     [Documentation]    Editing vehicle profile in favorites- Cargo clearance page - nric No.
-    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Open MyICA App on Android Emulator
     Sleep        3s
     #Creating test case with passport field
     ${passport-testdata}=    Create Vehicle Profile With Arg    passport
@@ -106,7 +108,7 @@ test case 3    #SG_BC_MHA_SGAC-417
 test case 4
     [Documentation]    testing with invalid vehicle number
 
-    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Open MyICA App on Android Emulator
     Sleep        3s
     Scroll Down On The Screen
     Sleep    3s
@@ -134,7 +136,7 @@ test case 4
 test case 5
     [Documentation]    Deleting vehicle profile
     #Creating vehicle profile with NRIC
-    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Open MyICA App on Android Emulator
     Sleep        3s
     ${nric-testdata}=     create vehicle profile with arg     nric
     ${masked-nric}=    helper_func.masking_string    ${nric-testdata}
@@ -149,7 +151,7 @@ test case 5
 
 
 Test case 6A
-    Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
+    Open MyICA App on Android Emulator
     Sleep    3s
     Scroll Down On The Screen
     Wait Until Keyword Succeeds    1 minute    10     Click On Element    ${CARGO-CLEARANCE-FAV-BUTTON}
@@ -269,7 +271,6 @@ Test case 6A
     AppiumLibrary.Wait Until Page Contains Element    locator=${SUBMIT_CARGO_CONVOY_BUTTON}   timeout=${10}
     Click On Element        ${SUBMIT_CARGO_CONVOY_BUTTON}
     Sleep    10s
-
 
 
 

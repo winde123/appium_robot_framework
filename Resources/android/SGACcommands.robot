@@ -1,18 +1,19 @@
 *** Settings ***
+Variables    ../fork_config.py
 Library    AppiumLibrary
 Library    Collections
 Library    ../../Data/test_data/manual_field_random.py
 Resource    ../commands.robot
 Variables    ../../Data/test_data/manual_field_random.py
 Variables    ../../Data/test_data/input_fields_test_data.yaml
-Variables    ../../Data/android/landing_page.yaml
-Variables    ../../Data/android/citizen_and_res_page.yaml
-Variables    ../../Data/android/sgac/sgac_landing_page.yaml
-Variables    ../../Data/android/sgac/individual_submission_page.yaml
-Variables    ../../Data/android/sgac/indv_profile_list_page.yaml
-Variables    ../../Data/android/profile_creation_method_page.yaml
-Variables   ../../../../Data/android/sgac/resident/resident_profile_creation_form_page.yaml
-Variables    ../../../../Data/android/sgac/resident/resident_confirmation_profile_page.yaml
+Variables    ${FORK_DATA_DIR}/android/landing_page.yaml
+Variables    ${FORK_DATA_DIR}/android/citizen_and_res_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/sgac_landing_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/individual_submission_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/indv_profile_list_page.yaml
+Variables    ${FORK_DATA_DIR}/android/profile_creation_method_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/resident/resident_profile_creation_form_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/resident/resident_confirmation_profile_page.yaml
 
 *** Keywords ***
 Navigate to resident SGAC landing page

@@ -1,9 +1,11 @@
 *** Settings ***
+Variables    ../../Resources/fork_config.py
 Library     AppiumLibrary
 Library     ../../Resources/helper_func.py
 Resource    ../../Resources/commands.robot
-Variables   ../../Data/android/landing_page.yaml
-Test Setup       Open Android App in emulator    appActivity=sg.gov.ica.mobile.app.MainActivity  
+Variables   ${FORK_DATA_DIR}/android/landing_page.yaml
+Force Tags    fork:both
+Test Setup       Open MyICA App on Android Emulator
 Test Teardown    Close Application
 
 *** Test Cases *** 
