@@ -28,12 +28,12 @@ Open MyICA App Remotely
     Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${REMOTE_APP}    platformName=${REMOTE_PLATFORM_NAME}   deviceName=${REMOTE_DEVICE_NAME}    appPackage=${ANDROID_APP_PACKAGE}      appActivity=${ANDROID_APP_ACTIVITY}
 
 Open MyICA App on Android Emulator
-    [Documentation]    Fork-agnostic app open on the Android emulator: binary/package/activity come from fork_config.py for the active ${APP_FORK}.
-    Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${ANDROID_APP}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_EMULATOR_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${ANDROID_APP_ACTIVITY}
+    [Documentation]    Fork-agnostic app open on the Android emulator: binary/package/activity come from fork_config.py for the active ${APP_FORK}. Both forks share one package ID and UiAutomator2 skips downgrades, so when switching forks run once with ENFORCE_APP_INSTALL=True to force the selected apk onto the device.
+    Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${ANDROID_APP}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_EMULATOR_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${ANDROID_APP_ACTIVITY}    enforceAppInstall=${ENFORCE_APP_INSTALL}
 
 Open MyICA App on Android Phone
-    [Documentation]    Fork-agnostic app open on the physical Android device: package/activity come from fork_config.py for the active ${APP_FORK} (no app= install, as before).
-    Open Application    http://127.0.0.1:4723   automationName=${ANDROID_AUTOMATION_NAME}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_DEVICE_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${ANDROID_APP_ACTIVITY}
+    [Documentation]    Fork-agnostic app open on the physical Android device: binary/package/activity come from fork_config.py for the active ${APP_FORK}. app= is passed so the selected fork gets installed/upgraded; when switching forks run once with ENFORCE_APP_INSTALL=True (downgrades are skipped otherwise).
+    Open Application    ${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${ANDROID_APP}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_DEVICE_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${ANDROID_APP_ACTIVITY}    enforceAppInstall=${ENFORCE_APP_INSTALL}
 
 Open Android App remotely
     [Documentation]    *DEPRECATED* Use `Open MyICA App Remotely` instead. The ${appActivity} argument is ignored — the active fork's ${ANDROID_APP_ACTIVITY} from fork_config.py is authoritative.

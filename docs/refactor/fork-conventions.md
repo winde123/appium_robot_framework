@@ -50,6 +50,15 @@ Exact exported variable names (UPPER_SNAKE):
 | `${ANDROID_APP_ACTIVITY}` | Android main activity | `sg.gov.ica.mobile.app.MainActivity` |
 | `${IOS_BUNDLE_ID}` | iOS bundle ID | `sg.gov.ica.mobile.app` |
 | `${FORK_DATA_DIR}` | root of the fork's locator tree | `Data/sgac1` |
+| `${ENFORCE_APP_INSTALL}` | boolean from the `ENFORCE_APP_INSTALL` env var (default `False`); forces (re)install of `${ANDROID_APP}` even when the device holds a newer build | `False` |
+
+**Android fork switching (added after Wave 1 cross-review):** both forks share one package ID
+and UiAutomator2 *skips downgrades* by default, so a device holding the sgac2 build (versionCode
+418) silently keeps running sgac2 when `APP_FORK=sgac1` selects the older 417 apk. The Android
+open keywords pass `enforceAppInstall=${ENFORCE_APP_INSTALL}`; run once with
+`ENFORCE_APP_INSTALL=True APP_FORK=<fork> robot …` after switching forks to force the selected
+apk onto the device, then run normally (enforcing every run would reinstall the apk each
+session).
 
 **iOS delivery model (2026-09-05):** iOS app versions are driven by TestFlight — no per-fork
 `.ipa` lives in the repo, and there is NO `${IOS_APP}` variable in the target contract. The

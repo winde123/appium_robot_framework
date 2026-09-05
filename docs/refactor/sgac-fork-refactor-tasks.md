@@ -5,9 +5,12 @@
 refactor, one codebase drives both forks, selected at run time, with SGAC1.0 remaining the default
 so existing runs keep working.
 
-**Status:** T01 done (`713dca5`). Wave 1 IN PROGRESS (2026-09-05): T13 done and merged
-(`c8bedd0`); T10 and T11 running on Claude subagents; T40 running on OpenCode kimi-k2.7-code.
-This board is the work queue for concurrent agents.
+**Status:** Wave 1 COMPLETE (2026-09-05): T10/T11/T13/T40 merged to main. Cross-review done —
+Codex `gpt-6-astra` (HOLD → fixed) and DeepSeek `v4-pro` (HOLD → fixed): Codex proved the
+Android downgrade-skip fork-switch bug via Appium install-logic simulation (fixed with the
+`ENFORCE_APP_INSTALL` flag + `app=` on the phone keyword, see fork-conventions §2); DeepSeek's
+missing-binary and stale-docs findings fixed same commit. Wave 2 (T20 Codex ∥ T21 Claude)
+launched. This board is the work queue for concurrent agents.
 
 **Orchestration:** the Claude Code session is dev lead / solution architect (Edwin, 2026-09-05):
 it assigns tasks, reviews every agent diff, and performs all merges and pushes. See rule 6.

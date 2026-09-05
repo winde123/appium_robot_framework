@@ -25,6 +25,7 @@ NOT checked for existence (other machines may not hold the binaries, and
 """
 
 import os
+import sys
 
 import yaml
 
@@ -44,6 +45,13 @@ def _resolve_fork():
             "Invalid APP_FORK %r: valid values are %s (unset defaults to %r)."
             % (fork, ", ".join(repr(f) for f in VALID_FORKS), DEFAULT_FORK))
     return fork
+
+
+def _env_flag(name, default=False):
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in ("1", "true", "yes", "on")
 
 
 def _load_fork_block(fork):
@@ -71,10 +79,24 @@ def _load_fork_block(fork):
 def get_variables():
     fork = _resolve_fork()
     block = _load_fork_block(fork)
+    android_app = os.path.normpath(
+        os.path.join(_REPO_ROOT, str(block["android_binary"])))
+    if not os.path.isfile(android_app):
+        # Non-fatal by contract (dryrun and binary-less hosts must still
+        # resolve), but warn early instead of failing late at Appium install.
+        print(
+            "WARNING [fork_config]: %s binary not found at %s — Android runs "
+            "will fail at app install until it exists (see icaApp/ setup)."
+            % (fork, android_app),
+            file=sys.stderr)
     return {
         "APP_FORK": fork,
-        "ANDROID_APP": os.path.normpath(
-            os.path.join(_REPO_ROOT, str(block["android_binary"]))),
+        # Both forks share one Android package ID and UiAutomator2 skips
+        # downgrades, so fork switches need one run with
+        # ENFORCE_APP_INSTALL=True to force the selected apk onto the device.
+        # Kept False by default: enforcing reinstalls the apk on every session.
+        "ENFORCE_APP_INSTALL": _env_flag("ENFORCE_APP_INSTALL"),
+        "ANDROID_APP": android_app,
         "ANDROID_APP_PACKAGE": str(block["android_package"]),
         "ANDROID_APP_ACTIVITY": str(block["android_activity"]),
         "IOS_BUNDLE_ID": str(block["ios_bundle_id"]),

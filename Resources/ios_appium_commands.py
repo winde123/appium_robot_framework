@@ -16,7 +16,6 @@ options = XCUITestOptions()
 options.platform_name = robot_ios_config['IOS_PLATFORM_NAME']
 options.device_name = robot_ios_config['IOS_DEVICE_NAME']
 options.platform_version = robot_ios_config['IOS_PLATFORM_VERSION']
-#options.bundle_id = robot_ios_config['ANDROID_APP_PACKAGE']
 options.udid = robot_ios_config['IOS_DEVICE_UDID']
 options.include_safari_in_webviews = True
 options.automation_name = robot_ios_config['IOS_AUTOMATION_NAME']

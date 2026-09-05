@@ -28,10 +28,12 @@ The MyICA app has two forks (SGAC1.0 / SGAC2.0); one codebase drives both, selec
 [`docs/refactor/sgac-fork-refactor-tasks.md`](docs/refactor/sgac-fork-refactor-tasks.md) for
 the rollout plan.
 
-Target layout: binaries per fork with stable names — `icaApp/{sgac1,sgac2}/app.apk` (Android)
-and `icaApp/{sgac1,sgac2}/app.ipa` (iOS) — resolved by `Resources/fork_config.py` (single
-resolver). Until the refactor waves land, `Resources/getabspath.py` still resolves the current
-SGAC1.0 files: `icaApp/1.15.0_(3)_368.apk` and `icaApp/sgac_test.ipa`.
+Android binaries live per fork with stable names — `icaApp/{sgac1,sgac2}/app.apk` (gitignored,
+local files) — resolved by `Resources/fork_config.py` (the single resolver). iOS installs
+nothing: app versions ship via TestFlight and sessions launch the installed build by bundle ID
+(`icaApp/sgac_test.ipa` is kept only as a bundle-ID reference). When switching Android forks on
+a device, run once with `ENFORCE_APP_INSTALL=True` (shared package ID + skipped downgrades
+otherwise leave the old fork running).
 
 **Configuration**
 Edit `robotconfig.yaml` for device and platform details. It is loaded by the shared keywords in `Resources/commands.robot`.
