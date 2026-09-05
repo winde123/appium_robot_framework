@@ -11,12 +11,19 @@ Method: Appium page source per screen → offline XPath eval with `scratchpad/wa
 (lxml). A key is verified only when its XPath resolves to exactly the intended node on 2.0.
 
 ## Known 2.0 drift patterns (apply while correcting)
-- **App-wide SNAKE_CASE testIDs (dominant pattern):** testIDs (surfaced as `resource-id`, and
-  often mirrored in `content-desc`) were converted from concatenated-label form to SNAKE_CASE
-  constants. Confirmed on home favourites (`Home<label>` → `Home<CONSTANT>`, e.g.
-  `HomeCITIZEN_RESIDENT_SG_ARRIVAL_CARD`) and Other-e-Services cards
-  (`EServicesPassportandIdentityCard` → `EServicesPASSPORT_AND_IDENTITY_CARD`). When a
-  resource-id/content-desc-based locator misses, first try the SNAKE_CASE form. Prefer resource-id.
+- **SNAKE_CASE testIDs — NAVIGATION CARD-TILES ONLY (refined after divergence analysis):**
+  the concatenated-label → SNAKE_CASE conversion applies to navigation card/tile testIDs
+  (home favourites `Home<label>`→`Home<CONSTANT>`; Other-e-Services cards
+  `EServicesPassportandIdentityCard`→`EServicesPASSPORT_AND_IDENTITY_CARD`). It is NOT app-wide:
+  form-field/component testIDs are UNCHANGED (`PassportDetails*`, `ContactDetails*`, `next`,
+  `save`, `card`, `modal`, `CaptchaModal*`) — live-verified on the profile form. So: nav tile
+  misses → try SNAKE_CASE; form/component locators → expect as-is. The conversion is also NOT
+  purely mechanical (small words like "of" dropped, long labels hand-abbreviated) — treat
+  offline SNAKE_CASE proposals as hypotheses (see docs/refactor/divergence/*.md).
+- **Back-button drift risk:** the verified e-Services page flipped its back control from
+  `resource-id="back"` → `content-desc="Back"`; audit `resource-id="back"` locators.
+- **e-Services detail screens are Chrome web views** (torn down via Close Android Chrome Browser)
+  — their text locators are external gov web content, outside the RN testID refactor.
 - **Text/class-based locators mostly unchanged:** screens keyed on visible text or widget class
   (e.g. citizen_and_res_page) are identical in 2.0.
 - **Scam banner**: now a single image (no text header); the old text-header locator has no
