@@ -1,15 +1,18 @@
-# selectors for relavant landing page
+# selectors for relevant landing page — SGAC2.0 iOS (verified 2026-09-06 vs build 2.0.0 on iPad)
+# Same drift as Android: home favourites use SNAKE_CASE testIDs (RN testID -> iOS `name`);
+# scam-banner text header removed (now an image).
 CITIZEN-RESIDENT-ESERVICE-BUTTON: (//XCUIElementTypeOther[@name="card"])[1]
 FORIEGN-VISITOR-ESERVICE-BUTTON: (//XCUIElementTypeOther[@name="card"])[2]
 
-#FAV BUTTONS
-#CITIZEN&RESIDENT-SGARRIVAL-CARD-FAV-BUTTON : //android.view.ViewGroup[@content-desc="HomeCitizen & Resident - SG Arrival Card"]
-#FORIEGNVISITOR-SGARRIVAL-CARD-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeForeign Visitor - SG Arrival Card"]
-#QR-CODE-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeQR Code at Land Checkpoints"]
-#CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeCargo Clearance"]
-#REGISTER-REREGISTER-REPLACE-FAV-BUTTON: //android.view.ViewGroup[@content-desc="HomeRegister / Re-register / Replace Identity Card"]
-OTHER-E-SERVICES-FAV-BUTTON:  //XCUIElementTypeOther[@name="HomeOther e-Services"]
-CARGO-CLEARANCE-FAV-BUTTON: //XCUIElementTypeOther[@name="HomeCargo Clearance"]
+#FAV BUTTONS — SGAC2.0 SNAKE_CASE testIDs (exposed as iOS name), same constants as Android
+CITIZEN&RESIDENT-SGARRIVAL-CARD-FAV-BUTTON: //XCUIElementTypeOther[@name="HomeCITIZEN_RESIDENT_SG_ARRIVAL_CARD"]
+FORIEGNVISITOR-SGARRIVAL-CARD-FAV-BUTTON: //XCUIElementTypeOther[@name="HomeFOREIGN_VISITOR_SG_ARRIVAL_CARD"]
+QR-CODE-FAV-BUTTON: //XCUIElementTypeOther[@name="HomeQR_CODE_AT_LAND_CHECKPOINTS"]
+CARGO-CLEARANCE-FAV-BUTTON: //XCUIElementTypeOther[@name="HomeCARGO_CLEARANCE"]
+REGISTER-REREGISTER-REPLACE-FAV-BUTTON: //XCUIElementTypeOther[@name="HomeREGISTER_REREGISTER_REPLACE_IDENTITY_CARD"]
+OTHER-E-SERVICES-FAV-BUTTON: //XCUIElementTypeOther[@name="HomeOTHER_E_SERVICES"]
 
 MYICA-SCAM-BANNER: //XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther[14]
-MYICA-SCAM-BANNER-HEADER-ELEM: //XCUIElementTypeOther[@name="Government Officials Impersonation Scams"]
+# DIVERGED in 2.0: the "Government Officials Impersonation Scams" text header no longer exists
+# (banner is now an image, same as Android). No text equivalent.
+#MYICA-SCAM-BANNER-HEADER-ELEM: <removed in SGAC2.0>
