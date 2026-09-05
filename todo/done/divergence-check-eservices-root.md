@@ -1,10 +1,11 @@
 # Divergence check — e-Services + root/common screens (Android)
 
-- Status: Backlog
-- Owner: Unassigned
+- Status: Done
+- Owner: Claude (offline divergence analysis)
 - Priority: Medium
 - Created: 2026-09-05
 - Updated: 2026-09-05
+- Deliverable: `docs/refactor/divergence/eservices-root.md` (6 screens, 51 keys: 38 unchanged / 4 renamed-SNAKE_CASE / 9 flow-diverged / 0 removed)
 
 ## Goal
 
@@ -40,8 +41,8 @@ Same as `divergence-check-sgac-core.md`. Write to `docs/refactor/divergence/eser
 
 ## Acceptance criteria
 
-- [ ] `docs/refactor/divergence/eservices-root.md` committed, all in-scope screens covered.
-- [ ] No changes to `Data/sgac2/android/**`.
+- [x] `docs/refactor/divergence/eservices-root.md` committed, all in-scope screens covered.
+- [x] No changes to `Data/sgac2/android/**`.
 
 ## Validation
 
