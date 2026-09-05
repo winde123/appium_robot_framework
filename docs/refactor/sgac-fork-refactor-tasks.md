@@ -5,12 +5,16 @@
 refactor, one codebase drives both forks, selected at run time, with SGAC1.0 remaining the default
 so existing runs keep working.
 
-**Status:** Wave 1 COMPLETE (2026-09-05): T10/T11/T13/T40 merged to main. Cross-review done —
-Codex `gpt-6-astra` (HOLD → fixed) and DeepSeek `v4-pro` (HOLD → fixed): Codex proved the
-Android downgrade-skip fork-switch bug via Appium install-logic simulation (fixed with the
-`ENFORCE_APP_INSTALL` flag + `app=` on the phone keyword, see fork-conventions §2); DeepSeek's
-missing-binary and stale-docs findings fixed same commit. Wave 2 (T20 Codex ∥ T21 Claude)
-launched. This board is the work queue for concurrent agents.
+**Status:** Waves 1 AND 2 COMPLETE (2026-09-05). Wave 1 (T10/T11/T13/T40) merged; its
+cross-review (Codex `gpt-6-astra` + DeepSeek `v4-pro`, both HOLD → fixed) produced the
+`ENFORCE_APP_INSTALL` fork-switch fix (see fork-conventions §2). Wave 2 (T20 Kimi k2.7-code ∥
+T21 Claude; Codex was quota-blocked for authoring) merged after a second two-vendor review —
+both verdicts SHIP. Result on main: `robot --dryrun tests/` = 66/66 with zero error output for
+sgac1; parity linter 0 errors / 0 warnings; all repo-root-escaping imports fixed.
+**Caveat (per both reviewers):** the sgac2 dryrun "pass" is an artifact — `Data/sgac2/**` does
+not exist until T31/T32 seed it, so a real `APP_FORK=sgac2` run cannot work yet. Next: Wave 3
+(T30–T33), blocked on the two open T00 items (iOS bundle ID, divergent-flow list) and device
+availability. This board is the work queue for concurrent agents.
 
 **Orchestration:** the Claude Code session is dev lead / solution architect (Edwin, 2026-09-05):
 it assigns tasks, reviews every agent diff, and performs all merges and pushes. See rule 6.

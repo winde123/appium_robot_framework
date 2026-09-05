@@ -10,16 +10,13 @@ Library    helper_func.py
 #Library    SeleniumLibrary
 Variables   fork_config.py
 Variables   ../robotconfig.yaml
-#Variables   ../Data/android/landing_page.yaml
-#Variables   ../Data/ios/landing_page.yaml
-#Variables   ../Data/android/yaml_tutorial_flow_pages/passport_qr_tutorial_flow.yaml
 
 *** Variables ***
 
 #${ANDROID_PLATFORM_VERSION}       %{ANDROID_PLATFORM_VERSION=13}
-${REMOTE_PLATFORM_NAME}            %{DEVICEFARM_DEVICE_PLATFORM_NAME}
-${REMOTE_DEVICE_NAME}              %{DEVICEFARM_DEVICE_NAME}
-${REMOTE_APP}                      %{DEVICEFARM_APP_PATH}
+${REMOTE_PLATFORM_NAME}            %{DEVICEFARM_DEVICE_PLATFORM_NAME=}
+${REMOTE_DEVICE_NAME}              %{DEVICEFARM_DEVICE_NAME=}
+${REMOTE_APP}                      %{DEVICEFARM_APP_PATH=}
 
 
 *** Keywords ***
