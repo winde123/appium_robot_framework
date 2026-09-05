@@ -1,10 +1,11 @@
 # Divergence check — cargo + QR screens (Android)
 
-- Status: Backlog
-- Owner: Unassigned
+- Status: Done
+- Owner: Claude Fable 5
 - Priority: Medium
 - Created: 2026-09-05
 - Updated: 2026-09-05
+- Deliverable: `docs/refactor/divergence/cargo-qr.md` (11 screens, 88 keys)
 
 ## Goal
 
@@ -38,8 +39,8 @@ Flag the QR "NEW" badge on the home QR favourite as a possible 2.0 addition to v
 
 ## Acceptance criteria
 
-- [ ] `docs/refactor/divergence/cargo-qr.md` committed, all in-scope screens covered.
-- [ ] No changes to `Data/sgac2/android/**`.
+- [x] `docs/refactor/divergence/cargo-qr.md` committed, all in-scope screens covered.
+- [x] No changes to `Data/sgac2/android/**`.
 
 ## Validation
 
