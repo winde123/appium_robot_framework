@@ -1,18 +1,22 @@
-# selectors for Android eServices landing page
+# selectors for Other e-Services landing — SGAC2.0 (verified 2026-09-05 vs build 2.0.0/420)
+# 2.0 pattern: service-card testIDs converted from concatenated-label form to SNAKE_CASE
+# constants (e.g. EServicesPassportandIdentityCard -> EServicesPASSPORT_AND_IDENTITY_CARD).
+# All 10 cards below verified present on the live screen.
 E-SERVICES-HEADER: //android.widget.TextView[@text="Other e-Services"]
-E-SERVICES-BACK-BUTTON: //android.widget.Button[@resource-id="back"]
+E-SERVICES-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
 E-SERVICES-SEARCH-ICON: //android.view.ViewGroup[@resource-id="appbar-header"]/android.view.ViewGroup[@clickable="true" and @focusable="true"]
-E-SERVICES-PASSPORT-IDENTITY-CARD: //android.view.ViewGroup[@resource-id="EServicesPassportandIdentityCard"]
-E-SERVICES-SGAC-ENTRY-VISA-EPASS-ENQUIRY-PORTAL: //android.view.ViewGroup[@resource-id="EServicesSGArrivalCard,EntryVisa,e-PassEnquiryPortalandExtensionofVisitPass"]
-E-SERVICES-CHECK-VALIDITY-VERIFY: //android.view.ViewGroup[@resource-id="EServicesCheckValidity/Verify"]
-E-SERVICES-REPORT-CHANGE-RESIDENTIAL-ADDRESS: //android.view.ViewGroup[@resource-id="EServicesReportChangeofResidentialAddress"]
-E-SERVICES-SC-PR: //android.view.ViewGroup[@resource-id="EServicesSingaporeCitizenshipandPermanentResidence"]
-E-SERVICES-LTVP-STUDENTS-PASS: //android.view.ViewGroup[contains(@resource-id,"EServicesLong-TermVisitPassandStudent")]
-E-SERVICES-BIRTH-DEATH: //android.view.ViewGroup[@resource-id="EServicesBirthandDeath"]
-E-SERVICES-OTHERS: //android.view.ViewGroup[@resource-id="EServicesOthers"]
-E-SERVICES-APPOINTMENT: //android.view.ViewGroup[@resource-id="EServicesAppointment"]
-E-SERVICES-CUSTOMS-DECLARATION: //android.view.ViewGroup[@resource-id="EServicesCustomsDeclaration"]
+E-SERVICES-PASSPORT-IDENTITY-CARD: //android.view.ViewGroup[@resource-id="EServicesPASSPORT_AND_IDENTITY_CARD"]
+E-SERVICES-SGAC-ENTRY-VISA-EPASS-ENQUIRY-PORTAL: //android.view.ViewGroup[@resource-id="EServicesSG_ARRIVAL_CARD_ENTRY_VISA_E_PASS_EXTENSION"]
+E-SERVICES-CHECK-VALIDITY-VERIFY: //android.view.ViewGroup[@resource-id="EServicesCHECK_VALIDITY_VERIFY"]
+E-SERVICES-REPORT-CHANGE-RESIDENTIAL-ADDRESS: //android.view.ViewGroup[@resource-id="EServicesREPORT_CHANGE_RESIDENTIAL_ADDRESS"]
+E-SERVICES-SC-PR: //android.view.ViewGroup[@resource-id="EServicesSINGAPORE_CITIZENSHIP_AND_PERMANENT_RESIDENCE"]
+E-SERVICES-LTVP-STUDENTS-PASS: //android.view.ViewGroup[@resource-id="EServicesLONG_TERM_VISIT_PASS_AND_STUDENTS_PASS"]
+E-SERVICES-BIRTH-DEATH: //android.view.ViewGroup[@resource-id="EServicesBIRTH_AND_DEATH"]
+E-SERVICES-OTHERS: //android.view.ViewGroup[@resource-id="EServicesOTHERS"]
+E-SERVICES-APPOINTMENT: //android.view.ViewGroup[@resource-id="EServicesAPPOINTMENT"]
+E-SERVICES-CUSTOMS-DECLARATION: //android.view.ViewGroup[@resource-id="EServicesCUSTOMS_DECLARATION"]
+# --- below require the search flow to verify (not exercised in the read-only walk) ---
 E-SERVICES-CUSTOMS-DECLARATION-HEADER-ELEM: //android.widget.TextView[@text="Customs@SG"]
 E-SERVICES-SEARCH-INPUT: //android.widget.EditText[@text="Search for an e-Service"]
 E-SERVICES-REPORT-LOST-PASSPORT-SEARCH-RES: //android.widget.TextView[@text="Report Lost Passport"]
-E-SERVICES-REPORT-LOST-IC-SEARCH-RES: //android.widget.TextView[@text="Report Lost Identity Card"]   
+E-SERVICES-REPORT-LOST-IC-SEARCH-RES: //android.widget.TextView[@text="Report Lost Identity Card"]

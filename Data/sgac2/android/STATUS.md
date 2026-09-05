@@ -11,21 +11,30 @@ Method: Appium page source per screen → offline XPath eval with `scratchpad/wa
 (lxml). A key is verified only when its XPath resolves to exactly the intended node on 2.0.
 
 ## Known 2.0 drift patterns (apply while correcting)
-- **Home favourites**: content-desc changed from `Home<label>` to SNAKE_CASE testIDs exposed as
-  `resource-id="Home<CONSTANT>"` (e.g. `HomeCITIZEN_RESIDENT_SG_ARRIVAL_CARD`). Prefer resource-id.
+- **App-wide SNAKE_CASE testIDs (dominant pattern):** testIDs (surfaced as `resource-id`, and
+  often mirrored in `content-desc`) were converted from concatenated-label form to SNAKE_CASE
+  constants. Confirmed on home favourites (`Home<label>` → `Home<CONSTANT>`, e.g.
+  `HomeCITIZEN_RESIDENT_SG_ARRIVAL_CARD`) and Other-e-Services cards
+  (`EServicesPassportandIdentityCard` → `EServicesPASSPORT_AND_IDENTITY_CARD`). When a
+  resource-id/content-desc-based locator misses, first try the SNAKE_CASE form. Prefer resource-id.
+- **Text/class-based locators mostly unchanged:** screens keyed on visible text or widget class
+  (e.g. citizen_and_res_page) are identical in 2.0.
 - **Scam banner**: now a single image (no text header); the old text-header locator has no
   2.0 equivalent.
+- **SGAC arrival-card flow restructured** (see sgac_landing_page): Individual/Group Submission
+  model replaced by a profile-centric model (Manage Profiles / Create New Profile / Update SG
+  Arrival Card); tutorial gate removed. This is a FLOW divergence needing T33, not a locator swap.
 
 ## Screens
 | Screen file | Status | Notes |
 | --- | --- | --- |
 | landing_page.yaml | verified | favourites → `Home<CONSTANT>` resource-ids; scam-banner header removed (n/a) |
-| citizen_and_res_page.yaml | copied | |
-| eservices_landing_page.yaml | copied | |
+| citizen_and_res_page.yaml | verified | unchanged in 2.0 — 10/10 locators resolve as-is |
+| eservices_landing_page.yaml | diverged | 10 service cards → SNAKE_CASE `EServices<CONSTANT>` rids (13/17 verified; 4 search-flow keys need the search interaction) |
+| sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN: profile-centric (Manage/Create/Update); Individual/Group split + tutorial gate removed → T33 |
 | profile_creation_method_page.yaml | copied | |
 | manual_creation_profile_form.yaml | copied | |
 | android_common_selectors.yaml | copied | |
-| sgac/sgac_landing_page.yaml | copied | |
 | sgac/individual_submission_page.yaml | copied | |
 | sgac/indv_profile_list_page.yaml | copied | |
 | sgac/sel_profile_submission_page.yaml | copied | |

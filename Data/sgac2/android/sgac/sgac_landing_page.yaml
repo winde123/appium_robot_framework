@@ -1,20 +1,32 @@
-# selectors for SG Arrival Card landing page
+# selectors for SG Arrival Card landing page — SGAC2.0 (verified 2026-09-05 vs build 2.0.0/420)
+#
+# DIVERGED FLOW: SGAC2.0 restructured this screen. sgac1 exposed an Individual/Group
+# Submission model (Individual Submission, Group Submission, View Profile, Submitted
+# Declarations) reached via a tutorial "GO TO SG ARRIVAL CARD" gate. SGAC2.0 lands directly
+# (no tutorial gate) on a profile-centric model: Manage Profiles / Create New Profile /
+# Update SG Arrival Card, plus an "add profile" action. This needs fork-specific keyword
+# dispatch (T33) — the two forks are not 1:1 here.
+
+# --- unchanged chrome (verified) ---
 SGAC-HEADER: //android.widget.TextView[@text="SG Arrival Card"]
 SGAC-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
 SGAC-LANGUAGE-BUTTON: //android.widget.Button[@resource-id="SGArrivalCardLanguage"]
-SGAC-SECTION-CITIZEN-RESIDENT: //android.widget.TextView[@text="Citizen and Resident"]
 
-SGAC-VIEW-PROFILE-BUTTON: //android.view.ViewGroup[@resource-id="SGArrivalCardViewProfile"]
-SGAC-SUBMITTED-DECLARATIONS-BUTTON: //android.view.ViewGroup[@resource-id="SGArrivalCardSubmittedDeclarations"]
-SGAC-INDIVIDUAL-SUBMISSION-BUTTON: //android.view.ViewGroup[@resource-id="SGArrivalCardIndividualSubmission"]
-SGAC-GROUP-SUBMISSION-BUTTON: //android.view.ViewGroup[@resource-id="SGArrivalCardGroupSubmission"]
+# --- SGAC2.0 profile-centric actions (verified) ---
+SGAC-MANAGE-PROFILES-BUTTON: //android.view.ViewGroup[@resource-id="Manage Profiles"]
+SGAC-CREATE-NEW-PROFILE-BUTTON: //android.view.ViewGroup[@resource-id="Create New Profile"]
+SGAC-UPDATE-ARRIVAL-CARD-BUTTON: //android.view.ViewGroup[@resource-id="Update SG Arrival Card"]
+SGAC-ADD-PROFILE-BUTTON: //android.view.ViewGroup[@content-desc="add profile plus icon"]
 
-SGAC-INDIVIDUAL-SUBMISSION-HEADER: //android.widget.TextView[@text="Individual Submission"]
-SGAC-ADD-INDIVIDUAL-SUBMISSION-CARD: //android.view.ViewGroup[@content-desc="add individual submission plus icon"]
-
-SGAC-GROUP-SUBMISSION-HEADER: //android.widget.TextView[@text="Group Submission"]
-SGAC-ADD-GROUP-SUBMISSION-CARD: //android.view.ViewGroup[@content-desc="add group submission plus icon"]
-
-SGAC-FLOATING-OPTIONS-BUTTON: //android.view.ViewGroup[@content-desc="add button"]
-
-SGAC-TUTORIAL-NAV-SGAC-BTN: //android.widget.Button[@content-desc="GO TO SG ARRIVAL CARD"]
+# --- sgac1-only, REMOVED/RESTRUCTURED in 2.0 (kept commented for T33 mapping) ---
+# SGAC-SECTION-CITIZEN-RESIDENT       : 2.0 has no "Citizen and Resident" section label here
+# SGAC-VIEW-PROFILE-BUTTON            : superseded by "Manage Profiles"
+# SGAC-SUBMITTED-DECLARATIONS-BUTTON  : not on the 2.0 landing (relocated in flow)
+# SGAC-INDIVIDUAL-SUBMISSION-BUTTON   : Individual/Group split removed in 2.0
+# SGAC-GROUP-SUBMISSION-BUTTON        : Individual/Group split removed in 2.0
+# SGAC-INDIVIDUAL-SUBMISSION-HEADER   : "
+# SGAC-ADD-INDIVIDUAL-SUBMISSION-CARD : replaced by "add profile plus icon"
+# SGAC-GROUP-SUBMISSION-HEADER        : "
+# SGAC-ADD-GROUP-SUBMISSION-CARD      : "
+# SGAC-FLOATING-OPTIONS-BUTTON        : no "add button" FAB on the 2.0 landing
+# SGAC-TUTORIAL-NAV-SGAC-BTN          : 2.0 removed the tutorial gate (lands directly)
