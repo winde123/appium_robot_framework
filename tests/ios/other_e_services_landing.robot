@@ -1,16 +1,18 @@
 *** Settings ***
+Variables   ../../Resources/fork_config.py
 Library     AppiumLibrary
 #Library     AutoRecorder    mode=suite
 Library     ../../Resources/ios_appium_commands.py
 Resource    ../../Resources/commands.robot
 #Suite Setup     Start iOS Device Recording
 #Suite Teardown    Stop iOS Device Recording
-Variables   ../../Data/ios/landing_page.yaml
-Variables   ../../Data/ios/other_e_services/other_e_services_page.yaml
-Variables    ../../Data/ios/other_e_services/passport_IC_page.yaml
-Variables    ../../Data/ios/other_e_services/sgac_epass_enquiry.yaml
+Variables   ${FORK_DATA_DIR}/ios/landing_page.yaml
+Variables   ${FORK_DATA_DIR}/ios/other_e_services/other_e_services_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/other_e_services/passport_IC_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/other_e_services/sgac_epass_enquiry.yaml
 Variables    ../../Data/test_data/input_fields_test_data.yaml
-Test Setup       Open ios App on device 
+Force Tags       fork:both
+Test Setup       Open MyICA App on iOS Device 
 Test Teardown    ios_appium_commands.Terminate App
 
 *** Test Cases *** 

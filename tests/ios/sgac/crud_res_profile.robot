@@ -1,17 +1,19 @@
 *** Settings ***
+Variables   ../../../Resources/fork_config.py
 Library     AppiumLibrary
 Library     String
 Library     ../../../Resources/ios_appium_commands.py
-Library     ../../../../Data/test_data/manual_field_random.py
-Resource    ../../../../Resources/commands.robot
-Resource    ../../../../Resources/ios/SGACcommands.robot
-Variables   ../../../Data/ios/ios_common_selectors.yaml
-Variables   ../../../../Data/test_data/manual_field_random.py
-Variables   ../../../Data/ios/sgac/profile_list_page.yaml
-Variables   ../../../../Data/ios/sgac/profile_creation_method_page.yaml
-Variables   ../../../Data/ios/sgac/resident/res_profile_form_page.yaml
-Variables    ../../../../Data/ios/sgac/resident/res_profile_summary.yaml
-Test Setup       Open ios App on device 
+Library     ../../../Data/test_data/manual_field_random.py
+Resource    ../../../Resources/commands.robot
+Resource    ../../../Resources/ios/SGACcommands.robot
+Variables   ${FORK_DATA_DIR}/ios/ios_common_selectors.yaml
+Variables   ../../../Data/test_data/manual_field_random.py
+Variables   ${FORK_DATA_DIR}/ios/sgac/profile_list_page.yaml
+Variables   ${FORK_DATA_DIR}/ios/sgac/profile_creation_method_page.yaml
+Variables   ${FORK_DATA_DIR}/ios/sgac/resident/res_profile_form_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/sgac/resident/res_profile_summary.yaml
+Force Tags       fork:both
+Test Setup       Open MyICA App on iOS Device 
 Test Teardown    ios_appium_commands.Terminate App
 
 *** Test Cases ***

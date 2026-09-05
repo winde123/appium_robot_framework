@@ -1,20 +1,22 @@
 *** Settings ***
+Variables    ../../../Resources/fork_config.py
 Library     AppiumLibrary
 Library     Collections
 Library     String
 Library    ../../../Data/test_data/manual_field_random.py
 Library     ../../../Resources/ios_appium_commands.py
 Resource    ../../../Resources/commands.robot
-Variables    ../../../Data/ios/ios_common_selectors.yaml
+Variables    ${FORK_DATA_DIR}/ios/ios_common_selectors.yaml
 Variables    ../../../Data/test_data/input_fields_test_data.yaml
-Variables   ../../../Data/ios/landing_page.yaml
-Variables    ../../../Data/ios/cargo/cargo_landing_page.yaml
-Variables    ../../../Data/ios/cargo/cargo_convoy_page.yaml
-Variables    ../../../Data/ios/cargo/cargo_convoy_form_page.yaml
-Variables    ../../../Data/ios/cargo/cargo_permit_form_page.yaml
-Variables    ../../../Data/ios/cargo/cargo_sub_res_page.yaml
+Variables   ${FORK_DATA_DIR}/ios/landing_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_landing_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_convoy_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_convoy_form_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_permit_form_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_sub_res_page.yaml
 Variables    ../../../Data/test_data/manual_field_random.py
-Test Setup       Open ios App on device 
+Force Tags       fork:both
+Test Setup       Open MyICA App on iOS Device 
 #Test Teardown    ios_appium_commands.Terminate App
 
 *** Test Cases ***

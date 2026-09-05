@@ -1,21 +1,23 @@
 *** Settings ***
+Variables    ../../../Resources/fork_config.py
 Library     AppiumLibrary
 Library     String
-Library     ../../../../Resources/helper_func.py
+Library     ../../../Resources/helper_func.py
 Library     ../../../Resources/ios_appium_commands.py
-Resource    ../../../../Resources/commands.robot
-Resource    ../../../../Resources/ios/SGACcommands.robot
-Variables    ../../../../Data/test_data/manual_field_random.py
-Variables    ../../../Data/ios/ios_common_selectors.yaml
-Variables    ../../../../Data/test_data/input_fields_test_data.yaml
-Variables    ../../../Data/ios/sgac/sel_indv_profile_list_page.yaml
-Variables    ../../../Data/ios/sgac/resident/res_submission_form_page.yaml
-Variables    ../../../Data/ios/sgac/resident/res_declaration_summary.yaml
-Variables    ../../../../Data/ios/sgac/declaration_page.yaml
-Variables    ../../../../Data/ios/sgac/sub_success_page.yaml
-Variables    ../../../Data/ios/other_e_services/e727_services_page.yaml
-Variables    ../../../Data/ios/other_e_services/customs_dec_services_page.yaml
-Test Setup       Open ios App on device 
+Resource    ../../../Resources/commands.robot
+Resource    ../../../Resources/ios/SGACcommands.robot
+Variables    ../../../Data/test_data/manual_field_random.py
+Variables    ${FORK_DATA_DIR}/ios/ios_common_selectors.yaml
+Variables    ../../../Data/test_data/input_fields_test_data.yaml
+Variables    ${FORK_DATA_DIR}/ios/sgac/sel_indv_profile_list_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/sgac/resident/res_submission_form_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/sgac/resident/res_declaration_summary.yaml
+Variables    ${FORK_DATA_DIR}/ios/sgac/declaration_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/sgac/sub_success_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/other_e_services/e727_services_page.yaml
+Variables    ${FORK_DATA_DIR}/ios/other_e_services/customs_dec_services_page.yaml
+Force Tags       fork:both
+Test Setup       Open MyICA App on iOS Device 
 Test Teardown    ios_appium_commands.Terminate App
 
 *** Test Cases ***
