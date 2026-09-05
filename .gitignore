@@ -12,4 +12,7 @@ Data/test_data/__pycache__/manual_field_random.cpython-311.pyc
 
 /Output/*
 
+# VPN/egress configs — contain private keys, never commit
+/network_egress/
+
 .DS_Store
