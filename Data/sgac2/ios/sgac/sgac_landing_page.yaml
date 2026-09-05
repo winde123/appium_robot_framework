@@ -1,32 +1,30 @@
-# selectors for SGAC Landing page (iOS)
+# selectors for SGAC Landing page (iOS) — SGAC2.0 (verified 2026-09-06 vs build 2.0.0 on iPad)
+#
+# DIVERGED FLOW (same as Android): SGAC2.0 replaced the Individual/Group Submission model
+# (+ tutorial gate) with a profile-centric model (Manage Profiles / Create New Profile /
+# Update SG Arrival Card / Select Profiles). Needs fork-specific keyword dispatch (T33).
+
+# --- unchanged chrome (verified) ---
 SGAC-LANDING-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
 SGAC-LANDING-HEADER: //XCUIElementTypeStaticText[@name="SG Arrival Card"]
 SGAC-LANDING-LANGUAGE-BUTTON: //XCUIElementTypeButton[@name="SGArrivalCardLanguage"]
 
-#Tutorial elems
-SGAC-TUTORIAL-NAV-SGAC-BTN: //XCUIElementTypeButton[@name="TutorialGoToSgArrivalCard"]
+# --- SGAC2.0 profile-centric actions (verified) ---
+SGAC-LANDING-MANAGE-PROFILES: //XCUIElementTypeOther[@name="Manage Profiles"]
+SGAC-LANDING-CREATE-NEW-PROFILE: //XCUIElementTypeOther[@name="Create New Profile"]
+SGAC-LANDING-UPDATE-ARRIVAL-CARD: //XCUIElementTypeOther[@name="Update SG Arrival Card"]
+SGAC-LANDING-SELECT-PROFILES-SECTION: //XCUIElementTypeStaticText[@name="Select Profiles"]
+SGAC-LANDING-ADD-PROFILE: //XCUIElementTypeOther[@name="add profile plus icon"]
 
-# Quick action cards
-SGAC-LANDING-VIEW-PROFILE: //XCUIElementTypeOther[@name="SGArrivalCardViewProfile"]
-SGAC-LANDING-SUBMITTED-DECLARATIONS: //XCUIElementTypeOther[@name="SGArrivalCardSubmittedDeclarations"]
-SGAC-LANDING-INDIVIDUAL-SUBMISSION: //XCUIElementTypeOther[@name="SGArrivalCardIndividualSubmission"]
-SGAC-LANDING-GROUP-SUBMISSION: //XCUIElementTypeOther[@name="SGArrivalCardGroupSubmission"]
-
-# Sections
-SGAC-LANDING-CITIZEN-RESIDENT-SECTION: //XCUIElementTypeStaticText[@name="Citizen and Resident"]
-SGAC-LANDING-INDIVIDUAL-SECTION: //XCUIElementTypeStaticText[@name="Individual Submission"]
-SGAC-LANDING-GROUP-SECTION: //XCUIElementTypeStaticText[@name="Group Submission"]
-
-# Individual submissions card
-#SGAC-LANDING-INDV-SUBMISSION-CARD: //XCUIElementTypeOther[contains(@name,"WAN WEI RUI EDWIN") and contains(@name,"2026")]
-#SGAC-LANDING-INDV-SUBMISSION-NAME: //XCUIElementTypeStaticText[contains(@name,"WAN WEI RUI EDWIN")]
-#SGAC-LANDING-INDV-SUBMISSION-DATE: //XCUIElementTypeStaticText[contains(@name,"January 2026") and contains(@name,"Expired")]
-#SGAC-LANDING-INDV-SUBMISSION-CARD-ACTION: //XCUIElementTypeButton[contains(@name,"individual submission card right card")]
-
-SGAC-LANDING-VIEW-ALL-INDV-SUBMISSIONS: //XCUIElementTypeOther[@name="SGArrivalCardViewAllIndividualSubmissions"]
-
-# Group submissions
-SGAC-LANDING-GROUP-SUBMISSION-ADD-ICON: //XCUIElementTypeOther[@name="add group submission plus icon"]
-
-# Floating add button
-SGAC-LANDING-ADD-BUTTON: //XCUIElementTypeOther[@name="add button"]
+# --- sgac1-only, REMOVED/RESTRUCTURED in 2.0 (kept commented for T33 mapping) ---
+# SGAC-TUTORIAL-NAV-SGAC-BTN            : 2.0 removed the tutorial gate
+# SGAC-LANDING-VIEW-PROFILE             : superseded by "Manage Profiles"
+# SGAC-LANDING-SUBMITTED-DECLARATIONS   : not on the 2.0 landing
+# SGAC-LANDING-INDIVIDUAL-SUBMISSION    : Individual/Group split removed
+# SGAC-LANDING-GROUP-SUBMISSION         : Individual/Group split removed
+# SGAC-LANDING-CITIZEN-RESIDENT-SECTION : no such section label in 2.0
+# SGAC-LANDING-INDIVIDUAL-SECTION       : "
+# SGAC-LANDING-GROUP-SECTION            : "
+# SGAC-LANDING-VIEW-ALL-INDV-SUBMISSIONS: "
+# SGAC-LANDING-GROUP-SUBMISSION-ADD-ICON: replaced by "add profile plus icon"
+# SGAC-LANDING-ADD-BUTTON               : no floating "add button" FAB on the 2.0 landing

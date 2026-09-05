@@ -41,7 +41,7 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 | cargo/cargo_landing_page.yaml | copied | |
 | cargo/cargo_permit_form_page.yaml | copied | |
 | cargo/cargo_sub_res_page.yaml | copied | |
-| citizen_res_page.yaml | copied | |
+| citizen_res_page.yaml | verified | unchanged in 2.0 — 10/10 resolve as-is (same as Android) |
 | foreign_vis_page.yaml | copied | |
 | ios_common_selectors.yaml | copied | |
 | landing_page.yaml | verified | favourites -> Home<CONSTANT> `name` (same as Android); scam text-header removed; e-service card buttons + banner resolve (9/9) |
@@ -71,5 +71,5 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 | sgac/resident/res_profile_summary.yaml | copied | |
 | sgac/resident/res_submission_form_page.yaml | copied | |
 | sgac/sel_indv_profile_list_page.yaml | copied | |
-| sgac/sgac_landing_page.yaml | copied | |
+| sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN (same as Android): profile-centric (Manage/Create/Update/Select); Individual/Group split + tutorial gate removed → T33 |
 | sgac/sub_success_page.yaml | copied | |
