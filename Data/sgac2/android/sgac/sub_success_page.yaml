@@ -1,0 +1,19 @@
+# selectors for SGAC Submission Success page
+SGAC-SUB-SUCCESS-HEADER: //android.widget.TextView[@text="Submission Successful"]
+SGAC-SUB-SUCCESS-BACK-BUTTON: //android.view.ViewGroup[@clickable="true" and .//com.horcrux.svg.SvgView]
+
+SGAC-SUB-SUCCESS-CARD: //android.view.ViewGroup[@resource-id="card-container"]
+SGAC-SUB-SUCCESS-TITLE: //android.widget.TextView[@text="SUBMISSION SUCCESSFUL"]
+SGAC-SUB-SUCCESS-MSG: //android.widget.TextView[contains(@text,"Your submission is successful")]
+SGAC-SUB-SUCCESS-DRUGS-WARNING: //android.widget.TextView[contains(@text,"Drug trafficking is an offence")]
+SGAC-SUB-SUCCESS-HEALTH-WARNING: //android.widget.TextView[contains(@text,"Providing false health declarations")]
+SGAC-SUB-SUCCESS-REMINDER: //android.widget.TextView[contains(@text,"You are reminded to update and resubmit")]
+SGAC-SUB-SUCCESS-INFO-LINK: //android.widget.TextView[contains(@text,"Please tap here for information")]
+
+SGAC-SUB-SUCCESS-OTHER-DECLARATIONS-TITLE: //android.widget.TextView[@text="OTHER DECLARATIONS"]
+SGAC-SUB-SUCCESS-CBNI-TITLE: //android.widget.TextView[contains(@text,"Cash (CBNI) Declaration")]
+SGAC-SUB-SUCCESS-CBNI-DESC: //android.widget.TextView[contains(@text,"Physical Currency and Bearer Negotiable Instruments")]
+SGAC-SUB-SUCCESS-CUSTOMS-TITLE: //android.widget.TextView[contains(@text,"Customs Declaration")]
+
+SGAC-SUB-SUCCESS-GO-TO-SGAC-BUTTON: //android.view.ViewGroup[@resource-id="GoToSgac"]
+SGAC-SUB-SUCCESS-GO-TO-SGAC-LABEL: //android.widget.TextView[@text="GO TO SG ARRIVAL CARD"]

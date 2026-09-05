@@ -1,0 +1,20 @@
+# selectors for SG Arrival Card landing page
+SGAC-HEADER: //android.widget.TextView[@text="SG Arrival Card"]
+SGAC-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+SGAC-LANGUAGE-BUTTON: //android.widget.Button[@resource-id="SGArrivalCardLanguage"]
+SGAC-SECTION-CITIZEN-RESIDENT: //android.widget.TextView[@text="Citizen and Resident"]
+
+SGAC-VIEW-PROFILE-BUTTON: //android.view.ViewGroup[@resource-id="SGArrivalCardViewProfile"]
+SGAC-SUBMITTED-DECLARATIONS-BUTTON: //android.view.ViewGroup[@resource-id="SGArrivalCardSubmittedDeclarations"]
+SGAC-INDIVIDUAL-SUBMISSION-BUTTON: //android.view.ViewGroup[@resource-id="SGArrivalCardIndividualSubmission"]
+SGAC-GROUP-SUBMISSION-BUTTON: //android.view.ViewGroup[@resource-id="SGArrivalCardGroupSubmission"]
+
+SGAC-INDIVIDUAL-SUBMISSION-HEADER: //android.widget.TextView[@text="Individual Submission"]
+SGAC-ADD-INDIVIDUAL-SUBMISSION-CARD: //android.view.ViewGroup[@content-desc="add individual submission plus icon"]
+
+SGAC-GROUP-SUBMISSION-HEADER: //android.widget.TextView[@text="Group Submission"]
+SGAC-ADD-GROUP-SUBMISSION-CARD: //android.view.ViewGroup[@content-desc="add group submission plus icon"]
+
+SGAC-FLOATING-OPTIONS-BUTTON: //android.view.ViewGroup[@content-desc="add button"]
+
+SGAC-TUTORIAL-NAV-SGAC-BTN: //android.widget.Button[@content-desc="GO TO SG ARRIVAL CARD"]

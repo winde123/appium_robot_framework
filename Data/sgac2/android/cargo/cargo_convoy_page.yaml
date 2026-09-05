@@ -1,0 +1,14 @@
+CARGO_CONVOY_ALL_TAB : //android.view.ViewGroup[@content-desc="All"]
+CARGO_CONVOY_SUBMITTED_TAB : //android.view.ViewGroup[@content-desc="Submitted"]
+CARGO_CONVOY_DRAFT_TAB : //android.view.ViewGroup[@content-desc="Draft"]
+ADD_CARGO_CONVOY_BUTTON : //android.widget.Button[@content-desc="ADD CARGO CONVOY"]
+CARGO_CONVOY_NRIC_TEXT_FIELD : //android.widget.EditText[@content-desc="InfoAndVehiclesNricFin"]
+
+CARGO_CONVOY_EMAIL_TEXT_FIELD : //android.widget.EditText[@content-desc="InfoAndVehiclesAddEmail"]
+CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD : //android.widget.EditText[@resource-id="InfoAndVehiclesVehicleNumber"]
+CARGO_CONVOY_VIEW_EDIT_BUTTON : //android.view.ViewGroup[@content-desc="View / Edit"]
+CARGO_CONVOY_DELETE_SUBMISSION_BUTTON : //android.widget.TextView[@text="Delete Submission"]
+
+#CARGO_CONVOY_ADD_VEHICLE_NUMBER_BUTTON :
+CARGO_CONVOY_NEXT_BUTTON : //android.view.ViewGroup[@resource-id="next"]
+CARGO_CONVOY_VEHICLE_PLUS_BUTTON: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[5]

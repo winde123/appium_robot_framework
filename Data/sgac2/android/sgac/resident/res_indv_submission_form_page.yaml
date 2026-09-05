@@ -1,0 +1,51 @@
+# selectors for SGAC Resident Individual Submission form page (Date of arrival)
+RES-INDV-SUBMISSION-HEADER: //android.widget.TextView[@text="Date of Arrival (DD/MM/YYYY)"]
+RES-INDV-SUBMISSION-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+RES-INDV-SUBMISSION-SAVE-BUTTON: //android.view.ViewGroup[@content-desc="save"]
+
+RES-INDV-SUBMISSION-TRIP-TITLE: //android.widget.TextView[@text="Trip 1"]
+RES-INDV-SUBMISSION-INFO: //android.widget.TextView[contains(@text,"Declaration can only be done within 3 days prior")]
+RES-INDV-SUBMISSION-INFO-CLOSE: //android.view.ViewGroup[@clickable="true" and .//com.horcrux.svg.SvgView]
+
+RES-INDV-SUBMISSION-DATE-ARRIVAL-LABEL: //android.widget.TextView[@text="Date of Arrival (DD/MM/YYYY)"]
+RES-INDV-SUBMISSION-DATE-OPTION: //android.view.ViewGroup[contains(@content-desc,"unselected radio selection")]
+RES-INDV-SUBMISSION-DATE-OPTION-1: (//android.view.ViewGroup[@resource-id="card"])[1]
+#RES-INDV-SUBMISSION-DATE-OPTION-30JAN2026: //android.view.ViewGroup[@content-desc="unselected radio selection30 January 2026"]
+#RES-INDV-SUBMISSION-DATE-OPTION-31JAN2026: //android.view.ViewGroup[@content-desc="unselected radio selection31 January 2026"]
+RES-INDV-SUBMISSION-REQUIRED: //android.widget.TextView[@text="Required"]
+
+RES-INDV-SUBMISSION-FOOTER-BACK-BUTTON: //android.view.ViewGroup[@resource-id="back"]
+RES-INDV-SUBMISSION-FOOTER-BACK-LABEL: //android.widget.TextView[@text="BACK"]
+RES-INDV-SUBMISSION-PROGRESS-BAR: //android.view.View[@resource-id="progress-bar"]
+RES-INDV-SUBMISSION-FOOTER-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]
+RES-INDV-SUBMISSION-FOOTER-NEXT-LABEL: //android.widget.TextView[@text="NEXT"]
+
+# selectors for SGAC Resident Individual Submission form page (Declaration)
+RES-INDV-DECLARATION-HEADER: //android.widget.TextView[@text="Declaration"]
+RES-INDV-DECLARATION-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+RES-INDV-DECLARATION-SAVE-BUTTON: //android.view.ViewGroup[@content-desc="save"]
+
+RES-INDV-DECLARATION-TRIP-TITLE: //android.widget.TextView[@text="Trip 1"]
+RES-INDV-DECLARATION-TRIP-DATE: //android.widget.TextView[@text="29 January 2026"]
+
+RES-INDV-DECLARATION-QUESTION: //android.widget.TextView[contains(@text,"Do you currently have fever")]
+RES-INDV-DECLARATION-ANSWER-YES: (//android.view.ViewGroup[@resource-id="card"])[1]
+RES-INDV-DECLARATION-ANSWER-NO: //android.view.ViewGroup[@content-desc="declaration question answer no"]
+
+# Declaration question 3 (Middle East / Africa / Latin America 21 days)(for option yes in the first question)
+RES-INDV-DECLARATION-QUESTION-ME-AFR-LA: //android.widget.TextView[contains(@text,"Middle East") and contains(@text,"Latin America") and contains(@text,"21 days")]
+RES-INDV-DECLARATION-QUESTION-ME-AFR-LA-ANSWER-YES: (//android.view.ViewGroup[@resource-id="card"])[3]
+RES-INDV-DECLARATION-QUESTION-ME-AFR-LA-ANSWER-NO: (//android.view.ViewGroup[@resource-id="card"])[4]
+
+# Declaration question 2 (yellow fever travel) (for option no for the first question)
+RES-INDV-DECLARATION-QUESTION-YF: //android.widget.TextView[contains(@text,"listed countries") and contains(@text,"yellow fever")]
+RES-INDV-DECLARATION-QUESTION-YF-ANSWER-YES: (//android.view.ViewGroup[@resource-id="card"])[3]
+RES-INDV-DECLARATION-QUESTION-YF-ANSWER-NO: (//android.view.ViewGroup[@resource-id="card"])[4]
+
+RES-INDV-DECLARATION-FOOTER-BACK-BUTTON: //android.view.ViewGroup[@resource-id="back"]
+RES-INDV-DECLARATION-FOOTER-BACK-LABEL: //android.widget.TextView[@text="BACK"]
+RES-INDV-DECLARATION-PROGRESS-BAR: //android.view.View[@resource-id="progress-bar"]
+RES-INDV-DECLARATION-FOOTER-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]
+RES-INDV-DECLARATION-FOOTER-NEXT-LABEL: //android.widget.TextView[@text="NEXT"]
+
+

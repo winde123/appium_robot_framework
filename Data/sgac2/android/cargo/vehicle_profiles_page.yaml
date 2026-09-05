@@ -1,0 +1,10 @@
+VEHICLE_PROFILES_PAGE_BACK_ARROW: //android.widget.Button[@resource-id="back"]
+ADD_VEHICLE: //android.view.ViewGroup[@content-desc="VehicleProfilesAddVehicle"]
+VEHICLE_PROFILES_HEADER: //android.widget.TextView[@text="Vehicle Profiles"]
+KEBAB_MENU :   //android.view.ViewGroup[@content-desc="${test-data}"]/android.view.ViewGroup
+EDIT_BUTTON : //android.view.ViewGroup[@content-desc="Edit"]
+DELETE_PROFILE: //android.view.ViewGroup[com.horcrux.svg.SvgView and  @index='1']
+EDIT_PROFILE: //android.view.ViewGroup[@content-desc="Edit"]
+INVALIDATE_VEHICLES_TEXT_FIELD: //android.widget.TextView[@text="VEHICLE COULD NOT BE VALIDATED"]
+NO_VEHICLE_PROFILES_TEXT_FIELD: //android.view.ViewGroup[@content-desc="No vehicle profiles"]
+DELETE_PROFILE_BUTTON: //android.widget.Button[@resource-id="android:id/button1"]

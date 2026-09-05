@@ -1,0 +1,8 @@
+SUBMIT-SG-ARRIVAL-CARD-TAB: //android.view.ViewGroup[contains(@content-desc,"service list Submit SG Arrival Card")]
+SUBMIT-SG-ARRIVAL-CARD-HEADER-ELEM: //android.view.View[@text="Singapore Arrival Card (SGAC) and Electronic Pass (e-Pass) Enquiry Portal"]
+APPLY-ENTRY-VISA-TAB: //android.view.ViewGroup[contains(@content-desc,"service list Apply for Entry Visa")]
+APPLY-ENTRY-VISA-CARD-HEADER-ELEM: //android.view.View[@text="Apply for Entry Visa"]
+RETRIEVE-E-PASS-RECORD-TAB: //android.view.ViewGroup[contains(@content-desc,"service list Retrieve e-Pass Record")]
+RETRIEVE-E-PASS-RECORD-HEADER-ELEM: //android.view.View[@text="Retrieval of Electronic Pass (e-Pass)"]
+APPLY-EXTENSION-OF-VISIT-PASS-TAB: //android.view.ViewGroup[contains(@content-desc,"service list Apply for Extension of Visit Pass")]
+APPLY-EXTENSION-OF-VISIT-PASS-HEADER-ELEM: //android.view.View[@text="Apply for Extension of Short-Term Visit Pass"]

@@ -1,0 +1,3 @@
+##QR tutorial landing code pages
+#Welcome to MyICA modal selectors
+NO-THANKS-OPTION: //android.widget.Button[@content-desc='NO, THANKS']

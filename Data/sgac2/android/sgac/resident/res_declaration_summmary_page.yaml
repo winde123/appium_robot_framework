@@ -1,0 +1,49 @@
+# selectors for SGAC Resident Declaration Summary page
+RES-DECL-SUMMARY-HEADER: //android.widget.TextView[@text="Declaration Summary"]
+RES-DECL-SUMMARY-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+
+RES-DECL-SUMMARY-TRIP-TITLE: //android.widget.TextView[@text="Trip 1"]
+RES-DECL-SUMMARY-TRIP-DATE: (//android.widget.TextView[@text="Trip 1"]/following::android.widget.TextView)[1]
+
+# Personal Details section
+RES-DECL-SUMMARY-PERSONAL-SECTION: //android.widget.TextView[@text="Personal Details"]
+RES-DECL-SUMMARY-NAME-LABEL: //android.widget.TextView[@text="Name"]
+RES-DECL-SUMMARY-NAME-VALUE: (//android.widget.TextView[@text="Name"]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-NRIC-LABEL: //android.widget.TextView[@text="NRIC/FIN"]
+RES-DECL-SUMMARY-NRIC-VALUE: (//android.widget.TextView[@text="NRIC/FIN"]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-DOB-LABEL: //android.widget.TextView[@text="Date of Birth"]
+RES-DECL-SUMMARY-DOB-VALUE: (//android.widget.TextView[@text="Date of Birth"]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-PERSONAL-EDIT-BUTTON: (//android.view.ViewGroup[@content-desc="EDIT"])[1]
+RES-DECL-SUMMARY-PERSONAL-EDIT-LABEL: (//android.view.ViewGroup[@content-desc="EDIT"]//android.widget.TextView[@text="EDIT"])[1]
+
+# Contact Details section
+RES-DECL-SUMMARY-CONTACT-SECTION: //android.widget.TextView[@text="Contact Details"]
+RES-DECL-SUMMARY-COUNTRY-CODE-LABEL: //android.widget.TextView[@text="Country/Region Code"]
+RES-DECL-SUMMARY-COUNTRY-CODE-VALUE: (//android.widget.TextView[@text="Country/Region Code"]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-MOBILE-LABEL: //android.widget.TextView[@text="Mobile Number"]
+RES-DECL-SUMMARY-MOBILE-VALUE: (//android.widget.TextView[@text="Mobile Number"]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-EMAIL-LABEL: //android.widget.TextView[@text="Email Address"]
+RES-DECL-SUMMARY-EMAIL-VALUE: (//android.widget.TextView[@text="Email Address"]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-CONTACT-EDIT-BUTTON: (//android.view.ViewGroup[@content-desc="EDIT"])[2]
+RES-DECL-SUMMARY-CONTACT-EDIT-LABEL: (//android.view.ViewGroup[@content-desc="EDIT"]//android.widget.TextView[@text="EDIT"])[2]
+
+# Date of Arrival section
+RES-DECL-SUMMARY-ARRIVAL-SECTION: //android.widget.TextView[@text="Date of Arrival (DD/MM/YYYY)"]
+RES-DECL-SUMMARY-ARRIVAL-VALUE: (//android.widget.TextView[@text="Date of Arrival (DD/MM/YYYY)"]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-ARRIVAL-EDIT-BUTTON: (//android.view.ViewGroup[@content-desc="EDIT"])[3]
+RES-DECL-SUMMARY-ARRIVAL-EDIT-LABEL: (//android.view.ViewGroup[@content-desc="EDIT"]//android.widget.TextView[@text="EDIT"])[3]
+
+# Declaration section
+RES-DECL-SUMMARY-DECLARATION-SECTION: //android.widget.TextView[@text="Declaration"]
+RES-DECL-SUMMARY-DECLARATION-Q1: //android.widget.TextView[contains(@text,"fever, cough, shortness of breath")]
+RES-DECL-SUMMARY-DECLARATION-Q1-ANSWER: (//android.widget.TextView[contains(@text,"fever, cough, shortness of breath")]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-DECLARATION-Q2: //android.widget.TextView[contains(@text,"Middle East") and contains(@text,"Latin America")]
+RES-DECL-SUMMARY-DECLARATION-Q2-ANSWER: (//android.widget.TextView[contains(@text,"Middle East") and contains(@text,"Latin America")]/following::android.widget.TextView)[1]
+RES-DECL-SUMMARY-DECLARATION-EDIT-BUTTON: (//android.view.ViewGroup[@content-desc="EDIT"])[4]
+RES-DECL-SUMMARY-DECLARATION-EDIT-LABEL: (//android.view.ViewGroup[@content-desc="EDIT"]//android.widget.TextView[@text="EDIT"])[4]
+
+RES-DECL-SUMMARY-FOOTER-BACK-BUTTON: //android.view.ViewGroup[@resource-id="back"]
+RES-DECL-SUMMARY-FOOTER-BACK-LABEL: //android.widget.TextView[@text="BACK"]
+RES-DECL-SUMMARY-PROGRESS-BAR: //android.view.View[@resource-id="progress-bar"]
+RES-DECL-SUMMARY-FOOTER-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]
+RES-DECL-SUMMARY-FOOTER-NEXT-LABEL: //android.widget.TextView[@text="NEXT"]

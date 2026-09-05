@@ -1,0 +1,32 @@
+# selectors for SGAC Resident Confirmation Profile page
+RES-CONFIRM-PROFILE-HEADER: //android.widget.TextView[@text="Add Profile"]
+RES-CONFIRM-PROFILE-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+
+RES-CONFIRM-PROFILE-PASSPORT-SECTION-TITLE: //android.widget.TextView[@text="Passport Details"]
+RES-CONFIRM-PROFILE-NAME-LABEL: //android.widget.TextView[@text="Name"]
+#RES-CONFIRM-PROFILE-NAME-VALUE: //android.widget.TextView[@text="TEST"]
+RES-CONFIRM-PROFILE-DOB-LABEL: //android.widget.TextView[@text="Date of Birth"]
+#RES-CONFIRM-PROFILE-DOB-VALUE: //android.widget.TextView[@text="01 / 01 / 2000"]
+RES-CONFIRM-PROFILE-NRIC-LABEL: //android.widget.TextView[@text="NRIC/FIN"]
+#RES-CONFIRM-PROFILE-NRIC-VALUE: //android.widget.TextView[@text="S6023815D"]
+RES-CONFIRM-PROFILE-PASSPORT-EDIT-BUTTON: //android.view.ViewGroup[@content-desc="EDIT"]
+RES-CONFIRM-PROFILE-PASSPORT-EDIT-LABEL: //android.widget.TextView[@text="EDIT"]
+
+RES-CONFIRM-PROFILE-CONTACT-SECTION-TITLE: //android.widget.TextView[@text="Contact Details"]
+RES-CONFIRM-PROFILE-COUNTRY-CODE-LABEL: //android.widget.TextView[@text="Country/Region Code"]
+#RES-CONFIRM-PROFILE-COUNTRY-CODE-VALUE: //android.widget.TextView[@text="+112"]
+RES-CONFIRM-PROFILE-MOBILE-NUMBER-LABEL: //android.widget.TextView[@text="Mobile Number"]
+#RES-CONFIRM-PROFILE-MOBILE-NUMBER-VALUE: //android.widget.TextView[@text="1039303"]
+RES-CONFIRM-PROFILE-EMAIL-LABEL: //android.widget.TextView[@text="Email Address"]
+#RES-CONFIRM-PROFILE-EMAIL-VALUE: //android.widget.TextView[@text="test@test.co"]
+RES-CONFIRM-PROFILE-CONTACT-EDIT-BUTTON: //android.view.ViewGroup[@content-desc="EDIT"]
+RES-CONFIRM-PROFILE-CONTACT-EDIT-LABEL: //android.widget.TextView[@text="EDIT"]
+
+RES-CONFIRM-PROFILE-TERMS-CHECKBOX: //android.view.ViewGroup[@content-desc="uncheckterms of use checkbox"]
+RES-CONFIRM-PROFILE-TERMS-TEXT: //android.view.ViewGroup[@content-desc="I have read and accepted the Terms of Use and Privacy Policy"]
+RES-CONFIRM-PROFILE-TERMS-LINK: //android.view.ViewGroup[@content-desc="Terms of Use and Privacy Policy"]
+
+RES-CONFIRM-PROFILE-FOOTER-BACK-BUTTON: //android.view.ViewGroup[@resource-id="back"]
+RES-CONFIRM-PROFILE-FOOTER-BACK-LABEL: //android.widget.TextView[@text="BACK"]
+RES-FOOTER-SAVE-BUTTON: //android.view.ViewGroup[@resource-id="save"]
+RES-FOOTER-SAVE-LABEL: //android.widget.TextView[@text="SAVE"]

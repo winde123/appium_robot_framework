@@ -1,0 +1,5 @@
+CBNI-DECL-BUTTON: //android.widget.Button[@content-desc="SUBMIT CASH (CBNI) DECLARATION"]
+CBNI-BUTTON-LABEL: //android.widget.TextView[@text="SUBMIT CASH (CBNI) DECLARATION"]
+## cbni website
+CBNI-WEB-HOME-ICON: //android.widget.TextView[@text="HOME"] 
+CBNI-WEB-ELEM-HEADER: //android.widget.TextView[@text="Physical Currency and Bearer Negotiable Instruments (CBNI) Report (Traveller)"]

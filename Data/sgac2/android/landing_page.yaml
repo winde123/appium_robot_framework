@@ -1,0 +1,20 @@
+# selectors for relevant landing page — SGAC2.0 (verified 2026-09-05 against build 2.0.0/420)
+CITIZEN-RESIDENT-ESERVICE-BUTTON: //android.widget.TextView[@text="Citizen and Resident"]
+FORIEGN-VISITOR-ESERVICE-BUTTON: //android.widget.TextView[@text="Foreign Visitor"]
+
+#FAV BUTTONS — SGAC2.0 switched these from human-readable content-descs ("Home<label>")
+#to SNAKE_CASE testIDs exposed as resource-id "Home<CONSTANT>" (content-desc = the CONSTANT).
+CITIZEN&RESIDENT-SGARRIVAL-CARD-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeCITIZEN_RESIDENT_SG_ARRIVAL_CARD"]
+FORIEGNVISITOR-SGARRIVAL-CARD-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeFOREIGN_VISITOR_SG_ARRIVAL_CARD"]
+QR-CODE-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeQR_CODE_AT_LAND_CHECKPOINTS"]
+CARGO-CLEARANCE-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeCARGO_CLEARANCE"]
+REGISTER-REREGISTER-REPLACE-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeREGISTER_REREGISTER_REPLACE_IDENTITY_CARD"]
+OTHER-E-SERVICES-FAV-BUTTON: //android.view.ViewGroup[@resource-id="HomeOTHER_E_SERVICES"]
+
+# Scam banner is below the fold — scroll down before asserting. In 2.0 it is an image
+# ("Beware of Scam Callers Impersonating as ICA Officers") with no resource-id/content-desc.
+MYICA-SCAM-BANNER: //android.widget.ImageView
+# DIVERGED in 2.0: the text header "Government Officials Impersonation Scams" no longer exists
+# (the banner is now a single image with no text node). No stable text equivalent — retained
+# commented so the key's absence is intentional and traceable.
+#MYICA-SCAM-BANNER-HEADER-ELEM: <removed in SGAC2.0 — banner has no text header>

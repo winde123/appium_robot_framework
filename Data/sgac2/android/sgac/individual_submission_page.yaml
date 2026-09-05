@@ -1,0 +1,12 @@
+# selectors for SGAC Individual Submission page
+SGAC-INDIVIDUAL-HEADER: //android.widget.TextView[@text="Individual Submission"]
+SGAC-INDIVIDUAL-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+
+SGAC-INDIVIDUAL-TAB-ALL: //android.view.ViewGroup[@content-desc="All"]
+SGAC-INDIVIDUAL-TAB-SUBMITTED: //android.view.ViewGroup[@content-desc="Submitted"]
+SGAC-INDIVIDUAL-TAB-DRAFT: //android.view.ViewGroup[@content-desc="Draft"]
+SGAC-INDIVIDUAL-TAB-EXPIRED: //android.view.ViewGroup[@content-desc="Expired"]
+
+SGAC-INDIVIDUAL-EMPTY-STATE: //android.widget.TextView[@text="No individual submissions"]
+SGAC-INDIVIDUAL-ADD-SUBMISSION-BUTTON: //android.view.ViewGroup[@resource-id="individualSubmissionsAddSubmission"]
+SGAC-INDIVIDUAL-ADD-SUBMISSION-LABEL: //android.widget.TextView[@text="ADD SUBMISSION"]

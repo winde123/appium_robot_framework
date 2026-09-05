@@ -1,0 +1,11 @@
+# Captcha modal
+SGAC-DECLARATION-CAPTCHA-MODAL: //android.view.ViewGroup[@resource-id="modal"]
+SGAC-DECLARATION-CAPTCHA-CLOSE: //android.widget.Button[@content-desc="Close modal"]
+SGAC-DECLARATION-CAPTCHA-TITLE: //android.widget.TextView[@text="Enter the captcha shown below:"]
+SGAC-DECLARATION-CAPTCHA-IMAGE: //android.view.ViewGroup[contains(@content-desc,"captcha volume button")]/android.widget.ImageView
+SGAC-DECLARATION-CAPTCHA-REFRESH: //android.view.ViewGroup[@resource-id="CaptchaModalRefresh"]
+SGAC-DECLARATION-CAPTCHA-VOLUME: //android.view.ViewGroup[@resource-id="CaptchaModalVolumeUp"]
+SGAC-DECLARATION-CAPTCHA-INPUT: //android.widget.EditText[@resource-id="CaptchaModalCodeInput"]
+SGAC-DECLARATION-CAPTCHA-INPUT-LABEL: //android.widget.TextView[@resource-id="CaptchaModalCodeInput-label-inactive"]
+SGAC-DECLARATION-CAPTCHA-VERIFY-BUTTON: //android.widget.Button[@resource-id="CaptchaModalConfirm"]
+SGAC-DECLARATION-CAPTCHA-VERIFY-LABEL: //android.widget.TextView[@resource-id="CaptchaModalConfirm-text"]
