@@ -1,0 +1,50 @@
+# selectors for SGAC Resident Declaration Summary page (iOS)
+RES-DECL-SUMMARY-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+RES-DECL-SUMMARY-HEADER: //XCUIElementTypeStaticText[@name="Declaration Summary"]
+
+# Trip header
+RES-DECL-SUMMARY-TRIP-TITLE: //XCUIElementTypeStaticText[@name="Trip 1"]
+RES-DECL-SUMMARY-TRIP-DATE: (//XCUIElementTypeStaticText[@name="Trip 1"]/following::XCUIElementTypeStaticText)[1]
+
+# Personal details card
+RES-DECL-SUMMARY-PERSONAL-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[1]
+RES-DECL-SUMMARY-PERSONAL-HEADER: //XCUIElementTypeStaticText[@name="Personal Details"]
+RES-DECL-SUMMARY-NAME-LABEL: //XCUIElementTypeStaticText[@name="Name"]
+RES-DECL-SUMMARY-NAME-VALUE: (//XCUIElementTypeStaticText[@name="Name"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-NRIC-LABEL: //XCUIElementTypeStaticText[@name="NRIC/FIN"]
+RES-DECL-SUMMARY-NRIC-VALUE: (//XCUIElementTypeStaticText[@name="NRIC/FIN"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-DOB-LABEL: //XCUIElementTypeStaticText[@name="Date of Birth"]
+RES-DECL-SUMMARY-DOB-VALUE: (//XCUIElementTypeStaticText[@name="Date of Birth"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-PERSONAL-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[1]
+
+# Contact details card
+RES-DECL-SUMMARY-CONTACT-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[2]
+RES-DECL-SUMMARY-CONTACT-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
+RES-DECL-SUMMARY-COUNTRY-CODE-LABEL: //XCUIElementTypeStaticText[@name="Country/Region Code"]
+RES-DECL-SUMMARY-COUNTRY-CODE-VALUE: (//XCUIElementTypeStaticText[@name="Country/Region Code"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-MOBILE-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
+RES-DECL-SUMMARY-MOBILE-VALUE: (//XCUIElementTypeStaticText[@name="Mobile Number"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-EMAIL-LABEL: //XCUIElementTypeStaticText[@name="Email Address"]
+RES-DECL-SUMMARY-EMAIL-VALUE: (//XCUIElementTypeStaticText[@name="Email Address"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-CONTACT-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[2]
+
+# Date of arrival card
+RES-DECL-SUMMARY-ARRIVAL-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[3]
+RES-DECL-SUMMARY-ARRIVAL-HEADER: //XCUIElementTypeStaticText[@name="Date of Arrival (DD/MM/YYYY)"]
+RES-DECL-SUMMARY-ARRIVAL-LABEL: //XCUIElementTypeStaticText[@name="Date of Arrival (DD/MM/YYYY)"]
+RES-DECL-SUMMARY-ARRIVAL-VALUE: (//XCUIElementTypeStaticText[@name="Date of Arrival (DD/MM/YYYY)"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-ARRIVAL-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[3]
+
+# Declaration card
+RES-DECL-SUMMARY-DECLARATION-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[4]
+RES-DECL-SUMMARY-DECLARATION-HEADER: //XCUIElementTypeStaticText[@name="Declaration"]
+RES-DECL-SUMMARY-DECLARATION-Q1: //XCUIElementTypeStaticText[contains(@name,"fever, cough, shortness of breath")]
+RES-DECL-SUMMARY-DECLARATION-Q1-ANSWER: (//XCUIElementTypeStaticText[contains(@name,"fever, cough, shortness of breath")]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-DECLARATION-Q2: //XCUIElementTypeStaticText[contains(@name,"Africa") and contains(@name,"Latin America")]
+RES-DECL-SUMMARY-DECLARATION-Q2-ANSWER: (//XCUIElementTypeStaticText[contains(@name,"Africa") and contains(@name,"Latin America")]/following::XCUIElementTypeStaticText)[1]
+
+# Footer navigation
+#RES-DECL-SUMMARY-FOOTER-BACK: //XCUIElementTypeOther[@name="back" and @label="back"]
+RES-DECL-SUMMARY-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 4 of 5"]
+RES-DECL-SUMMARY-FOOTER-PROGRESS: //XCUIElementTypeOther[@name="progress-bar"]
+#RES-DECL-SUMMARY-FOOTER-NEXT: //XCUIElementTypeOther[@name="next" and @label="next"]

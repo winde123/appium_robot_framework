@@ -1,0 +1,64 @@
+# selectors for SGAC Foreigner Profile Form page (iOS)
+FOR-PROFILE-FORM-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+FOR-PROFILE-FORM-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
+
+# Profile details section
+FOR-PROFILE-FORM-DETAILS-HEADER: //XCUIElementTypeStaticText[@name="Profile Details"]
+FOR-PROFILE-FORM-DETAILS-NOTE: //XCUIElementTypeStaticText[@name="Profile retrieved from Singpass is not editable."]
+
+# Full name
+FOR-PROFILE-FORM-NAME-INPUT: //XCUIElementTypeOther[@name="Full Name (In Passport)text input"]
+FOR-PROFILE-FORM-FULL-NAME-LABEL: //XCUIElementTypeStaticText[@name="Full Name (In Passport)"]
+FOR-PROFILE-FORM-FULL-NAME-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[1]
+
+# Gender / Date of Birth
+FOR-PROFILE-FORM-GENDER-DROPDOWN: //XCUIElementTypeOther[@name="dropdown"]
+# Gender choices
+FEMALE-DROPDOWN-OPTION: //XCUIElementTypeButton[@name="FEMALE"]
+MALE-DROPDOWN-OPTION: //XCUIElementTypeButton[@name="MALE"]
+OTHERS-DROPDOWN-OPTION: //XCUIElementTypeButton[@name="OTHERS"]
+
+FOR-PROFILE-FORM-DOB-INPUT: //XCUIElementTypeTextField[@name="PassportDetailsDateOfBirth"]
+FOR-PROFILE-FORM-DOB-LABEL: //XCUIElementTypeStaticText[@name="Date of Birth (DD/MM/YYYY)"]
+FOR-PROFILE-FORM-DOB-CALENDAR: //XCUIElementTypeButton[@name="right-icon-adornment" and contains(@label,"calendar picker")]
+FOR-PROFILE-FORM-GENDER-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[2]
+FOR-PROFILE-FORM-DOB-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[3]
+
+# Country/place of birth
+FOR-PROFILE-FORM-CTY-BIRTH-LIST: //XCUIElementTypeOther[@name="country/place of birth list"]
+FOR-PROFILE-FORM-COUNTRY-BIRTH-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[4]
+
+# Nationality/citizenship
+FOR-PROFILE-FORM-NAT-LIST: //XCUIElementTypeOther[@name="nationality/citizenship list"]
+FOR-PROFILE-FORM-NATIONALITY-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[5]
+
+# Passport details
+FOR-PROFILE-FORM-PASSPORT-NO-INPUT: //XCUIElementTypeOther[@name="passport numbertext input"]
+FOR-PROFILE-FORM-PASSPORT-NUMBER-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[6]
+
+FOR-PROFILE-FORM-PASSPORT-EXPIRY-INPUT: //XCUIElementTypeTextField[@name="PassportDetailsDatePassportExpiry"]
+FOR-PROFILE-FORM-PASSPORT-EXPIRY-LABEL: //XCUIElementTypeStaticText[@name="Date of Passport Expiry (DD/MM/YYYY)"]
+FOR-PROFILE-FORM-PASSPORT-EXPIRY-CALENDAR: //XCUIElementTypeButton[@name="right-icon-adornment" and contains(@label,"passport expiry")]
+FOR-PROFILE-FORM-PASSPORT-EXPIRY-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[7]
+
+# Footer navigation
+#FOR-PROFILE-FORM-FOOTER-BACK: //XCUIElementTypeOther[@name="back" and @label="back"]
+FOR-PROFILE-FORM-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 1 of 3"]
+#FOR-PROFILE-FORM-FOOTER-NEXT: //XCUIElementTypeOther[@name="next" and @label="next"]
+
+# Contact details section
+FOR-PROFILE-FORM-CONTACT-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
+
+FOR-PROFILE-FORM-CITY-RES-INPUT: //XCUIElementTypeOther[@name="city of residence text input"]
+FOR-PROFILE-FORM-CITY-RESIDENCE-REQUIRED: (//XCUIElementTypeOther[@name="city of residence text input"]/following::XCUIElementTypeStaticText[@name="Required"])[1]
+
+FOR-PROFILE-FORM-COUNTRY-CODE-INPUT: //XCUIElementTypeOther[@name="country/region code text inputtext input"]
+FOR-PROFILE-FORM-COUNTRY-CODE-REQUIRED: (//XCUIElementTypeOther[@name="country/region code text inputtext input"]/following::XCUIElementTypeStaticText[@name="Required"])[1]
+
+FOR-PROFILE-FORM-MOBILE-NO-INPUT: //XCUIElementTypeOther[@name="mobile number text input"]
+FOR-PROFILE-FORM-MOBILE-NUMBER-REQUIRED: (//XCUIElementTypeOther[@name="mobile number text input"]/following::XCUIElementTypeStaticText[@name="Required"])[1]
+
+FOR-PROFILE-FORM-EMAIL-INPUT: //XCUIElementTypeOther[@name="email address text inputtext input"]
+FOR-PROFILE-FORM-EMAIL-REQUIRED: (//XCUIElementTypeOther[@name="email address text inputtext input"]/following::XCUIElementTypeStaticText[@name="Required"])[1]
+
+FOR-PROFILE-FORM-CONTACT-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 2 of 3"]

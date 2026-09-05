@@ -1,0 +1,40 @@
+# selectors for SGAC Resident Form page (iOS)
+RES-FORM-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+RES-FORM-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
+
+# Profile details section
+RES-FORM-PROFILE-DETAILS-HEADER: //XCUIElementTypeStaticText[@name="Profile Details"]
+RES-FORM-PROFILE-DETAILS-NOTE: //XCUIElementTypeStaticText[@name="Profile retrieved from Singpass is not editable."]
+
+# Name field
+RES-FORM-NAME-INPUT: //XCUIElementTypeOther[@name="Nametext input"]
+RES-FORM-NAME-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[1]
+
+# NRIC/FIN field
+RES-FORM-NRIC-INPUT: //XCUIElementTypeOther[@name="nric/fintext input"]
+RES-FORM-NRIC-FIN-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[2]
+
+# Date of Birth field
+RES-FORM-DOB-INPUT: //XCUIElementTypeTextField[@name="PassportDetailsDateOfBirth"]
+RES-FORM-DOB-LABEL: //XCUIElementTypeStaticText[@name="Date of Birth (DD/MM/YYYY)"]
+RES-FORM-DOB-CALENDAR: //XCUIElementTypeButton[@name="right-icon-adornment"]
+RES-FORM-DOB-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[3]
+
+# Footer navigation
+#RES-FORM-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 1 of 3"]
+
+# Contact details section
+RES-FORM-CONTACT-DETAILS-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
+
+# Country/Region code field
+RES-FORM-CTY-CODE-INPUT: //XCUIElementTypeOther[@name="country/region code text inputtext input"]
+RES-FORM-CTY-CODE-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[1]
+
+# Mobile number field
+RES-FORM-MOBILE-NUMBER-INPUT: //XCUIElementTypeOther[@name="mobile number text input"]
+RES-FORM-MOBILE-NUMBER-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
+RES-FORM-MOBILE-NUMBER-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[2]
+
+# Email address field
+RES-FORM-EMAIL-INPUT: //XCUIElementTypeOther[@name="email address text inputtext input"]
+RES-FORM-EMAIL-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[3]

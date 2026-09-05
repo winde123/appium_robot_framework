@@ -1,0 +1,5 @@
+CARGO-ADD-PERMIT-BTN: //XCUIElementTypeButton[@name="PermitsAddPermit"]
+SUBMIT-CARGO-CONVOY-BTN: //XCUIElementTypeOther[@name="PermitsSubmitCargoConvoy"]
+MANUAL-INPUT-PERMIT-BTN: //XCUIElementTypeButton[@name="AddPermitEnterPermitNoManually"]
+PERMIT-NO-INPUT-FIELD: //XCUIElementTypeOther[@name="convoy permit number text inputtext input"]
+SAVE-PERMIT-BTN: //XCUIElementTypeOther[@name="AddPermitSavePermit"]

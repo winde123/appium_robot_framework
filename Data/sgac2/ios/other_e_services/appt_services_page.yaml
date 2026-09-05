@@ -1,0 +1,4 @@
+APPT-BOOK-CHANGE-CANCEL-TAB: //XCUIElementTypeOther[contains(@name,"service list Book/Change/Cancel Appointment")]
+APPT-BOOK-CHANGE-CANCEL-TAB-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Book, change or cancel appointment"]
+APPT-ONLINE-CHECK-IN-TAB: //XCUIElementTypeOther[contains(@name,"service list Online Check-in (Get Queue Number / View Queue Status)")]
+APPT-ONLINE-CHECK-IN-TAB-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Please enter the following to check-in/check queue status"]

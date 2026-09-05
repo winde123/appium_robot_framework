@@ -1,0 +1,16 @@
+# selectors for SGAC Individual Submission page (iOS)
+INDV-SUBMISSION-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+INDV-SUBMISSION-HEADER: //XCUIElementTypeStaticText[@name="Individual Submission"]
+
+# Filter tabs
+INDV-SUBMISSION-TAB-ALL: //XCUIElementTypeOther[@name="All"]
+INDV-SUBMISSION-TAB-SUBMITTED: //XCUIElementTypeOther[@name="Submitted"]
+INDV-SUBMISSION-TAB-DRAFT: //XCUIElementTypeOther[@name="Draft"]
+INDV-SUBMISSION-TAB-EXPIRED: //XCUIElementTypeOther[@name="Expired"]
+
+# Empty state
+INDV-SUBMISSION-EMPTY-STATE-CARD: //XCUIElementTypeOther[@name="card-container-outer-layer"]//XCUIElementTypeOther[@name="card"]
+INDV-SUBMISSION-EMPTY-STATE-TEXT: //XCUIElementTypeStaticText[@name="No individual submissions"]
+
+# Add submission button
+INDV-SUBMISSION-ADD-SUBMISSION: //XCUIElementTypeOther[@name="individualSubmissionsAddSubmission"]

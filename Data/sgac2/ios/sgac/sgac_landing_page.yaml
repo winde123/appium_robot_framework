@@ -1,0 +1,32 @@
+# selectors for SGAC Landing page (iOS)
+SGAC-LANDING-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+SGAC-LANDING-HEADER: //XCUIElementTypeStaticText[@name="SG Arrival Card"]
+SGAC-LANDING-LANGUAGE-BUTTON: //XCUIElementTypeButton[@name="SGArrivalCardLanguage"]
+
+#Tutorial elems
+SGAC-TUTORIAL-NAV-SGAC-BTN: //XCUIElementTypeButton[@name="TutorialGoToSgArrivalCard"]
+
+# Quick action cards
+SGAC-LANDING-VIEW-PROFILE: //XCUIElementTypeOther[@name="SGArrivalCardViewProfile"]
+SGAC-LANDING-SUBMITTED-DECLARATIONS: //XCUIElementTypeOther[@name="SGArrivalCardSubmittedDeclarations"]
+SGAC-LANDING-INDIVIDUAL-SUBMISSION: //XCUIElementTypeOther[@name="SGArrivalCardIndividualSubmission"]
+SGAC-LANDING-GROUP-SUBMISSION: //XCUIElementTypeOther[@name="SGArrivalCardGroupSubmission"]
+
+# Sections
+SGAC-LANDING-CITIZEN-RESIDENT-SECTION: //XCUIElementTypeStaticText[@name="Citizen and Resident"]
+SGAC-LANDING-INDIVIDUAL-SECTION: //XCUIElementTypeStaticText[@name="Individual Submission"]
+SGAC-LANDING-GROUP-SECTION: //XCUIElementTypeStaticText[@name="Group Submission"]
+
+# Individual submissions card
+#SGAC-LANDING-INDV-SUBMISSION-CARD: //XCUIElementTypeOther[contains(@name,"WAN WEI RUI EDWIN") and contains(@name,"2026")]
+#SGAC-LANDING-INDV-SUBMISSION-NAME: //XCUIElementTypeStaticText[contains(@name,"WAN WEI RUI EDWIN")]
+#SGAC-LANDING-INDV-SUBMISSION-DATE: //XCUIElementTypeStaticText[contains(@name,"January 2026") and contains(@name,"Expired")]
+#SGAC-LANDING-INDV-SUBMISSION-CARD-ACTION: //XCUIElementTypeButton[contains(@name,"individual submission card right card")]
+
+SGAC-LANDING-VIEW-ALL-INDV-SUBMISSIONS: //XCUIElementTypeOther[@name="SGArrivalCardViewAllIndividualSubmissions"]
+
+# Group submissions
+SGAC-LANDING-GROUP-SUBMISSION-ADD-ICON: //XCUIElementTypeOther[@name="add group submission plus icon"]
+
+# Floating add button
+SGAC-LANDING-ADD-BUTTON: //XCUIElementTypeOther[@name="add button"]

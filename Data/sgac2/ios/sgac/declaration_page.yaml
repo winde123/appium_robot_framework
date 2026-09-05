@@ -1,0 +1,30 @@
+# selectors for SGAC Declaration page (iOS)
+DECLARATION-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+DECLARATION-HEADER: //XCUIElementTypeStaticText[@name="Declaration"]
+
+# Declaration content card
+DECLARATION-CARD: //XCUIElementTypeOther[@name="card-container-outer-layer"]
+DECLARATION-SCROLLVIEW: //XCUIElementTypeOther[@name="card-container-outer-layer"]//XCUIElementTypeScrollView
+
+# Main statements
+DECLARATION-STATEMENT-PRIMARY: //XCUIElementTypeStaticText[contains(@name,"I hereby confirm that the information I have provided herein")]
+DECLARATION-STATEMENT-CONSENT: //XCUIElementTypeStaticText[contains(@name,"Consent to data sharing")]
+DECLARATION-STATEMENT-PRINCIPAL: //XCUIElementTypeStaticText[contains(@name,"submitting the arrival card on behalf of someone else")]
+DECLARATION-STATEMENT-TRAVEL-ADVISORY: //XCUIElementTypeStaticText[contains(@name,"Travel Advisory")]
+DECLARATION-STATEMENT-DRUGS: //XCUIElementTypeStaticText[contains(@name,"Misuse of Drugs Act")]
+DECLARATION-STATEMENT-VAPING: //XCUIElementTypeStaticText[contains(@name,"Vaping is an offence")]
+DECLARATION-STATEMENT-FALSE-DECLARATIONS: //XCUIElementTypeStaticText[contains(@name,"false health and travel declarations")]
+DECLARATION-STATEMENT-UPDATE-REMINDER: //XCUIElementTypeStaticText[contains(@name,"update and resubmit your declarations")]
+DECLARATION-STATEMENT-CBNI: //XCUIElementTypeStaticText[contains(@name,"Cash (CBNI) Declaration")]
+DECLARATION-STATEMENT-RED-CHANNEL: //XCUIElementTypeStaticText[contains(@name,"declare the item at the Red Channel")]
+DECLARATION-STATEMENT-ICA-INFO: //XCUIElementTypeStaticText[contains(@name,"ICA website")]
+
+# Acknowledgement checkbox
+DECLARATION-CHECKBOX-UNCHECKED: //XCUIElementTypeOther[@name="uncheckI have read and agreed to the declaration."]
+DECLARATION-CHECKBOX-CHECKED: //XCUIElementTypeOther[@name="checkI have read and agreed to the declaration."]
+
+# Footer navigation
+#DECLARATION-FOOTER-BACK: //XCUIElementTypeOther[@name="back" and @label="back"]
+DECLARATION-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 5 of 5"]
+DECLARATION-FOOTER-PROGRESS: //XCUIElementTypeOther[@name="progress-bar"]
+DECLARATION-FOOTER-SUBMIT: //XCUIElementTypeOther[@name="save" and @label="SUBMIT"]

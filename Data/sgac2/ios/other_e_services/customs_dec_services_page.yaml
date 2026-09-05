@@ -1,0 +1,3 @@
+### submission success page
+SUB-SUCCESS-CUSTOMS-BUTTON: //XCUIElementTypeButton[@name="SUBMIT CUSTOMS DECLARATION"]
+CUSTOMS-WEB-ELEM-HEADER: (//XCUIElementTypeStaticText[@name="Customs@SG"])[1]

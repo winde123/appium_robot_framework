@@ -1,0 +1,11 @@
+# selectors for SGAC Foreigner Nationality List modal (iOS)
+FOR-NATIONALITY-MODAL: //XCUIElementTypeOther[@name="modal"]
+FOR-NATIONALITY-SEARCH-INPUT: //XCUIElementTypeTextField[@placeholderValue="Search"]
+FOR-NATIONALITY-SEARCH-CLEAR: (//XCUIElementTypeButton[@name="icon-button"])[2]
+FOR-NATIONALITY-CLOSE-BUTTON: (//XCUIElementTypeButton[@name="icon-button"])[1]
+
+# Nationality options
+FOR-NATIONALITY-OPTION-BY-NAME: //XCUIElementTypeOther[starts-with(@name,"searchable dropdown accessible label ")]
+FOR-NATIONALITY-OPTION-1: (//XCUIElementTypeOther[starts-with(@name,"searchable dropdown accessible label ")])[1]
+FOR-NATIONALITY-OPTION-2: (//XCUIElementTypeOther[starts-with(@name,"searchable dropdown accessible label ")])[2]
+FOR-NATIONALITY-OPTION-3: (//XCUIElementTypeOther[starts-with(@name,"searchable dropdown accessible label ")])[3]

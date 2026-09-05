@@ -1,0 +1,3 @@
+###submission success page
+SUB-SUCCESS-CBNI-BUTTON: //XCUIElementTypeButton[@name="SUBMIT CASH (CBNI) DECLARATION"]
+CBNI-WEB-ELEM-HEADER: //XCUIElementTypeStaticText[@name="Physical Currency and Bearer Negotiable Instruments (CBNI) Report (Traveller)"]

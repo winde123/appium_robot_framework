@@ -1,0 +1,2 @@
+BIRTH-DEATH-APPLY-EXTRACT-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Birth or Death Extract")]
+BIRTH-DEATH-APPLY-EXTRACT-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Apply for Extract for Record of Birth/Death"]

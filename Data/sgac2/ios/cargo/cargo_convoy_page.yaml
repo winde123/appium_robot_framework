@@ -1,0 +1,7 @@
+CARGO-CONVOY-HEADER: //XCUIElementTypeStaticText[@name="Cargo Convoy"]
+CARGO-CONVOY-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+CARGO-CONVOY-TAB-ALL: //XCUIElementTypeOther[@name="All"]
+CARGO-CONVOY-TAB-SUBMITTED: //XCUIElementTypeOther[@name="Submitted"]
+CARGO-CONVOY-TAB-DRAFT: //XCUIElementTypeOther[@name="Draft"]
+CARGO-CONVOY-EMPTY-STATE: //XCUIElementTypeStaticText[@name="No cargo convoy submissions"]
+CARGO-CONVOY-ADD-SUBMISSION-BUTTON: //XCUIElementTypeOther[@name="ConvoySubmissionsAddSubmission"]

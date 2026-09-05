@@ -1,0 +1,17 @@
+## options on the other e services page
+E-SERVICES-PASSPORT-IDENTITY-CARD: //XCUIElementTypeOther[@name="EServicesPassportandIdentityCard"]
+E-SERVICES-SGAC-ENTRY-VISA-EPASS-ENQUIRY-PORTAL: //XCUIElementTypeOther[@name="EServicesSGArrivalCard,EntryVisa,e-PassEnquiryPortalandExtensionofVisitPass"]
+E-SERVICES-CHECK-VALIDITY-VERIFY: //XCUIElementTypeOther[@name="EServicesCheckValidity/Verify"]
+E-SERVICES-REPORT-CHANGE-RESIDENTIAL-ADDRESS: //XCUIElementTypeOther[@name="EServicesReportChangeofResidentialAddress"]
+E-SERVICES-SC-PR: //XCUIElementTypeOther[@name="EServicesSingaporeCitizenshipandPermanentResidence"]
+E-SERVICES-LTVP-STUDENTS-PASS: //XCUIElementTypeOther[@name="EServicesLong-TermVisitPassandStudent’sPass"]
+E-SERVICES-BIRTH-DEATH: //XCUIElementTypeOther[@name="EServicesBirthandDeath"]
+E-SERVICES-OTHERS: //XCUIElementTypeOther[@name="EServicesOthers"]
+E-SERVICES-APPOINTMENT: //XCUIElementTypeOther[@name="EServicesAppointment"]
+E-SERVICES-CUSTOMS-DECLARATION: //XCUIElementTypeOther[@name="EServicesCustomsDeclaration"]
+E-SERVICES-CUSTOMS-DECLARATION-HEADER-ELEM: //XCUIElementTypeOther[@name="Customs@SG"]
+E-SERVICES-SEARCH-ICON: //XCUIElementTypeOther[@name="appbar-header"]/XCUIElementTypeOther[2]
+E-SERVICES-SEARCH-INPUT: //XCUIElementTypeTextField[@value="Search for an e-Service"]
+E-SERVICES-REPORT-LOST-PASSPORT-SEARCH-RES: //XCUIElementTypeStaticText[contains(@name,"Report Lost Passport")]
+E-SERVICES-REPORT-LOST-IC-SEARCH-RES: //XCUIElementTypeStaticText[contains(@name,"Report Lost Identity Card")]
+

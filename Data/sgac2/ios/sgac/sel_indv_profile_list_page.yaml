@@ -1,0 +1,19 @@
+# selectors for SGAC Individual Profile List page (iOS)
+INDV-PROFILE-LIST-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+INDV-PROFILE-LIST-HEADER: //XCUIElementTypeStaticText[@name="Select Profile"]
+
+# Empty state
+INDV-PROFILE-LIST-EMPTY-CARD: //XCUIElementTypeOther[@name="card-container-outer-layer"]//XCUIElementTypeOther[@name="card"]
+INDV-PROFILE-LIST-EMPTY-TEXT: //XCUIElementTypeStaticText[@name="No profiles"]
+
+## Selection of cards
+INDV-PROFILE-CARD-1: (//XCUIElementTypeOther[@name="card"])[1]
+
+# Add profile
+INDV-PROFILE-LIST-ADD-PROFILE: //XCUIElementTypeButton[@name="ProfileAddProfile"]
+
+# Footer navigation
+INDV-PROFILE-LIST-FOOTER-BACK: //XCUIElementTypeOther[@name="back" and @label="back"]
+INDV-PROFILE-LIST-FOOTER-NEXT: //XCUIElementTypeOther[@name="next" and @label="next"]
+INDV-PROFILE-LIST-PROGRESS-STEP: //XCUIElementTypeOther[@name="Step 1 of 11"]
+INDV-PROFILE-LIST-PROGRESS-BAR: //XCUIElementTypeOther[@name="progress-bar"]

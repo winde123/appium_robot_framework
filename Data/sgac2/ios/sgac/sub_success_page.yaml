@@ -1,0 +1,22 @@
+# selectors for SGAC Submission Success page (iOS)
+SUB-SUCCESS-HEADER: //XCUIElementTypeStaticText[@name="Submission Successful"]
+
+# Success card
+SUB-SUCCESS-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[1]
+SUB-SUCCESS-CARD-TITLE: //XCUIElementTypeStaticText[@name="SUBMISSION SUCCESSFUL"]
+SUB-SUCCESS-MESSAGE: //XCUIElementTypeStaticText[contains(@name,"Your submission is successful")]
+SUB-SUCCESS-DRUGS-WARNING: //XCUIElementTypeStaticText[contains(@name,"Drug trafficking")]
+SUB-SUCCESS-HEALTH-DECLARATION-WARNING: //XCUIElementTypeStaticText[contains(@name,"Providing false health declarations")]
+SUB-SUCCESS-UPDATE-REMINDER: //XCUIElementTypeStaticText[contains(@name,"update and resubmit your declarations")]
+SUB-SUCCESS-ENTRY-INFO-LINK: //XCUIElementTypeStaticText[contains(@name,"Please tap here for information")]
+
+# Other declarations card
+SUB-SUCCESS-OTHER-DECLARATIONS-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[2]
+SUB-SUCCESS-OTHER-DECLARATIONS-TITLE: //XCUIElementTypeStaticText[@name="OTHER DECLARATIONS"]
+SUB-SUCCESS-CBNI-TITLE: //XCUIElementTypeStaticText[contains(@name,"Cash (CBNI) Declaration")]
+SUB-SUCCESS-CBNI-DESC: //XCUIElementTypeStaticText[contains(@name,"Bearer Negotiable Instruments")]
+SUB-SUCCESS-CUSTOMS-TITLE: //XCUIElementTypeStaticText[contains(@name,"Customs Declaration")]
+SUB-SUCCESS-CUSTOMS-DESC: //XCUIElementTypeStaticText[contains(@name,"Customs declaration and tax payment")]
+
+# Go to SG Arrival Card
+SUB-SUCCESS-GO-TO-SGAC: //XCUIElementTypeOther[@name="GoToSgac"]

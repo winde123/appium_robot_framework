@@ -1,0 +1,11 @@
+# selectors for SGAC Foreigner Residence List modal (iOS)
+FOR-RESIDENCE-MODAL: //XCUIElementTypeOther[@name="modal"]
+FOR-RESIDENCE-SEARCH-INPUT: //XCUIElementTypeTextField[@placeholderValue="Search"]
+FOR-RESIDENCE-SEARCH-CLEAR: (//XCUIElementTypeButton[@name="icon-button"])[2]
+FOR-RESIDENCE-CLOSE-BUTTON: (//XCUIElementTypeButton[@name="icon-button"])[1]
+
+# Residence options
+FOR-RESIDENCE-OPTION-BY-NAME: //XCUIElementTypeOther[starts-with(@name,"searchable dropdown accessible label ")]
+FOR-RESIDENCE-OPTION-1: (//XCUIElementTypeOther[starts-with(@name,"searchable dropdown accessible label ")])[1]
+FOR-RESIDENCE-OPTION-2: (//XCUIElementTypeOther[starts-with(@name,"searchable dropdown accessible label ")])[2]
+FOR-RESIDENCE-OPTION-3: (//XCUIElementTypeOther[starts-with(@name,"searchable dropdown accessible label ")])[3]
