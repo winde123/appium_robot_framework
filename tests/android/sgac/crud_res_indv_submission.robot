@@ -1,20 +1,22 @@
 *** Settings ***
+Variables    ../../../Resources/fork_config.py
 Library     AppiumLibrary
 Library     String
-Library     ../../../../Resources/helper_func.py
-Resource    ../../../../Resources/commands.robot
-Resource    ../../../../Resources/android/SGACcommads.robot
-Variables    ../../../../Data/test_data/manual_field_random.py
-Variables    ../../../../Data/android/android_common_selectors.yaml
-Variables    ../../../../Data/test_data/input_fields_test_data.yaml
-Variables    ../../../../Data/android/sgac/sel_profile_submission_page.yaml
-Variables    ../../../Data/android/sgac/resident/res_indv_submission_form_page.yaml
-Variables    ../../../Data/android/sgac/resident/res_declaration_summmary_page.yaml
-Variables    ../../../../Data/android/sgac/declaration_page.yaml
-Variables    ../../../../Data/android/sgac/sub_success_page.yaml
-Variables    ../../../../Data/android/other_e_services/e727_service.yaml
-Variables    ../../../../Data/android/other_e_services/customs_declaration_service.yaml
-Test Setup       Open Android App in emulator    appActivity=sg.gov.ica.mobile.app.MainActivity  
+Library     ../../../Resources/helper_func.py
+Resource    ../../../Resources/commands.robot
+Resource    ../../../Resources/android/SGACcommands.robot
+Variables    ../../../Data/test_data/manual_field_random.py
+Variables    ${FORK_DATA_DIR}/android/android_common_selectors.yaml
+Variables    ../../../Data/test_data/input_fields_test_data.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/sel_profile_submission_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/resident/res_indv_submission_form_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/resident/res_declaration_summmary_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/declaration_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/sub_success_page.yaml
+Variables    ${FORK_DATA_DIR}/android/other_e_services/e727_service.yaml
+Variables    ${FORK_DATA_DIR}/android/other_e_services/customs_declaration_service.yaml
+Force Tags    fork:both
+Test Setup       Open MyICA App on Android Emulator
 Test Teardown    Close Application
 
 *** Test Cases ***
@@ -87,4 +89,4 @@ Create a resident submission and navigate to the customs website
     Expect Element    ${CUSTOMS-WEB-ELEM-HEADER}    visible
     Close Android Chrome Browser
 
-    
+     

@@ -1,15 +1,17 @@
 *** Settings ***
+Variables    ../../../Resources/fork_config.py
 Library     AppiumLibrary
 Library     String
-Library     ../../../../Data/test_data/manual_field_random.py
-Resource    ../../../../Resources/commands.robot
-Resource    ../../../../Resources/android/SGACcommads.robot
-Variables    ../../../../Data/test_data/manual_field_random.py
-Variables    ../../../../Data/android/sgac/indv_profile_list_page.yaml
-Variables    ../../../../Data/android/profile_creation_method_page.yaml
-Variables   ../../../Data/android/sgac/resident/resident_profile_creation_form_page.yaml
-Variables    ../../../../Data/android/sgac/resident/resident_confirmation_profile_page.yaml
-Test Setup       Open Android App in emulator    appActivity=sg.gov.ica.mobile.app.MainActivity  
+Library     ../../../Data/test_data/manual_field_random.py
+Resource    ../../../Resources/commands.robot
+Resource    ../../../Resources/android/SGACcommands.robot
+Variables    ../../../Data/test_data/manual_field_random.py
+Variables    ${FORK_DATA_DIR}/android/sgac/indv_profile_list_page.yaml
+Variables    ${FORK_DATA_DIR}/android/profile_creation_method_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/resident/resident_profile_creation_form_page.yaml
+Variables    ${FORK_DATA_DIR}/android/sgac/resident/resident_confirmation_profile_page.yaml
+Force Tags    fork:both
+Test Setup       Open MyICA App on Android Emulator
 Test Teardown    Close Application
 
 *** Test Cases ***

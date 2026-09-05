@@ -1,22 +1,23 @@
 *** Settings ***
+Variables    ../../../Resources/fork_config.py
 Library       AppiumLibrary
 Library       ../../../Data/test_data/manual_field_random.py
 Library       ../../../Resources/helper_func.py
 Resource      ../../../Resources/commands.robot
-Resource      ../../../Resources/QRcommands.robot
-Variables     ../../../Data/android/yaml_QR_pages/passport_qr_code_page.yaml
-Variables     ../../../Data/android/manual_creation_profile_form.yaml
-Variables     ../../../Data/android/yaml_QR_pages/personal_qr_code_page.yaml
-Variables     ../../../Data/android/yaml_QR_pages/create_group_qr_code_page.yaml
-Variables     ../../../Data/android/yaml_QR_pages/all_profiles_page.yaml
+Resource      ../../../Resources/android/QRcommands.robot
+Variables     ${FORK_DATA_DIR}/android/yaml_QR_pages/passport_qr_code_page.yaml
+Variables     ${FORK_DATA_DIR}/android/manual_creation_profile_form.yaml
+Variables     ${FORK_DATA_DIR}/android/yaml_QR_pages/personal_qr_code_page.yaml
+Variables     ${FORK_DATA_DIR}/android/yaml_QR_pages/create_group_qr_code_page.yaml
+Variables     ${FORK_DATA_DIR}/android/yaml_QR_pages/all_profiles_page.yaml
 Variables     ../../../Data/test_data/input_fields_test_data.yaml
-Test Setup       Open Android App in emulator    appActivity=sg.gov.ica.mobile.app.MainActivity    
+Force Tags    fork:both
+Test Setup       Open MyICA App on Android Emulator
 Test Teardown    Close Application
 *** Test Cases ***
 
 SG_BC_MHA_SGAC-773
     [Documentation]     Straight through case of creating personal passport qr code for sc manually and validate the values in the summary page
-    #Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
     #Sleep    5s
     ## checking for the presence of the favorite icon for passport qrcode and passport qr tab
 
@@ -98,7 +99,6 @@ SG_BC_MHA_SGAC-773
 
 SG_BC_MHA_SGAC-775
     [Documentation]     This is the manual creation of foreign visitor profile and QR code and validate fields in summary page . Nationality is random.
-    #Open Android App in emulator                appActivity=sg.gov.ica.mobile.app.MainActivity
     Navigate to QR Code page without tutorial flow
     Navigate to individual manual profile creation page
     Click on element    ${NRIC-FLAG-NO-OPTION}
@@ -146,4 +146,3 @@ SG_BC_MHA_SGAC-775
     Click on element                ${TOC-PRIVACY-POLICY-CHECKBOX}
 
     Click on element                ${PASSPORT-DETAILS-SAVE-BUTTON}
-
