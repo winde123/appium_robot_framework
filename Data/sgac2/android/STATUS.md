@@ -31,6 +31,11 @@ Method: Appium page source per screen → offline XPath eval with `scratchpad/wa
 - **SGAC arrival-card flow restructured** (see sgac_landing_page): Individual/Group Submission
   model replaced by a profile-centric model (Manage Profiles / Create New Profile / Update SG
   Arrival Card); tutorial gate removed. This is a FLOW divergence needing T33, not a locator swap.
+- **Language flow fully validated (2026-09-05):** all 13 languages localize the SGAC module
+  correctly and the testID (resource-id/content-desc) locators resolve language-independently;
+  only text=-based locators break under non-English. A full profile-creation flow was driven
+  end-to-end in Chinese and SAVED to staging (profile "TRACEY MORRIS"). The Nationality picker
+  is a searchable dropdown — use Appium scroll_to_element, not blind taps.
 
 ## Screens
 | Screen file | Status | Notes |
@@ -41,7 +46,8 @@ Method: Appium page source per screen → offline XPath eval with `scratchpad/wa
 | sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN: profile-centric (Manage/Create/Update); Individual/Group split + tutorial gate removed → T33 |
 | profile_creation_method_page.yaml | verified | 6/7 as-is; only PROFILE-CREATION-SINGPASS-LABEL text changed (button resolves) |
 | manual_creation_profile_form.yaml | copied | |
-| sgac/resident/resident_profile_creation_form_page.yaml | verified(page1) | page-1 fields (name/NRIC/DOB/footer) resolve as-is; 2.0 adds REQUIRED Nationality/Passport No./Passport Expiry to the resident form (divergence); Contact Details is page 2, not reached (blocked by new required fields) |
+| sgac/resident/resident_profile_creation_form_page.yaml | verified | page 1 fields resolve as-is; 2.0 adds REQUIRED Nationality/Passport No./Passport Expiry (Nationality = searchable dropdown picker). PAGE 2 (Contact) DIVERGED: 2.0 shows ONLY Email (电子邮件) — no separate country-code/mobile fields that sgac1 had. Full flow driven + saved to staging 2026-09-05 |
+| sgac/resident/resident_confirmation_profile_page.yaml | verified | 3-page form's confirmation/summary (护照详情 + 联系方式 cards + T&C checkbox + Save); rendered correctly with all entered data; localizes across languages |
 | android_common_selectors.yaml | copied | |
 | sgac/individual_submission_page.yaml | copied | |
 | sgac/indv_profile_list_page.yaml | copied | |
