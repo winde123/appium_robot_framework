@@ -8,11 +8,11 @@ Library    helper_func.py
 #Library    ../venv/lib/python3.13/site-packages/robot/libraries/String.py
 #Library    RPA.Email.ImapSmtp
 #Library    SeleniumLibrary
+Variables   fork_config.py
 Variables   ../robotconfig.yaml
 #Variables   ../Data/android/landing_page.yaml
 #Variables   ../Data/ios/landing_page.yaml
 #Variables   ../Data/android/yaml_tutorial_flow_pages/passport_qr_tutorial_flow.yaml
-Variables   getabspath.py
 
 *** Variables ***
 
@@ -23,16 +23,32 @@ ${REMOTE_APP}                      %{DEVICEFARM_APP_PATH}
 
 
 *** Keywords ***
+Open MyICA App Remotely
+    [Documentation]    Fork-agnostic Device Farm app open: device/app come from the DEVICEFARM_* env vars (${REMOTE_*}), package/activity from fork_config.py for the active ${APP_FORK}.
+    Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${REMOTE_APP}    platformName=${REMOTE_PLATFORM_NAME}   deviceName=${REMOTE_DEVICE_NAME}    appPackage=${ANDROID_APP_PACKAGE}      appActivity=${ANDROID_APP_ACTIVITY}
+
+Open MyICA App on Android Emulator
+    [Documentation]    Fork-agnostic app open on the Android emulator: binary/package/activity come from fork_config.py for the active ${APP_FORK}.
+    Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${ANDROID_APP}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_EMULATOR_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${ANDROID_APP_ACTIVITY}
+
+Open MyICA App on Android Phone
+    [Documentation]    Fork-agnostic app open on the physical Android device: package/activity come from fork_config.py for the active ${APP_FORK} (no app= install, as before).
+    Open Application    http://127.0.0.1:4723   automationName=${ANDROID_AUTOMATION_NAME}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_DEVICE_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${ANDROID_APP_ACTIVITY}
+
 Open Android App remotely
+    [Documentation]    *DEPRECATED* Use `Open MyICA App Remotely` instead. The ${appActivity} argument is ignored — the active fork's ${ANDROID_APP_ACTIVITY} from fork_config.py is authoritative.
     [Arguments]    ${appActivity}=${EMPTY}
-    Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${REMOTE_APP}    platformName=${REMOTE_PLATFORM_NAME}   deviceName=${REMOTE_DEVICE_NAME}    appPackage=${ANDROID_APP_PACKAGE}      appActivity=${appActivity} 
+    Open MyICA App Remotely
+
 Open Android App in emulator
+    [Documentation]    *DEPRECATED* Use `Open MyICA App on Android Emulator` instead. The ${appActivity} argument is ignored — the active fork's ${ANDROID_APP_ACTIVITY} from fork_config.py is authoritative.
     [Arguments]    ${appActivity}=${EMPTY}
-    Open Application    remote_url=${APPIUM_SERVER_URL}   automationName=${ANDROID_AUTOMATION_NAME}    app=${ANDROID_APP}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_EMULATOR_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${appActivity}     
+    Open MyICA App on Android Emulator
 
 Open Android App in Android Phone
+    [Documentation]    *DEPRECATED* Use `Open MyICA App on Android Phone` instead. The ${appActivity} argument is ignored — the active fork's ${ANDROID_APP_ACTIVITY} from fork_config.py is authoritative.
     [Arguments]    ${appActivity}=${EMPTY}
-    Open Application    http://127.0.0.1:4723   automationName=${ANDROID_AUTOMATION_NAME}    platformName=${ANDROID_PLATFORM_NAME}    deviceName=${ANDROID_DEVICE_NAME}  platformVersion=${ANDROID_PLATFORM_VERSION}     appPackage=${ANDROID_APP_PACKAGE}      appActivity=${appActivity}  
+    Open MyICA App on Android Phone
 Click on element
     [Arguments]    ${elementid}
     #${CLICK-ELEMENT-STATUS}    Set Variable    ${KEYWORD STATUS}
@@ -93,9 +109,13 @@ Stop iOS Device Recording
     ${proc}=    Get Variable Value    ${REC_PROC}    ${NONE}
     Run Keyword If    '${proc}' != '${NONE}'    Terminate Process    ${proc}    kill=true
 
+Open MyICA App on iOS Device
+    [Documentation]    Fork-agnostic app open on the real iOS device: launches the TestFlight-installed build by ${IOS_BUNDLE_ID} from fork_config.py (nothing is installed; noReset keeps device state).
+    Open Application    ${APPIUM_SERVER_URL}     platformName=${IOS_PLATFORM_NAME}    appium:platformVersion=${IOS_PLATFORM_VERSION}    appium:deviceName=${IOS_DEVICE_NAME}    appium:automationName=${IOS_AUTOMATION_NAME}    appium:udid=${IOS_DEVICE_UDID}    appium:noReset=${True}    appium:showXcodeLog=${True}    appium:bundleId=${IOS_BUNDLE_ID}    appium:xcodeOrgId=${IOS_XCODE_ORGID}    appium:includeSafariInWebviews=${True}    appium:newCommandTimeout=${3600}    appium:connectHardwareKeyboard=${True}
+
 Open ios App on device
-    #Open Application    http://127.0.0.1:4723    platformName=iOS    appium:platformVersion=18.4.1    appium:deviceName='Edwin's iPad'    appium:automationName=XCUITest    appium:udid=00008122-000A08312186801C    appium:noReset=${True}    appium:showXcodeLog=${True}    appium:app=${IOS_APP}    appium:xcodeOrgId=W6PMZD7K72    appium:includeSafariInWebviews=${True}    appium:newCommandTimeout=${3600}    appium:connectHardwareKeyboard=${True}
-    Open Application    ${APPIUM_SERVER_URL}     platformName=${IOS_PLATFORM_NAME}    appium:platformVersion=${IOS_PLATFORM_VERSION}    appium:deviceName=${IOS_DEVICE_NAME}    appium:automationName=${IOS_AUTOMATION_NAME}    appium:udid=${IOS_DEVICE_UDID}    appium:noReset=${True}    appium:showXcodeLog=${True}    appium:app=${IOS_APP}    appium:xcodeOrgId=${IOS_XCODE_ORGID}    appium:includeSafariInWebviews=${True}    appium:newCommandTimeout=${3600}    appium:connectHardwareKeyboard=${True}
+    [Documentation]    *DEPRECATED* Use `Open MyICA App on iOS Device` instead — it launches the TestFlight-installed build by the active fork's ${IOS_BUNDLE_ID}.
+    Open MyICA App on iOS Device
 
 
 Close iOS Chrome Browser

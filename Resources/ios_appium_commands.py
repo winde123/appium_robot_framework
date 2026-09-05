@@ -1,3 +1,6 @@
+import os
+import sys
+
 from appium import webdriver
 from appium.options.ios import XCUITestOptions
 import yaml
@@ -21,9 +24,26 @@ options.xcode_org_id = robot_ios_config['IOS_XCODE_ORGID']
 appium_server_url = robot_ios_config['APPIUM_SERVER_URL']
 
 
-def terminate_app():
+def _fork_ios_bundle_id():
+    """Resolve the active fork's iOS bundle ID via Resources/fork_config.py (the single resolver)."""
+    resources_dir = os.path.dirname(os.path.abspath(__file__))
+    if resources_dir not in sys.path:
+        sys.path.insert(0, resources_dir)
+    import fork_config
+    return fork_config.get_variables()['IOS_BUNDLE_ID']
+
+
+def terminate_app(bundle_id=None):
+    """Terminate the app under test on the iOS device.
+
+    ``bundle_id`` defaults to the active fork's ``${IOS_BUNDLE_ID}`` from
+    fork_config.py, so existing no-argument callers keep today's behavior;
+    callers may pass ``${IOS_BUNDLE_ID}`` (or another bundle id) explicitly.
+    """
+    if bundle_id is None:
+        bundle_id = _fork_ios_bundle_id()
     driver = webdriver.Remote(appium_server_url, options=options)
-    driver.terminate_app('sg.gov.ica.mobile.app')
+    driver.terminate_app(bundle_id)
 
 
 
