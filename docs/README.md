@@ -15,6 +15,7 @@ This directory is the durable reference point for humans and coding agents worki
 | [`../todo/README.md`](../todo/README.md) | Shared task queue and handoff workflow |
 | [`refactor/fork-conventions.md`](refactor/fork-conventions.md) | SGAC1.0/SGAC2.0 fork contract: `APP_FORK`, `fork_config.py` exports, per-fork layout, tags, dispatch pattern |
 | [`refactor/sgac-fork-refactor-tasks.md`](refactor/sgac-fork-refactor-tasks.md) | Fork-refactor task board: waves, file ownership, merge order |
+| [`refactor/android-apk-analysis.md`](refactor/android-apk-analysis.md) | T00 Android APK evidence: package, launcher activity, versions, and SHA-256 fingerprints for both forks |
 
 Add new documents to this table when they are created. Prefer a small number of focused documents with descriptive, kebab-case filenames, such as `android-test-setup.md` or `device-farm-runbook.md`.
 

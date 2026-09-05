@@ -5,21 +5,33 @@
 refactor, one codebase drives both forks, selected at run time, with SGAC1.0 remaining the default
 so existing runs keep working.
 
-**Status:** PLANNING ONLY — no refactoring has been implemented yet. This board is the work queue
-for concurrent agents.
+**Status:** T01 (fork contract) is done and committed (`713dca5`,
+`docs/refactor/fork-conventions.md`). Implementation waves have not started. This board is the
+work queue for concurrent agents.
+
+**Scope change (2026-09-05):** AWS Device Farm is NOT in use for now — all Device Farm
+integration work is deferred. `testspec.yml` / `testspec-android.yml` stay in the repo untouched
+and no task edits them; T12 is parked below for when Device Farm testing resumes.
 
 ---
 
 ## Target architecture (the contract all tasks build against)
 
 - **Fork selector:** a single variable `APP_FORK`, values `sgac1` (default) | `sgac2`.
-  Local: `APP_FORK=sgac2 robot tests/android/...`. Device Farm: exported in the testspec.
+  Local: `APP_FORK=sgac2 robot tests/android/...`. (Device Farm would export it in the testspec —
+  deferred, see T12.)
 - **Single resolver:** a new Variables file `Resources/fork_config.py` reads `APP_FORK` and emits
   every fork-dependent value: `${ANDROID_APP}`, `${IOS_APP}`, `${ANDROID_APP_PACKAGE}`,
   `${ANDROID_APP_ACTIVITY}`, `${IOS_BUNDLE_ID}`, `${FORK_DATA_DIR}` (e.g. `Data/sgac2`), and
   `${APP_FORK}` itself. Nothing else in the repo hardcodes a fork-specific value.
 - **Per-fork trees where content diverges, one tree where it doesn't:**
-  - `icaApp/{sgac1,sgac2}/app.apk|app.ipa` — binaries, stable filenames (no version in the name).
+  - `icaApp/{sgac1,sgac2}/app.apk` — Android binaries only, stable filenames (no version in the
+    name). **iOS has no per-fork binary in the repo:** app versions are driven by TestFlight.
+    Today `icaApp/sgac_test.ipa` is passed as `appium:app` purely as a springboard that launches
+    the installed app on the Xcode-connected iPad (`noReset=True`) — and it carries the
+    **SGAC1.0 bundle ID**, so it cannot launch SGAC2.0. Target: launch by `${IOS_BUNDLE_ID}`
+    (`appium:bundleId`) instead, keep the ipa only as a bundle-ID reference, and drop
+    `${IOS_APP}` from the contract.
   - `Data/{sgac1,sgac2}/{android,ios}/**` — locator YAMLs, full tree per fork (sgac2 seeded by
     copying sgac1, then corrected screen by screen). `Data/test_data/` stays shared.
   - `tests/{android,ios}/**` — ONE suite tree, parameterized by `${APP_FORK}`; suites import
@@ -31,6 +43,11 @@ for concurrent agents.
 - **Tags:** every test gets `fork:both` by default; fork-exclusive tests get `fork:sgac1-only` /
   `fork:sgac2-only`. Runs for fork N use `--exclude fork:sgacM-only`.
 - **Back-compat:** with `APP_FORK` unset, everything resolves exactly to today's SGAC1.0 behavior.
+- **iOS is real-device only:** the `.ipa` cannot be installed in the iOS Simulator — simulator
+  runs are blocked for the iOS platform. Every iOS execution (suite runs, locator capture,
+  smoke tests) needs Edwin's physical device connected via XCUITest; only Android has an
+  emulator option. Plan iOS tasks as Edwin-in-the-loop. Switching iOS forks means installing
+  the other fork's TestFlight build on the device and setting `APP_FORK` to match.
 
 T01 finalizes this contract; raise objections there, not in downstream tasks.
 
@@ -39,13 +56,34 @@ T01 finalizes this contract; raise objections there, not in downstream tasks.
 ## Wave 0 — inputs & contract (BLOCKING, serial)
 
 ### T00 — Collect SGAC2.0 inputs  `[owner: Edwin — cannot be done by an agent]`
+
+**Status (2026-09-05):** Partially complete — Android inputs verified; iOS inputs and the
+flow/screen difference list remain open. Evidence and checksums are in
+[`android-apk-analysis.md`](android-apk-analysis.md).
+
 Needed before Wave 3 (Waves 1–2 do NOT block on this):
-- [ ] SGAC2.0 `.apk` and `.ipa` binaries dropped into the repo.
-- [ ] SGAC2.0 Android `appPackage` + main `appActivity`, and iOS bundle ID. Note whether they
-      differ from SGAC1.0 (`sg.gov.ica.mobile.app` / `...MainActivity`) and whether both forks
-      can be installed side by side on one device.
+
+- [x] SGAC2.0 APK supplied in `icaApp/2.0.0_12_418.apk.zip` (manifest version `2.0.0`,
+      versionCode `418`). The latest SGAC1.0 baseline is supplied in
+      `icaApp/1.9.1_1_417.apk.zip` (manifest version `1.19.1`, versionCode `417`; note the
+      filename/version mismatch). Both ZIPs were extracted temporarily for static analysis.
+- [x] SGAC2.0 Android identifiers verified: `appPackage=sg.gov.ica.mobile.app` and
+      `appActivity=sg.gov.ica.mobile.app.MainActivity`. Both match the supplied SGAC1.0 APK;
+      each declares a direct exported `MAIN`/`LAUNCHER` activity with no activity alias.
+- [x] Android coexistence established from the manifests: both forks use the same application
+      ID, so they cannot coexist as separate apps in the same Android profile. Install the
+      intended fork's APK for each run.
+- [x] iOS binaries: RESOLVED AS NOT APPLICABLE — iOS app versions are driven by TestFlight, so
+      no `.ipa` will be supplied for either fork. The existing `icaApp/sgac_test.ipa` serves
+      only as a bundle-ID reference for the iOS app. iOS runs launch the TestFlight-installed
+      build by bundle ID.
+- [ ] SGAC2.0 iOS bundle ID verified (read it from the TestFlight-installed app on the iPad or
+      from App Store Connect) and compared with SGAC1.0's `sg.gov.ica.mobile.app`; record
+      whether the iOS forks can coexist on one device.
+- [ ] SGAC2.0 TestFlight build installed on the iPad when Wave 3 iOS work (T32) is scheduled.
 - [ ] List of flows/screens known to differ between the forks (drives Wave 3 scoping).
-- [ ] Whether Device Farm gets separate projects per fork or one project with two app uploads.
+
+Device Farm project decisions remain deferred with T12 and are not required to close T00.
 
 ### T01 — Finalize the fork contract and conventions  `[1 agent, serial — lands first]`
 - Files owned: `docs/refactor/fork-conventions.md` (new), `CLAUDE.md` (conventions + running
@@ -62,8 +100,11 @@ Needed before Wave 3 (Waves 1–2 do NOT block on this):
 
 ### T10 — Config + app resolution layer
 - Files owned: `robotconfig.yaml`, `Resources/getabspath.py`, `Resources/fork_config.py` (new),
-  `icaApp/` (restructure into `icaApp/sgac1/`, move `1.15.0_(3)_368.apk` → `sgac1/app.apk`,
-  `sgac_test.ipa` → `sgac1/app.ipa`; create empty `icaApp/sgac2/` with a README placeholder).
+  `icaApp/` (restructure into `icaApp/sgac1/app.apk` and `icaApp/sgac2/app.apk` — Android only.
+  T00 supplied newer APK zips (`1.9.1_1_417.apk.zip`, `2.0.0_12_418.apk.zip`, see
+  `android-apk-analysis.md`); extract those as the fork apks rather than the old
+  `1.15.0_(3)_368.apk`. Leave `icaApp/sgac_test.ipa` exactly where it is — it's a bundle-ID
+  reference only; iOS ships via TestFlight and no ipa is ever installed by the framework).
 - Restructure `robotconfig.yaml` with per-fork sections (app package, activity, bundle id, binary
   path per fork); device/Appium-server config stays fork-agnostic.
 - `fork_config.py` (Robot Variables file with `get_variables()`): reads `APP_FORK` env var,
@@ -81,19 +122,23 @@ Needed before Wave 3 (Waves 1–2 do NOT block on this):
   `Test Setup`). Add fork-agnostic entry points: `Open MyICA App on Android Emulator`,
   `... on Android Phone`, `... Remotely`, `Open MyICA App on iOS Device` — thin wrappers that
   inject `${ANDROID_APP_ACTIVITY}` / `${IOS_BUNDLE_ID}` for the active fork.
+- iOS keyword launches the TestFlight-installed build: replace `appium:app=${IOS_APP}` with
+  `appium:bundleId=${IOS_BUNDLE_ID}` (keep `noReset=${True}`). Today the ipa passed as
+  `appium:app` is only a launch springboard for the installed app, and it holds the SGAC1.0
+  bundle ID — this bundleId switch is what unlocks SGAC2.0 on iOS. There is no `${IOS_APP}`
+  variable in the contract and the framework never installs an ipa.
 - iOS teardown in `ios_appium_commands.py`: terminate by `${IOS_BUNDLE_ID}` variable, not literal.
 - Acceptance: suites can call the new setup keywords with zero arguments; old keywords kept as
   deprecated aliases until Wave 2 rewires the suites.
 
-### T12 — AWS Device Farm testspecs
-- Files owned: `testspec.yml`, `testspec-android.yml`, plus a short
-  `docs/refactor/device-farm-forks.md` explaining per-fork run setup.
-- Add `APP_FORK` (default `sgac1`) exported in the test phase and passed through to robot; the
-  binary itself still comes from `$DEVICEFARM_APP_PATH` (whichever fork's app was uploaded), so
-  the spec's `APP_FORK` must match the uploaded app — document that clearly. Keep hardcoded
-  `TEST_SUITE_PATH` behavior but hoist it next to `APP_FORK` so both edits are in one place.
-- Acceptance: specs lint (`yamllint`-clean or at least valid YAML), fork exclude-tag flag
-  (`--exclude fork:sgac2-only` etc.) included in the robot invocation.
+### T12 — AWS Device Farm testspecs  `[DEFERRED — do not pick up]`
+- Edwin is not testing on Device Farm for now; no agent should touch `testspec.yml` /
+  `testspec-android.yml` during this refactor. They stay as-is (SGAC1.0-era) and will drift from
+  the new layout — that is accepted.
+- When Device Farm resumes, this task = re-verify both specs against the post-refactor repo
+  (moved trees, `fork_config.py`, new setup keywords), export `APP_FORK` in the test phase,
+  forward it to robot with the fork exclude-tag flag, and document that the spec's `APP_FORK`
+  must match whichever fork's binary was uploaded (`$DEVICEFARM_APP_PATH`).
 
 ### T13 — Local tooling cleanup (nice-to-have, fully independent)
 - Files owned: `subprocess_call.py`, `requirements.txt` (only if needed).
@@ -133,8 +178,10 @@ Needed before Wave 3 (Waves 1–2 do NOT block on this):
 ## Wave 3 — SGAC2.0 enablement  `[blocked on T00 + Waves 1–2; then parallel]`
 
 ### T30 — SGAC2.0 config activation
-- Files owned: `robotconfig.yaml` (sgac2 section values), `icaApp/sgac2/` (binaries from T00).
-- Fill real package/activity/bundle-id/binary values; verify `APP_FORK=sgac2` resolves end to end.
+- Files owned: `robotconfig.yaml` (sgac2 section values), `icaApp/sgac2/` (Android apk from T00).
+- Fill the remaining sgac2 values (Android package/activity are already verified by T00; the
+  open item is the iOS bundle ID, read from the TestFlight build — no ios_binary exists);
+  verify `APP_FORK=sgac2` resolves end to end.
 
 ### T31 — SGAC2.0 Android locator tree
 - Files owned: `Data/sgac2/android/**` (new).
@@ -143,8 +190,11 @@ Needed before Wave 3 (Waves 1–2 do NOT block on this):
   XPaths that changed. Track per-screen status in a checklist at the top of the tree
   (`Data/sgac2/android/STATUS.md`): `copied` → `verified` → `diverged`.
 
-### T32 — SGAC2.0 iOS locator tree
+### T32 — SGAC2.0 iOS locator tree  `[Edwin-in-the-loop: needs the real device]`
 - Files owned: `Data/sgac2/ios/**` (new). Same procedure and STATUS.md as T31.
+- iOS has no simulator option (the `.ipa` won't install in the iOS Simulator), so screen
+  walking requires Edwin's physical device connected with the SGAC2.0 build installed —
+  schedule this task for when the device is available.
 
 ### T33 — Divergent flows
 - Files owned: `Resources/android/**`, `Resources/ios/**` (fork-dispatch additions),
@@ -169,9 +219,12 @@ Needed before Wave 3 (Waves 1–2 do NOT block on this):
   Mnemosyne (standing instruction).
 
 ### T42 — Smoke runs  `[Edwin-in-the-loop: needs devices]`
-- No file ownership. `APP_FORK=sgac1` and `APP_FORK=sgac2` × {Android emulator, iOS device}:
-  run one SGAC suite each (`tests/android/sgac/crud_profile.robot`,
-  `tests/ios/sgac/crud_res_profile.robot`) plus one Device Farm run per platform.
+- No file ownership. `APP_FORK=sgac1` and `APP_FORK=sgac2` × {Android emulator, real iOS
+  device}: run one SGAC suite each (`tests/android/sgac/crud_profile.robot`,
+  `tests/ios/sgac/crud_res_profile.robot`). The iOS half is real-device only (no simulator),
+  and switching iOS forks means installing that fork's TestFlight build on the iPad first —
+  the framework launches by bundle ID and never installs an app on iOS. Device Farm runs:
+  deferred with T12.
 - Acceptance: green sgac1 runs prove no regression; sgac2 runs prove the fork switch works.
 
 ---
@@ -180,8 +233,9 @@ Needed before Wave 3 (Waves 1–2 do NOT block on this):
 
 1. **Ownership is exclusive.** A task writes only the files it owns above. If you need a change
    in another task's file, leave a `TODO(T-id)` note in your task's PR description — don't edit it.
-2. **Merge order:** T01 → (T10, T11, T12, T13 in any order) → (T20 ∥ T21) → (T30, T31 ∥ T32,
+2. **Merge order:** T01 → (T10, T11, T13 in any order) → (T20 ∥ T21) → (T30, T31 ∥ T32,
    then T33) → T40/T41/T42. T40 can start any time after T01 (it lints against the contract).
+   T12 is deferred and outside the merge order.
 3. **One branch (or worktree) per task**, named `refactor/<task-id>-<slug>`.
 4. **Definition of done for every task:** `robot --dryrun tests/` still resolves, the parity
    linter (once it exists) passes, and the T01 contract doc was followed verbatim.
@@ -191,8 +245,8 @@ Needed before Wave 3 (Waves 1–2 do NOT block on this):
 
 ## Open questions for Edwin (answers slot into T00/T01)
 
-1. Does SGAC2.0 use a different Android package / iOS bundle ID, or the same
-   `sg.gov.ica.mobile.app`? (Same ID ⇒ forks can't coexist on one device; affects T42 logistics.)
-2. Separate Device Farm projects per fork, or one project + two app uploads?
-3. Any flows that exist in only one fork (not just changed, but absent)? Those become
+1. Does SGAC2.0 use a different iOS bundle ID, or the same `sg.gov.ica.mobile.app`?
+   Confirm iOS coexistence for T42 logistics. Android IDs and coexistence are answered in T00
+   and [`android-apk-analysis.md`](android-apk-analysis.md).
+2. Any flows that exist in only one fork (not just changed, but absent)? Those become
    `fork:*-only` suites in T33 rather than dispatch branches.

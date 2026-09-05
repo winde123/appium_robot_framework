@@ -13,9 +13,13 @@ holds the wave/task assignments. This document holds the *what*; the board holds
 
 - One environment variable, `APP_FORK`, selects the fork for the whole run.
 - Values: `sgac1` (default) | `sgac2`. Lowercase, no other forms.
-- Unset ⇒ `sgac1` ⇒ today's exact behavior. This is the back-compat guarantee.
+- Unset ⇒ `sgac1` ⇒ today's exact behavior. This is the back-compat guarantee. (One deliberate
+  exception: iOS sessions launch the TestFlight-installed build by bundle ID instead of
+  installing an `.ipa` — see the iOS delivery model note in §2.)
 - Local run: `APP_FORK=sgac2 robot tests/android/sgac/crud_profile.robot`
-- Device Farm: `APP_FORK` is exported in the testspec test phase (T12) and forwarded to robot.
+- Device Farm: deferred — not in use for now (T12 is parked). When it resumes, `APP_FORK` gets
+  exported in the testspec test phase and forwarded to robot; until then the testspecs stay
+  untouched and no task edits them.
 - Robot-side equivalent for suites that must read the env var directly:
   `%{APP_FORK=sgac1}` — but suites should NOT need it: `fork_config.py` is the single resolver
   (see §2). Suites read fork values only from the variables `fork_config.py` exports.
@@ -42,11 +46,20 @@ Exact exported variable names (UPPER_SNAKE):
 | --- | --- | --- |
 | `${APP_FORK}` | the resolved fork selector | `sgac1` |
 | `${ANDROID_APP}` | absolute path to the Android binary | `/…/icaApp/sgac1/app.apk` |
-| `${IOS_APP}` | absolute path to the iOS binary | `/…/icaApp/sgac1/app.ipa` |
 | `${ANDROID_APP_PACKAGE}` | Android app package | `sg.gov.ica.mobile.app` |
 | `${ANDROID_APP_ACTIVITY}` | Android main activity | `sg.gov.ica.mobile.app.MainActivity` |
 | `${IOS_BUNDLE_ID}` | iOS bundle ID | `sg.gov.ica.mobile.app` |
 | `${FORK_DATA_DIR}` | root of the fork's locator tree | `Data/sgac1` |
+
+**iOS delivery model (2026-09-05):** iOS app versions are driven by TestFlight — no per-fork
+`.ipa` lives in the repo, and there is NO `${IOS_APP}` variable in the target contract. The
+iPad is connected through Xcode (WDA signed via `IOS_XCODE_ORGID`). **Current mechanism:** the
+keyword passes `icaApp/sgac_test.ipa` as `appium:app`, which acts purely as a *springboard* to
+launch the already-installed app (`noReset=True`, no reinstall) — and that ipa carries the
+**SGAC1.0 bundle ID**, so it can only ever launch SGAC1.0. **Target (T11):** launch directly by
+`appium:bundleId=${IOS_BUNDLE_ID}`, removing the ipa from the launch path so both forks work;
+the ipa is then retained only as a bundle-ID reference artifact. Which fork runs on iOS is
+determined by which TestFlight build is installed on the device; `APP_FORK` must match it.
 
 `fork_config.py` absorbs `Resources/getabspath.py` (T10): absolute paths are computed inside
 `fork_config.py` (or in a thin helper it calls) from the `robotconfig.yaml` fork block. The
@@ -57,7 +70,9 @@ Known SGAC1.0 values (source of truth today — must resolve to these when `APP_
 - package `sg.gov.ica.mobile.app`, activity `sg.gov.ica.mobile.app.MainActivity`
   (currently hardcoded in every Android suite's `Test Setup` — removed by T11/T20),
 - iOS bundle ID `sg.gov.ica.mobile.app`,
-- binaries today at `icaApp/1.15.0_(3)_368.apk` and `icaApp/sgac_test.ipa` (T10 moves them).
+- Android binary today at `icaApp/1.15.0_(3)_368.apk` (T10 moves it; T00 has since supplied
+  newer APK zips — see the board). The iOS `icaApp/sgac_test.ipa` stays where it is as a
+  bundle-ID reference only.
 
 SGAC2.0 values are **placeholders** until T00 delivers the real package/activity/bundle-ID/binary
 inputs; T30 fills them in. The placeholder block must still be valid YAML so `APP_FORK=sgac2`
@@ -66,7 +81,8 @@ resolves end to end (against a not-yet-present app is fine).
 ## 3. Directory layout
 
 ```
-icaApp/{sgac1,sgac2}/app.apk | app.ipa   # binaries, stable filenames, one file each
+icaApp/{sgac1,sgac2}/app.apk             # Android binaries only, stable filenames
+icaApp/sgac_test.ipa                     # iOS bundle-ID reference ONLY (iOS ships via TestFlight)
 Data/{sgac1,sgac2}/{android,ios}/**      # locator YAMLs: FULL tree per fork
                                          # (sgac2 seeded by copying sgac1, then corrected)
 Data/test_data/                          # SHARED test data — never forked
@@ -99,13 +115,11 @@ FORKS:
     android_activity: sg.gov.ica.mobile.app.MainActivity
     ios_bundle_id: sg.gov.ica.mobile.app
     android_binary: icaApp/sgac1/app.apk
-    ios_binary: icaApp/sgac1/app.ipa
   sgac2:
-    android_package: TODO(T00/T30)
-    android_activity: TODO(T00/T30)
+    android_package: sg.gov.ica.mobile.app        # verified by T00 (same as sgac1)
+    android_activity: sg.gov.ica.mobile.app.MainActivity
     ios_bundle_id: TODO(T00/T30)
     android_binary: icaApp/sgac2/app.apk
-    ios_binary: icaApp/sgac2/app.ipa
 ```
 
 `fork_config.py` reads this block; nothing else consumes `FORKS` directly.

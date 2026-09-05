@@ -23,8 +23,13 @@ the work queue and merge order are [`docs/refactor/sgac-fork-refactor-tasks.md`]
 
 - Run: `APP_FORK=sgac2 robot tests/android/sgac/crud_profile.robot` (unset ⇒ sgac1, today's behavior).
 - `Resources/fork_config.py` is the single resolver exporting `${APP_FORK}`, `${ANDROID_APP}`,
-  `${IOS_APP}`, `${ANDROID_APP_PACKAGE}`, `${ANDROID_APP_ACTIVITY}`, `${IOS_BUNDLE_ID}`,
-  `${FORK_DATA_DIR}`. Import it first in every file; nothing else hardcodes fork-specific values.
+  `${ANDROID_APP_PACKAGE}`, `${ANDROID_APP_ACTIVITY}`, `${IOS_BUNDLE_ID}`, `${FORK_DATA_DIR}`.
+  Import it first in every file; nothing else hardcodes fork-specific values. There is no
+  `${IOS_APP}`: iOS app versions are driven by TestFlight, so no per-fork `.ipa` lives in the
+  repo — iOS sessions launch the TestFlight-installed build by `${IOS_BUNDLE_ID}`.
+  `icaApp/sgac_test.ipa` today acts only as a launch springboard (passed as `appium:app` with
+  `noReset` to open the installed app) and carries the SGAC1.0 bundle ID; post-T11 it is kept
+  purely as a bundle-ID reference.
 - Locators live in per-fork trees `Data/{sgac1,sgac2}/{android,ios}/`; suites import via
   `Variables    ${FORK_DATA_DIR}/android/….yaml`. `Data/test_data/` stays shared.
 - Tags: `fork:both` (default), `fork:sgac1-only`, `fork:sgac2-only`; runs exclude the other
@@ -47,9 +52,10 @@ APP_FORK=sgac2 robot tests/android/sgac/crud_profile.robot  # SGAC2.0 fork (defa
 ```
 
 - Outputs go to `Output/` by default (`-d` to override).
+- **iOS is real-device only**: simulator testing is blocked for the iOS platform. The iPad is connected via Xcode (WDA signed with `IOS_XCODE_ORGID` from `robotconfig.yaml`) and driven over XCUITest; don't attempt simulator-based runs. The app under test is whatever TestFlight build is installed on the device — the repo's `.ipa` (passed as `appium:app` with `noReset`) is only a springboard that launches the installed app, and it carries the SGAC1.0 bundle ID.
 - Android secure fields (NRIC input) require Appium started with `--allow-insecure UiAutomator2:adb_shell` — `subprocess_call.py` does this (currently Windows/PowerShell specific).
 - Device/Appium config lives in `robotconfig.yaml` (Appium URL, device names, UDIDs, platform versions). `ANDROID_PLATFORM_VERSION` defaults to 16, overridable via env var.
-- App binaries resolved by `Resources/getabspath.py`: Android `icaApp/1.15.0_(3)_368.apk`, iOS `icaApp/sgac_test.ipa`. (README mentions `app-staging-release.apk` — `getabspath.py` is the source of truth.)
+- App binaries resolved by `Resources/getabspath.py`: Android `icaApp/1.15.0_(3)_368.apk`, iOS `icaApp/sgac_test.ipa` (springboard only — launches the installed TestFlight build, SGAC1.0 bundle ID). (README mentions `app-staging-release.apk` — `getabspath.py` is the source of truth.)
 
 ### AWS Device Farm
 
