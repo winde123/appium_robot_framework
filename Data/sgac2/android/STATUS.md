@@ -32,15 +32,15 @@ Method: Appium page source per screen → offline XPath eval with `scratchpad/wa
 | citizen_and_res_page.yaml | verified | unchanged in 2.0 — 10/10 locators resolve as-is |
 | eservices_landing_page.yaml | diverged | 10 service cards → SNAKE_CASE `EServices<CONSTANT>` rids (13/17 verified; 4 search-flow keys need the search interaction) |
 | sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN: profile-centric (Manage/Create/Update); Individual/Group split + tutorial gate removed → T33 |
-| profile_creation_method_page.yaml | copied | |
+| profile_creation_method_page.yaml | verified | 6/7 as-is; only PROFILE-CREATION-SINGPASS-LABEL text changed (button resolves) |
 | manual_creation_profile_form.yaml | copied | |
+| sgac/resident/resident_profile_creation_form_page.yaml | verified(page1) | page-1 fields (name/NRIC/DOB/footer) resolve as-is; 2.0 adds REQUIRED Nationality/Passport No./Passport Expiry to the resident form (divergence); Contact Details is page 2, not reached (blocked by new required fields) |
 | android_common_selectors.yaml | copied | |
 | sgac/individual_submission_page.yaml | copied | |
 | sgac/indv_profile_list_page.yaml | copied | |
 | sgac/sel_profile_submission_page.yaml | copied | |
 | sgac/declaration_page.yaml | copied | |
 | sgac/sub_success_page.yaml | copied | |
-| sgac/resident/resident_profile_creation_form_page.yaml | copied | |
 | sgac/resident/resident_confirmation_profile_page.yaml | copied | |
 | sgac/resident/res_indv_submission_form_page.yaml | copied | |
 | sgac/resident/res_declaration_summmary_page.yaml | copied | |
