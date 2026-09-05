@@ -1,10 +1,11 @@
 # Divergence check — SGAC core screens (Android)
 
-- Status: Backlog
-- Owner: Unassigned
+- Status: Done
+- Owner: Claude (offline divergence analysis)
 - Priority: High
 - Created: 2026-09-05
 - Updated: 2026-09-05
+- Deliverable: `docs/refactor/divergence/sgac-core.md` (5 screens, 53 keys; offline, pattern-based)
 
 ## Goal
 
@@ -53,9 +54,9 @@ call out where a whole screen's role changed, not just locator strings.
 
 ## Acceptance criteria
 
-- [ ] `docs/refactor/divergence/sgac-core.md` committed with every in-scope screen covered.
-- [ ] Each key classified with a proposed sgac2 locator (or explicit "needs device").
-- [ ] No changes to `Data/sgac2/android/**`.
+- [x] `docs/refactor/divergence/sgac-core.md` committed with every in-scope screen covered.
+- [x] Each key classified with a proposed sgac2 locator (or explicit "needs device").
+- [x] No changes to `Data/sgac2/android/**`.
 
 ## Validation
 
