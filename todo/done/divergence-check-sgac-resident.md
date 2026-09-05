@@ -1,7 +1,7 @@
 # Divergence check — SGAC resident screens (Android)
 
-- Status: Backlog
-- Owner: Unassigned
+- Status: Done
+- Owner: Claude (offline divergence analysis)
 - Priority: High
 - Created: 2026-09-05
 - Updated: 2026-09-05
@@ -42,10 +42,29 @@ Write to `docs/refactor/divergence/sgac-resident.md`.
 
 ## Acceptance criteria
 
-- [ ] `docs/refactor/divergence/sgac-resident.md` committed, all in-scope screens covered.
-- [ ] The new required-fields divergence on the resident form is captured explicitly.
-- [ ] No changes to `Data/sgac2/android/**`.
+- [x] `docs/refactor/divergence/sgac-resident.md` committed, all in-scope screens covered.
+- [x] The new required-fields divergence on the resident form is captured explicitly.
+- [x] No changes to `Data/sgac2/android/**`.
 
 ## Validation
 
 - Doc renders; cross-referenced to STATUS.md and the live-verified page-1 findings.
+
+## Outcome
+
+- Created `docs/refactor/divergence/sgac-resident.md` (offline, no device).
+- Screens covered: `resident_profile_creation_form_page.yaml` (page-2 Contact Details only, per
+  scope — 10 keys), `resident_confirmation_profile_page.yaml` (21), `res_indv_submission_form_page.yaml`
+  (34), `res_declaration_summmary_page.yaml` (38). 103 existing keys total.
+- Category counts (existing keys): unchanged 92 · renamed-SNAKE_CASE candidate 3 firm (+6
+  fallback on the Contact Details fields) · flow-diverged/index-dependent 8 (the summary EDIT
+  buttons) · removed 0.
+- **Headline divergence captured explicitly:** SGAC2.0 adds three REQUIRED fields to the resident
+  profile form page 1 — Nationality/Citizenship, Passport Number, Date of Passport Expiry — which
+  block reaching page-2 Contact Details until filled, ripple new label/value rows onto the
+  confirmation and summary Passport/Personal sections, and shift the summary's index-based EDIT
+  locators. Proposed (Low-confidence) 2.0 testIDs given for the new fields; flagged for T33.
+- Key prediction basis: page-1 `PassportDetails*` form-field testIDs were live-verified as-is on
+  2.0, so the page-2 `ContactDetails*` fields are predicted `unchanged` (SNAKE_CASE only a
+  fallback) — form-field ids are the exception to the app-wide SNAKE_CASE card/tile pattern.
+- No edits to `Data/sgac2/android/**` (verified via git status).
