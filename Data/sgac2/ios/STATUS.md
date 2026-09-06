@@ -3,6 +3,28 @@
 Seeded 2026-09-05 by copying `Data/sgac1/ios/**` (37 YAMLs). To be corrected screen by
 screen against the live SGAC2.0 iOS build on Edwin's iPad (real device, XCUITest via Xcode).
 
+## Session 3 (2026-09-06 late afternoon) — tunnel up; submission blocked by APP BUG
+- **WireGuard staging tunnel INSTALLED and VERIFIED working** (VPN badge; staging web loads).
+  "Update SG Arrival Card" opens an IN-APP WEBVIEW of the SGAC update e-service ("ICA | SG
+  Arrival Card"; fields: Date of Arrival, NRIC/FIN, Full Name, DOB, Email). The e-services
+  "Submit SG Arrival Card" tab opens the portal in SAFARI and loads fine.
+- **"Profile update required" modal loop is an APP-SIDE issue, not network:** with staging
+  reachable, EVERY locally-created profile still fails profile selection (tested: original
+  profile, edit-wizard resave, NRIC/DOB-year-aligned data, full delete + fresh re-create as
+  JEFFREY SERRANO). Suspect the iOS-26.6 requirement gate or a 2.0.0-build bug — RAISE WITH
+  APP TEAM. The in-app submission screens (sel_indv_profile_list, res_submission_form,
+  declaration, sub_success, foreigner tree) stay unwalkable until it clears — and may not
+  exist at all in 2.0 (submission appears to be entirely web-based now).
+- **e-Service search returns NO results for any term** (tested "Report Lost", "passport",
+  with tunnel + Return) — 2.0 search looks broken on this build; 3 search keys stay blocked.
+- **New landing coverage:** profile-card kebab menu (View / Edit + Delete only), Delete
+  confirmation alert, Profile-update-required alert, Continue button, empty-state hints,
+  selection checkbox NOT in a11y tree (coordinate tap ~x=55). Edit mode verified: header
+  "Edit Profile", NRIC/Passport masked with a data-privacy helper (keys added).
+- **Test-data note:** generated NRIC year-prefix and DOB are independent in
+  manual_field_random.py; consistency did NOT unblock selection, but keep in mind for
+  server-side validations.
+
 ## Session 2 (2026-09-06 afternoon) — WDA recovery + resident flow walked
 - **WDA recovery recipe:** if WDA answers /status but sessions fail with
   `XCTDaemonErrorDomain Code=41 "Not authorized for performing UI testing actions"`, the
@@ -51,21 +73,21 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 ## Blockers / inputs needed
 - ~~SGAC2.0 iOS BUNDLE ID~~ RESOLVED (T00/T30): `sg.gov.ica.mobile.app`, robotconfig filled.
 - ~~SGAC2.0 TestFlight build installed on the iPad~~ RESOLVED (2.0.0 installed).
-- **STAGING TUNNEL (CONFIRMED blocker 2026-09-06):** the iPad has NO WireGuard staging
-  profile, so every staging-bound flow fails — "Update SG Arrival Card" and cargo "Convoy"
-  open Safari and get 403 (nexusguard WAF, iPad egress IP 220.255.58.146); e-service search
-  returns no results (server-driven); and the SGAC submission flow is stuck in a
-  "Profile update required" modal loop at profile selection (app appears unable to validate
-  the profile against the backend — retried 3x incl. full edit-wizard resave, same loop).
-  Public internet works (Customs@SG loads fine). → Edwin: install/enable the WireGuard
-  staging profile (network_egress/sg-sng.conf) on the iPad to unblock the submission-flow
-  screens (sel_indv_profile_list, res_submission_form, declaration, sub_success, convoy/permit).
+- ~~STAGING TUNNEL~~ RESOLVED (2026-09-06 late afternoon): WireGuard installed on the iPad
+  and verified — staging web flows load (in-app SGAC update webview + Safari submit portal).
+- **APP BUG — "Profile update required" loop (CURRENT blocker):** with staging reachable,
+  profile selection still rejects every locally-created profile (see Session 3 notes).
+  Raise with the app team (suspect the iOS-26.6 gate on 26.5.2, or a 2.0.0 build bug).
+  Blocks the in-app submission screens — which may anyway be REMOVED in 2.0 (submission
+  looks entirely web-based now).
+- **e-Service search broken on this build** (no results for any term, tunnel up) — the 3
+  search keys stay unverifiable.
 
 ## Screens
 | Screen file | Status | Notes |
 | --- | --- | --- |
-| cargo/cargo_convoy_form_page.yaml | blocked | old in-app convoy form; 2.0 "Convoy" tile opens Safari → 403 without staging tunnel — re-check with tunnel |
-| cargo/cargo_convoy_page.yaml | blocked | same — convoy flow is web-bound in 2.0 |
+| cargo/cargo_convoy_form_page.yaml | diverged | old in-app convoy form has no 2.0 entry point — the "Convoy" tile opens the web portal in Safari (loads with tunnel); likely REMOVED → T33 |
+| cargo/cargo_convoy_page.yaml | diverged | same — convoy flow is web-based in 2.0 |
 | cargo/cargo_landing_page.yaml | diverged | PROFILE-CENTRIC REDESIGN (like SGAC): Manage Cargo Submission / Create New Vehicle Profiles / Convoy Clearance / Select Vehicle Profiles (9/9 new keys verified); old convoy shortcut removed; note app typo "vechicle" in empty-state |
 | cargo/cargo_permit_form_page.yaml | blocked | permit flow sits behind submission (needs tunnel) |
 | cargo/cargo_sub_res_page.yaml | blocked | submission-success page (needs tunnel) |
@@ -86,19 +108,19 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 | other_e_services/passport_IC_page.yaml | verified | 4 tabs → SNAKE_CASE (durations unchanged); web-headers unverified |
 | other_e_services/sc_pr_services_page.yaml | verified | Re-entry tab → SNAKE_CASE, Citizenship/PR tabs kept human labels; web-headers unverified |
 | other_e_services/sgac_epass_enquiry.yaml | verified | 3 tabs → SNAKE_CASE, Submit-SGAC tab kept human label; web-headers unverified |
-| sgac/declaration_page.yaml | copied | |
+| sgac/declaration_page.yaml | blocked (app bug) | in-app submission gated by the Profile-update-required loop; may not exist in 2.0 (submission is web-based) |
 | sgac/foreigner/for_form_cty_page.yaml | copied | |
 | sgac/foreigner/for_form_nationality_page.yaml | copied | |
 | sgac/foreigner/for_form_residence_page.yaml | copied | |
 | sgac/foreigner/for_profile_form.yaml | copied | |
 | sgac/foreigner/for_profile_summary.yaml | copied | |
-| sgac/indv_submission_page.yaml | copied | |
+| sgac/indv_submission_page.yaml | blocked (app bug) | same |
 | sgac/profile_creation_method_page.yaml | verified | 6/6 unchanged (mirrors Android) |
 | sgac/profile_list_page.yaml | verified | 6/6 unchanged (checked with a saved card); + new Delete key; empty state reuses card-container (see note in file) |
-| sgac/resident/res_declaration_summary.yaml | copied | |
+| sgac/resident/res_declaration_summary.yaml | blocked (app bug) | same |
 | sgac/resident/res_profile_form_page.yaml | diverged | 3-PAGE FLOW (same as Android): p1 adds REQUIRED Nationality (searchable dropdown, `searchable dropdown accessible label <X>` options)/Passport No./Expiry; p2 Contact = EMAIL ONLY; full flow driven + saved 2026-09-06 |
 | sgac/resident/res_profile_summary.yaml | diverged | + Nationality/Passport No./Expiry rows; contact email-only; EDIT→"Edit"; terms link merged into sentence; SAVE appears only after T&C checked (28/29 + unchecked state verified) |
-| sgac/resident/res_submission_form_page.yaml | copied | |
-| sgac/sel_indv_profile_list_page.yaml | copied | |
+| sgac/resident/res_submission_form_page.yaml | blocked (app bug) | same |
+| sgac/sel_indv_profile_list_page.yaml | blocked (app bug) | same |
 | sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN (same as Android): profile-centric (Manage/Create/Update/Select); Individual/Group split + tutorial gate removed → T33 |
-| sgac/sub_success_page.yaml | copied | |
+| sgac/sub_success_page.yaml | blocked (app bug) | same |

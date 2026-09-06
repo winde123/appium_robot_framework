@@ -12,9 +12,30 @@ SGAC-LANDING-LANGUAGE-BUTTON: //XCUIElementTypeButton[@name="SGArrivalCardLangua
 # --- SGAC2.0 profile-centric actions (verified) ---
 SGAC-LANDING-MANAGE-PROFILES: //XCUIElementTypeOther[@name="Manage Profiles"]
 SGAC-LANDING-CREATE-NEW-PROFILE: //XCUIElementTypeOther[@name="Create New Profile"]
+# opens an IN-APP WEBVIEW of the SGAC update e-service (page marker below); needs staging tunnel
 SGAC-LANDING-UPDATE-ARRIVAL-CARD: //XCUIElementTypeOther[@name="Update SG Arrival Card"]
+SGAC-LANDING-UPDATE-WEBVIEW-MARKER: //XCUIElementTypeOther[@name="ICA | SG Arrival Card"]
 SGAC-LANDING-SELECT-PROFILES-SECTION: //XCUIElementTypeStaticText[@name="Select Profiles"]
 SGAC-LANDING-ADD-PROFILE: //XCUIElementTypeOther[@name="add profile plus icon"]
+
+# --- profile select cards + submission entry (verified 2026-09-06 with a saved profile) ---
+# NOTE: the card's selection CHECKBOX is NOT exposed in the accessibility tree — tests must
+# tap it by coordinates at the card's left edge (~x=55 in points on iPad).
+SGAC-LANDING-PROFILE-SELECT-HINT: //XCUIElementTypeStaticText[@name="Create a profile to auto-fill your submission"]
+SGAC-LANDING-EMPTY-STATE-HINT: //XCUIElementTypeStaticText[@name="Save your details as a profile to auto-fill future submission"]
+SGAC-LANDING-PROFILE-CARD-MENU: //XCUIElementTypeButton[@name="select profile card right icon"]
+SGAC-LANDING-CONTINUE: //XCUIElementTypeOther[@name="Continue"]
+# card kebab popover (from SGAC-LANDING-PROFILE-CARD-MENU); Button types disambiguate from the tiles
+SGAC-LANDING-CARD-MENU-VIEW-EDIT: //XCUIElementTypeButton[@name="View / Edit"]
+SGAC-LANDING-CARD-MENU-DELETE: //XCUIElementTypeButton[@name="Delete"]
+# delete confirmation alert
+SGAC-LANDING-DELETE-CONFIRM-ALERT: //XCUIElementTypeAlert[@name="Delete Profile"]
+SGAC-LANDING-DELETE-CONFIRM-BUTTON: //XCUIElementTypeButton[@name="Confirm"]
+# profile-selection validation modal — fires on Continue for EVERY locally-created profile on
+# build 2.0.0/iOS 26.5.2 even with staging reachable (suspected app bug / iOS 26.6 gate; see STATUS)
+SGAC-LANDING-PROFILE-UPDATE-ALERT: //XCUIElementTypeAlert[@name="Profile update required"]
+SGAC-LANDING-PROFILE-UPDATE-BUTTON: //XCUIElementTypeButton[@name="UPDATE PROFILE"]
+SGAC-LANDING-PROFILE-UPDATE-CANCEL: //XCUIElementTypeButton[@name="CANCEL"]
 
 # --- sgac1-only, REMOVED/RESTRUCTURED in 2.0 (kept commented for T33 mapping) ---
 # SGAC-TUTORIAL-NAV-SGAC-BTN            : 2.0 removed the tutorial gate

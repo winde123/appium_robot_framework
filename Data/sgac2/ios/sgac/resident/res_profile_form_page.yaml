@@ -10,6 +10,11 @@
 
 RES-FORM-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
 RES-FORM-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
+# Edit mode (via card menu "View / Edit" or the Profile-update-required modal): same 3-page
+# wizard but header reads "Edit Profile" and NRIC/Passport render MASKED (dots) with the
+# helper below. Field values persist; only the display is masked.
+RES-FORM-EDIT-HEADER: //XCUIElementTypeStaticText[@name="Edit Profile"]
+RES-FORM-MASKED-FIELD-NOTE: //XCUIElementTypeStaticText[@name="Required. Field is masked for data privacy."]
 
 # --- page 1: Profile Details (verified) ---
 RES-FORM-PROFILE-DETAILS-HEADER: //XCUIElementTypeStaticText[@name="Profile Details"]

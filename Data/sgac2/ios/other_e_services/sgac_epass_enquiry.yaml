@@ -2,7 +2,9 @@
 # SNAKE_CASE constants (some kept human labels). *-HEADER-ELEM keys are on the
 # external web pages (need network; unverified on iOS walk).
 SUBMIT-SG-ARRIVAL-CARD-TAB: //XCUIElementTypeOther[contains(@name,"service list Submit SG Arrival Card")]
-SUBMIT-SG-ARRIVAL-CARD-HEADER-ELEM: //XCUIElementTypeOther[@name="Singapore Arrival Card (SGAC) and Electronic Pass (e-Pass) Enquiry Portal"]
+# 2.0: the tab opens SAFARI on the SGAC portal (verified 2026-09-06 via staging tunnel);
+# the old "…Enquiry Portal" heading is gone — the loaded page identifies as below
+SUBMIT-SG-ARRIVAL-CARD-HEADER-ELEM: //*[@name="ICA | SG Arrival Card"]
 APPLY-ENTRY-VISA-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_FOR_ENTRY_VISA")]
 APPLY-ENTRY-VISA-CARD-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Entry Visa"]
 RETRIEVE-E-PASS-RECORD-TAB: //XCUIElementTypeOther[contains(@name,"service list RETRIEVE_E_PASS_RECORD")]
