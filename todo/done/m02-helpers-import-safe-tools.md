@@ -1,7 +1,7 @@
 # M02 — Helper contracts and import-safe utility scripts
 
-- Status: Done (implementation and static review)
-- Integration status: Pending dev-lead integration and live-device acceptance
+- Status: Done (implemented, reviewed, integrated)
+- Integration status: Integrated into `main` as `f653a02` and pushed (2026-09-06); live-device acceptance pending
 - Owner: OpenCode (moonshotai/kimi-k2.7-code), coordinated by Codex
 - Priority: Medium
 - Created: 2026-09-06
@@ -57,3 +57,4 @@ Two independent small maintenance items: (1) Refactor helper_func.py for clear d
 - Combined worktree: /private/tmp/sgac-maintenance.BUsYX8/integrated, based on e7a15f1c1d339af7b1d06efa5a3cd2c8fcc1bba1. Strict parity: 0 errors, 0 warnings, with 230 pre-existing intentional divergences suppressed by the dev lead's allowlist; maintenance changes do not modify the checker, allowlist, or locator trees.
 - [Static review and repeatable validation commands](../../docs/refactor/maintenance-static-review.md). [Reviewed patch](../artifacts/maintenance-refactors-2026-09-06.patch); git apply --check passed against main ab2cefe2465e8f301a11570eef99e55eb08b6378.
 - Handoff: implementation remains uncommitted in the isolated review worktree and durable patch. The dev lead owns integration, rerunning checks against the latest checkout, and Android/iOS smoke testing. No live-device, remote-portal, image-generation, or Device Farm validation was performed; no commits, merges, or pushes were made by these workers or the coordinator.
+- 2026-09-06: Dev lead reviewed and integrated the combined patch into `main` as `f653a02` and pushed to origin/main; full device-free battery green on the integrated checkout (164 unit tests, doctests, 66/66 dryruns both forks, strict parity 0/0). All helper call sites verified safe under the new boundary validation (dates are machine-generated `%d/%m/%Y`, splitter args are ints, phone numbers coerced). Worker worktrees/branches removed. Live-device acceptance remains open.

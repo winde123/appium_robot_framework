@@ -2,7 +2,7 @@
 
 > Implementation and independent review of the six maintenance suggestions approved on 2026-09-06, separate from the SGAC fork-migration tasks.
 
-- Status: Static review complete; implementation prepared for dev-lead integration, not merged
+- Status: Integrated — merged into `main` as `f653a02` and pushed on 2026-09-06; live-device acceptance pending
 - Last reviewed: 2026-09-06
 - Implementation: Four OpenCode 1.18.20 workers using `moonshotai/kimi-k2.7-code`
 - Reviewer and coordinator: Codex
@@ -82,4 +82,32 @@ The dev lead should review the patch, recheck applicability against the then-cur
 - Profile replay requires the same seed, reference date, country, Faker version, and locale. Normal Robot argument/return logging can expose synthetic profile values; the helper's metadata log is not a promise of global log redaction.
 - QR generation is tested with a mocked backend. The optional treepoem/Pillow/Ghostscript setup and actual barcode output were not exercised.
 
-The requested implementation and static-review tasks are complete. Integration and live-device acceptance remain explicit follow-up work for the dev lead.
+The requested implementation and static-review tasks are complete. Integration is done (see below); live-device acceptance remains the open follow-up.
+
+## Integration outcome (2026-09-06)
+
+The dev lead (Claude) independently reviewed the full patch and integrated it:
+
+- Committed to `main` as `f653a02` (49 files: the 43-file patch, these handoff
+  records, and a correction to the stale 7-finding parity note in
+  `docs/testing/test-data.md`), then pushed to `origin/main`.
+- Checks beyond the table above, run on the integrated checkout (base
+  `a2777fc`, one commit newer than the review baseline): a grep of the applied
+  tree found no orphaned references to the removed module-level variables —
+  every live call site sets test variables from `Generate Profile Record`; the
+  only other hits are comments. `tests/android/Add_Vehicle_Profile.robot:234`
+  consumes `readfromfile` as a Library keyword and needed no diff — the
+  repo-anchored loader fixes its previously dead hardcoded Windows path, and
+  the tracked `Cargo_Test_Data.txt` (103 entries) satisfies the 100-permit
+  guard.
+- Full battery green on the integrated checkout: 164 unit tests, helper
+  doctests, 66/66 dry runs on both forks, strict parity 0 errors / 0 warnings,
+  `git diff --check` clean.
+- The temporary worktrees and branches under `/private/tmp/sgac-maintenance.BUsYX8/`
+  were removed after integration (none held unique commits); the worker run
+  logs remain in that directory. Do **not** re-apply the durable patch — it is
+  now part of history.
+- Remaining follow-up: Android and iOS device smoke test of the new
+  `Click on element` / `Type text` readiness semantics (see the wait-helper
+  limitation above), tunable via `INTERACTION_WAIT_TIMEOUT` /
+  `INTERACTION_WAIT_POLL`.
