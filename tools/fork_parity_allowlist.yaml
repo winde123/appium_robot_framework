@@ -1,0 +1,84 @@
+# Intentional SGAC1.0 / SGAC2.0 locator divergences — consumed by check_fork_parity.py.
+#
+# Every entry documents a divergence VERIFIED ON-DEVICE during the Wave 3 locator walks
+# (Android T31, iOS T32; see Data/sgac2/*/STATUS.md and docs/refactor/divergence/).
+# The linter suppresses exactly these differences and reports any UNUSED entry as an
+# error, so the list cannot rot. Add entries only for live-verified divergences.
+#
+# keys.<rel-path>.sgac1_only : keys allowed to exist in sgac1 but not sgac2 (removed in 2.0)
+# keys.<rel-path>.sgac2_only : keys allowed to exist in sgac2 but not sgac1 (new in 2.0)
+# files.sgac2_only           : whole YAML files that exist only in the sgac2 tree
+
+files:
+  sgac2_only:
+    - ios/cargo/vehicle_profiles_page.yaml   # 2.0-only: cargo vehicle-profile redesign
+  sgac1_only: []
+
+keys:
+  android/landing_page.yaml:
+    sgac1_only: [MYICA-SCAM-BANNER-HEADER-ELEM]      # scam banner lost its text header in 2.0
+  android/sgac/sgac_landing_page.yaml:               # profile-centric SGAC redesign (T33)
+    sgac1_only: [SGAC-ADD-GROUP-SUBMISSION-CARD, SGAC-ADD-INDIVIDUAL-SUBMISSION-CARD,
+                 SGAC-FLOATING-OPTIONS-BUTTON, SGAC-GROUP-SUBMISSION-BUTTON,
+                 SGAC-GROUP-SUBMISSION-HEADER, SGAC-INDIVIDUAL-SUBMISSION-BUTTON,
+                 SGAC-INDIVIDUAL-SUBMISSION-HEADER, SGAC-SECTION-CITIZEN-RESIDENT,
+                 SGAC-SUBMITTED-DECLARATIONS-BUTTON, SGAC-TUTORIAL-NAV-SGAC-BTN,
+                 SGAC-VIEW-PROFILE-BUTTON]
+    sgac2_only: [SGAC-ADD-PROFILE-BUTTON, SGAC-CREATE-NEW-PROFILE-BUTTON,
+                 SGAC-MANAGE-PROFILES-BUTTON, SGAC-UPDATE-ARRIVAL-CARD-BUTTON]
+  ios/landing_page.yaml:
+    sgac1_only: [MYICA-SCAM-BANNER-HEADER-ELEM]      # same as Android
+    sgac2_only: ['CITIZEN&RESIDENT-SGARRIVAL-CARD-FAV-BUTTON',
+                 FORIEGNVISITOR-SGARRIVAL-CARD-FAV-BUTTON, QR-CODE-FAV-BUTTON,
+                 REGISTER-REREGISTER-REPLACE-FAV-BUTTON]  # favourites keyed per-tile in 2.0 walk
+  ios/sgac/sgac_landing_page.yaml:                   # profile-centric SGAC redesign (T33)
+    sgac1_only: [SGAC-LANDING-ADD-BUTTON, SGAC-LANDING-CITIZEN-RESIDENT-SECTION,
+                 SGAC-LANDING-GROUP-SECTION, SGAC-LANDING-GROUP-SUBMISSION,
+                 SGAC-LANDING-GROUP-SUBMISSION-ADD-ICON, SGAC-LANDING-INDIVIDUAL-SECTION,
+                 SGAC-LANDING-INDIVIDUAL-SUBMISSION, SGAC-LANDING-SUBMITTED-DECLARATIONS,
+                 SGAC-LANDING-VIEW-ALL-INDV-SUBMISSIONS, SGAC-LANDING-VIEW-PROFILE,
+                 SGAC-TUTORIAL-NAV-SGAC-BTN]
+    sgac2_only: [SGAC-LANDING-ADD-PROFILE, SGAC-LANDING-CREATE-NEW-PROFILE,
+                 SGAC-LANDING-MANAGE-PROFILES, SGAC-LANDING-SELECT-PROFILES-SECTION,
+                 SGAC-LANDING-UPDATE-ARRIVAL-CARD]
+  ios/sgac/profile_list_page.yaml:
+    sgac2_only: [RES-PROFILE-LIST-CARD-DELETE]       # delete affordance on profile cards, new in 2.0
+  ios/sgac/resident/res_profile_form_page.yaml:      # 3-page Add Profile flow in 2.0
+    sgac1_only: [RES-FORM-CTY-CODE-INPUT, RES-FORM-CTY-CODE-REQUIRED,
+                 RES-FORM-MOBILE-NUMBER-INPUT, RES-FORM-MOBILE-NUMBER-LABEL,
+                 RES-FORM-MOBILE-NUMBER-REQUIRED]    # contact page is email-only in 2.0
+    sgac2_only: [RES-FORM-FOOTER-NEXT, RES-FORM-FOOTER-STEP-1, RES-FORM-FOOTER-STEP-2,
+                 RES-FORM-NATIONALITY-DROPDOWN, RES-FORM-NATIONALITY-OPTION-TEMPLATE,
+                 RES-FORM-NATIONALITY-REQUIRED, RES-FORM-NATIONALITY-SEARCH,
+                 RES-FORM-NATIONALITY-VALUE, RES-FORM-PASSPORT-EXPIRY-INPUT,
+                 RES-FORM-PASSPORT-EXPIRY-LABEL, RES-FORM-PASSPORT-EXPIRY-REQUIRED,
+                 RES-FORM-PASSPORT-NUMBER-INPUT, RES-FORM-PASSPORT-NUMBER-REQUIRED]
+  ios/sgac/resident/res_profile_summary.yaml:
+    sgac1_only: [RES-DECL-SUMMARY-COUNTRY-CODE-LABEL, RES-DECL-SUMMARY-COUNTRY-CODE-VALUE,
+                 RES-DECL-SUMMARY-MOBILE-LABEL, RES-DECL-SUMMARY-MOBILE-VALUE,
+                 RES-DECL-SUMMARY-TERMS-LINK]        # email-only contact; terms link merged
+    sgac2_only: [RES-DECL-SUMMARY-NATIONALITY-LABEL, RES-DECL-SUMMARY-NATIONALITY-VALUE,
+                 RES-DECL-SUMMARY-PASSPORT-EXPIRY-LABEL, RES-DECL-SUMMARY-PASSPORT-EXPIRY-VALUE,
+                 RES-DECL-SUMMARY-PASSPORT-NUMBER-LABEL, RES-DECL-SUMMARY-PASSPORT-NUMBER-VALUE]
+  ios/foreign_vis_page.yaml:                         # page removed in 2.0 (routes into SGAC landing)
+    sgac1_only: [FOREIGN-VIS-BACK-BUTTON, FOREIGN-VIS-CARGO-CLEARANCE-CARD,
+                 FOREIGN-VIS-CARGO-CLEARANCE-RIGHT-ICON, FOREIGN-VIS-CARGO-CLEARANCE-TITLE,
+                 FOREIGN-VIS-CBNI-RETRIEVE-VOID-CARD, FOREIGN-VIS-CBNI-RETRIEVE-VOID-RIGHT-ICON,
+                 FOREIGN-VIS-CBNI-RETRIEVE-VOID-TITLE, FOREIGN-VIS-CBNI-SUBMIT-CARD,
+                 FOREIGN-VIS-CBNI-SUBMIT-RIGHT-ICON, FOREIGN-VIS-CBNI-SUBMIT-TITLE,
+                 FOREIGN-VIS-CUSTOMS-DECLARATION-CARD, FOREIGN-VIS-CUSTOMS-DECLARATION-RIGHT-ICON,
+                 FOREIGN-VIS-CUSTOMS-DECLARATION-TITLE, FOREIGN-VIS-EXTEND-STAY-CARD,
+                 FOREIGN-VIS-EXTEND-STAY-RIGHT-ICON, FOREIGN-VIS-EXTEND-STAY-TITLE,
+                 FOREIGN-VIS-HEADER, FOREIGN-VIS-LTVP-CARD, FOREIGN-VIS-LTVP-RIGHT-ICON,
+                 FOREIGN-VIS-LTVP-TITLE, FOREIGN-VIS-QR-CODE-CARD, FOREIGN-VIS-QR-CODE-RIGHT-ICON,
+                 FOREIGN-VIS-QR-CODE-TITLE, FOREIGN-VIS-SGAC-CARD, FOREIGN-VIS-SGAC-RIGHT-ICON,
+                 FOREIGN-VIS-SGAC-TITLE, FOREIGN-VIS-VISITOR-ESERVICES-CARD,
+                 FOREIGN-VIS-VISITOR-ESERVICES-RIGHT-ICON, FOREIGN-VIS-VISITOR-ESERVICES-TITLE]
+    sgac2_only: [FOREIGN-SGAC-EMPTY-STATE-HINT]
+  ios/cargo/cargo_landing_page.yaml:                 # cargo profile-centric redesign
+    sgac1_only: [CARGO-CONVOY-SHORTCUT-BTN]
+    sgac2_only: [CARGO-LANDING-ADD-VEHICLE-PROFILE, CARGO-LANDING-BACK-BUTTON,
+                 CARGO-LANDING-CONVOY-CLEARANCE, CARGO-LANDING-CREATE-VEHICLE-PROFILE,
+                 CARGO-LANDING-EMPTY-STATE-HINT, CARGO-LANDING-HEADER,
+                 CARGO-LANDING-LANGUAGE-BUTTON, CARGO-LANDING-MANAGE-SUBMISSION,
+                 CARGO-LANDING-SELECT-VEHICLE-PROFILES-SECTION]

@@ -21,6 +21,7 @@ import yaml
 
 FORK_VALUE = "sg.gov.ica.mobile.app"
 EXCLUDED_DIR_PARTS = {"venv", "wheelhouse", "Output"}
+ALLOWLIST_NAME = "fork_parity_allowlist.yaml"
 
 SECTION_RE = re.compile(r"^\s*\*{3,}\s*(.+?)\s*\*{3,}\s*$")
 IMPORT_RE = re.compile(r"^\s*(Resource|Variables)\s+(\S+)", re.IGNORECASE)
@@ -76,8 +77,71 @@ def _yaml_files(dirpath: Path) -> dict[Path, Path]:
     return result
 
 
+class _Allowlist:
+    """Intentional fork divergences loaded from tools/fork_parity_allowlist.yaml.
+
+    Tracks which entries were consumed so stale entries can be reported.
+    """
+
+    def __init__(self, root: Path):
+        self.path = root / "tools" / ALLOWLIST_NAME
+        self.files_sgac1_only: set[str] = set()
+        self.files_sgac2_only: set[str] = set()
+        self.keys: dict[str, dict[str, set[str]]] = {}
+        self.used: set[tuple[str, str, str]] = set()
+        if not self.path.is_file():
+            return
+        with self.path.open(encoding="utf-8") as fh:
+            data = yaml.safe_load(fh) or {}
+        files = data.get("files") or {}
+        self.files_sgac1_only = set(files.get("sgac1_only") or [])
+        self.files_sgac2_only = set(files.get("sgac2_only") or [])
+        for rel, sides in (data.get("keys") or {}).items():
+            self.keys[rel] = {
+                "sgac1_only": set((sides or {}).get("sgac1_only") or []),
+                "sgac2_only": set((sides or {}).get("sgac2_only") or []),
+            }
+
+    def allowed_file(self, rel: str, side: str) -> bool:
+        pool = self.files_sgac1_only if side == "sgac1_only" else self.files_sgac2_only
+        if rel in pool:
+            self.used.add(("files", side, rel))
+            return True
+        return False
+
+    def filter_keys(self, rel: str, side: str, keys: list[str]) -> list[str]:
+        allowed = self.keys.get(rel, {}).get(side, set())
+        kept = []
+        for key in keys:
+            if key in allowed:
+                self.used.add((rel, side, key))
+            else:
+                kept.append(key)
+        return kept
+
+    def stale_entries(self) -> list[tuple[str, str, str]]:
+        entries = [
+            ("files", "sgac1_only", rel) for rel in self.files_sgac1_only
+        ] + [
+            ("files", "sgac2_only", rel) for rel in self.files_sgac2_only
+        ] + [
+            (rel, side, key)
+            for rel, sides in self.keys.items()
+            for side, keys in sides.items()
+            for key in keys
+        ]
+        return sorted(set(entries) - self.used)
+
+    def used_count(self) -> int:
+        return len(self.used)
+
+
 def check_locator_parity(root: Path) -> list[Finding]:
-    """Diff top-level YAML key sets between Data/sgac1 and Data/sgac2."""
+    """Diff top-level YAML key sets between Data/sgac1 and Data/sgac2.
+
+    Divergences listed in tools/fork_parity_allowlist.yaml are suppressed;
+    allowlist entries that no longer match anything are reported as errors.
+    """
     findings: list[Finding] = []
     sgac1 = root / "Data" / "sgac1"
     sgac2 = root / "Data" / "sgac2"
@@ -86,10 +150,13 @@ def check_locator_parity(root: Path) -> list[Finding]:
         # Migration has not started; caller prints a SKIP note.
         return findings
 
+    allowlist = _Allowlist(root)
     files1 = _yaml_files(sgac1)
     files2 = _yaml_files(sgac2)
 
     for rel in sorted(files1.keys() - files2.keys()):
+        if allowlist.allowed_file(rel.as_posix(), "sgac1_only"):
+            continue
         findings.append(
             Finding(
                 check="locator_parity",
@@ -100,6 +167,8 @@ def check_locator_parity(root: Path) -> list[Finding]:
             )
         )
     for rel in sorted(files2.keys() - files1.keys()):
+        if allowlist.allowed_file(rel.as_posix(), "sgac2_only"):
+            continue
         findings.append(
             Finding(
                 check="locator_parity",
@@ -147,8 +216,12 @@ def check_locator_parity(root: Path) -> list[Finding]:
 
         keys1 = set(data1.keys())
         keys2 = set(data2.keys())
-        missing = sorted(keys1 - keys2)
-        extra = sorted(keys2 - keys1)
+        missing = allowlist.filter_keys(
+            rel.as_posix(), "sgac1_only", sorted(keys1 - keys2)
+        )
+        extra = allowlist.filter_keys(
+            rel.as_posix(), "sgac2_only", sorted(keys2 - keys1)
+        )
 
         if missing:
             findings.append(
@@ -176,6 +249,26 @@ def check_locator_parity(root: Path) -> list[Finding]:
                     ),
                 )
             )
+
+    for rel, side, entry in allowlist.stale_entries():
+        findings.append(
+            Finding(
+                check="locator_parity",
+                severity="error",
+                path=allowlist.path,
+                line=1,
+                message=(
+                    f"stale allowlist entry ({rel} / {side}): {entry} — "
+                    "no matching divergence exists any more; remove it"
+                ),
+            )
+        )
+
+    if allowlist.used_count():
+        print(
+            f"NOTE: {allowlist.used_count()} intentional divergences suppressed "
+            f"via tools/{ALLOWLIST_NAME}"
+        )
 
     return findings
 
