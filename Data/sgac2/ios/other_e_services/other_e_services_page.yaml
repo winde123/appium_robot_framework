@@ -1,17 +1,20 @@
-## options on the other e services page
-E-SERVICES-PASSPORT-IDENTITY-CARD: //XCUIElementTypeOther[@name="EServicesPassportandIdentityCard"]
-E-SERVICES-SGAC-ENTRY-VISA-EPASS-ENQUIRY-PORTAL: //XCUIElementTypeOther[@name="EServicesSGArrivalCard,EntryVisa,e-PassEnquiryPortalandExtensionofVisitPass"]
-E-SERVICES-CHECK-VALIDITY-VERIFY: //XCUIElementTypeOther[@name="EServicesCheckValidity/Verify"]
-E-SERVICES-REPORT-CHANGE-RESIDENTIAL-ADDRESS: //XCUIElementTypeOther[@name="EServicesReportChangeofResidentialAddress"]
-E-SERVICES-SC-PR: //XCUIElementTypeOther[@name="EServicesSingaporeCitizenshipandPermanentResidence"]
-E-SERVICES-LTVP-STUDENTS-PASS: //XCUIElementTypeOther[@name="EServicesLong-TermVisitPassandStudent’sPass"]
-E-SERVICES-BIRTH-DEATH: //XCUIElementTypeOther[@name="EServicesBirthandDeath"]
-E-SERVICES-OTHERS: //XCUIElementTypeOther[@name="EServicesOthers"]
-E-SERVICES-APPOINTMENT: //XCUIElementTypeOther[@name="EServicesAppointment"]
-E-SERVICES-CUSTOMS-DECLARATION: //XCUIElementTypeOther[@name="EServicesCustomsDeclaration"]
-E-SERVICES-CUSTOMS-DECLARATION-HEADER-ELEM: //XCUIElementTypeOther[@name="Customs@SG"]
+## options on the other e services page — SGAC2.0 (verified 2026-09-06 vs build 2.0.0 on iPad)
+## DIVERGED (same as Android): the 10 service-card testIDs were renamed to SNAKE_CASE
+## EServices<CONSTANT> (identical constants to Android); the "Customs@SG" sub-header is
+## now "Customs Declaration".
+E-SERVICES-PASSPORT-IDENTITY-CARD: //XCUIElementTypeOther[@name="EServicesPASSPORT_AND_IDENTITY_CARD"]
+E-SERVICES-SGAC-ENTRY-VISA-EPASS-ENQUIRY-PORTAL: //XCUIElementTypeOther[@name="EServicesSG_ARRIVAL_CARD_ENTRY_VISA_E_PASS_EXTENSION"]
+E-SERVICES-CHECK-VALIDITY-VERIFY: //XCUIElementTypeOther[@name="EServicesCHECK_VALIDITY_VERIFY"]
+E-SERVICES-REPORT-CHANGE-RESIDENTIAL-ADDRESS: //XCUIElementTypeOther[@name="EServicesREPORT_CHANGE_RESIDENTIAL_ADDRESS"]
+E-SERVICES-SC-PR: //XCUIElementTypeOther[@name="EServicesSINGAPORE_CITIZENSHIP_AND_PERMANENT_RESIDENCE"]
+E-SERVICES-LTVP-STUDENTS-PASS: //XCUIElementTypeOther[@name="EServicesLONG_TERM_VISIT_PASS_AND_STUDENTS_PASS"]
+E-SERVICES-BIRTH-DEATH: //XCUIElementTypeOther[@name="EServicesBIRTH_AND_DEATH"]
+E-SERVICES-OTHERS: //XCUIElementTypeOther[@name="EServicesOTHERS"]
+E-SERVICES-APPOINTMENT: //XCUIElementTypeOther[@name="EServicesAPPOINTMENT"]
+E-SERVICES-CUSTOMS-DECLARATION: //XCUIElementTypeOther[@name="EServicesCUSTOMS_DECLARATION"]
+# "Customs@SG" removed in 2.0 — sub-header text is now "Customs Declaration"
+E-SERVICES-CUSTOMS-DECLARATION-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Customs Declaration"]
 E-SERVICES-SEARCH-ICON: //XCUIElementTypeOther[@name="appbar-header"]/XCUIElementTypeOther[2]
 E-SERVICES-SEARCH-INPUT: //XCUIElementTypeTextField[@value="Search for an e-Service"]
 E-SERVICES-REPORT-LOST-PASSPORT-SEARCH-RES: //XCUIElementTypeStaticText[contains(@name,"Report Lost Passport")]
 E-SERVICES-REPORT-LOST-IC-SEARCH-RES: //XCUIElementTypeStaticText[contains(@name,"Report Lost Identity Card")]
-

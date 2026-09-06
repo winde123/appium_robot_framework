@@ -1,5 +1,8 @@
+# SGAC2.0 (verified 2026-09-06 on iPad): service-list tabs partially renamed to
+# SNAKE_CASE constants (some kept human labels). *-HEADER-ELEM keys are on the
+# external web pages (need network; unverified on iOS walk).
 OTHERS-APEC-BUSINESS-TRAVEL-CARD-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for APEC Business Travel Card")]
 OTHERS-APEC-BUSINESS-TRAVEL-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Apply for APEC Business Travel Card (ABTC)"]
-OTHERS-US-TRUSTED-TRAVELLER-PROGRAMME-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Singapore - United States of America Trusted Traveller Programme")]
-OTHERS-CHANGE-RACE-DIALECT-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply to Change Race / Dialect")]
+OTHERS-US-TRUSTED-TRAVELLER-PROGRAMME-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_FOR_SG_US_TRUSTED_TRAVELLER_PROGRAMME")]
+OTHERS-CHANGE-RACE-DIALECT-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_TO_CHANGE_RACE_DIALECT")]
 OTHERS-CHANGE-RACE-DIALECT-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Application for Change of Race / Dialect (Singapore Citizens Only)"]

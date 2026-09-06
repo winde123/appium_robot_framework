@@ -49,36 +49,43 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
   restructure; resident form 3 pages incl. required Nationality/Passport; contact page email-only).
 
 ## Blockers / inputs needed
-- SGAC2.0 iOS BUNDLE ID (open T00 item) — read from the device once connected; robotconfig
-  `FORKS.sgac2.ios_bundle_id` is still `TODO(T00/T30)`.
-- SGAC2.0 TestFlight build installed on the iPad.
-- iPad likely needs the WireGuard staging profile (network_egress/sg-sng.conf) to reach staging,
-  same as the Android emulator did.
+- ~~SGAC2.0 iOS BUNDLE ID~~ RESOLVED (T00/T30): `sg.gov.ica.mobile.app`, robotconfig filled.
+- ~~SGAC2.0 TestFlight build installed on the iPad~~ RESOLVED (2.0.0 installed).
+- **STAGING TUNNEL (CONFIRMED blocker 2026-09-06):** the iPad has NO WireGuard staging
+  profile, so every staging-bound flow fails — "Update SG Arrival Card" and cargo "Convoy"
+  open Safari and get 403 (nexusguard WAF, iPad egress IP 220.255.58.146); e-service search
+  returns no results (server-driven); and the SGAC submission flow is stuck in a
+  "Profile update required" modal loop at profile selection (app appears unable to validate
+  the profile against the backend — retried 3x incl. full edit-wizard resave, same loop).
+  Public internet works (Customs@SG loads fine). → Edwin: install/enable the WireGuard
+  staging profile (network_egress/sg-sng.conf) on the iPad to unblock the submission-flow
+  screens (sel_indv_profile_list, res_submission_form, declaration, sub_success, convoy/permit).
 
 ## Screens
 | Screen file | Status | Notes |
 | --- | --- | --- |
-| cargo/cargo_convoy_form_page.yaml | copied | |
-| cargo/cargo_convoy_page.yaml | copied | |
-| cargo/cargo_landing_page.yaml | copied | |
-| cargo/cargo_permit_form_page.yaml | copied | |
-| cargo/cargo_sub_res_page.yaml | copied | |
+| cargo/cargo_convoy_form_page.yaml | blocked | old in-app convoy form; 2.0 "Convoy" tile opens Safari → 403 without staging tunnel — re-check with tunnel |
+| cargo/cargo_convoy_page.yaml | blocked | same — convoy flow is web-bound in 2.0 |
+| cargo/cargo_landing_page.yaml | diverged | PROFILE-CENTRIC REDESIGN (like SGAC): Manage Cargo Submission / Create New Vehicle Profiles / Convoy Clearance / Select Vehicle Profiles (9/9 new keys verified); old convoy shortcut removed; note app typo "vechicle" in empty-state |
+| cargo/cargo_permit_form_page.yaml | blocked | permit flow sits behind submission (needs tunnel) |
+| cargo/cargo_sub_res_page.yaml | blocked | submission-success page (needs tunnel) |
+| cargo/vehicle_profiles_page.yaml | NEW (verified) | 2.0-only page: Vehicle Profiles list + Add Vehicle form (15/15 across both states); no sgac1 counterpart |
 | citizen_res_page.yaml | verified | unchanged in 2.0 — 10/10 resolve as-is (same as Android) |
-| foreign_vis_page.yaml | copied | |
+| foreign_vis_page.yaml | diverged | PAGE REMOVED in 2.0: Home foreign-visitor favourite routes into the profile-centric SGAC landing (separate, empty foreigner profile store) → T33 |
 | ios_common_selectors.yaml | copied | |
 | landing_page.yaml | verified | favourites -> Home<CONSTANT> `name` (same as Android); scam text-header removed; e-service card buttons + banner resolve (9/9) |
-| other_e_services/appt_services_page.yaml | copied | |
-| other_e_services/birth_death_services_page.yaml | copied | |
-| other_e_services/change_res_address_page.yaml | copied | |
-| other_e_services/check_validity_verify_page.yaml | copied | |
-| other_e_services/customs_dec_services_page.yaml | copied | |
-| other_e_services/e727_services_page.yaml | copied | |
-| other_e_services/ltvp_student_pass_services_page.yaml | copied | |
-| other_e_services/other_e_services_page.yaml | copied | |
-| other_e_services/others_services_page.yaml | copied | |
-| other_e_services/passport_IC_page.yaml | copied | |
-| other_e_services/sc_pr_services_page.yaml | copied | |
-| other_e_services/sgac_epass_enquiry.yaml | copied | |
+| other_e_services/appt_services_page.yaml | verified | tabs → SNAKE_CASE (BOOK_CHANGE_CANCEL_APPOINTMENT, ONLINE_CHECK_IN_QUEUE); durations DROPPED on this page; web-header keys unverified (network) |
+| other_e_services/birth_death_services_page.yaml | verified | tab → APPLY_FOR_BIRTH_OR_DEATH_EXTRACT; web-header unverified |
+| other_e_services/change_res_address_page.yaml | verified | tabs → FOR_IC_HOLDER / FOR_LTVP_STP_HOLDER; web-header unverified |
+| other_e_services/check_validity_verify_page.yaml | verified | 8 tabs → SNAKE_CASE; web-header keys unverified |
+| other_e_services/customs_dec_services_page.yaml | diverged | e-services Customs card now DEEP-LINKS to Safari (Customs@SG) — no in-app category page; keys are sub-success/web only, unverifiable now |
+| other_e_services/e727_services_page.yaml | blocked | CBNI submit lives behind submission flows (needs tunnel) |
+| other_e_services/ltvp_student_pass_services_page.yaml | verified | 3 tabs → SNAKE_CASE, Other-Schools tab KEPT human label (partial conversion); web-headers unverified |
+| other_e_services/other_e_services_page.yaml | diverged | 10 cards → SNAKE_CASE EServices<CONSTANT> (identical to Android, 12/15); Customs@SG sub-header now "Customs Declaration"; 3 search keys need server (blocked) |
+| other_e_services/others_services_page.yaml | verified | 2 tabs → SNAKE_CASE, APEC tab kept human label; web-headers unverified |
+| other_e_services/passport_IC_page.yaml | verified | 4 tabs → SNAKE_CASE (durations unchanged); web-headers unverified |
+| other_e_services/sc_pr_services_page.yaml | verified | Re-entry tab → SNAKE_CASE, Citizenship/PR tabs kept human labels; web-headers unverified |
+| other_e_services/sgac_epass_enquiry.yaml | verified | 3 tabs → SNAKE_CASE, Submit-SGAC tab kept human label; web-headers unverified |
 | sgac/declaration_page.yaml | copied | |
 | sgac/foreigner/for_form_cty_page.yaml | copied | |
 | sgac/foreigner/for_form_nationality_page.yaml | copied | |

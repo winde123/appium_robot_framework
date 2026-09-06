@@ -1,2 +1,4 @@
-BIRTH-DEATH-APPLY-EXTRACT-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Birth or Death Extract")]
+# SGAC2.0 (verified 2026-09-06 on iPad): tab renamed to SNAKE_CASE constant.
+# *-HEADER-ELEM is on the external web page (needs network; unverified on iOS walk).
+BIRTH-DEATH-APPLY-EXTRACT-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_FOR_BIRTH_OR_DEATH_EXTRACT")]
 BIRTH-DEATH-APPLY-EXTRACT-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Apply for Extract for Record of Birth/Death"]

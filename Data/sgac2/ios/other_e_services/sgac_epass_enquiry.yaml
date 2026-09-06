@@ -1,8 +1,11 @@
+# SGAC2.0 (verified 2026-09-06 on iPad): service-list tabs partially renamed to
+# SNAKE_CASE constants (some kept human labels). *-HEADER-ELEM keys are on the
+# external web pages (need network; unverified on iOS walk).
 SUBMIT-SG-ARRIVAL-CARD-TAB: //XCUIElementTypeOther[contains(@name,"service list Submit SG Arrival Card")]
 SUBMIT-SG-ARRIVAL-CARD-HEADER-ELEM: //XCUIElementTypeOther[@name="Singapore Arrival Card (SGAC) and Electronic Pass (e-Pass) Enquiry Portal"]
-APPLY-ENTRY-VISA-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Entry Visa")]
+APPLY-ENTRY-VISA-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_FOR_ENTRY_VISA")]
 APPLY-ENTRY-VISA-CARD-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Entry Visa"]
-RETRIEVE-E-PASS-RECORD-TAB: //XCUIElementTypeOther[contains(@name,"service list Retrieve e-Pass Record")]
+RETRIEVE-E-PASS-RECORD-TAB: //XCUIElementTypeOther[contains(@name,"service list RETRIEVE_E_PASS_RECORD")]
 RETRIEVE-E-PASS-RECORD-HEADER-ELEM: //XCUIElementTypeOther[@name="Retrieval of Electronic Pass (e-Pass)"]
-APPLY-EXTENSION-OF-VISIT-PASS-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Extension of Visit Pass")]
+APPLY-EXTENSION-OF-VISIT-PASS-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_FOR_EXTENSION_OF_VISIT_PASS")]
 APPLY-EXTENSION-OF-VISIT-PASS-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Extension of Short-Term Visit Pass"]

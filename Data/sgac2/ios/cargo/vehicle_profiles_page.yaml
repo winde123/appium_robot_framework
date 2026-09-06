@@ -1,0 +1,24 @@
+# selectors for Cargo Vehicle Profiles list + Add Vehicle form (iOS) — SGAC2.0 ONLY
+# (verified 2026-09-06 on iPad). NEW PAGE in 2.0 — no sgac1 iOS counterpart: the cargo
+# module was redesigned around vehicle profiles (see cargo_landing_page.yaml). Reached via
+# Cargo Clearance landing -> "Create New Vehicle Profiles". Mirrors the Android sgac2
+# vehicle_profiles/add_vehicle pages.
+
+# Vehicle Profiles list
+VEHICLE-PROFILES-HEADER: //XCUIElementTypeStaticText[@name="Vehicle Profiles"]
+VEHICLE-PROFILES-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+VEHICLE-PROFILES-EMPTY-STATE: //XCUIElementTypeStaticText[@name="No vehicle profiles"]
+VEHICLE-PROFILES-ADD-VEHICLE-BTN: //XCUIElementTypeButton[@name="VehicleProfilesAddVehicle"]
+
+# Add Vehicle form (RN wrapper inputs — typed text is NOT exposed in the page source)
+ADD-VEHICLE-HEADER: //XCUIElementTypeStaticText[@name="Add Vehicle"]
+ADD-VEHICLE-NUMBER-INPUT: //XCUIElementTypeOther[@name="cargo vehicle number text inputtext input"]
+ADD-VEHICLE-NUMBER-LABEL: //XCUIElementTypeStaticText[@name="AddVehicleVehicleNumber-label-inactive"]
+ADD-VEHICLE-NUMBER-ERROR: //XCUIElementTypeStaticText[@name="cargo vehicle number required error message"]
+ADD-VEHICLE-MOBILE-INPUT: //XCUIElementTypeOther[@name="cargo mobile number text inputtext input"]
+ADD-VEHICLE-MOBILE-LABEL: //XCUIElementTypeStaticText[@name="AddVehicleMobileNo-label-inactive"]
+ADD-VEHICLE-MOBILE-ERROR: //XCUIElementTypeStaticText[@name="cargo mobile number required error message"]
+ADD-VEHICLE-EMAIL-INPUT: //XCUIElementTypeOther[@name="cargo email address text inputtext input"]
+ADD-VEHICLE-EMAIL-LABEL: //XCUIElementTypeStaticText[@name="InfoAndVehiclesAddEmail-label-inactive"]
+ADD-VEHICLE-EMAIL-ERROR: //XCUIElementTypeStaticText[@name="cargo email address required error message"]
+ADD-VEHICLE-SAVE-BTN: //XCUIElementTypeOther[@name="AddVehicleSaveVehicleProfile"]

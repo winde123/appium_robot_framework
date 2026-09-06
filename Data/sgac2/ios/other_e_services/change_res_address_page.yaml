@@ -1,3 +1,5 @@
-REPORT-CHANGE-RES-ADDRESS-IC-HOLDER-TAB: //XCUIElementTypeOther[contains(@name,"service list For IC holder")]
-REPORT-CHANGE-RES-ADDRESS-LTVP-STP-HOLDER-TAB: //XCUIElementTypeOther[contains(@name,"service list For LTVP / STP holder")]
+# SGAC2.0 (verified 2026-09-06 on iPad): tabs renamed to SNAKE_CASE constants.
+# *-HEADER-ELEM is on the external web page (needs network; unverified on iOS walk).
+REPORT-CHANGE-RES-ADDRESS-IC-HOLDER-TAB: //XCUIElementTypeOther[contains(@name,"service list FOR_IC_HOLDER")]
+REPORT-CHANGE-RES-ADDRESS-LTVP-STP-HOLDER-TAB: //XCUIElementTypeOther[contains(@name,"service list FOR_LTVP_STP_HOLDER")]
 REPORT-CHANGE-RES-ADDRESS-HEADER-ELEM: //XCUIElementTypeOther[@name="Change of Residential Address"]

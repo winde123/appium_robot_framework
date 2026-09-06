@@ -1,4 +1,7 @@
-APPT-BOOK-CHANGE-CANCEL-TAB: //XCUIElementTypeOther[contains(@name,"service list Book/Change/Cancel Appointment")]
+# SGAC2.0 (verified 2026-09-06 on iPad): service-list tabs renamed to SNAKE_CASE constants;
+# the appointment tabs LOST their duration suffix in 2.0. *-HEADER-ELEM keys are on the
+# external web pages (need network; unverified on iOS walk).
+APPT-BOOK-CHANGE-CANCEL-TAB: //XCUIElementTypeOther[contains(@name,"service list BOOK_CHANGE_CANCEL_APPOINTMENT")]
 APPT-BOOK-CHANGE-CANCEL-TAB-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Book, change or cancel appointment"]
-APPT-ONLINE-CHECK-IN-TAB: //XCUIElementTypeOther[contains(@name,"service list Online Check-in (Get Queue Number / View Queue Status)")]
+APPT-ONLINE-CHECK-IN-TAB: //XCUIElementTypeOther[contains(@name,"service list ONLINE_CHECK_IN_QUEUE")]
 APPT-ONLINE-CHECK-IN-TAB-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Please enter the following to check-in/check queue status"]

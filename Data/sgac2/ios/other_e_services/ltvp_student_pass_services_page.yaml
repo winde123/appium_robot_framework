@@ -1,7 +1,10 @@
-LTVP-APPLY-RENEW-LTVP-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply / Renew Long-Term Visit Pass")]
+# SGAC2.0 (verified 2026-09-06 on iPad): service-list tabs partially renamed to
+# SNAKE_CASE constants (some kept human labels). *-HEADER-ELEM keys are on the
+# external web pages (need network; unverified on iOS walk).
+LTVP-APPLY-RENEW-LTVP-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_RENEW_LONG_TERM_VISIT_PASS")]
 LTVP-APPLY-RENEW-LTVP-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Long-Term Visit Pass"]
-LTVP-APPLY-PMLA-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply for Pre-Marriage Long-Term Visit Pass Assessment (PMLA)")]
+LTVP-APPLY-PMLA-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_FOR_PMLA")]
 LTVP-APPLY-PMLA-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Submit for Pre-Marriage Long-Term Visit Pass Assessment (PMLA)"]
-LTVP-APPLY-RENEW-STUDENT-PASS-IHL-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply / Renew Student's Pass for Institutes of Higher Learning")]
+LTVP-APPLY-RENEW-STUDENT-PASS-IHL-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_RENEW_STUDENT_PASS_IHL")]
 LTVP-APPLY-RENEW-STUDENT-PASS-IHL-HEADER-ELEM: //XCUIElementTypeStaticText[@name="Apply for Student's Pass"]
 LTVP-APPLY-RENEW-STUDENT-PASS-OTHER-SCHOOLS-TAB: //XCUIElementTypeOther[contains(@name,"service list Apply / Renew Student's Pass for Other Schools")]

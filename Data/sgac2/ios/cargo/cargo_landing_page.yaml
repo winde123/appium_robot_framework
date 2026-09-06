@@ -1,1 +1,20 @@
-CARGO-CONVOY-SHORTCUT-BTN: //XCUIElementTypeOther[@name="CargoClearanceCargoConvoys"]
+# selectors for Cargo Clearance landing (iOS) — SGAC2.0 (verified 2026-09-06 on iPad)
+#
+# DIVERGED FLOW: cargo got the same profile-centric redesign as SGAC — the landing is now
+# built around vehicle profiles (Manage Cargo Submission / Create New Vehicle Profile /
+# Convoy Clearance / Select Vehicle Profiles). Old CargoClearanceCargoConvoys shortcut is
+# replaced by ConvoyClearance. NOTE: the empty-state hint contains an app-side typo
+# ("vechicle") — keep the locator text as the app renders it.
+CARGO-LANDING-HEADER: //XCUIElementTypeStaticText[@name="Cargo Clearance"]
+CARGO-LANDING-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
+CARGO-LANDING-LANGUAGE-BUTTON: //XCUIElementTypeButton[@name="CargoLanguage"]
+CARGO-LANDING-MANAGE-SUBMISSION: //XCUIElementTypeOther[@name="ManageCargoSubmission"]
+CARGO-LANDING-CREATE-VEHICLE-PROFILE: //XCUIElementTypeOther[@name="CreateNewVehicleProfile"]
+CARGO-LANDING-CONVOY-CLEARANCE: //XCUIElementTypeOther[@name="ConvoyClearance"]
+CARGO-LANDING-SELECT-VEHICLE-PROFILES-SECTION: //XCUIElementTypeStaticText[@name="Select Vehicle Profiles"]
+CARGO-LANDING-ADD-VEHICLE-PROFILE: //XCUIElementTypeOther[@name="Add vehicle profile plus icon"]
+CARGO-LANDING-EMPTY-STATE-HINT: //XCUIElementTypeStaticText[@name="Save your details as a vechicle profile to auto-fill future submission"]
+
+# --- sgac1-only, REMOVED in 2.0 (kept commented for T33 mapping) ---
+# CARGO-CONVOY-SHORTCUT-BTN : //XCUIElementTypeOther[@name="CargoClearanceCargoConvoys"]
+#                             — replaced by CARGO-LANDING-CONVOY-CLEARANCE

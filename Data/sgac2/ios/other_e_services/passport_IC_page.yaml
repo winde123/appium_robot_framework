@@ -1,7 +1,10 @@
-APPLY-TRAVEL-DOC-TAB: //XCUIElementTypeOther[@name="service list Apply for Travel Document 5 - 10 minutes"]
+# SGAC2.0 (verified 2026-09-06 on iPad): service-list tabs renamed to SNAKE_CASE constants
+# (durations unchanged). *-WEBPAGE-HEADER-ELEM keys are on the external web pages (need
+# network; unverified on iOS walk).
+APPLY-TRAVEL-DOC-TAB: //XCUIElementTypeOther[contains(@name,"service list APPLY_FOR_TRAVEL_DOCUMENT")]
 APPLY-TRAVEL-WEBPAGE-HEADER-ELEM: //XCUIElementTypeOther[@name="Apply for Travel Document"]
-REPORT-LOST-PASSPORT-TAB: //XCUIElementTypeOther[@name="service list Report Lost Passport 5 - 10 minutes"]
+REPORT-LOST-PASSPORT-TAB: //XCUIElementTypeOther[contains(@name,"service list REPORT_LOST_PASSPORT")]
 LOST-PASSPORT-WEBPAGE-HEADER-ELEM: //XCUIElementTypeOther[@name="Online Report"]
-REGISTER-REPLACE-IDENTITY-CARD-TAB: //XCUIElementTypeOther[@name="service list Register / Re-register / Replace Identity Card 15 - 20 minutes"]
+REGISTER-REPLACE-IDENTITY-CARD-TAB: //XCUIElementTypeOther[contains(@name,"service list REGISTER_REREGISTER_REPLACE_IDENTITY_CARD")]
 REGISTER-REPLACE-IDENTITY-WEBPAGE-HEADER-ELEM: //XCUIElementTypeOther[@name="Register/Replace Identity Card"]
-REPORT-LOST-IDENTITY-CARD-TAB: //XCUIElementTypeOther[@name="service list Report Lost Identity Card 15 - 20 minutes"]
+REPORT-LOST-IDENTITY-CARD-TAB: //XCUIElementTypeOther[contains(@name,"service list REPORT_LOST_IDENTITY_CARD")]
