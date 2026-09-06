@@ -7,7 +7,6 @@ Library     ../../../Data/test_data/manual_field_random.py
 Resource    ../../../Resources/commands.robot
 Resource    ../../../Resources/ios/SGACcommands.robot
 Variables   ${FORK_DATA_DIR}/ios/ios_common_selectors.yaml
-Variables   ../../../Data/test_data/manual_field_random.py
 Variables   ${FORK_DATA_DIR}/ios/sgac/profile_list_page.yaml
 Variables   ${FORK_DATA_DIR}/ios/sgac/profile_creation_method_page.yaml
 Variables   ${FORK_DATA_DIR}/ios/sgac/foreigner/for_profile_form.yaml
@@ -23,6 +22,14 @@ Test Teardown    ios_appium_commands.Terminate App
 
 User is able to create foreigner profile
     [Documentation]     this tests creation workflow for foreigner profile
+    ${PROFILE}=    manual_field_random.Generate Profile Record
+    Set Test Variable    ${NAME}    ${PROFILE}[name]
+    Set Test Variable    ${DOB}    ${PROFILE}[dob]
+    Set Test Variable    ${FOREIGNPPNUM}    ${PROFILE}[foreign_pp_num]
+    Set Test Variable    ${PPEXPDT}    ${PROFILE}[pp_expiry]
+    Set Test Variable    ${CTYCODE}    ${PROFILE}[cty_code]
+    Set Test Variable    ${PHNO}    ${PROFILE}[phno]
+    Set Test Variable    ${EMAIL}    ${PROFILE}[email]
     Navigate to foreigner SGAC landing page
     Navigate to profile list page
     Click on element    ${ADD-PROFILE-BTN}

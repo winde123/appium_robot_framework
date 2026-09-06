@@ -35,24 +35,23 @@ Navigate to individual submission creation page
 Navigate to profile list page
     Click on element    ${SGAC-LANDING-VIEW-PROFILE}
 
-Create resident profile manually 
+Create resident profile manually
+    [Arguments]    ${profile}=${NONE}
+    IF    $profile is None
+        ${profile}=    manual_field_random.Generate Profile Record    country=SG
+    END
     Click on element    ${INDV-PROFILE-LIST-ADD-PROFILE}
     Click on element    ${PROFILE-CREATION-METHOD-FILL-MANUALLY}
-    ${NAME} =    manual_field_random.Generate Random Name
-    Type text    ${RES-FORM-NAME-INPUT}    ${NAME}
-    ${NRIC} =    manual_field_random.Generaterandom NRIC
-    Type text    ${RES-FORM-NRIC-INPUT}    ${NRIC}
-    ${DOB}=      manual_field_random.Generaterandom DOB
-    Type text    ${RES-FORM-DOB-INPUT}    ${DOB}
+    Type text    ${RES-FORM-NAME-INPUT}    ${profile}[name]
+    Type text    ${RES-FORM-NRIC-INPUT}    ${profile}[nric]
+    Type text    ${RES-FORM-DOB-INPUT}    ${profile}[dob]
     Click on element    ${KEYBOARD-DONE-BTN}
     Click on element    ${FOOTER-NEXT-BTN}
-    ${CTY-CODE}=    manual_field_random.Generate Random Cty Code    SG 
-    Type text    ${RES-FORM-CTY-CODE-INPUT}    ${CTY-CODE}
-    ${PHNO}=     manual_field_random.Generate Random Ph No
-    Type text    ${RES-FORM-MOBILE-NUMBER-INPUT}    ${PHNO}
-    ${EMAIL}=    manual_field_random.Generate Random Email
-    Type text    ${RES-FORM-EMAIL-INPUT}    ${EMAIL}
+    Type text    ${RES-FORM-CTY-CODE-INPUT}    ${profile}[cty_code]
+    Type text    ${RES-FORM-MOBILE-NUMBER-INPUT}    ${profile}[phno]
+    Type text    ${RES-FORM-EMAIL-INPUT}    ${profile}[email]
     Click on element    ${KEYBOARD-DONE-BTN}
     Click on element    ${FOOTER-NEXT-BTN}
     Click on element    ${RES-DECL-SUMMARY-TERMS-CHECKBOX-UNCHECKED}
     Click on element    ${RES-DECL-SUMMARY-FOOTER-SAVE}
+    RETURN    ${profile}

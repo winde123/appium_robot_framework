@@ -85,6 +85,8 @@ Resources/
   android/QRcommands.robot      Android QR flow keywords
   ios/SGACcommands.robot        iOS SGAC flow keywords
   helper_func.py                String/date formatting helpers (used as a Robot library)
+  interaction_waits.py          Shared readiness polling and single-action click/type helpers;
+                                preserve the current session's implicit wait (see docs/testing/interaction-waits.md)
   ios_appium_commands.py        Python Appium bridge; provides Terminate App for iOS teardowns
   fork_config.py                Single fork resolver (Variables file): APP_FORK → app paths,
                                 package/activity, bundle ID, FORK_DATA_DIR, ENFORCE_APP_INSTALL
@@ -94,9 +96,11 @@ Data/
                                 Suites import them via ${FORK_DATA_DIR}, never by literal path.
                                 Data/sgac2/ appears in Wave 3 (seeded by copying sgac1)
   test_data/manual_field_random.py  Faker-based generators with valid checksums: NRIC, SG passport
-                                numbers, car plates, DOB, phone, email. Imported BOTH as a Library
-                                (keyword calls) and as a Variables file (module-level ${NRIC},
-                                ${NAME}, etc. are generated once at import time). SHARED — never forked
+                                numbers, car plates, DOB, phone, email. Imported as a Library only;
+                                Generate Profile Record returns per-test data plus seed/reference-date/country
+                                metadata for replay. Legacy generator keywords remain available. SHARED — never forked
+  test_data/cargo_data.py         CWD-independent cargo permit file loader; readfromfile() remains a
+                                compatibility wrapper enforcing the Android test's 100-permit minimum
   test_data/input_fields_test_data.yaml  Static input test data
 tools/check_fork_parity.py      Parity linter: locator key parity between fork trees, import
                                 hygiene (no repo-root escapes, no literal fork paths), hardcoded
@@ -117,6 +121,7 @@ robotconfig.yaml                Device/Appium config + per-fork FORKS: block (re
 ## Known quirks / gotchas
 
 - Relative import depths were historically inconsistent (some escaped the repo root); Wave 2 fixed them all and `tools/check_fork_parity.py` now flags any regression as an error — run it before finishing a change.
-- `manual_field_random.py` has a hardcoded Windows path in the unused `readfromfile()` — a leftover from the old Windows setup (`subprocess_call.py` was rewritten for macOS in Wave 1).
-- Module-level variables in `manual_field_random.py` (`${NRIC}`, `${NAME}`, `${DOB}`, ...) are fixed per run at import; call the generator keywords for fresh values within a test.
+- `manual_field_random.py` no longer exports import-time profile constants. Use `Generate Profile Record` per test and pass/retain the returned record; see `docs/testing/test-data.md` for replay and compatibility details.
+- `readfromfile()` is used by the Android cargo suite and now delegates to the portable cargo loader. It requires at least 100 nonblank permit entries before the caller indexes them.
+- Shared `Click on element` and `Type text` wait for visible/enabled elements and act once; configure `INTERACTION_WAIT_TIMEOUT` / `INTERACTION_WAIT_POLL` or per-call `timeout` / `poll`. Remote HTTP/action duration is not hard-cancelled by the polling deadline.
 - iOS keyword file prefixes some locators with `xpath=` at the call site; Android relies on AppiumLibrary's default XPath detection. Both work, just inconsistent.

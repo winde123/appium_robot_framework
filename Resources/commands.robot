@@ -5,6 +5,7 @@ Library    Process
 Library    OperatingSystem
 Library    String
 Library    helper_func.py
+Library    interaction_waits.py
 #Library    ../venv/lib/python3.13/site-packages/robot/libraries/String.py
 #Library    RPA.Email.ImapSmtp
 #Library    SeleniumLibrary
@@ -12,6 +13,8 @@ Variables   fork_config.py
 Variables   ../robotconfig.yaml
 
 *** Variables ***
+${INTERACTION_WAIT_TIMEOUT}    %{INTERACTION_WAIT_TIMEOUT=60s}
+${INTERACTION_WAIT_POLL}       %{INTERACTION_WAIT_POLL=0.5s}
 
 #${ANDROID_PLATFORM_VERSION}       %{ANDROID_PLATFORM_VERSION=13}
 ${REMOTE_PLATFORM_NAME}            %{DEVICEFARM_DEVICE_PLATFORM_NAME=}
@@ -47,16 +50,16 @@ Open Android App in Android Phone
     [Arguments]    ${appActivity}=${EMPTY}
     Open MyICA App on Android Phone
 Click on element
-    [Arguments]    ${elementid}
-    #${CLICK-ELEMENT-STATUS}    Set Variable    ${KEYWORD STATUS}
-    Wait Until Keyword Succeeds    1min     5sec    AppiumLibrary.Wait Until Page Contains Element    locator=${elementid}    timeout=${10}
-    Wait Until Keyword Succeeds    1min     5sec    AppiumLibrary.Click element  locator=${elementid}
-    #[Teardown]    ${CLICK-ELEMENT-STATUS}    Set Variable    ${KEYWORD STATUS}  
+    [Documentation]    Wait until the element is present/visible/enabled, then click it once.
+    ...    ``timeout`` and ``poll`` accept Robot time strings (e.g. ``10s``, ``1min``).
+    [Arguments]    ${elementid}    ${timeout}=${INTERACTION_WAIT_TIMEOUT}    ${poll}=${INTERACTION_WAIT_POLL}
+    Interaction Wait And Click    ${elementid}    ${timeout}    ${poll}
 
 Type text
-    [Arguments]    ${elementid}    ${textstring}                      
-    Wait Until Keyword Succeeds     1min     5sec     AppiumLibrary.Wait Until Page Contains Element    locator=${elementid}
-    AppiumLibrary.Input Text    locator=${elementid}    text=${textstring}
+    [Documentation]    Wait until the input element is present/visible/enabled, then type the supplied text into it once.
+    ...    ``timeout`` and ``poll`` accept Robot time strings (e.g. ``10s``, ``1min``).
+    [Arguments]    ${elementid}    ${textstring}    ${timeout}=${INTERACTION_WAIT_TIMEOUT}    ${poll}=${INTERACTION_WAIT_POLL}
+    Interaction Wait And Type    ${elementid}    ${textstring}    ${timeout}    ${poll}
 
 #Generate dynamic group qr checkbox element locator for n group members
     #[Arguments]    @{list_of_names}    ${elementindex}

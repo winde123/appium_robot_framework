@@ -6,6 +6,10 @@ This directory is the durable reference point for humans and coding agents worki
 
 | Document | Purpose |
 | --- | --- |
+| [`testing/test-data.md`](testing/test-data.md) | Portable cargo permit loading and replayable per-test profile records |
+| [`testing/helper-tools.md`](testing/helper-tools.md) | String/date helper contracts and import-safe QR/date utilities |
+| [`testing/eservices-templates.md`](testing/eservices-templates.md) | Shared e-services templates, case mappings, and device-free execution checks |
+| [`testing/interaction-waits.md`](testing/interaction-waits.md) | Configurable interaction waits, session-state preservation, and timing limits |
 | [`../README.md`](../README.md) | Project overview, prerequisites, configuration, and basic test commands |
 | [`../AGENTS.md`](../AGENTS.md) | Repository-wide instructions for Codex, Claude Code, OpenCode, and other agents |
 | [`../CLAUDE.md`](../CLAUDE.md) | Detailed project context that every agent reads at startup |
@@ -16,6 +20,7 @@ This directory is the durable reference point for humans and coding agents worki
 | [`refactor/fork-conventions.md`](refactor/fork-conventions.md) | SGAC1.0/SGAC2.0 fork contract: `APP_FORK`, `fork_config.py` exports, per-fork layout, tags, dispatch pattern |
 | [`refactor/sgac-fork-refactor-tasks.md`](refactor/sgac-fork-refactor-tasks.md) | Fork-refactor task board: waves, file ownership, merge order |
 | [`refactor/android-apk-analysis.md`](refactor/android-apk-analysis.md) | T00 Android APK evidence: package, launcher activity, versions, and SHA-256 fingerprints for both forks |
+| [`refactor/maintenance-static-review.md`](refactor/maintenance-static-review.md) | Reviewed OpenCode maintenance refactors: corrected findings, verification evidence, and integration handoff |
 
 Add new documents to this table when they are created. Prefer a small number of focused documents with descriptive, kebab-case filenames, such as `android-test-setup.md` or `device-farm-runbook.md`.
 

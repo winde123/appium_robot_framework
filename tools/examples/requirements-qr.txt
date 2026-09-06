@@ -1,0 +1,7 @@
+# Optional dependencies for tools/examples/generate_qr_code.py
+#
+# Install only when QR-code generation is needed; the test suite mocks
+# the treepoem backend so these packages are not required for unit tests.
+
+treepoem
+pillow

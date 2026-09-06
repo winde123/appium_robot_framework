@@ -18,9 +18,10 @@ Test Teardown    Close Application
 
 SG_BC_MHA_SGAC-773
     [Documentation]     Straight through case of creating personal passport qr code for sc manually and validate the values in the summary page
-    #Sleep    5s
-    ## checking for the presence of the favorite icon for passport qrcode and passport qr tab
-
+    ${PROFILE}=    manual_field_random.Generate Profile Record
+    Set Test Variable    ${NAME}    ${PROFILE}[name]
+    Set Test Variable    ${NRIC}    ${PROFILE}[nric]
+    Set Test Variable    ${PPNUM}    ${PROFILE}[pp_num]
     Navigate to QR Code page without tutorial flow
     Navigate to individual manual profile creation page
     
@@ -99,6 +100,10 @@ SG_BC_MHA_SGAC-773
 
 SG_BC_MHA_SGAC-775
     [Documentation]     This is the manual creation of foreign visitor profile and QR code and validate fields in summary page . Nationality is random.
+    ${PROFILE}=    manual_field_random.Generate Profile Record
+    Set Test Variable    ${NAME}    ${PROFILE}[name]
+    Set Test Variable    ${DOB}    ${PROFILE}[dob]
+    Set Test Variable    ${FOREIGNPPNUM}    ${PROFILE}[foreign_pp_num]
     Navigate to QR Code page without tutorial flow
     Navigate to individual manual profile creation page
     Click on element    ${NRIC-FLAG-NO-OPTION}

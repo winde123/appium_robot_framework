@@ -6,7 +6,6 @@ Library     ../../../Resources/helper_func.py
 Library     ../../../Resources/ios_appium_commands.py
 Resource    ../../../Resources/commands.robot
 Resource    ../../../Resources/ios/SGACcommands.robot
-Variables    ../../../Data/test_data/manual_field_random.py
 Variables    ${FORK_DATA_DIR}/ios/ios_common_selectors.yaml
 Variables    ../../../Data/test_data/input_fields_test_data.yaml
 Variables    ${FORK_DATA_DIR}/ios/sgac/sel_indv_profile_list_page.yaml

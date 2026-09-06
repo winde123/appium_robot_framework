@@ -7,7 +7,6 @@ Library     ../../../Data/test_data/manual_field_random.py
 Resource    ../../../Resources/commands.robot
 Resource    ../../../Resources/ios/SGACcommands.robot
 Variables   ${FORK_DATA_DIR}/ios/ios_common_selectors.yaml
-Variables   ../../../Data/test_data/manual_field_random.py
 Variables   ${FORK_DATA_DIR}/ios/sgac/profile_list_page.yaml
 Variables   ${FORK_DATA_DIR}/ios/sgac/profile_creation_method_page.yaml
 Variables   ${FORK_DATA_DIR}/ios/sgac/resident/res_profile_form_page.yaml
@@ -21,6 +20,12 @@ Test Teardown    ios_appium_commands.Terminate App
 #User is able to create resident indv submssion with one trip successfully
 User is able create resident profile
     [Documentation]   this tc is to do a straight through flow of indv user submssion
+    ${PROFILE}=    manual_field_random.Generate Profile Record
+    Set Test Variable    ${NAME}    ${PROFILE}[name]
+    Set Test Variable    ${NRIC}    ${PROFILE}[nric]
+    Set Test Variable    ${DOB}    ${PROFILE}[dob]
+    Set Test Variable    ${PHNO}    ${PROFILE}[phno]
+    Set Test Variable    ${EMAIL}    ${PROFILE}[email]
     Navigate to resident SGAC landing page
     Navigate to profile list page
     ## create profile via the manual input button
@@ -57,7 +62,6 @@ User is able create resident profile
     ### clicking on the save button
     Click on element    ${RES-DECL-SUMMARY-TERMS-CHECKBOX-UNCHECKED}
     Click on element    ${RES-DECL-SUMMARY-FOOTER-SAVE}
-
 
 
 

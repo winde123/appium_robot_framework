@@ -5,7 +5,6 @@ Library     String
 Library     ../../../Resources/helper_func.py
 Resource    ../../../Resources/commands.robot
 Resource    ../../../Resources/android/SGACcommands.robot
-Variables    ../../../Data/test_data/manual_field_random.py
 Variables    ${FORK_DATA_DIR}/android/android_common_selectors.yaml
 Variables    ../../../Data/test_data/input_fields_test_data.yaml
 Variables    ${FORK_DATA_DIR}/android/sgac/sel_profile_submission_page.yaml

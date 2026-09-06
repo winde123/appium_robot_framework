@@ -14,7 +14,6 @@ Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_convoy_page.yaml
 Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_convoy_form_page.yaml
 Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_permit_form_page.yaml
 Variables    ${FORK_DATA_DIR}/ios/cargo/cargo_sub_res_page.yaml
-Variables    ../../../Data/test_data/manual_field_random.py
 Force Tags       fork:both
 Test Setup       Open MyICA App on iOS Device 
 #Test Teardown    ios_appium_commands.Terminate App
@@ -23,6 +22,8 @@ Test Setup       Open MyICA App on iOS Device
 
 User create convoy with 15 veh and 100 permits
     [Documentation]    user creates convoy with 100 permits
+    ${PROFILE}=    manual_field_random.Generate Profile Record
+    Set Test Variable    ${EMAIL}    ${PROFILE}[email]
     Click on element    ${CARGO-CLEARANCE-FAV-BUTTON}
     Click on element    ${CARGO-CONVOY-SHORTCUT-BTN}
     Click on element    ${CARGO-CONVOY-ADD-SUBMISSION-BUTTON}
@@ -53,4 +54,3 @@ User create convoy with 15 veh and 100 permits
 
     Click on element    ${CAPTCHA-VERIFY-BTN}
     Expect Element    xpath=${CARGO-SUCCESS-TEXT}    visible
-
