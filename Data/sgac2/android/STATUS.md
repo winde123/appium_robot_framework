@@ -10,6 +10,33 @@ Status legend: `copied` = unverified sgac1 copy · `verified` = checked against 
 Method: Appium page source per screen → offline XPath eval with `scratchpad/walk_check.py`
 (lxml). A key is verified only when its XPath resolves to exactly the intended node on 2.0.
 
+## Language verification — all 19 languages (2026-09-06)
+Verified the SGAC **landing**, **profile-creation-method**, and **profile form (page 1)** across
+ALL 19 in-app languages (English, 中文, Bahasa Melayu, தமிழ், Bahasa Indonesia, Deutsch, Español,
+Filipino, Français, Italiano, Nederlands, Tiếng Việt, Русский, العربية, हिन्दी, বাংলা, ไทย, 日本語,
+한국어) on the Pixel_7_Pro emulator (2.0.0/420, staging tunnel), for BOTH the **resident**
+(Citizen & Resident) and **foreigner** (Foreign Visitor) flows — mirroring the iOS sweep.
+Harness `scratchpad/android_lang_sweep.py` (Appium UiAutomator2; navigate by xpath on
+resource-id/content-desc; language picker APPLIES on card-tap, then close — no GO button;
+per-language reset via `adb am force-stop`+`am start`). Analyzer `analyze_lang_and.py`;
+matrices `LANG_VERIFICATION_resident_matrix.txt` / `LANG_VERIFICATION_foreigner_matrix.txt`.
+
+**RESULT 1 — localization correct everywhere.** All screens fully localize in all 19 languages
+in both flows, incl. RTL Arabic (landing "إدارة الملفات الشخصية", form "بيانات الملف الشخصي") and
+CJK/Thai/Tamil/Hindi/Bengali (e.g. ja "SG到着カード", zh form "添加个人资料"). No crash/blank/clip.
+
+**RESULT 2 — clean testID-vs-text split (matches iOS).** EVERY locator that survives all
+languages is a resource-id/content-desc testID; EVERY locator that breaks is a `@text` locator.
+- Resident: landing 5/6 stable (only SGAC-HEADER breaks), method 4/6 (header+title break),
+  form 10/21 (headers, reminder, section title, all `Required` markers, footer BACK/NEXT text
+  labels break; all resource-id field/nav locators survive). Overall 58%.
+- Foreigner: landing 6/7 stable, method 3/5; foreigner form localizes and its resource-id
+  locators (PassportDetailsFullName/Nationality/next…) are stable across scripts (no Android
+  foreigner form YAML exists yet, so form is localization-verified, not YAML-scored).
+- Actionable: `@text`-based locators (headers, section titles, `Required` markers, footer
+  BACK/NEXT labels) fail under non-English — use the resource-id/content-desc equivalents for
+  cross-language runs. Same conclusion as the earlier Android text-vs-testID finding and iOS.
+
 ## Known 2.0 drift patterns (apply while correcting)
 - **SNAKE_CASE testIDs — NAVIGATION CARD-TILES ONLY (refined after divergence analysis):**
   the concatenated-label → SNAKE_CASE conversion applies to navigation card/tile testIDs

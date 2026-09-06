@@ -1,0 +1,47 @@
+[foreigner] languages captured: en, zh, ms, ta, id, de, es, fil, fr, it, nl, vi, ru, ar, hi, bn, th, ja, ko
+
+### landing — 7 locators on English screen
+    zh : 6/7 survive
+    ms : 6/7 survive
+    ta : 6/7 survive
+    id : 7/7 survive
+    de : 6/7 survive
+    es : 7/7 survive
+    fil: 7/7 survive
+    fr : 6/7 survive
+    it : 7/7 survive
+    nl : 7/7 survive
+    vi : 6/7 survive
+    ru : 7/7 survive
+    ar : 7/7 survive
+    hi : 6/7 survive
+    bn : 6/7 survive
+    th : 6/7 survive
+    ja : 6/7 survive
+    ko : 6/7 survive
+    STABLE across all langs (6): SGAC-BACK-BUTTON[testid], SGAC-LANGUAGE-BUTTON[testid], SGAC-MANAGE-PROFILES-BUTTON[testid], SGAC-CREATE-NEW-PROFILE-BUTTON[testid], SGAC-UPDATE-ARRIVAL-CARD-BUTTON[testid], SGAC-ADD-PROFILE-BUTTON[testid]
+    BREAKS: SGAC-HEADER[text]
+
+### method — 5 locators on English screen
+    zh : 3/5 survive
+    ms : 3/5 survive
+    ta : 3/5 survive
+    id : 3/5 survive
+    de : 3/5 survive
+    es : 3/5 survive
+    fil: 3/5 survive
+    fr : 3/5 survive
+    it : 3/5 survive
+    nl : 3/5 survive
+    vi : 3/5 survive
+    ru : 3/5 survive
+    ar : 3/5 survive
+    hi : 3/5 survive
+    bn : 3/5 survive
+    th : 3/5 survive
+    ja : 3/5 survive
+    ko : 3/5 survive
+    STABLE across all langs (3): PROFILE-CREATION-BACK-BUTTON[testid], PROFILE-CREATION-SCAN-PASSPORT-BUTTON[testid], PROFILE-CREATION-FILL-MANUALLY-BUTTON[testid]
+    BREAKS: PROFILE-CREATION-HEADER[text], PROFILE-CREATION-TITLE[text]
+
+=== foreigner OVERALL: 169/216 survived (78%) ===

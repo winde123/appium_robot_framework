@@ -1,0 +1,69 @@
+[resident] languages captured: en, zh, ms, ta, id, de, es, fil, fr, it, nl, vi, ru, ar, hi, bn, th, ja, ko
+
+### landing — 6 locators on English screen
+    zh : 5/6 survive
+    ms : 5/6 survive
+    ta : 5/6 survive
+    id : 6/6 survive
+    de : 5/6 survive
+    es : 6/6 survive
+    fil: 6/6 survive
+    fr : 5/6 survive
+    it : 6/6 survive
+    nl : 6/6 survive
+    vi : 5/6 survive
+    ru : 6/6 survive
+    ar : 6/6 survive
+    hi : 5/6 survive
+    bn : 5/6 survive
+    th : 5/6 survive
+    ja : 5/6 survive
+    ko : 5/6 survive
+    STABLE across all langs (5): SGAC-BACK-BUTTON[testid], SGAC-LANGUAGE-BUTTON[testid], SGAC-MANAGE-PROFILES-BUTTON[testid], SGAC-CREATE-NEW-PROFILE-BUTTON[testid], SGAC-UPDATE-ARRIVAL-CARD-BUTTON[testid]
+    BREAKS: SGAC-HEADER[text]
+
+### method — 6 locators on English screen
+    zh : 4/6 survive
+    ms : 4/6 survive
+    ta : 4/6 survive
+    id : 4/6 survive
+    de : 4/6 survive
+    es : 4/6 survive
+    fil: 4/6 survive
+    fr : 4/6 survive
+    it : 4/6 survive
+    nl : 4/6 survive
+    vi : 4/6 survive
+    ru : 4/6 survive
+    ar : 4/6 survive
+    hi : 4/6 survive
+    bn : 4/6 survive
+    th : 4/6 survive
+    ja : 4/6 survive
+    ko : 4/6 survive
+    STABLE across all langs (4): PROFILE-CREATION-BACK-BUTTON[testid], PROFILE-CREATION-SINGPASS-BUTTON[testid], PROFILE-CREATION-SCAN-PASSPORT-BUTTON[testid], PROFILE-CREATION-FILL-MANUALLY-BUTTON[testid]
+    BREAKS: PROFILE-CREATION-HEADER[text], PROFILE-CREATION-TITLE[text]
+
+### form — 21 locators on English screen
+    zh : 10/21 survive
+    ms : 10/21 survive
+    ta : 10/21 survive
+    id : 10/21 survive
+    de : 10/21 survive
+    es : 10/21 survive
+    fil: 10/21 survive
+    fr : 10/21 survive
+    it : 10/21 survive
+    nl : 10/21 survive
+    vi : 10/21 survive
+    ru : 10/21 survive
+    ar : 10/21 survive
+    hi : 10/21 survive
+    bn : 10/21 survive
+    th : 10/21 survive
+    ja : 10/21 survive
+    ko : 10/21 survive
+    STABLE across all langs (10): RES-PROFILE-CREATION-BACK-BUTTON[testid], RES-PROFILE-NAME-INPUT[testid], RES-PROFILE-NAME-LABEL[testid], RES-PROFILE-NRIC-FIN-INPUT[testid], RES-PROFILE-NRIC-FIN-LABEL[testid], RES-PROFILE-DOB-INPUT[testid], RES-PROFILE-DOB-LABEL[testid], RES-PROFILE-DOB-CALENDAR-BUTTON[testid], RES-PROFILE-FOOTER-BACK-BUTTON[testid], RES-PROFILE-FOOTER-NEXT-BUTTON[testid]
+    BREAKS: RES-PROFILE-CONTACT-COUNTRY-CODE-REQUIRED[text], RES-PROFILE-CONTACT-EMAIL-REQUIRED[text], RES-PROFILE-CONTACT-MOBILE-NUMBER-REQUIRED[text], RES-PROFILE-CREATION-HEADER[text], RES-PROFILE-CREATION-REMINDER[text], RES-PROFILE-CREATION-SECTION-TITLE[text], RES-PROFILE-DOB-REQUIRED[text], RES-PROFILE-FOOTER-BACK-LABEL[text], RES-PROFILE-FOOTER-NEXT-LABEL[text], RES-PROFILE-NAME-REQUIRED[text], RES-PROFILE-NRIC-FIN-REQUIRED[text]
+
+=== resident OVERALL: 349/594 survived (58%) ===
