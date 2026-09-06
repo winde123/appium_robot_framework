@@ -3,6 +3,38 @@
 Seeded 2026-09-05 by copying `Data/sgac1/ios/**` (37 YAMLs). To be corrected screen by
 screen against the live SGAC2.0 iOS build on Edwin's iPad (real device, XCUITest via Xcode).
 
+## Session 4 (2026-09-06 evening) — SGAC language verification (all 19 languages)
+Verified the SGAC **landing**, **profile-creation-method**, and **profile form (page 1)** across
+ALL 19 in-app languages on the live 2.0 build (English, 中文, Bahasa Melayu, தமிழ், Bahasa
+Indonesia, Deutsch, Español, Filipino, Français, Italiano, Nederlands, Tiếng Việt, Русский,
+العربية, हिन्दी, বাংলা, ไทย, 日本語, 한국어). Method: relaunch per language → set language via the
+SGArrivalCardLanguage picker → capture page source; offline locator check in
+`scratchpad/analyze_lang.py`, full matrix in `scratchpad/lang_matrix.txt`.
+
+**RESULT 1 — localization is correct everywhere.** Every screen fully localizes in all 19
+languages, including RTL Arabic (e.g. method title "إضافة ملف شخصي") and complex scripts
+(Thai เพิ่มโปรไฟล์, Tamil, Hindi प्रोफ़ाइल जोड़ें, Bengali, CJK 选择配置文件创建方法 / プロファイルの追加 /
+프로필 추가). No crashes, blank, or clipped screens; page sources well-formed and populated in
+every language. (The submission step itself stays blocked by the Session-3 app bug — not tested.)
+
+**RESULT 2 — locator robustness (57% of locators are language-independent).** Consistent across
+all 18 non-English languages: landing 6–7/10, method 4/6, form(p1) 12–13/23 survive.
+- **STABLE (language-independent) — keep using these:** all `back`/`SGArrivalCardLanguage`
+  buttons; nav-card a11y labels (Manage Profiles, Create New Profile, Update SG Arrival Card,
+  add profile plus icon); method buttons (retrieve myinfo with singpass, scan passport mrz,
+  fill manually); form inputs with hardcoded-English a11y labels (nric/fin, passport number,
+  nationality/citizenship, DOB, passport expiry) + footer next/step. These are testIDs or
+  hardcoded accessibilityLabels that DO NOT localize.
+- **BREAK under non-English (avoid for cross-language assertions):** every screen HEADER /
+  section title / instructional hint (SG Arrival Card, Add Profile, Profile Details, Choose
+  profile creation method, Contact Details, empty-state & "Create a profile…" hints, Select
+  Profiles); the `name="Required"` validation markers (localize to Diperlukan / 必填 / etc.);
+  and the **Name** and **Email** input a11y labels (composed from the localized field label,
+  e.g. "Nametext input"→"Namatext input"). These key on visible/localized copy.
+- Consequence: mirrors the Android finding — testID/a11y-label locators are language-safe;
+  visible-text locators (headers, "Required", section titles, Name/Email inputs) fail under
+  non-English and need testID/structural alternatives for i18n test runs.
+
 ## Session 3 (2026-09-06 late afternoon) — tunnel up; submission blocked by APP BUG
 - **WireGuard staging tunnel INSTALLED and VERIFIED working** (VPN badge; staging web loads).
   "Update SG Arrival Card" opens an IN-APP WEBVIEW of the SGAC update e-service ("ICA | SG
