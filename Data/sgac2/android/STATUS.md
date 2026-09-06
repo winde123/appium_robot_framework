@@ -58,6 +58,25 @@ Distinct from resident: foreigner has Sex + Country/Place of Birth, no NRIC, and
 Residence+Email (resident is NRIC-based, contact email-only). NOTE: the legacy shared
 `manual_creation_profile_form.yaml` is now superseded for the foreigner flow by this tree.
 
+## Cargo flow correctness walk (2026-09-06)
+Walked the live 2.0 cargo module end-to-end (Cargo Clearance card → …) and corrected all 6
+`Data/sgac2/android/cargo/*.yaml` (were unverified sgac1 copies). Key/flow divergences from
+sgac1 recorded in `tools/fork_parity_allowlist.yaml`; every 2.0 key live-verified against
+captured page source; linter 0/0. The 2.0 cargo module split into NATIVE and WEBVIEW parts:
+- **NATIVE (corrected + verified):** `cargo_clearance_home_page.yaml` — profile-centric
+  landing (Manage Cargo Submission / Create New Vehicle Profiles / Convoy / Select Vehicle
+  Profiles + add-vehicle "+" + CargoLanguage + CargoAnnouncement banner), replacing the
+  sgac1 icon-grid + "+" menu. `vehicle_profiles_page.yaml` — list (empty state; items indexed
+  `vehicle list N` / kebab `vehicle list right iconN` → Edit/Delete; verified with a saved
+  profile SOX3229J). `add_vehicle_page.yaml` — simplified to Vehicle Number + Mobile + Email
+  + Save (sgac1's NRIC/passport toggles gone).
+- **WEBVIEW (diverged; documented with page markers, not native locators):**
+  `cargo_clearance.yaml` — Manage Cargo Submission opens an in-app webview (ARN + Vehicle
+  Number retrieve form; generic `text-input` ids). `cargo_convoy_page.yaml` — Convoy opens a
+  webview (Convoy Submission form). `add_permit_page.yaml` — permit step now lives INSIDE the
+  Convoy webview; TODO(cargo-web) to walk its DOM.
+- Test artifact: vehicle profile SOX3229J left on the device (like the SGAC test profiles).
+
 ## Known 2.0 drift patterns (apply while correcting)
 - **SNAKE_CASE testIDs — NAVIGATION CARD-TILES ONLY (refined after divergence analysis):**
   the concatenated-label → SNAKE_CASE conversion applies to navigation card/tile testIDs
@@ -108,12 +127,12 @@ Residence+Email (resident is NRIC-based, contact email-only). NOTE: the legacy s
 | other_e_services/sgac_epass_enquiry.yaml | copied | |
 | other_e_services/customs_declaration_service.yaml | copied | |
 | other_e_services/e727_service.yaml | copied | |
-| cargo/cargo_clearance_home_page.yaml | copied | |
-| cargo/cargo_clearance.yaml | copied | |
-| cargo/add_vehicle_page.yaml | copied | |
-| cargo/vehicle_profiles_page.yaml | copied | |
-| cargo/add_permit_page.yaml | copied | |
-| cargo/cargo_convoy_page.yaml | copied | |
+| cargo/cargo_clearance_home_page.yaml | diverged | profile-centric landing (Manage Submission/Create Vehicle Profiles/Convoy/Select) — verified; replaces sgac1 icon-grid+menu |
+| cargo/cargo_clearance.yaml | diverged (webview) | Manage Cargo Submission → in-app webview (ARN+Vehicle retrieve form) |
+| cargo/add_vehicle_page.yaml | diverged | Vehicle Number+Mobile+Email+Save (verified, saved SOX3229J); sgac1 NRIC/passport toggles removed |
+| cargo/vehicle_profiles_page.yaml | verified | list + indexed items (vehicle list N / kebab) → Edit/Delete; empty state |
+| cargo/add_permit_page.yaml | diverged (web) | permit step now inside the Convoy webview — TODO(cargo-web) |
+| cargo/cargo_convoy_page.yaml | diverged (webview) | Convoy → webview (Convoy Submission form) |
 | yaml_QR_pages/all_profiles_page.yaml | copied | |
 | yaml_QR_pages/personal_qr_code_page.yaml | copied | |
 | yaml_QR_pages/passport_qr_code_page.yaml | copied | |

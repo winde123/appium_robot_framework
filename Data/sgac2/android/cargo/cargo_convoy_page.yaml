@@ -1,14 +1,12 @@
-CARGO_CONVOY_ALL_TAB : //android.view.ViewGroup[@content-desc="All"]
-CARGO_CONVOY_SUBMITTED_TAB : //android.view.ViewGroup[@content-desc="Submitted"]
-CARGO_CONVOY_DRAFT_TAB : //android.view.ViewGroup[@content-desc="Draft"]
-ADD_CARGO_CONVOY_BUTTON : //android.widget.Button[@content-desc="ADD CARGO CONVOY"]
-CARGO_CONVOY_NRIC_TEXT_FIELD : //android.widget.EditText[@content-desc="InfoAndVehiclesNricFin"]
-
-CARGO_CONVOY_EMAIL_TEXT_FIELD : //android.widget.EditText[@content-desc="InfoAndVehiclesAddEmail"]
-CARGO_CONVOY_VEHICLE_NUMBER_TEXT_FIELD : //android.widget.EditText[@resource-id="InfoAndVehiclesVehicleNumber"]
-CARGO_CONVOY_VIEW_EDIT_BUTTON : //android.view.ViewGroup[@content-desc="View / Edit"]
-CARGO_CONVOY_DELETE_SUBMISSION_BUTTON : //android.widget.TextView[@text="Delete Submission"]
-
-#CARGO_CONVOY_ADD_VEHICLE_NUMBER_BUTTON :
-CARGO_CONVOY_NEXT_BUTTON : //android.view.ViewGroup[@resource-id="next"]
-CARGO_CONVOY_VEHICLE_PLUS_BUTTON: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[5]
+# SGAC2.0 Convoy Clearance (Android) — DIVERGED to a WEBVIEW.
+# Verified on-device 2026-09-06. SGAC1.0 had a native convoy list (All/Submitted/Draft tabs,
+# ADD CARGO CONVOY, NRIC/Email/Vehicle fields). In 2.0, Cargo landing -> Convoy opens an in-app
+# WEBVIEW of the SGAC Cargo convoy portal ("Convoy Submission" / "Convoy Information", Email +
+# Mobile fields; "A Singapore Government Agency Website"; est. 5-7 mins). No in-app testIDs; the
+# permit sub-flow (add_permit_page.yaml) lives inside this web flow. All sgac1 native keys
+# removed (see parity allowlist); drive by DOM if the suite needs it (requires staging tunnel).
+CARGO-CONVOY-WEBVIEW-MARKER: //android.webkit.WebView[@text="ICA | SGAC Cargo"]
+CARGO-CONVOY-SUBMISSION-HEADER: //android.widget.TextView[@text="Convoy Submission"]
+CARGO-CONVOY-INFORMATION-SECTION: //android.widget.TextView[@text="Convoy Information"]
+CARGO-CONVOY-EMAIL-LABEL: //android.widget.TextView[@text="Email Address *"]
+CARGO-CONVOY-MOBILE-LABEL: //android.widget.TextView[@text="Mobile Number *"]

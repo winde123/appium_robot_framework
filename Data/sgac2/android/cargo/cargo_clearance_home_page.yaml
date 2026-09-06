@@ -1,14 +1,15 @@
-VEHICLES_PROFILE_ICON: //android.view.ViewGroup[@resource-id="CargoClearanceVehicleProfiles"]
-CARGO_CLEARANCE_ICON: //android.view.ViewGroup[@content-desc="CargoClearanceCargoClearance"]
-CARGO_CONVOY_ICON: //android.view.ViewGroup[@content-desc="CargoClearanceCargoConvoys"]
-VIEW_ALL_CARGO_CLEARANCE_SUBMISSION_BUTTON: //android.view.ViewGroup[@resource-id="CargoClearanceViewAllCargoClearanceSubmissions"]
-
-CARGO_CLEARANCE_PLUS_SIGN_BUTTON : //android.widget.Button[android.view.ViewGroup/android.view.ViewGroup/@displayed='true']
-
-#INSIDE THE PLUS BUTTON
-PLUS_ADD_VEHICLE_PROFILE_BUTTON : //android.widget.Button[android.view.ViewGroup/@content-desc="Add Vehicle Profile"]
-PLUS_CARGO_SUBMISSION_BUTTON :
-
-PLUS_NEW_CONVOY_SUBMISSION_BUTTON : //android.view.ViewGroup[@content-desc="New Convoy Submission"]
-PLUS_LOOKUP_SUBMISSION_BUTTON : //android.view.ViewGroup[@content-desc="Lookup Submission"]
-CROSS_BUTTON :
+# SGAC2.0 Cargo Clearance landing (Android) — DIVERGED, profile-centric redesign.
+# Verified on-device 2026-09-06 (2.0.0/420, Pixel_7_Pro). SGAC1.0 had a Vehicle Profiles /
+# Cargo Clearance / Cargo Convoys icon grid with a floating "+" menu; 2.0 replaced it with a
+# profile-centric landing: Manage Cargo Submission / Create New Vehicle Profiles / Convoy /
+# Select Vehicle Profiles, plus an add-vehicle "+" and the red REIA announcement banner.
+# Key divergence recorded in tools/fork_parity_allowlist.yaml.
+CARGO-LANDING-HEADER: //android.widget.TextView[@text="Cargo Clearance"]
+CARGO-LANDING-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+CARGO-LANDING-LANGUAGE-BUTTON: //android.widget.Button[@resource-id="CargoLanguage"]
+CARGO-LANDING-ANNOUNCEMENT-BANNER: //android.widget.Button[@resource-id="CargoAnnouncement"]
+CARGO-LANDING-MANAGE-SUBMISSION: //android.view.ViewGroup[@resource-id="ManageCargoSubmission"]
+CARGO-LANDING-CREATE-VEHICLE-PROFILE: //android.view.ViewGroup[@resource-id="CreateNewVehicleProfile"]
+CARGO-LANDING-CONVOY-CLEARANCE: //android.view.ViewGroup[@resource-id="ConvoyClearance"]
+CARGO-LANDING-SELECT-VEHICLE-PROFILES-SECTION: //android.widget.TextView[@text="Select Vehicle Profiles"]
+CARGO-LANDING-ADD-VEHICLE-PROFILE: //android.view.ViewGroup[@content-desc="Add vehicle profile plus icon"]

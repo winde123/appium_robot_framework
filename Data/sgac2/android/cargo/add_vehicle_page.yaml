@@ -1,12 +1,16 @@
-ADD_VEHICLE_NUMBER_TEXT_FIELD: //android.widget.EditText[@resource-id="AddVehicleVehicleNumber"]
-ADD_VEHICLE_NRIC_TEXT_FIELD: //android.widget.EditText[@resource-id="AddVehicleNricFin"]
-ADD_VEHICLE_EMAIL_ADDRESS_TEXT_FIELD: //android.widget.EditText[@resource-id="InfoAndVehiclesAddEmail"]
-ADD_VEHICLE_USE_PASSPORT_NUMBER_OPTION: //android.view.ViewGroup[@resource-id="AddVehicleUsePassportNumber"]
-ADD_VEHICLE_USE_NRIC_OPTION: //android.view.ViewGroup[@resource-id="AddVehicleUseNricFin"]
-ADD_VEHICLE_PASSPORT_NUMBER_TEXT_FIELD: //android.widget.EditText[@resource-id="AddVehiclePassportNumber"]
-ADD_VEHICLE_SAVE_VEHICLE_PROFILE_BUTTON: //android.widget.Button[@resource-id="AddVehicleSaveVehicleProfile"]
-ADD_VEHICLE_BACK_BUTTON : //android.widget.Button[@resource-id="back"]
-ADD_VEHICLE_NEXT_BUTTON: //android.view.ViewGroup[@resource-id="next"]
-INVALID-VEHICLE-NUMBER-POPUP-MESSAGE: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]
-
-assert-passport-number-field : //android.widget.TextView[@text="${test-data-passport-no}"]
+# SGAC2.0 Add Vehicle profile form (Android) — DIVERGED. Verified on-device 2026-09-06
+# (drove it + saved vehicle profile SOX3229J). SGAC1.0 had NRIC/FIN + Use-NRIC/Use-Passport
+# toggles + passport number + a next button; 2.0 simplified it to Vehicle Number + Mobile
+# Number + Email + a single Save. Reached via Cargo landing -> Create New Vehicle Profiles
+# -> Vehicle Profiles list -> ADD VEHICLE. Key divergence recorded in the parity allowlist.
+ADD-VEHICLE-HEADER: //android.widget.TextView[@text="Add Vehicle"]
+ADD-VEHICLE-NUMBER-INPUT: //android.widget.EditText[@resource-id="AddVehicleVehicleNumber"]
+ADD-VEHICLE-NUMBER-LABEL: //android.widget.TextView[@text="Vehicle Number"]
+ADD-VEHICLE-NUMBER-REQUIRED-ERROR: //android.widget.TextView[@content-desc="cargo vehicle number required error message"]
+ADD-VEHICLE-MOBILE-INPUT: //android.widget.EditText[@resource-id="AddVehicleMobileNo"]
+ADD-VEHICLE-MOBILE-LABEL: //android.widget.TextView[@text="Mobile Number"]
+ADD-VEHICLE-MOBILE-REQUIRED-ERROR: //android.widget.TextView[@content-desc="cargo mobile number required error message"]
+ADD-VEHICLE-EMAIL-INPUT: //android.widget.EditText[@resource-id="InfoAndVehiclesAddEmail"]
+ADD-VEHICLE-EMAIL-LABEL: //android.widget.TextView[@text="Email Address"]
+ADD-VEHICLE-EMAIL-REQUIRED-ERROR: //android.widget.TextView[@content-desc="cargo email address required error message"]
+ADD-VEHICLE-SAVE-BUTTON: //android.view.ViewGroup[@resource-id="AddVehicleSaveVehicleProfile"]

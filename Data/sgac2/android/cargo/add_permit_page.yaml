@@ -1,11 +1,7 @@
-ADD_PERMIT_BUTTON : //android.view.ViewGroup[@resource-id="PermitsAddPermit"]
-SUBMIT_CARGO_CONVOY_BUTTON : //android.widget.Button[@resource-id="PermitsSubmitCargoConvoy"]
-BACK_BUTTON : //android.widget.Button[@content-desc="Back"]
-BACK_ARROW: //android.view.ViewGroup[@content-desc="back"]
-ENTER_PERMIT_NUMBER_MANUALLY_BUTTON : //android.view.ViewGroup[@resource-id="AddPermitEnterPermitNoManually"]
-ADD_PERMIT_NUMBER_TEXT_FIELD : //android.widget.EditText[@content-desc="AddPermitPermitNumber"]
-SCAN_PERMIT_WITH_CAMERA_BUTTON : //android.view.ViewGroup[@resource-id="AddPermitScanPermitWithCamera"]
-SAVE_PERMIT_BUTTON: //android.widget.Button[@content-desc="SAVE PERMIT"]
-ALLOW_CAMERA_BUTTON: //android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_foreground_only_button"]
-IFRAME: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout
-CAPTCHA_INPUT: //android.widget.EditText[@content-desc="CaptchaModalCodeInput"]
+# SGAC2.0 Add Permit (Android) — the permit flow now lives INSIDE the web Convoy Submission
+# flow (see cargo_convoy_page.yaml), not the native page SGAC1.0 had (PermitsAddPermit /
+# Enter Permit No Manually / Scan Permit / SAVE PERMIT / CaptchaModal). Not walked in 2.0:
+# it sits behind the Convoy webview and needs the staging tunnel + a full convoy submission
+# to reach. All sgac1 native keys removed pending a web-flow walk (see parity allowlist).
+# TODO(cargo-web): walk the permit step inside the Convoy webview and capture its DOM locators.
+CARGO-PERMIT-PENDING-WEB-WALK: //android.widget.TextView[@text="Convoy Submission"]
