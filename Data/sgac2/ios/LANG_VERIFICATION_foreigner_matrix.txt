@@ -1,0 +1,119 @@
+languages captured: en, zh, ms, ta, id, de, es, fil, fr, it, nl, vi, ru, ar, hi, bn, th, ja, ko
+
+
+################ landing — 10 locators visible on English screen ################
+  survival vs English baseline:
+    en : 10/10 (baseline)
+    zh : 6/10 survive
+    ms : 6/10 survive
+    ta : 6/10 survive
+    id : 7/10 survive
+    de : 6/10 survive
+    es : 7/10 survive
+    fil: 7/10 survive
+    fr : 6/10 survive
+    it : 7/10 survive
+    nl : 7/10 survive
+    vi : 6/10 survive
+    ru : 7/10 survive
+    ar : 7/10 survive
+    hi : 6/10 survive
+    bn : 6/10 survive
+    th : 6/10 survive
+    ja : 6/10 survive
+    ko : 6/10 survive
+
+  baseline locators that break in >=1 language:
+    [      text] SGAC-LANDING-EMPTY-STATE-HINT — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [      text] SGAC-LANDING-HEADER — breaks in: zh,ms,ta,de,fr,vi,hi,bn,th,ja,ko
+    [      text] SGAC-LANDING-PROFILE-SELECT-HINT — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [      text] SGAC-LANDING-SELECT-PROFILES-SECTION — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+
+  baseline locators STABLE across all captured languages (6):
+    [    testid] SGAC-LANDING-BACK-BUTTON
+    [    testid] SGAC-LANDING-LANGUAGE-BUTTON
+    [      text] SGAC-LANDING-MANAGE-PROFILES
+    [      text] SGAC-LANDING-CREATE-NEW-PROFILE
+    [      text] SGAC-LANDING-UPDATE-ARRIVAL-CARD
+    [      text] SGAC-LANDING-ADD-PROFILE
+
+################ method — 5 locators visible on English screen ################
+  survival vs English baseline:
+    en : 5/5 (baseline)
+    zh : 3/5 survive
+    ms : 3/5 survive
+    ta : 3/5 survive
+    id : 3/5 survive
+    de : 3/5 survive
+    es : 3/5 survive
+    fil: 3/5 survive
+    fr : 3/5 survive
+    it : 3/5 survive
+    nl : 3/5 survive
+    vi : 3/5 survive
+    ru : 3/5 survive
+    ar : 3/5 survive
+    hi : 3/5 survive
+    bn : 3/5 survive
+    th : 3/5 survive
+    ja : 3/5 survive
+    ko : 3/5 survive
+
+  baseline locators that break in >=1 language:
+    [      text] PROFILE-CREATION-METHOD-HEADER — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [      text] PROFILE-CREATION-METHOD-TITLE — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+
+  baseline locators STABLE across all captured languages (3):
+    [    testid] PROFILE-CREATION-METHOD-BACK-BUTTON
+    [    struct] PROFILE-CREATION-METHOD-SCAN-PASSPORT-MRZ
+    [    struct] PROFILE-CREATION-METHOD-FILL-MANUALLY
+
+################ form — 22 locators visible on English screen ################
+  survival vs English baseline:
+    en : 22/22 (baseline)
+    zh : 10/22 survive
+    ms : 10/22 survive
+    ta : 10/22 survive
+    id : 10/22 survive
+    de : 10/22 survive
+    es : 10/22 survive
+    fil: 10/22 survive
+    fr : 10/22 survive
+    it : 10/22 survive
+    nl : 10/22 survive
+    vi : 10/22 survive
+    ru : 10/22 survive
+    ar : 10/22 survive
+    hi : 10/22 survive
+    bn : 10/22 survive
+    th : 10/22 survive
+    ja : 10/22 survive
+    ko : 10/22 survive
+
+  baseline locators that break in >=1 language:
+    [    testid] FOR-PROFILE-FORM-COUNTRY-BIRTH-REQUIRED — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [      text] FOR-PROFILE-FORM-DETAILS-HEADER — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [      text] FOR-PROFILE-FORM-DETAILS-NOTE — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [    testid] FOR-PROFILE-FORM-DOB-REQUIRED — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [      text] FOR-PROFILE-FORM-FULL-NAME-LABEL — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [    testid] FOR-PROFILE-FORM-FULL-NAME-REQUIRED — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [    testid] FOR-PROFILE-FORM-GENDER-REQUIRED — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [      text] FOR-PROFILE-FORM-HEADER — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [      text] FOR-PROFILE-FORM-NAME-INPUT — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [    testid] FOR-PROFILE-FORM-NATIONALITY-REQUIRED — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [    testid] FOR-PROFILE-FORM-PASSPORT-EXPIRY-REQUIRED — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+    [    testid] FOR-PROFILE-FORM-PASSPORT-NUMBER-REQUIRED — breaks in: zh,ms,ta,id,de,es,fil,fr,it,nl,vi,ru,ar,hi,bn,th,ja,ko
+
+  baseline locators STABLE across all captured languages (10):
+    [    testid] FOR-PROFILE-FORM-BACK-BUTTON
+    [    testid] FOR-PROFILE-FORM-GENDER-DROPDOWN
+    [    testid] FOR-PROFILE-FORM-DOB-INPUT
+    [    testid] FOR-PROFILE-FORM-DOB-CALENDAR
+    [      text] FOR-PROFILE-FORM-CTY-BIRTH-LIST
+    [      text] FOR-PROFILE-FORM-NAT-LIST
+    [      text] FOR-PROFILE-FORM-PASSPORT-NO-INPUT
+    [    testid] FOR-PROFILE-FORM-PASSPORT-EXPIRY-INPUT
+    [    testid] FOR-PROFILE-FORM-PASSPORT-EXPIRY-CALENDAR
+    [      text] FOR-PROFILE-FORM-FOOTER-STEP
+
+=== OVERALL: 349/666 locator-checks survived across all non-English captures (52%) ===

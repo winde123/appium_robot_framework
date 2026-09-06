@@ -7,9 +7,24 @@ screen against the live SGAC2.0 iOS build on Edwin's iPad (real device, XCUITest
 Verified the SGAC **landing**, **profile-creation-method**, and **profile form (page 1)** across
 ALL 19 in-app languages on the live 2.0 build (English, 中文, Bahasa Melayu, தமிழ், Bahasa
 Indonesia, Deutsch, Español, Filipino, Français, Italiano, Nederlands, Tiếng Việt, Русский,
-العربية, हिन्दी, বাংলা, ไทย, 日本語, 한국어). Method: relaunch per language → set language via the
-SGArrivalCardLanguage picker → capture page source; offline locator check in
-`scratchpad/analyze_lang.py`, full matrix in `scratchpad/lang_matrix.txt`.
+العربية, हिन्दी, বাংলা, ไทย, 日本語, 한국어) — for BOTH the **resident** (Citizen & Resident entry)
+and **foreigner** (Foreign Visitor entry) flows. Method: relaunch per language → set language via
+the SGArrivalCardLanguage picker → capture page source; offline locator checks in
+`scratchpad/analyze_lang.py` (resident) / `analyze_lang_for.py` (foreigner). Matrices saved as
+`LANG_VERIFICATION_matrix.txt` (resident) and `LANG_VERIFICATION_foreigner_matrix.txt`.
+
+**Foreigner flow (verified 2026-09-06):** entry `HomeFOREIGN_VISITOR_SG_ARRIVAL_CARD` → same
+profile-centric SGAC landing → Create New Profile → creation-method (NO SingPass option;
+fill-manually sits higher) → foreigner form (Full Name, Gender dropdown, DOB, Country/Place of
+Birth, Nationality, Passport No./Expiry — no NRIC). Same result as resident: **all 19 languages
+localize correctly** (incl. RTL Arabic, Thai/Tamil/Hindi/Bengali/CJK). Locator survival 52%
+(landing 6/10, method 3/5, form 10/22). STABLE (language-independent): back/language buttons,
+nav cards, MRZ + fill-manually method buttons, gender dropdown, DOB/expiry inputs+calendars,
+country-of-birth & nationality list triggers, passport-number input, footer step. BREAK under
+non-English: every header/section-title/hint/note, all `name="Required"` markers, and the
+Full Name label/input (composed from the localized field label). NOTE: the foreigner form YAMLs
+(`sgac/foreigner/*`) are still sgac1 copies — this sweep confirms localization + locator classes
+but the 2.0 foreigner form itself still needs a correctness walk (separate from this i18n check).
 
 **RESULT 1 — localization is correct everywhere.** Every screen fully localizes in all 19
 languages, including RTL Arabic (e.g. method title "إضافة ملف شخصي") and complex scripts
