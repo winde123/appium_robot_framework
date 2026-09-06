@@ -50,6 +50,19 @@ all 18 non-English languages: landing 6–7/10, method 4/6, form(p1) 12–13/23 
   visible-text locators (headers, "Required", section titles, Name/Email inputs) fail under
   non-English and need testID/structural alternatives for i18n test runs.
 
+## Session 5 (2026-09-06) — iOS foreigner form correctness walk DONE
+Drove the full 2.0 foreigner Add Profile flow on the iPad (Foreign Visitor → Create New
+Profile → fill manually → p1 → p2 contact → p3 summary) and corrected the sgac1-copy
+`sgac/foreigner/*` YAMLs. The 3 searchable modals (for_form_cty_page / for_form_nationality_page
+/ for_form_residence_page) were verified UNCHANGED (8/8 each). Divergences corrected + allowlisted:
+- for_profile_form: DOB/Expiry labels lost "(DD/MM/YYYY)" → repointed to the language-independent
+  `-label-inactive` testIDs; standalone "Full Name (In Passport)" label gone; **Contact page is
+  now Place of Residence + Email ONLY** (country-code + mobile removed) — matches Android.
+- for_profile_summary: Sex label "Sex as indicated in passport"→"Sex"; EDIT→"Edit"; Country/Region
+  Code + Mobile Number rows removed; standalone Terms link merged into the sentence.
+Every key re-verified against captured page source; linter 0/0. This closes the last locator gap
+noted in Session 4. (Test artifact: a foreigner profile JORDAN PHILLIPS was left on the iPad.)
+
 ## Session 3 (2026-09-06 late afternoon) — tunnel up; submission blocked by APP BUG
 - **WireGuard staging tunnel INSTALLED and VERIFIED working** (VPN badge; staging web loads).
   "Update SG Arrival Card" opens an IN-APP WEBVIEW of the SGAC update e-service ("ICA | SG
@@ -156,11 +169,11 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 | other_e_services/sc_pr_services_page.yaml | verified | Re-entry tab → SNAKE_CASE, Citizenship/PR tabs kept human labels; web-headers unverified |
 | other_e_services/sgac_epass_enquiry.yaml | verified | 3 tabs → SNAKE_CASE, Submit-SGAC tab kept human label; web-headers unverified |
 | sgac/declaration_page.yaml | blocked (app bug) | in-app submission gated by the Profile-update-required loop; may not exist in 2.0 (submission is web-based) |
-| sgac/foreigner/for_form_cty_page.yaml | copied | |
-| sgac/foreigner/for_form_nationality_page.yaml | copied | |
-| sgac/foreigner/for_form_residence_page.yaml | copied | |
-| sgac/foreigner/for_profile_form.yaml | copied | |
-| sgac/foreigner/for_profile_summary.yaml | copied | |
+| sgac/foreigner/for_form_cty_page.yaml | verified | Country/Place of Birth searchable modal — unchanged 8/8 |
+| sgac/foreigner/for_form_nationality_page.yaml | verified | Nationality searchable modal — unchanged 8/8 |
+| sgac/foreigner/for_form_residence_page.yaml | verified | Place of Residence searchable modal — unchanged 8/8 |
+| sgac/foreigner/for_profile_form.yaml | verified/diverged | 3-page flow driven live; DOB/Expiry labels→testIDs; contact = Residence+Email only (country-code/mobile removed) |
+| sgac/foreigner/for_profile_summary.yaml | verified/diverged | Sex label shortened, EDIT→Edit, code/mobile rows removed, terms link merged |
 | sgac/indv_submission_page.yaml | blocked (app bug) | same |
 | sgac/profile_creation_method_page.yaml | verified | 6/6 unchanged (mirrors Android) |
 | sgac/profile_list_page.yaml | verified | 6/6 unchanged (checked with a saved card); + new Delete key; empty state reuses card-container (see note in file) |
