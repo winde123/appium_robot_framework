@@ -21,7 +21,7 @@ DECLARATION-STATEMENT-ICA-INFO: //XCUIElementTypeStaticText[contains(@name,"ICA 
 
 # Acknowledgement checkbox
 DECLARATION-CHECKBOX-UNCHECKED: //XCUIElementTypeOther[@name="uncheckI have read and agreed to the declaration."]
-DECLARATION-CHECKBOX-CHECKED: //XCUIElementTypeOther[@name="checkI have read and agreed to the declaration."]
+DECLARATION-CHECKBOX-CHECKED: //XCUIElementTypeOther[@name="checkedI have read and agreed to the declaration."]
 
 # Footer navigation
 #DECLARATION-FOOTER-BACK: //XCUIElementTypeOther[@name="back" and @label="back"]
