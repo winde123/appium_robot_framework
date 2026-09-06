@@ -3,7 +3,29 @@
 Seeded 2026-09-05 by copying `Data/sgac1/ios/**` (37 YAMLs). To be corrected screen by
 screen against the live SGAC2.0 iOS build on Edwin's iPad (real device, XCUITest via Xcode).
 
-## Session working (2026-09-06)
+## Session 2 (2026-09-06 afternoon) — WDA recovery + resident flow walked
+- **WDA recovery recipe:** if WDA answers /status but sessions fail with
+  `XCTDaemonErrorDomain Code=41 "Not authorized for performing UI testing actions"`, the
+  instance is ORPHANED (its Xcode test session died — e.g. USB flap severed the tunnel).
+  Relaunch headlessly, no Xcode GUI needed:
+  `cd ~/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent &&
+  xcodebuild test -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner
+  -destination "id=<udid>"` — do NOT pass `DEVELOPMENT_TEAM`: the project file already
+  carries Edwin's team `SMJS6ACH9K` (robotconfig's `IOS_XCODE_ORGID=W6PMZD7K72` is a
+  DIFFERENT team and breaks headless signing). First run after reinstall may die with
+  "Test crashed with signal kill" ~35s in — retry once, it sticks. Edwin also enabled
+  performance trace + hang monitoring on the iPad (possible cause of first-run kills).
+- **RN input quirks (iOS):** wrapper inputs (`…text input` XCUIElementTypeOther) do NOT
+  expose typed text in the page source — verify values via screenshot or on the summary
+  page. setValue APPENDS (clear first: focus + backspaces via WDA `/wda/keys`; the (x)
+  clear icon is not in the a11y tree). The NRIC field drops trailing chars on fast typing
+  (same as Android) — type char-by-char or append the tail. The footer `next` tap is
+  swallowed while the keyboard is up — dismiss ("Done") first.
+- **Walked live:** profile list (verified with a real card after saving), full 3-page
+  Add Profile flow (profile MARVIN RIVERA saved on-device), summary incl. both checkbox
+  states. All updated keys re-verified offline against the captured XMLs.
+
+## Session 1 (2026-09-06)
 Live XCUITest session established after a connectivity fight (see notes): needed appium-xcuitest
 driver 10.43.1 (was 10.12.0, too old for iOS 26), Edwin's WDA signing, and a STABLE USB port
 (the device kept flapping between USB/Wi-Fi; usbmux dropping broke `isAppInstalled`). Working
@@ -65,10 +87,10 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 | sgac/foreigner/for_profile_summary.yaml | copied | |
 | sgac/indv_submission_page.yaml | copied | |
 | sgac/profile_creation_method_page.yaml | verified | 6/6 unchanged (mirrors Android) |
-| sgac/profile_list_page.yaml | copied | |
+| sgac/profile_list_page.yaml | verified | 6/6 unchanged (checked with a saved card); + new Delete key; empty state reuses card-container (see note in file) |
 | sgac/resident/res_declaration_summary.yaml | copied | |
-| sgac/resident/res_profile_form_page.yaml | copied | |
-| sgac/resident/res_profile_summary.yaml | copied | |
+| sgac/resident/res_profile_form_page.yaml | diverged | 3-PAGE FLOW (same as Android): p1 adds REQUIRED Nationality (searchable dropdown, `searchable dropdown accessible label <X>` options)/Passport No./Expiry; p2 Contact = EMAIL ONLY; full flow driven + saved 2026-09-06 |
+| sgac/resident/res_profile_summary.yaml | diverged | + Nationality/Passport No./Expiry rows; contact email-only; EDIT→"Edit"; terms link merged into sentence; SAVE appears only after T&C checked (28/29 + unchecked state verified) |
 | sgac/resident/res_submission_form_page.yaml | copied | |
 | sgac/sel_indv_profile_list_page.yaml | copied | |
 | sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN (same as Android): profile-centric (Manage/Create/Update/Select); Individual/Group split + tutorial gate removed → T33 |

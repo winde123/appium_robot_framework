@@ -1,8 +1,17 @@
-# selectors for SGAC Resident Form page (iOS)
+# selectors for SGAC Resident Form page (iOS) — SGAC2.0 (verified 2026-09-06 vs build 2.0.0 on iPad)
+#
+# DIVERGED FLOW (same as Android): the sgac1 single-page form is now a 3-page flow —
+# page 1 "Profile Details" (adds REQUIRED Nationality/Citizenship, Passport Number and
+# Date of Passport Expiry), page 2 "Contact Details" (EMAIL ONLY — the sgac1 country-code
+# and mobile-number fields are gone), page 3 summary (res_profile_summary.yaml).
+# Full flow driven end-to-end and profile saved on-device 2026-09-06.
+# NOTE: RN wrapper inputs ("…text input" XCUIElementTypeOther) do NOT expose typed text
+# in the page source — assert values on the page-3 summary instead.
+
 RES-FORM-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
 RES-FORM-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
 
-# Profile details section
+# --- page 1: Profile Details (verified) ---
 RES-FORM-PROFILE-DETAILS-HEADER: //XCUIElementTypeStaticText[@name="Profile Details"]
 RES-FORM-PROFILE-DETAILS-NOTE: //XCUIElementTypeStaticText[@name="Profile retrieved from Singpass is not editable."]
 
@@ -10,31 +19,50 @@ RES-FORM-PROFILE-DETAILS-NOTE: //XCUIElementTypeStaticText[@name="Profile retrie
 RES-FORM-NAME-INPUT: //XCUIElementTypeOther[@name="Nametext input"]
 RES-FORM-NAME-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[1]
 
-# NRIC/FIN field
-RES-FORM-NRIC-INPUT: //XCUIElementTypeOther[@name="nric/fintext input"]
-RES-FORM-NRIC-FIN-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[2]
-
-# Date of Birth field
+# Date of Birth field (2.0 field order: Name, DOB, NRIC, Nationality, Passport No., Expiry)
 RES-FORM-DOB-INPUT: //XCUIElementTypeTextField[@name="PassportDetailsDateOfBirth"]
-RES-FORM-DOB-LABEL: //XCUIElementTypeStaticText[@name="Date of Birth (DD/MM/YYYY)"]
+RES-FORM-DOB-LABEL: //XCUIElementTypeStaticText[@name="PassportDetailsDateOfBirth-label-inactive"]
 RES-FORM-DOB-CALENDAR: //XCUIElementTypeButton[@name="right-icon-adornment"]
-RES-FORM-DOB-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[3]
+RES-FORM-DOB-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[2]
 
-# Footer navigation
-#RES-FORM-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 1 of 3"]
+# NRIC/FIN field (typed input can drop trailing chars — type char-by-char, same as Android)
+RES-FORM-NRIC-INPUT: //XCUIElementTypeOther[@name="nric/fintext input"]
+RES-FORM-NRIC-FIN-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[3]
 
-# Contact details section
+# Nationality/Citizenship (NEW REQUIRED in 2.0) — searchable dropdown picker.
+# Options carry name="searchable dropdown accessible label <NATIONALITY>"; build
+# dynamic option locators with Format String on RES-FORM-NATIONALITY-OPTION-TEMPLATE.
+RES-FORM-NATIONALITY-VALUE: //XCUIElementTypeStaticText[@name="PassportDetailsNationality"]
+RES-FORM-NATIONALITY-DROPDOWN: //XCUIElementTypeOther[@name="nationality/citizenship list"]
+RES-FORM-NATIONALITY-SEARCH: //XCUIElementTypeTextField[@placeholderValue="Search"]
+RES-FORM-NATIONALITY-OPTION-TEMPLATE: //XCUIElementTypeOther[@name="searchable dropdown accessible label {}"]
+RES-FORM-NATIONALITY-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[4]
+
+# Passport Number (NEW REQUIRED in 2.0)
+RES-FORM-PASSPORT-NUMBER-INPUT: //XCUIElementTypeOther[@name="passport numbertext input"]
+RES-FORM-PASSPORT-NUMBER-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[5]
+
+# Date of Passport Expiry (NEW REQUIRED in 2.0)
+RES-FORM-PASSPORT-EXPIRY-INPUT: //XCUIElementTypeTextField[@name="PassportDetailsDatePassportExpiry"]
+RES-FORM-PASSPORT-EXPIRY-LABEL: //XCUIElementTypeStaticText[@name="PassportDetailsDatePassportExpiry-label-inactive"]
+RES-FORM-PASSPORT-EXPIRY-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[6]
+
+# Footer navigation (verified)
+RES-FORM-FOOTER-NEXT: //XCUIElementTypeOther[@name="next"]
+RES-FORM-FOOTER-STEP-1: //XCUIElementTypeOther[@name="Step 1 of 3"]
+
+# --- page 2: Contact Details (verified — EMAIL ONLY in 2.0) ---
 RES-FORM-CONTACT-DETAILS-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
-
-# Country/Region code field
-RES-FORM-CTY-CODE-INPUT: //XCUIElementTypeOther[@name="country/region code text inputtext input"]
-RES-FORM-CTY-CODE-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[1]
-
-# Mobile number field
-RES-FORM-MOBILE-NUMBER-INPUT: //XCUIElementTypeOther[@name="mobile number text input"]
-RES-FORM-MOBILE-NUMBER-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
-RES-FORM-MOBILE-NUMBER-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[2]
-
-# Email address field
 RES-FORM-EMAIL-INPUT: //XCUIElementTypeOther[@name="email address text inputtext input"]
-RES-FORM-EMAIL-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[3]
+RES-FORM-EMAIL-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[1]
+RES-FORM-FOOTER-STEP-2: //XCUIElementTypeOther[@name="Step 2 of 3"]
+
+# --- sgac1-only, REMOVED in 2.0 (kept commented for T33 mapping) ---
+# RES-FORM-DOB-LABEL (old)      : //XCUIElementTypeStaticText[@name="Date of Birth (DD/MM/YYYY)"]
+#                                 — 2.0 label text is plain "Date of Birth"; key now points at the
+#                                 language-independent testID label instead
+# RES-FORM-CTY-CODE-INPUT       : country/region code field gone (contact page is email-only)
+# RES-FORM-CTY-CODE-REQUIRED    : "
+# RES-FORM-MOBILE-NUMBER-INPUT  : mobile number field gone
+# RES-FORM-MOBILE-NUMBER-LABEL  : "
+# RES-FORM-MOBILE-NUMBER-REQUIRED : "

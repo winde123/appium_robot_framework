@@ -1,4 +1,9 @@
-# selectors for SGAC Resident Declaration Summary page (iOS)
+# selectors for SGAC Resident Declaration Summary page (iOS) — SGAC2.0
+# (verified 2026-09-06 vs build 2.0.0 on iPad; step 3 of 3 of the Add Profile flow)
+# DIVERGED (same as Android): contact card is EMAIL ONLY (country-code/mobile rows gone);
+# passport card gains Nationality/Passport Number/Passport Expiry rows; "EDIT" renamed "Edit";
+# the standalone Terms link element is merged into the full-sentence element; the SAVE button
+# only appears after the T&C checkbox is checked.
 RES-DECL-SUMMARY-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
 RES-DECL-SUMMARY-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
 
@@ -11,24 +16,32 @@ RES-DECL-SUMMARY-DOB-LABEL: //XCUIElementTypeStaticText[@name="Date of Birth"]
 RES-DECL-SUMMARY-DOB-VALUE: (//XCUIElementTypeStaticText[@name="Date of Birth"]/following::XCUIElementTypeStaticText)[1]
 RES-DECL-SUMMARY-NRIC-LABEL: //XCUIElementTypeStaticText[@name="NRIC/FIN"]
 RES-DECL-SUMMARY-NRIC-VALUE: (//XCUIElementTypeStaticText[@name="NRIC/FIN"]/following::XCUIElementTypeStaticText)[1]
-RES-DECL-SUMMARY-PASSPORT-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[1]
+RES-DECL-SUMMARY-NATIONALITY-LABEL: //XCUIElementTypeStaticText[@name="Nationality/Citizenship"]
+RES-DECL-SUMMARY-NATIONALITY-VALUE: (//XCUIElementTypeStaticText[@name="Nationality/Citizenship"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-PASSPORT-NUMBER-LABEL: //XCUIElementTypeStaticText[@name="Passport Number"]
+RES-DECL-SUMMARY-PASSPORT-NUMBER-VALUE: (//XCUIElementTypeStaticText[@name="Passport Number"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-PASSPORT-EXPIRY-LABEL: //XCUIElementTypeStaticText[@name="Date of Passport Expiry"]
+RES-DECL-SUMMARY-PASSPORT-EXPIRY-VALUE: (//XCUIElementTypeStaticText[@name="Date of Passport Expiry"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-PASSPORT-EDIT: (//XCUIElementTypeOther[@name="Edit"])[1]
 
-# Contact details card
+# Contact details card (EMAIL ONLY in 2.0)
 RES-DECL-SUMMARY-CONTACT-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[2]
 RES-DECL-SUMMARY-CONTACT-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
-RES-DECL-SUMMARY-COUNTRY-CODE-LABEL: //XCUIElementTypeStaticText[@name="Country/Region Code"]
-RES-DECL-SUMMARY-COUNTRY-CODE-VALUE: (//XCUIElementTypeStaticText[@name="Country/Region Code"]/following::XCUIElementTypeStaticText)[1]
-RES-DECL-SUMMARY-MOBILE-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
-RES-DECL-SUMMARY-MOBILE-VALUE: (//XCUIElementTypeStaticText[@name="Mobile Number"]/following::XCUIElementTypeStaticText)[1]
 RES-DECL-SUMMARY-EMAIL-LABEL: //XCUIElementTypeStaticText[@name="Email Address"]
 RES-DECL-SUMMARY-EMAIL-VALUE: (//XCUIElementTypeStaticText[@name="Email Address"]/following::XCUIElementTypeStaticText)[1]
-RES-DECL-SUMMARY-CONTACT-EDIT: (//XCUIElementTypeOther[@name="EDIT"])[2]
+RES-DECL-SUMMARY-CONTACT-EDIT: (//XCUIElementTypeOther[@name="Edit"])[2]
+# --- sgac1-only, REMOVED in 2.0 (contact card is email-only; kept commented for T33) ---
+# RES-DECL-SUMMARY-COUNTRY-CODE-LABEL : //XCUIElementTypeStaticText[@name="Country/Region Code"]
+# RES-DECL-SUMMARY-COUNTRY-CODE-VALUE : "
+# RES-DECL-SUMMARY-MOBILE-LABEL       : //XCUIElementTypeStaticText[@name="Mobile Number"]
+# RES-DECL-SUMMARY-MOBILE-VALUE       : "
 
 # Terms & checkbox
 RES-DECL-SUMMARY-TERMS-CHECKBOX-UNCHECKED: //XCUIElementTypeOther[@name="uncheckterms of use checkbox"]
 RES-DECL-SUMMARY-TERMS-CHECKBOX-CHECKED: //XCUIElementTypeOther[@name="checkedterms of use checkbox"]
 RES-DECL-SUMMARY-TERMS-TEXT: //XCUIElementTypeOther[@name="I have read and accepted the Terms of Use and Privacy Policy"]
-RES-DECL-SUMMARY-TERMS-LINK: //XCUIElementTypeOther[@name="Terms of Use and Privacy Policy"]
+# RES-DECL-SUMMARY-TERMS-LINK : removed in 2.0 — no standalone "Terms of Use and Privacy Policy"
+#                               element; the link is merged into the full-sentence element above
 
 # Footer navigation
 RES-DECL-SUMMARY-FOOTER-BACK: //XCUIElementTypeOther[@name="back" and @label="back"]
