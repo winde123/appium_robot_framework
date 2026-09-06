@@ -1,0 +1,63 @@
+# selectors for SGAC Foreigner Profile Creation Form (Android) — SGAC2.0
+# NEW in the sgac2 Android tree (verified on-device 2026-09-06, live 2.0.0/420, Pixel_7_Pro):
+# SGAC1.0 Android had no dedicated foreigner tree — it used the shared
+# manual_creation_profile_form.yaml. This file captures the live 2.0 foreigner Add Profile
+# flow, entered via Foreign Visitor -> Create New Profile -> fill manually. Registered in
+# tools/fork_parity_allowlist.yaml as sgac2-only (no sgac1/android counterpart).
+#
+# 3-page flow: page 1 Profile Details (this file) -> page 2 Contact Details (this file)
+# -> page 3 summary (for_profile_summary.yaml). The Country/Place of Birth, Nationality
+# and Place of Residence fields open searchable modals (for_form_cty_page /
+# for_form_nationality_page / for_form_residence_page). Full flow driven + reached summary.
+
+# --- chrome ---
+FOR-PROFILE-FORM-HEADER: //android.widget.TextView[@text="Add Profile"]
+FOR-PROFILE-FORM-BACK-BUTTON: //android.widget.Button[@content-desc="Back"]
+
+# --- page 1: Profile Details ---
+FOR-PROFILE-FORM-SECTION-TITLE: //android.widget.TextView[@text="Profile Details"]
+FOR-PROFILE-FORM-REMINDER: //android.widget.TextView[@text="Profile retrieved from Singpass is not editable."]
+
+FOR-PROFILE-FORM-FULL-NAME-INPUT: //android.widget.EditText[@resource-id="PassportDetailsFullName"]
+FOR-PROFILE-FORM-FULL-NAME-LABEL: //android.widget.TextView[@text="Full Name (In Passport)"]
+
+# Sex (dropdown: MALE / FEMALE / OTHERS)
+FOR-PROFILE-FORM-SEX-INPUT: //android.widget.EditText[@resource-id="PassportDetailsSex"]
+FOR-PROFILE-FORM-SEX-LABEL: //android.widget.TextView[@text="Sex"]
+FOR-PROFILE-FORM-SEX-DROPDOWN-EXPAND: //android.widget.Button[@content-desc="expand dropdown"]
+FOR-PROFILE-FORM-SEX-OPTION-MALE: //android.widget.Button[@content-desc="MALE"]
+FOR-PROFILE-FORM-SEX-OPTION-FEMALE: //android.widget.Button[@content-desc="FEMALE"]
+FOR-PROFILE-FORM-SEX-OPTION-OTHERS: //android.widget.Button[@content-desc="OTHERS"]
+
+# Date of Birth
+FOR-PROFILE-FORM-DOB-INPUT: //android.widget.EditText[@resource-id="PassportDetailsDateOfBirth"]
+FOR-PROFILE-FORM-DOB-LABEL: //android.widget.TextView[@text="Date of Birth"]
+FOR-PROFILE-FORM-DOB-CALENDAR-BUTTON: //android.widget.Button[@resource-id="right-icon-adornment"]
+
+# Country/Place of Birth (opens for_form_cty_page modal)
+FOR-PROFILE-FORM-CTY-BIRTH-LIST: //android.widget.TextView[@resource-id="PassportDetailsCountry"]
+FOR-PROFILE-FORM-CTY-BIRTH-LABEL: //android.widget.TextView[@text="Country/Place of Birth"]
+
+# Nationality/Citizenship (opens for_form_nationality_page modal)
+FOR-PROFILE-FORM-NATIONALITY-LIST: //android.widget.TextView[@resource-id="PassportDetailsNationality"]
+FOR-PROFILE-FORM-NATIONALITY-LABEL: //android.widget.TextView[@text="Nationality/Citizenship"]
+
+# Passport Number
+FOR-PROFILE-FORM-PASSPORT-NO-INPUT: //android.widget.EditText[@resource-id="PassportDetailsPassportNumber"]
+FOR-PROFILE-FORM-PASSPORT-NO-LABEL: //android.widget.TextView[@text="Passport Number"]
+
+# Date of Passport Expiry
+FOR-PROFILE-FORM-PASSPORT-EXPIRY-INPUT: //android.widget.EditText[@resource-id="PassportDetailsDatePassportExpiry"]
+FOR-PROFILE-FORM-PASSPORT-EXPIRY-LABEL: //android.widget.TextView[@text="Date of Passport Expiry"]
+
+FOR-PROFILE-FORM-REQUIRED-ERROR: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]
+FOR-PROFILE-FORM-FOOTER-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]
+
+# --- page 2: Contact Details (Place of Residence + Email only; no country-code/mobile) ---
+FOR-PROFILE-FORM-CONTACT-SECTION-TITLE: //android.widget.TextView[@text="Contact Details"]
+# Place of Residence (opens for_form_residence_page modal; country,city,city options)
+FOR-PROFILE-FORM-RESIDENCE-LIST: //android.widget.TextView[@resource-id="ContactDetailsResidence"]
+FOR-PROFILE-FORM-RESIDENCE-LABEL: //android.widget.TextView[@text="Place of Residence"]
+FOR-PROFILE-FORM-EMAIL-INPUT: //android.widget.EditText[@resource-id="ContactDetailsEmailAddress"]
+FOR-PROFILE-FORM-EMAIL-LABEL: //android.widget.TextView[@text="Email Address"]
+FOR-PROFILE-FORM-CONTACT-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]

@@ -12,6 +12,14 @@
 files:
   sgac2_only:
     - ios/cargo/vehicle_profiles_page.yaml   # 2.0-only: cargo vehicle-profile redesign
+    # Android foreigner tree: SGAC1.0 Android had NO dedicated foreigner tree (it used the
+    # shared manual_creation_profile_form.yaml). These are live-verified 2.0 foreigner-flow
+    # locators (walk 2026-09-06), mirroring the iOS foreigner layout.
+    - android/sgac/foreigner/for_profile_form.yaml
+    - android/sgac/foreigner/for_profile_summary.yaml
+    - android/sgac/foreigner/for_form_nationality_page.yaml
+    - android/sgac/foreigner/for_form_cty_page.yaml
+    - android/sgac/foreigner/for_form_residence_page.yaml
   sgac1_only: []
 
 keys:

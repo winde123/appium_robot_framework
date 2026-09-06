@@ -1,0 +1,13 @@
+# selectors for SGAC Foreigner Place of Residence modal (Android) — SGAC2.0
+# (verified on-device 2026-09-06). Opened from for_profile_form RESIDENCE-LIST (contact page).
+# Options are COUNTRY, CITY, CITY triples, content-desc
+# "searchable dropdown accessible label <COUNTRY>, <CITY>, <CITY>" (e.g.
+# "AFGHANISTAN, KABUL, KABUL"). sgac2-only (no sgac1/android foreigner tree) — see allowlist.
+FOR-RESIDENCE-MODAL: //android.view.ViewGroup[@resource-id="modal"]
+FOR-RESIDENCE-MODAL-SURFACE: //android.view.ViewGroup[@resource-id="modal-surface"]
+FOR-RESIDENCE-SEARCH-INPUT: //android.view.ViewGroup[@resource-id="modal"]//android.widget.EditText
+FOR-RESIDENCE-CLOSE-BUTTON: //android.widget.Button[@content-desc="Close modal"]
+FOR-RESIDENCE-OPTION-BY-NAME-TEMPLATE: //android.view.ViewGroup[@content-desc="searchable dropdown accessible label {}"]
+FOR-RESIDENCE-OPTION-1: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[1]
+FOR-RESIDENCE-OPTION-2: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[2]
+FOR-RESIDENCE-OPTION-3: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[3]

@@ -37,6 +37,27 @@ languages is a resource-id/content-desc testID; EVERY locator that breaks is a `
   BACK/NEXT labels) fail under non-English — use the resource-id/content-desc equivalents for
   cross-language runs. Same conclusion as the earlier Android text-vs-testID finding and iOS.
 
+## Foreigner form correctness walk (2026-09-06) — NEW sgac2 Android tree
+SGAC1.0 Android had **no dedicated foreigner tree** — it used the shared
+`manual_creation_profile_form.yaml` (resident+foreigner mixed, fragile index-based confirm
+locators). Walked the live 2.0 foreigner Add Profile flow end-to-end (Foreign Visitor →
+Create New Profile → fill manually → …reached the summary) and created a clean, testID-based
+`Data/sgac2/android/sgac/foreigner/` tree mirroring the iOS foreigner layout. Every key
+live-verified against captured page source; registered in `tools/fork_parity_allowlist.yaml`
+as sgac2-only (no sgac1/android counterpart); linter 0/0. New files:
+- `for_profile_form.yaml` — 3-page flow, pages 1+2: Profile Details (Full Name, **Sex**
+  dropdown MALE/FEMALE/OTHERS, DOB, **Country/Place of Birth**, Nationality, Passport No.,
+  Passport Expiry) + Contact Details (**Place of Residence**, Email — no country-code/mobile).
+- `for_profile_summary.yaml` — page 3: Passport Details + Contact Details cards, Edit,
+  T&C checkbox (un/checked), SAVE.
+- `for_form_cty_page.yaml` / `for_form_nationality_page.yaml` / `for_form_residence_page.yaml`
+  — the three searchable modals (`resource-id="modal"`, text="Search" input, "Close modal",
+  options `content-desc="searchable dropdown accessible label <X>"`; residence options are
+  `COUNTRY, CITY, CITY`). Build specific option locators via the `*-OPTION-BY-NAME-TEMPLATE`.
+Distinct from resident: foreigner has Sex + Country/Place of Birth, no NRIC, and contact is
+Residence+Email (resident is NRIC-based, contact email-only). NOTE: the legacy shared
+`manual_creation_profile_form.yaml` is now superseded for the foreigner flow by this tree.
+
 ## Known 2.0 drift patterns (apply while correcting)
 - **SNAKE_CASE testIDs — NAVIGATION CARD-TILES ONLY (refined after divergence analysis):**
   the concatenated-label → SNAKE_CASE conversion applies to navigation card/tile testIDs

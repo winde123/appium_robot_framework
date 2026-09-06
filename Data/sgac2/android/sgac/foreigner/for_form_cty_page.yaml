@@ -1,0 +1,13 @@
+# selectors for SGAC Foreigner Country/Place of Birth modal (Android) — SGAC2.0
+# (verified on-device 2026-09-06). Opened from for_profile_form CTY-BIRTH-LIST.
+# Searchable list; options carry content-desc "searchable dropdown accessible label <COUNTRY>"
+# (e.g. AUSTRALIA). sgac2-only (no sgac1/android foreigner tree) — see parity allowlist.
+FOR-CTY-MODAL: //android.view.ViewGroup[@resource-id="modal"]
+FOR-CTY-MODAL-SURFACE: //android.view.ViewGroup[@resource-id="modal-surface"]
+FOR-CTY-SEARCH-INPUT: //android.view.ViewGroup[@resource-id="modal"]//android.widget.EditText
+FOR-CTY-CLOSE-BUTTON: //android.widget.Button[@content-desc="Close modal"]
+# Build a specific option locator inline with Format String against this template.
+FOR-CTY-OPTION-BY-NAME-TEMPLATE: //android.view.ViewGroup[@content-desc="searchable dropdown accessible label {}"]
+FOR-CTY-OPTION-1: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[1]
+FOR-CTY-OPTION-2: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[2]
+FOR-CTY-OPTION-3: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[3]

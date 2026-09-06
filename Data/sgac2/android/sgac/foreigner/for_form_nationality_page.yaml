@@ -1,0 +1,12 @@
+# selectors for SGAC Foreigner Nationality/Citizenship modal (Android) — SGAC2.0
+# (verified on-device 2026-09-06). Opened from for_profile_form NATIONALITY-LIST.
+# Options carry content-desc "searchable dropdown accessible label <NATIONALITY>" (e.g.
+# AUSTRALIAN). sgac2-only (no sgac1/android foreigner tree) — see parity allowlist.
+FOR-NATIONALITY-MODAL: //android.view.ViewGroup[@resource-id="modal"]
+FOR-NATIONALITY-MODAL-SURFACE: //android.view.ViewGroup[@resource-id="modal-surface"]
+FOR-NATIONALITY-SEARCH-INPUT: //android.view.ViewGroup[@resource-id="modal"]//android.widget.EditText
+FOR-NATIONALITY-CLOSE-BUTTON: //android.widget.Button[@content-desc="Close modal"]
+FOR-NATIONALITY-OPTION-BY-NAME-TEMPLATE: //android.view.ViewGroup[@content-desc="searchable dropdown accessible label {}"]
+FOR-NATIONALITY-OPTION-1: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[1]
+FOR-NATIONALITY-OPTION-2: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[2]
+FOR-NATIONALITY-OPTION-3: (//android.view.ViewGroup[starts-with(@content-desc,"searchable dropdown accessible label ")])[3]
