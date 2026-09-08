@@ -1,0 +1,35 @@
+# Singpass staging login page (Android) — SGAC2.0 only.
+# Live-verified 2026-09-08 against build 2.0.0(15) / versionCode 422 on Pixel_7_Pro.
+#
+# "Retrieve Myinfo with Singpass" leaves the app and opens Singpass in Chrome
+# (n.stg-id.singpass.gov.sg). These are therefore CHROME nodes, not app testIDs — the
+# rendered visual labels ("Use password", "Log in") differ from the accessibility labels
+# below, and only the accessibility labels are addressable. Chrome renders only what is
+# on screen, so scroll before addressing the login-method buttons.
+#
+# The page has TWO states:
+#   fresh              — SINGPASS-USERNAME-INPUT + SINGPASS-PASSWORD-INPUT
+#   remembered browser — password only, above a "Log in as <user>" card (Switch/Forget me).
+# Singpass remembers the browser after a successful login, so a suite must handle both.
+
+# --- page identity ---
+SINGPASS-LOGIN-WEBVIEW: //android.webkit.WebView[@text="Singpass login"]
+SINGPASS-LOGIN-METHOD-HEADER: //android.widget.TextView[@text="Choose a login method"]
+
+# --- login-method selection (below the fold: scroll first) ---
+SINGPASS-PASSWORD-AUTH-BUTTON: //android.widget.Button[@content-desc="Log in using password authentication"]
+SINGPASS-PASSKEY-AUTH-BUTTON: //android.widget.Button[@content-desc="Log in using passkey authentication"]
+SINGPASS-REFRESH-QR-BUTTON: //android.widget.Button[@content-desc="Refresh QR code"]
+
+# --- password login form ---
+SINGPASS-USERNAME-INPUT: //android.widget.EditText[@resource-id="username"]
+SINGPASS-PASSWORD-INPUT: //android.widget.EditText[@resource-id="password"]
+SINGPASS-PASSWORD-VISIBILITY-TOGGLE: //android.widget.Button[@content-desc="toggle password visibility"]
+SINGPASS-LOGIN-SUBMIT-BUTTON: //android.widget.Button[@content-desc="Submit password for Singpass login"]
+SINGPASS-BACK-TO-LOGIN-METHOD-BUTTON: //android.widget.Button[@content-desc="Go back to login method selection"]
+
+# --- remembered-browser card (only when Singpass has remembered this browser) ---
+SINGPASS-REMEMBERED-USER-LABEL: //android.widget.TextView[@text="Log in as"]
+SINGPASS-REMEMBERED-SWITCH-BUTTON: //android.widget.Button[@text="Switch"]
+SINGPASS-REMEMBERED-FORGET-ME-BUTTON: //android.widget.Button[@text="Forget me"]
+SINGPASS-FORGET-ME-CONFIRM-BUTTON: //android.widget.Button[@text="Forget me on this browser"]
