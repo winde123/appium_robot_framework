@@ -155,12 +155,13 @@ def add_space_between_string(string):
 def convert_int_to_secs(numsecs):
     """Return a ``timedelta`` for ``numsecs`` seconds.
 
-    Fractional seconds are preserved::
+    Robot passes keyword arguments as strings, so numeric strings are
+    accepted alongside ints/floats. Fractional seconds are preserved::
 
         >>> convert_int_to_secs(0.5)
         datetime.timedelta(microseconds=500000)
     """
-    return timedelta(seconds=numsecs)
+    return timedelta(seconds=float(numsecs))
 
 
 def date_field_formatter(datestr):

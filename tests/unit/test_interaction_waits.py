@@ -72,18 +72,26 @@ class FakeTimeouts:
 
     @property
     def implicit_wait(self):
-        if self._exc is not None:
-            raise self._exc
         return self._value
 
 
 class FakeDriver:
-    """Minimal WebDriver stand-in that records implicit-wait changes."""
+    """Minimal WebDriver stand-in that records implicit-wait changes.
+
+    The read side mimics Appium: GET /timeouts (via ``execute``) returns only
+    an ``implicit`` key in milliseconds — no ``pageLoad``/``script``.
+    """
 
     def __init__(self, implicit_wait=5.0, read_exc=None, set_exc=None):
         self.timeouts = FakeTimeouts(implicit_wait, read_exc)
         self._set_exc = set_exc
         self.implicit_wait_log = []
+
+    def execute(self, command, params=None):
+        assert command == "getTimeouts", f"unexpected command {command!r}"
+        if self.timeouts._exc is not None:
+            raise self.timeouts._exc
+        return {"value": {"implicit": self.timeouts._value * 1000}}
 
     def implicitly_wait(self, seconds):
         if self._set_exc is not None:
@@ -606,6 +614,10 @@ class _FakeDriver:
     def __init__(self, recorder):
         self._recorder = recorder
         self.timeouts = type('T', (), {'implicit_wait': 5.0})()
+
+    def execute(self, command, params=None):
+        assert command == 'getTimeouts'
+        return {'value': {'implicit': self.timeouts.implicit_wait * 1000}}
 
     def implicitly_wait(self, seconds):
         self._recorder('implicit_wait:' + str(seconds))

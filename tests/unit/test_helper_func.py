@@ -135,6 +135,10 @@ class TestConvertIntToSecs:
         result = helper_func.convert_int_to_secs(1.25)
         assert result == timedelta(seconds=1.25)
 
+    def test_numeric_string_accepted(self):
+        # Regression: Robot passes keyword arguments as strings ("30").
+        assert helper_func.convert_int_to_secs("30") == timedelta(seconds=30)
+
 
 class TestDateFieldFormatter:
     def test_valid_date(self):

@@ -29,6 +29,7 @@ from selenium.common.exceptions import (
     NoSuchElementException,
     StaleElementReferenceException,
 )
+from selenium.webdriver.remote.command import Command
 
 DEFAULT_TIMEOUT = os.environ.get("INTERACTION_WAIT_TIMEOUT", "60s")
 DEFAULT_POLL = os.environ.get("INTERACTION_WAIT_POLL", "0.5s")
@@ -72,12 +73,17 @@ def _parse_time(value, name):
 def _read_implicit_wait(driver):
     """Read the driver's implicit wait, failing loudly if it cannot be read.
 
+    Reads the raw W3C GET /timeouts response instead of Selenium's
+    ``driver.timeouts`` property: Appium native sessions omit the
+    ``pageLoad``/``script`` keys that the property's wrapper unconditionally
+    pops, so it raises ``KeyError: 'pageLoad'`` against Appium.
+
     Returning a guessed default (e.g. 0) and mutating the driver could destroy
     the session's configured implicit wait and falsely claim that the deadline
     is enforced, so any read/convert failure is surfaced as a RuntimeError.
     """
     try:
-        raw = driver.timeouts.implicit_wait
+        raw = driver.execute(Command.GET_TIMEOUTS)["value"]["implicit"]
     except Exception as exc:  # noqa: BLE001
         raise RuntimeError(
             "Cannot read the current Appium/Selenium implicit wait; the "
@@ -85,7 +91,7 @@ def _read_implicit_wait(driver):
             f"knowing the prior state: {exc}"
         ) from exc
     try:
-        seconds = float(raw)
+        seconds = float(raw) / 1000.0
     except Exception as exc:  # noqa: BLE001
         raise RuntimeError(
             f"Current implicit wait value {raw!r} is not numeric: {exc}"
