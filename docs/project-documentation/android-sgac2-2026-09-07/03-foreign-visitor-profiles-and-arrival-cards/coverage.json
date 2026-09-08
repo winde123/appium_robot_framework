@@ -1,0 +1,15 @@
+{
+  "title": "Foreign visitor profiles and SG Arrival Cards",
+  "summary": "The foreign visitor manual-entry journey, including conditional Malaysian identity details, searchable location lists, residence and email, confirmation, profile update and arrival-card retrieval.",
+  "flows": [
+    {"name": "Create visitor profile manually", "outcome": "Completed: WALKTHROUGH VISITOR saved with synthetic Malaysian identity, passport, residence and contact details."},
+    {"name": "Sex, birthplace and nationality", "outcome": "Selection screens and a country search captured. Malaysian nationality reveals an additional identity-card field."},
+    {"name": "Conditional identity field", "outcome": "The required Malaysian identity-card field was supplied before continuing."},
+    {"name": "Residence and contact", "outcome": "A searchable Malaysian city of residence and email were accepted; both sections appear in the confirmation."},
+    {"name": "Profile update", "outcome": "Update saved successfully, but selecting the profile for an arrival card repeats Profile update required."},
+    {"name": "Native arrival-card submission", "outcome": "Blocked by the repeated profile-update prompt. Arrival, trip, accommodation, declaration and success screens beyond that point were not reached."},
+    {"name": "Update existing arrival card", "outcome": "Web retrieval form opened. It requests DE number, nationality, date of birth, passport number and passport expiry. No submitted record was supplied."},
+    {"name": "Passport scan", "outcome": "Creation method is visible. The shared scanner is documented in the resident walkthrough; passport extraction requires a test fixture."}
+  ],
+  "notes": ["The profile-update loop was reproduced after a successful save, independently of the resident profile. The documents report this boundary instead of inventing later screens.", "Other nationalities and every location option were not exhaustively tested. This captures the observed Malaysian conditional branch."]
+}

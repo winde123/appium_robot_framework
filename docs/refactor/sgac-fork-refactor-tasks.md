@@ -1,9 +1,11 @@
 # SGAC 1.0 / SGAC 2.0 fork refactor — task board
 
-**Goal:** the MyICA app has two major forks, SGAC1.0 and SGAC2.0. Everything in this repo today
-(binaries, package IDs, locators, keywords, suites, Device Farm specs) is SGAC1.0-only. After this
-refactor, one codebase drives both forks, selected at run time, with SGAC1.0 remaining the default
-so existing runs keep working.
+Last reviewed: 2026-09-07 (walkthrough evidence and documentation synchronization)
+
+**Goal:** the MyICA app has two major forks, SGAC1.0 and SGAC2.0. The starting repository
+(2026-09-05) was SGAC1.0-only. The refactor makes one codebase drive both forks, selected at
+run time, with SGAC1.0 remaining the default so existing runs keep working. Current progress
+and remaining runtime verification are recorded below.
 
 **Status:** Waves 1 AND 2 COMPLETE (2026-09-05). Wave 1 (T10/T11/T13/T40) merged; its
 cross-review (Codex `gpt-6-astra` + DeepSeek `v4-pro`, both HOLD → fixed) produced the
@@ -11,10 +13,21 @@ cross-review (Codex `gpt-6-astra` + DeepSeek `v4-pro`, both HOLD → fixed) prod
 T21 Claude; Codex was quota-blocked for authoring) merged after a second two-vendor review —
 both verdicts SHIP. Result on main: `robot --dryrun tests/` = 66/66 with zero error output for
 sgac1; parity linter 0 errors / 0 warnings; all repo-root-escaping imports fixed.
-**Caveat (per both reviewers):** the sgac2 dryrun "pass" is an artifact — `Data/sgac2/**` does
-not exist until T31/T32 seed it, so a real `APP_FORK=sgac2` run cannot work yet. Next: Wave 3
-(T30–T33), blocked on the two open T00 items (iOS bundle ID, divergent-flow list) and device
-availability. This board is the work queue for concurrent agents.
+**Historical caveat (2026-09-05, per both reviewers):** the sgac2 dryrun "pass" did not prove
+runtime readiness while `Data/sgac2/**` was absent. Both platform trees now exist; their
+`STATUS.md` files record the remaining unverified and divergent screens. Wave 3 and full
+runtime acceptance are not declared complete by the later manual walkthrough.
+This board is the work queue for concurrent agents.
+
+**Walkthrough update (2026-09-07):** [200 documented Android screens and six Word documents](../project-documentation/android-sgac2-2026-09-07/README.md)
+are available from build 2.0.0/420. The session covered manual profile saves, QR generation,
+cargo/convoy review and all 32 e-Service entry links. The continuation added service search
+and the remaining support/About destinations; [the documentation task](../../todo/done/emulator-flow-documentation.md)
+records the result and unexercised variants. Trusted Traveller Programme reached ICA's 404
+page; search matched correctly but displayed raw translation keys. The emulator was returned to Home.
+Native SGAC profile selection is blocked by a repeatable update-required loop. These captures
+add evidence for T31/T33; they do not change locator verification states or establish T42
+automated regression passes.
 
 **Orchestration:** the Claude Code session is dev lead / solution architect (Edwin, 2026-09-05):
 it assigns tasks, reviews every agent diff, and performs all merges and pushes. See rule 6.
@@ -199,6 +212,10 @@ Device Farm project decisions remain deferred with T12 and are not required to c
   (Appium MCP `appium_get_page_source` / `generate_locators` makes this fast) and correct the
   XPaths that changed. Track per-screen status in a checklist at the top of the tree
   (`Data/sgac2/android/STATUS.md`): `copied` → `verified` → `diverged`.
+- 2026-09-07 evidence: the tree is present, and the screen-documentation session reached
+  profile save/update, individual/group QR generation and cargo/convoy review. See the
+  [Android status supplement](../../Data/sgac2/android/STATUS.md) and dated screenshot package.
+  Unverified XPath entries still require explicit locator checks.
 
 ### T32 — SGAC2.0 iOS locator tree  `[Edwin-in-the-loop: needs the real device]`
 - Files owned: `Data/sgac2/ios/**` (new). Same procedure and STATUS.md as T31.
@@ -211,6 +228,10 @@ Device Farm project decisions remain deferred with T12 and are not required to c
   fork-exclusive test cases in `tests/**` tagged `fork:sgac1-only` / `fork:sgac2-only`.
 - Only for flows T00 lists as genuinely different; identical flows must stay single-sourced.
 - NOTE: overlaps T20/T21 file sets — run strictly after Wave 2 merges.
+- 2026-09-07 evidence: profile-centric SGAC selection repeats an update-required alert after
+  saving an update; native downstream submission remains blocked. Cargo/convoy permit and
+  review screens are captured in the in-app webview. No flow-dispatch implementation was
+  changed during the documentation session.
 
 ---
 

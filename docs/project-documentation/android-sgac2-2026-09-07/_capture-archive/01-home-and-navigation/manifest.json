@@ -1,0 +1,16 @@
+[
+  {
+    "step": 15,
+    "title": "Citizen and Resident additional services",
+    "action": "Scroll through the Citizen and Resident service hub.",
+    "observation": "",
+    "status": "Captured",
+    "flow": "01-home-and-navigation",
+    "captured_at": "2026-09-07T17:22:44.762744+08:00",
+    "screenshot": "screenshots/015-citizen-and-resident-additional-services.png",
+    "source": "sources/015-citizen-and-resident-additional-services.xml",
+    "sha256": "7b0a0d386a776e49bc05ae720460f5d22263138d5829de100c81aac4882d1b2c",
+    "capture_number": 15,
+    "archive_reason": "Repeated service-hub viewport after a scroll with no additional content."
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "step": 7,
+    "title": "Nationality options for foreign visitor",
+    "action": "Choose Malaysia as birthplace, then open Nationality.",
+    "observation": "",
+    "status": "Captured",
+    "flow": "03-foreign-visitor-profiles-and-arrival-cards",
+    "captured_at": "2026-09-07T17:38:35.420010+08:00",
+    "screenshot": "screenshots/007-nationality-options-for-foreign-visitor.png",
+    "source": "sources/007-nationality-options-for-foreign-visitor.xml",
+    "sha256": "efc2bf8870343ba8d44cadbdc82580a244d404210027b2102464cd2192554d9a",
+    "capture_number": 7,
+    "archive_reason": "Repeated country-search viewport."
+  },
+  {
+    "step": 22,
+    "title": "Visitor arrival card update portal",
+    "action": "Open Update SG Arrival Card.",
+    "observation": "",
+    "status": "Captured",
+    "flow": "03-foreign-visitor-profiles-and-arrival-cards",
+    "captured_at": "2026-09-07T17:41:24.719598+08:00",
+    "screenshot": "screenshots/022-visitor-arrival-card-update-portal.png",
+    "source": "sources/022-visitor-arrival-card-update-portal.xml",
+    "sha256": "0a8c3c1e9d3dd5796285ce0b604d74526ac35d5ea18cd0f802e1d7725c09ccec",
+    "capture_number": 22,
+    "archive_reason": "Webview loading transition before the loaded retrieval form."
+  }
+]

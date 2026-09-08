@@ -1,0 +1,88 @@
+{
+  "captured_date": "2026-09-07",
+  "platform": "Android",
+  "android_version": "16",
+  "emulator": "Pixel_7_Pro",
+  "device_serial": "emulator-5554",
+  "package": "sg.gov.ica.mobile.app",
+  "version_name": "2.0.0",
+  "version_code": 420,
+  "in_app_version_label": "Current Version: 2.0.0(13) (STAGING)",
+  "installer": "com.android.vending",
+  "language": "English",
+  "portrait_resolution": "1440x3120",
+  "capture_method": "Original adb screencap PNG; Appium UiAutomator2 source XML",
+  "scope": "Installed SGAC 2.0 Android app; externally opened services may use a different environment.",
+  "synthetic_records": [
+    {
+      "name": "WALKTHROUGH RESIDENT",
+      "nric": "S3249349A",
+      "passport": "K9366011E",
+      "dob": "01/01/1990",
+      "passport_expiry": "03/03/2028",
+      "email": "walkthrough.resident@example.com"
+    },
+    {
+      "name": "WALKTHROUGH VISITOR",
+      "nationality": "MALAYSIAN",
+      "passport": "Z49936601",
+      "dob": "02/02/1992",
+      "passport_expiry": "03/03/2028",
+      "malaysian_id": "920202141235",
+      "residence": "MALAYSIA, KUALA LUMPUR, KUALA LUMPUR",
+      "email": "walkthrough.visitor@example.com"
+    },
+    {
+      "name": "WALKTHROUGH QR RESIDENT",
+      "nric": "S6268714B",
+      "passport": "K9274134K",
+      "dob": "25/06/1992",
+      "passport_expiry": "29/03/2028",
+      "email": "walkthrough.qr@example.com"
+    }
+  ],
+  "synthetic_vehicle": {
+    "vehicle_number": "SBA1234G",
+    "mobile": "81234567",
+    "email": "walkthrough.cargo.updated@example.com"
+  },
+  "synthetic_convoy": {
+    "vehicle_numbers": [
+      "SBA1234G",
+      "SBC5678H"
+    ],
+    "email": "walkthrough.convoy@example.com",
+    "submitted": false
+  },
+  "qr_groups_remaining": [
+    "WALKTHROUGH CAR",
+    "WALKTHROUGH MOTORCYCLE",
+    "WALKTHROUGH LORRY"
+  ],
+  "qr_group_created_then_deleted": "WALKTHROUGH BUS EDITED",
+  "previous_pauses": [
+    {
+      "reason": "User requested wrap-up at the start of the next flow",
+      "screen": "Other e-Services > Singapore Citizenship and Permanent Residence",
+      "next_action": "Open Apply for Singapore Citizenship",
+      "emulator_left_running": true
+    }
+  ],
+  "continuation": {
+    "requested_date": "2026-09-07",
+    "finished_at": "2026-09-07T23:22:28.644871+08:00",
+    "resumed_from": "Other e-Services > Singapore Citizenship and Permanent Residence",
+    "new_documented_captures": 36,
+    "completed": "Remaining 14 e-Service links; service search; Help destinations; ICA website; loaded privacy/terms pages; home advisory and translation-feedback links.",
+    "final_screen": "MyICA Mobile Home",
+    "emulator_left_running": true,
+    "installed_build_rechecked": {
+      "version_name": "2.0.0",
+      "version_code": 420,
+      "installer": "com.android.vending"
+    },
+    "data_changes": "No new profiles, vehicles, groups or declarations were created in the continuation. Existing walkthrough records retained.",
+    "capture_session": "Expired prior session replaced using a dedicated Appium server on port 4727; session metadata remains in /private/tmp/myica-walkthrough-session.json.",
+    "remaining_coverage": "See flow-inventory.md for authentication, fixture, native SGAC blocker and unexercised input/capacity variants."
+  }
+}

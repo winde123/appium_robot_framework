@@ -1,0 +1,16 @@
+[
+  {
+    "step": 12,
+    "title": "Cargo submission form",
+    "action": "Continue with the selected vehicle.",
+    "observation": "",
+    "status": "Captured",
+    "flow": "05-cargo-clearance",
+    "captured_at": "2026-09-07T17:52:21.579798+08:00",
+    "screenshot": "screenshots/012-cargo-submission-form.png",
+    "source": "sources/012-cargo-submission-form.xml",
+    "sha256": "058953ebc57d5bec2627efa53f8390bf66b5666312e80f3de11c93df4fe093a9",
+    "capture_number": 12,
+    "archive_reason": "Webview loading transition before the loaded cargo form."
+  }
+]

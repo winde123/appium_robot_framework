@@ -1,5 +1,7 @@
 # SGAC2.0 Android locator tree — walk status (T31)
 
+Last reviewed: 2026-09-07
+
 Seeded 2026-09-05 by copying `Data/sgac1/android/**` (30 YAMLs), then corrected screen by
 screen against the live SGAC2.0 build (versionName 2.0.0, **versionCode 420**, installed via
 Play internal testing) on the `Pixel_7_Pro` emulator through the WireGuard staging tunnel.
@@ -9,6 +11,42 @@ Status legend: `copied` = unverified sgac1 copy · `verified` = checked against 
 
 Method: Appium page source per screen → offline XPath eval with `scratchpad/walk_check.py`
 (lxml). A key is verified only when its XPath resolves to exactly the intended node on 2.0.
+
+## Screen documentation sessions (2026-09-07)
+
+The [dated walkthrough package](../../../docs/project-documentation/android-sgac2-2026-09-07/README.md)
+adds 207 original PNG/source-XML pairs, with 200 screens curated into six Word documents
+and a gallery. Seven repeated views/loading transitions are archived. Environment:
+Pixel_7_Pro, Android 16, versionName 2.0.0 / versionCode 420; About MyICA displays
+`2.0.0(13) (STAGING)`. The package contains manual navigation evidence, not a new XPath
+verification sweep. The locator status table below retains its existing verification states.
+
+| Area | Newly observed result |
+| --- | --- |
+| Resident and visitor profiles | Synthetic profiles created and updated successfully. Malaysian nationality adds a required Malaysian identity-card field. |
+| Native SGAC selection | Both new profiles repeatedly show **Profile update required** after update/save success. Native arrival/trip/declaration screens beyond selection remain blocked. |
+| QR | Seven-step tutorial, individual resident QR and car/motorcycle/lorry/bus group QRs reached. Bus group renamed and deleted; the other walkthrough groups remain. |
+| Cargo | Synthetic vehicle created/edited; full and partial clearance permits accepted through review. Updated contact details carry into the web form. |
+| Convoy | Two vehicles and a permit accepted through review. With low value goods set to YES, Next without a permit still produced required-field feedback. No cargo/convoy declaration was submitted. |
+| Other e-Services | All ten categories and 32 entry links opened. Trusted Traveller Programme reached `eservices.ica.gov.sg/404.html`; Race/Dialect reached FormSG with a Singpass requirement; Appointment links use `eservices-stg.ica.gov.sg`. The address label `FOR_LTVP_STP_HOLDER` and Digital Stillbirth Extract → general eRECEIVE routing remain recorded. |
+| Service search | `Report` returned two services and its passport result opened. `test` returned no cards; clearing restored the list. Names/time estimates display raw translation keys such as `REPORT_LOST_PASSPORT` and `MINUTES_5_TO_10`. |
+| Home/support | All Help destination entries, ICA website, loaded privacy/terms pages, expanded Terms General section, ScamShield banner destination and translation-feedback destination captured. |
+
+To reproduce the observed SGAC blocker: create a manual profile, select it on the SGAC
+dashboard, choose UPDATE PROFILE, continue from Contact Details to the summary, accept
+the terms and SAVE, then return and select it again. The same update-required alert returns.
+This was observed for the new resident and Malaysian visitor records; it is not a claim
+about every possible profile. The scanner reached its landscape viewfinder but lacked a
+passport fixture; Singpass reached staging login but lacked test credentials. Existing-card,
+certificate and cargo-ARN retrieval, submission results and physical clearance remain pending.
+
+The user resumed from the earlier Citizenship pause, adding 36 captures. See the
+[documentation task](../../../todo/done/emulator-flow-documentation.md) and
+[flow inventory](../../../docs/project-documentation/android-sgac2-2026-09-07/flow-inventory.md)
+for coverage limits, retained synthetic records and Appium reconnect details. The app was
+returned to **MyICA Home**; check the device/session before any future continuation.
+No YAML, keyword or Robot suite was changed by the documentation sessions. Artifact
+validation and repository checks are recorded in the package's `checks.json`.
 
 ## Language verification — all 19 languages (2026-09-06)
 Verified the SGAC **landing**, **profile-creation-method**, and **profile form (page 1)** across
@@ -74,7 +112,8 @@ captured page source; linter 0/0. The 2.0 cargo module split into NATIVE and WEB
   `cargo_clearance.yaml` — Manage Cargo Submission opens an in-app webview (ARN + Vehicle
   Number retrieve form; generic `text-input` ids). `cargo_convoy_page.yaml` — Convoy opens a
   webview (Convoy Submission form). `add_permit_page.yaml` — permit step now lives INSIDE the
-  Convoy webview; TODO(cargo-web) to walk its DOM.
+  Convoy webview. The 2026-09-07 walkthrough now supplies UI XML and screenshots through
+  review; TODO(cargo-web) remains to implement and verify automation against the web flow.
 - Test artifact: vehicle profile SOX3229J left on the device (like the SGAC test profiles).
 
 ## Known 2.0 drift patterns (apply while correcting)
@@ -109,7 +148,7 @@ captured page source; linter 0/0. The 2.0 cargo module split into NATIVE and WEB
 | --- | --- | --- |
 | landing_page.yaml | verified | favourites → `Home<CONSTANT>` resource-ids; scam-banner header removed (n/a) |
 | citizen_and_res_page.yaml | verified | unchanged in 2.0 — 10/10 locators resolve as-is |
-| eservices_landing_page.yaml | diverged | 10 service cards → SNAKE_CASE `EServices<CONSTANT>` rids (13/17 verified; 4 search-flow keys need the search interaction) |
+| eservices_landing_page.yaml | diverged | 10 service cards → SNAKE_CASE `EServices<CONSTANT>` rids (13/17 verified; 4 search-flow keys remain unverified despite the later manual search captures) |
 | sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN: profile-centric (Manage/Create/Update); Individual/Group split + tutorial gate removed → T33 |
 | profile_creation_method_page.yaml | verified | 6/7 as-is; only PROFILE-CREATION-SINGPASS-LABEL text changed (button resolves) |
 | manual_creation_profile_form.yaml | copied | |
@@ -131,8 +170,8 @@ captured page source; linter 0/0. The 2.0 cargo module split into NATIVE and WEB
 | cargo/cargo_clearance.yaml | diverged (webview) | Manage Cargo Submission → in-app webview (ARN+Vehicle retrieve form) |
 | cargo/add_vehicle_page.yaml | diverged | Vehicle Number+Mobile+Email+Save (verified, saved SOX3229J); sgac1 NRIC/passport toggles removed |
 | cargo/vehicle_profiles_page.yaml | verified | list + indexed items (vehicle list N / kebab) → Edit/Delete; empty state |
-| cargo/add_permit_page.yaml | diverged (web) | permit step now inside the Convoy webview — TODO(cargo-web) |
-| cargo/cargo_convoy_page.yaml | diverged (webview) | Convoy → webview (Convoy Submission form) |
+| cargo/add_permit_page.yaml | diverged (web) | manual full/partial permit and convoy review evidence captured 2026-09-07; TODO(cargo-web): automation and locator verification |
+| cargo/cargo_convoy_page.yaml | diverged (webview) | Convoy → webview; two-vehicle manual flow reached review 2026-09-07, without submission; no new locator validation |
 | yaml_QR_pages/all_profiles_page.yaml | copied | |
 | yaml_QR_pages/personal_qr_code_page.yaml | copied | |
 | yaml_QR_pages/passport_qr_code_page.yaml | copied | |

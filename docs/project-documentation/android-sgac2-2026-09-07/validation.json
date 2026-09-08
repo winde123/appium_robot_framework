@@ -1,0 +1,44 @@
+[
+  {
+    "category": "01-home-and-navigation",
+    "screens": 27,
+    "docx": "01-home-and-navigation/01-home-and-navigation.docx",
+    "bytes": 11558322,
+    "verified": true
+  },
+  {
+    "category": "02-resident-profiles-and-arrival-cards",
+    "screens": 29,
+    "docx": "02-resident-profiles-and-arrival-cards/02-resident-profiles-and-arrival-cards.docx",
+    "bytes": 8370432,
+    "verified": true
+  },
+  {
+    "category": "03-foreign-visitor-profiles-and-arrival-cards",
+    "screens": 21,
+    "docx": "03-foreign-visitor-profiles-and-arrival-cards/03-foreign-visitor-profiles-and-arrival-cards.docx",
+    "bytes": 3271787,
+    "verified": true
+  },
+  {
+    "category": "04-qr-codes-at-land-checkpoints",
+    "screens": 41,
+    "docx": "04-qr-codes-at-land-checkpoints/04-qr-codes-at-land-checkpoints.docx",
+    "bytes": 7900228,
+    "verified": true
+  },
+  {
+    "category": "05-cargo-clearance",
+    "screens": 33,
+    "docx": "05-cargo-clearance/05-cargo-clearance.docx",
+    "bytes": 6545163,
+    "verified": true
+  },
+  {
+    "category": "06-e-services",
+    "screens": 49,
+    "docx": "06-e-services/06-e-services.docx",
+    "bytes": 14103333,
+    "verified": true
+  }
+]

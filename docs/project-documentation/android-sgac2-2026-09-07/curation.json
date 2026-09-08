@@ -1,0 +1,38 @@
+[
+  {
+    "category": "01-home-and-navigation",
+    "captured": 28,
+    "documented": 27,
+    "archived_transitions_or_repeats": 1
+  },
+  {
+    "category": "02-resident-profiles-and-arrival-cards",
+    "captured": 32,
+    "documented": 29,
+    "archived_transitions_or_repeats": 3
+  },
+  {
+    "category": "03-foreign-visitor-profiles-and-arrival-cards",
+    "captured": 23,
+    "documented": 21,
+    "archived_transitions_or_repeats": 2
+  },
+  {
+    "category": "04-qr-codes-at-land-checkpoints",
+    "captured": 41,
+    "documented": 41,
+    "archived_transitions_or_repeats": 0
+  },
+  {
+    "category": "05-cargo-clearance",
+    "captured": 34,
+    "documented": 33,
+    "archived_transitions_or_repeats": 1
+  },
+  {
+    "category": "06-e-services",
+    "captured": 49,
+    "documented": 49,
+    "archived_transitions_or_repeats": 0
+  }
+]

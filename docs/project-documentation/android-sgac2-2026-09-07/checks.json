@@ -1,0 +1,84 @@
+{
+  "checked_at": "2026-09-07T23:25:39.924181+08:00",
+  "documented_screens": 200,
+  "new_documented_screens_this_continuation": 36,
+  "word_documents": [
+    {
+      "path": "01-home-and-navigation/01-home-and-navigation.docx",
+      "native_macos_text_import": "passed",
+      "screen_titles_verified": 27,
+      "embedded_original_png_hashes": "passed",
+      "sha256": "309f9f05416aac6a112de0507cd45148c6b0b2bf1a5d146d196a09152ffe3252"
+    },
+    {
+      "path": "02-resident-profiles-and-arrival-cards/02-resident-profiles-and-arrival-cards.docx",
+      "native_macos_text_import": "passed",
+      "screen_titles_verified": 29,
+      "embedded_original_png_hashes": "passed",
+      "sha256": "80d1dcfe6a2eafcd6332fca0907c84a9912964d8e882e30f193136c554d56ac7"
+    },
+    {
+      "path": "03-foreign-visitor-profiles-and-arrival-cards/03-foreign-visitor-profiles-and-arrival-cards.docx",
+      "native_macos_text_import": "passed",
+      "screen_titles_verified": 21,
+      "embedded_original_png_hashes": "passed",
+      "sha256": "1563aed2ee23c4ff0b6d668fc5fe48097d39346111c259c13f17f6f46598e5c6"
+    },
+    {
+      "path": "04-qr-codes-at-land-checkpoints/04-qr-codes-at-land-checkpoints.docx",
+      "native_macos_text_import": "passed",
+      "screen_titles_verified": 41,
+      "embedded_original_png_hashes": "passed",
+      "sha256": "f8b654d0b0987e1e3eccbcbf7f1873a35096d3b670a8da2168caddf4645de8de"
+    },
+    {
+      "path": "05-cargo-clearance/05-cargo-clearance.docx",
+      "native_macos_text_import": "passed",
+      "screen_titles_verified": 33,
+      "embedded_original_png_hashes": "passed",
+      "sha256": "bc3292294818d534b9ead00dda8c272930aa488b9bf906590ee86402a8b79160"
+    },
+    {
+      "path": "06-e-services/06-e-services.docx",
+      "native_macos_text_import": "passed",
+      "screen_titles_verified": 49,
+      "embedded_original_png_hashes": "passed",
+      "sha256": "020e3057c29dde7fb011001b1ca08e7b498c6cd7aff5a1141d2ad25ef86b6cea"
+    }
+  ],
+  "archived_captures_verified": 7,
+  "raw_captures_verified": 207,
+  "word_bundle": {
+    "path": "myica-flow-documents.zip",
+    "bytes": 51741704,
+    "zip_integrity": "passed",
+    "sha256": "dc0c8796a19f3ffa0c65f4bf86e1c9a206fc958e2da3dff9a454098dbbe86400"
+  },
+  "layout_note": "Representative original PNGs visually inspected; all DOCX contents imported by macOS textutil. Page layout was not rendered in Microsoft Word.",
+  "fork_parity": {
+    "command": "venv/bin/python tools/check_fork_parity.py",
+    "errors": 0,
+    "warnings": 0,
+    "intentional_divergences_suppressed": 238
+  },
+  "build_command": "env PYTHONPATH=/private/tmp/myica-walkthrough-python venv/bin/python docs/project-documentation/_tools/build_documents.py",
+  "build_environment_note": "Reused the prior session’s local python-docx 1.2.0 dependency target; Pillow 12.1.0 is in the repository venv. No dependencies were installed or repository requirements changed.",
+  "markdown_local_links": {
+    "status": "passed",
+    "files": 15,
+    "links_checked": 304
+  },
+  "gallery_links": {
+    "status": "passed",
+    "images": 200,
+    "articles": 200,
+    "references_checked": 412
+  },
+  "service_inventory": {
+    "status": "passed",
+    "category_count": 10,
+    "entry_links_opened": 32,
+    "report_query_cards": 2,
+    "test_query_cards": 0
+  }
+}

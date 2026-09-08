@@ -1,0 +1,16 @@
+{
+  "title": "QR codes at land checkpoints",
+  "summary": "QR onboarding, manual profile creation, an individual QR, and car, motorcycle, lorry and bus group journeys, including group editing, deletion and the foreign visitor SGAC reminder.",
+  "flows": [
+    {"name": "QR tutorial", "outcome": "Welcome and all seven tutorial steps captured through Finish."},
+    {"name": "Individual resident profile and QR", "outcome": "Completed: WALKTHROUGH QR RESIDENT saved as the own profile and an individual QR generated."},
+    {"name": "Email validation", "outcome": "Required email feedback captured before completing the profile."},
+    {"name": "Car group", "outcome": "A two-person car group saved, including the foreign visitor. Generation displayed an SGAC reminder and its handoff was followed."},
+    {"name": "Motorcycle group", "outcome": "Two-person group and QR generated. The form displays a two-person maximum."},
+    {"name": "Lorry group", "outcome": "Two-person group and QR generated. The form displays a four-person maximum."},
+    {"name": "Bus group", "outcome": "Two-person group and QR generated. The form displays a four-person maximum."},
+    {"name": "Manage group", "outcome": "Bus group renamed to WALKTHROUGH BUS EDITED, regenerated and deleted after confirmation."},
+    {"name": "Checkpoint use", "outcome": "QR presentation screens reached; actual immigration clearance requires checkpoint hardware and was not performed."}
+  ],
+  "notes": ["The car form displays a ten-person maximum. Capacity limits are observed labels, not tested maximum-size groups. All generated groups used two members.", "The group picker exposed profiles created through SGAC as well as QR. Existing unrelated profiles were preserved. These synthetic QR codes are walkthrough evidence and must not be used for travel."]
+}

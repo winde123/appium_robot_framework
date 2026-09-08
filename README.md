@@ -1,5 +1,7 @@
 # appium_robot_framework
 
+Last reviewed: 2026-09-07
+
 Robot Framework + Appium test suite for the MyICA Mobile app on Android and iOS.
 
 **Project layout**
@@ -15,6 +17,18 @@ Robot Framework + Appium test suite for the MyICA Mobile app on Android and iOS.
 Repository-wide contributor guidance lives in [`AGENTS.md`](AGENTS.md). Start at
 [`docs/README.md`](docs/README.md) for project knowledge and [`todo/README.md`](todo/README.md)
 to create or pick up work.
+
+**Screen walkthrough documentation**
+
+The [Android walkthrough package](docs/project-documentation/android-sgac2-2026-09-07/README.md)
+contains 200 documented screenshots, six category Word documents and a local gallery from
+the 7 September 2026 SGAC2 sessions. The continuation added 36 captures, completing the
+32 e-Service entry links, search and remaining support/About destinations. The
+[task record](todo/done/emulator-flow-documentation.md) and
+[flow inventory](docs/project-documentation/android-sgac2-2026-09-07/flow-inventory.md)
+record observed issues, authentication/fixture boundaries and unexercised variants.
+Browse all capture runs from the
+[project documentation index](docs/project-documentation/README.md).
 
 **Prerequisites**
 - Python 3.x with `robotframework`, `AppiumLibrary`, `appium-python-client`, and `PyYAML`.

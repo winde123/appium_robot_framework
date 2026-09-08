@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+Last reviewed: 2026-09-07
+
 This project context is shared by Codex, Claude Code, OpenCode, and any other repository agents.
 
 ## Mandatory startup order
@@ -38,10 +40,34 @@ the work queue and merge order are [`docs/refactor/sgac-fork-refactor-tasks.md`]
   (`Run Keyword … for ${APP_FORK}`), never inline in suites.
 
 **Status:** Waves 1–2 are DONE (fork resolver, fork-aware keywords, full sgac1 tree migration,
-parity linter) — the layout below reflects the migrated state. `APP_FORK=sgac2` resolves but
-cannot really run until Wave 3 (T31/T32) seeds `Data/sgac2/**` and T30 fills the sgac2 iOS
-bundle ID. Run `python3 tools/check_fork_parity.py` before finishing any change — it must stay
-at 0 errors.
+parity linter). Both `Data/sgac2/android/` and `Data/sgac2/ios/` now exist, with a mixture of
+verified, diverged and unverified locator files. Consult each tree's `STATUS.md`; the
+presence of the trees and a passing dry run do not establish complete SGAC2 flow coverage.
+Run `python3 tools/check_fork_parity.py` before finishing any change — it must stay at 0 errors.
+
+## Latest Android walkthrough and coverage boundaries
+
+The [7 September 2026 screen package](docs/project-documentation/android-sgac2-2026-09-07/README.md)
+contains 207 original captures, 200 documented screens, six illustrated Word documents and
+a local HTML gallery for SGAC2 build 2.0.0/420 on the Pixel_7_Pro Android 16 emulator.
+The user resumed the walkthrough from Citizenship and Permanent Residence. The continuation
+added 36 captures, completed all 32 e-Service entry links, exercised service search, and
+opened the remaining Help/About, privacy/terms and home advisory destinations. The emulator
+was returned to **MyICA Home**. The [documentation task](todo/done/emulator-flow-documentation.md)
+and [flow inventory](docs/project-documentation/android-sgac2-2026-09-07/flow-inventory.md)
+record the completed evidence and remaining flow/variant boundaries.
+
+Manual resident and visitor profiles saved and updated, but selecting either for an arrival
+card repeated **Profile update required** even after a successful update/save. Individual
+and all four vehicle-type group QRs were generated; cargo and convoy reached review without
+submission. The Trusted Traveller Programme link reached ICA's 404 page. Search for `Report`
+returned two services and `test` returned none, but names/time estimates displayed raw
+translation keys. Appointment links use `eservices-stg.ica.gov.sg`; other destinations
+include public ICA, FormSG, Customs, AskGov, GovTech and ScamShield pages.
+Singpass retrieval, scan extraction, existing-record retrieval and physical clearance need
+the corresponding credentials, fixtures or equipment. This was a manual screen walkthrough;
+it did not update YAML locators or establish automated suite passes. See
+[Android walk status](Data/sgac2/android/STATUS.md) for the locator/evidence distinction.
 
 ## Running tests
 
@@ -94,7 +120,8 @@ Data/
   sgac1/{android,ios}/**/*.yaml Page-object locator files, one YAML per screen, mirrored per
                                 platform; keys are UPPER-KEBAB names holding XPath strings.
                                 Suites import them via ${FORK_DATA_DIR}, never by literal path.
-                                Data/sgac2/ appears in Wave 3 (seeded by copying sgac1)
+  sgac2/{android,ios}/**/*.yaml  Present; seeded from sgac1, then selectively corrected.
+                                Each platform's STATUS.md records remaining unverified files
   test_data/manual_field_random.py  Faker-based generators with valid checksums: NRIC, SG passport
                                 numbers, car plates, DOB, phone, email. Imported as a Library only;
                                 Generate Profile Record returns per-test data plus seed/reference-date/country

@@ -1,0 +1,60 @@
+{
+  "title": "Other e-Services",
+  "summary": "All ten catalogue categories and 32 service entry links were walked. The screenshots include loaded destinations, the unavailable Trusted Traveller Programme page, authentication/reference boundaries, and service search with matching, no-match and cleared queries.",
+  "flows": [
+    {
+      "name": "Service catalogue",
+      "outcome": "All ten categories and all 32 entry links opened across the two walkthrough sessions."
+    },
+    {
+      "name": "Passport and Identity Card",
+      "outcome": "All four service entry links captured."
+    },
+    {
+      "name": "SG Arrival Card, Entry Visa, e-Pass and Visit Pass",
+      "outcome": "All four entry links captured. Applications and retrieval results were not submitted or authenticated."
+    },
+    {
+      "name": "Check Validity/Verify",
+      "outcome": "All eight entry links captured. Certificate/access-code fixtures and any CAPTCHA are still needed for verification results."
+    },
+    {
+      "name": "Residential address",
+      "outcome": "Both links opened the Change of Residential Address landing page. The second native label displays FOR_LTVP_STP_HOLDER."
+    },
+    {
+      "name": "Citizenship and Permanent Residence",
+      "outcome": "All three entries loaded: Singapore Citizenship, Permanent Residence and Re-entry Permit."
+    },
+    {
+      "name": "Long-Term Visit Pass and Student's Pass",
+      "outcome": "All four entries loaded: LTVP, PMLA, SOLAR for IHLs and SOLAR+ for other schools."
+    },
+    {
+      "name": "Birth and Death",
+      "outcome": "The Birth or Death Extract entry loaded."
+    },
+    {
+      "name": "Others",
+      "outcome": "APEC entry loaded. Trusted Traveller Programme reached an ICA 404 page. Race/Dialect redirected to FormSG with Singpass login requirements."
+    },
+    {
+      "name": "Appointment",
+      "outcome": "Both links loaded on eservices-stg.ica.gov.sg. Check-in requests an identity/application reference; no appointment was booked, changed, cancelled or checked in."
+    },
+    {
+      "name": "Customs Declaration",
+      "outcome": "Customs@SG information page loaded; no declaration or payment performed."
+    },
+    {
+      "name": "Search",
+      "outcome": "Report returned two matching services and one result was opened. test returned zero cards; clearing restored the list. Result labels/time estimates display raw translation keys."
+    }
+  ],
+  "notes": [
+    "These are observed entry-page and navigation outcomes, not completed government transactions or automated suite passes.",
+    "Destinations include public ICA services, staging Appointment services, FormSG and Singapore Customs. The native staging label does not identify every external environment.",
+    "The Digital Stillbirth Extract link opened the general eRECEIVE portal. The Trusted Traveller Programme link displayed the ICA page-not-found destination.",
+    "Search results expose untranslated keys, including REPORT_LOST_PASSPORT and MINUTES_5_TO_10. The existing YAML search locators were not changed or validated by this walkthrough."
+  ]
+}

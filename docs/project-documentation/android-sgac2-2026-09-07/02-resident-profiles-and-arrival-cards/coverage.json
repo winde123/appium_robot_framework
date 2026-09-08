@@ -1,0 +1,15 @@
+{
+  "title": "Resident profiles and SG Arrival Cards",
+  "summary": "Resident profile creation, validation, management, Singpass and passport-scanner entry points, plus the reached arrival-card web screens. Native arrival-card progression is blocked by a repeatable profile-update loop.",
+  "flows": [
+    {"name": "Create profile manually", "outcome": "Completed: WALKTHROUGH RESIDENT saved with synthetic identity and contact details."},
+    {"name": "Required fields and dates", "outcome": "Empty-form validation and an invalid date format captured; corrected DD/MM/YYYY input accepted."},
+    {"name": "View and update profile", "outcome": "Profile details opened and an update reported success."},
+    {"name": "Select profile for arrival card", "outcome": "Blocked: Profile update required repeats after updating and saving. Native arrival date, health declaration and submission confirmation were not reached."},
+    {"name": "Retrieve through Singpass", "outcome": "Staging Singpass login reached. No authenticated retrieval without supplied test credentials."},
+    {"name": "Scan passport", "outcome": "Tutorial, permission denial, permission request, full-screen hint and landscape MRZ scanner captured. A passport fixture is needed to verify extraction."},
+    {"name": "Update existing arrival card", "outcome": "Resident web retrieval instructions and NRIC/FIN plus arrival-date fields opened. No matching submitted record was available."},
+    {"name": "New web submission link", "outcome": "Arrival-date, personal-information, contact and health fields opened. No arrival declaration was submitted."}
+  ],
+  "notes": ["Reproduction: create a resident profile manually, return to the SGAC dashboard, select it, choose UPDATE PROFILE, advance through Contact Details, accept the terms and SAVE, return to the dashboard and select it again. The same update-required alert returns.", "Manual entry succeeded; the repeated update prompt is an observed blocker, not an inferred failure of all possible profiles. Profile data created during this walkthrough remains available on the emulator."]
+}

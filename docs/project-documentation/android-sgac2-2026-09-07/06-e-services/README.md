@@ -1,0 +1,76 @@
+# Other e-Services
+
+Last reviewed: 2026-09-07
+
+All ten catalogue categories and 32 service entry links were walked. The screenshots include loaded destinations, the unavailable Trusted Traveller Programme page, authentication/reference boundaries, and service search with matching, no-match and cleared queries.
+
+[Word walkthrough](06-e-services.docx)
+
+| Flow | Observed outcome |
+| --- | --- |
+| Service catalogue | All ten categories and all 32 entry links opened across the two walkthrough sessions. |
+| Passport and Identity Card | All four service entry links captured. |
+| SG Arrival Card, Entry Visa, e-Pass and Visit Pass | All four entry links captured. Applications and retrieval results were not submitted or authenticated. |
+| Check Validity/Verify | All eight entry links captured. Certificate/access-code fixtures and any CAPTCHA are still needed for verification results. |
+| Residential address | Both links opened the Change of Residential Address landing page. The second native label displays FOR_LTVP_STP_HOLDER. |
+| Citizenship and Permanent Residence | All three entries loaded: Singapore Citizenship, Permanent Residence and Re-entry Permit. |
+| Long-Term Visit Pass and Student's Pass | All four entries loaded: LTVP, PMLA, SOLAR for IHLs and SOLAR+ for other schools. |
+| Birth and Death | The Birth or Death Extract entry loaded. |
+| Others | APEC entry loaded. Trusted Traveller Programme reached an ICA 404 page. Race/Dialect redirected to FormSG with Singpass login requirements. |
+| Appointment | Both links loaded on eservices-stg.ica.gov.sg. Check-in requests an identity/application reference; no appointment was booked, changed, cancelled or checked in. |
+| Customs Declaration | Customs@SG information page loaded; no declaration or payment performed. |
+| Search | Report returned two matching services and one result was opened. test returned zero cards; clearing restored the list. Result labels/time estimates display raw translation keys. |
+
+## Screens
+
+| Step | Screen | Action | Outcome |
+| --- | --- | --- | --- |
+| 001 | [Other e-Services categories](screenshots/001-other-e-services-categories.png) | Home → Other e-Services. | The service catalogue contains ten categories and a search function. |
+| 002 | [Other e-Services lower categories](screenshots/002-other-e-services-lower-categories.png) | Scroll the service catalogue. | Appointment and Customs Declaration are available at the bottom of the catalogue. |
+| 003 | [Passport and Identity Card services](screenshots/003-passport-and-identity-card-services.png) | Open Passport and Identity Card. | Captured |
+| 004 | [Apply for Travel Document entry](screenshots/004-apply-for-travel-document-entry.png) | Passport and Identity Card → Apply for Travel Document. | Opened in Chrome: eservices.ica.gov.sg/esvclandingpage/apples. Downstream authenticated transactions were not performed. |
+| 005 | [Report Lost Passport entry](screenshots/005-report-lost-passport-entry.png) | Passport and Identity Card → Report Lost Passport. | Opened in Chrome: eservices.ica.gov.sg/esvclandingpage/applesOnlineReport. Downstream authenticated transactions were not performed. |
+| 006 | [Register / Re-register / Replace Identity Card entry](screenshots/006-register-re-register-replace-identity-card-entry.png) | Passport and Identity Card → Register / Re-register / Replace Identity Card. | Opened in Chrome: eservices.ica.gov.sg/esvclandingpage/iconline. Downstream authenticated transactions were not performed. |
+| 007 | [Report Lost Identity Card entry](screenshots/007-report-lost-identity-card-entry.png) | Passport and Identity Card → Report Lost Identity Card. | Opened in Chrome: eservices.ica.gov.sg/esvclandingpage/iconline. Downstream authenticated transactions were not performed. |
+| 008 | [Arrival card visa and visit pass services](screenshots/008-arrival-card-visa-and-visit-pass-services.png) | Open the SG Arrival Card, Entry Visa, e-Pass and Extension category. | Captured |
+| 009 | [Submit SG Arrival Card entry](screenshots/009-submit-sg-arrival-card-entry.png) | Arrival card services → Submit SG Arrival Card. | Opened in Chrome: eservices.ica.gov.sg/sgarrivalcard/. Downstream authenticated transactions were not performed. |
+| 010 | [Apply for Entry Visa entry](screenshots/010-apply-for-entry-visa-entry.png) | Arrival card and visit pass services → Apply for Entry Visa. | Opened in Chrome: eservices.ica.gov.sg/esvclandingpage/save. Downstream authenticated transactions were not performed. |
+| 011 | [Retrieve e-Pass Record entry](screenshots/011-retrieve-e-pass-record-entry.png) | Arrival card and visit pass services → Retrieve e-Pass Record. | Opened in Chrome: eservices.ica.gov.sg/sgarrivalcard/epassenquiry. Downstream authenticated transactions were not performed. |
+| 012 | [Apply for Extension of Visit Pass entry](screenshots/012-apply-for-extension-of-visit-pass-entry.png) | Arrival card and visit pass services → Apply for Extension of Visit Pass. | Opened in Chrome: eservices.ica.gov.sg/esvclandingpage/extend. Downstream authenticated transactions were not performed. |
+| 013 | [Check Validity and Verify services](screenshots/013-check-validity-and-verify-services.png) | Open Check Validity/Verify. | Captured |
+| 014 | [Verify Validity of Identity Card entry](screenshots/014-verify-validity-of-identity-card-entry.png) | Check Validity/Verify → Verify Validity of Identity Card. | Opened in Chrome: eservices.ica.gov.sg/ipienquiry/web/icheck/landing. Downstream authenticated transactions were not performed. |
+| 015 | [Immigration pass validity entry](screenshots/015-immigration-pass-validity-entry.png) | Check Validity/Verify → Immigration Pass (i.e. Long-Term Visit Pass, Student's Pass). | Opened the ICA immigration-pass validity landing page. Verification requires matching pass details. |
+| 016 | [Digital Birth Certificate entry](screenshots/016-digital-birth-certificate-entry.png) | Check Validity/Verify → Digital Birth Certificate. | The verification form requests a certificate number and access code. No certificate fixture was supplied. |
+| 017 | [Digital Birth Extract entry](screenshots/017-digital-birth-extract-entry.png) | Check Validity/Verify → Digital Birth Extract. | The verification form requests a certificate number and access code and shows a CAPTCHA. No verification was performed. |
+| 018 | [Digital Death Certificate entry](screenshots/018-digital-death-certificate-entry.png) | Check Validity/Verify → Digital Death Certificate. | Opened in Chrome: eservices.ica.gov.sg/ecert/request/verify/death. Downstream authenticated transactions were not performed. |
+| 019 | [Digital Death Extract entry](screenshots/019-digital-death-extract-entry.png) | Check Validity/Verify → Digital Death Extract. | Opened in Chrome: eservices.ica.gov.sg/ecert/request/verify/deathx. Downstream authenticated transactions were not performed. |
+| 020 | [Digital Stillbirth Certificate entry](screenshots/020-digital-stillbirth-certificate-entry.png) | Check Validity/Verify → Digital Stillbirth Certificate. | Opened in Chrome: eservices.ica.gov.sg/ecert/request/verify/stillbirth. Downstream authenticated transactions were not performed. |
+| 021 | [Digital Stillbirth Extract portal entry](screenshots/021-digital-stillbirth-extract-portal-entry.png) | Check Validity/Verify → Digital Stillbirth Extract. | This link opens the general eRECEIVE Download/Verify Certificate portal, rather than a preselected stillbirth-extract verification form. |
+| 022 | [Residential address services](screenshots/022-residential-address-services.png) | Open Report Change of Residential Address. | The second service is visibly labelled FOR_LTVP_STP_HOLDER. Both address links opened the same Change of Residential Address landing page. |
+| 023 | [IC holder address change entry](screenshots/023-ic-holder-address-change-entry.png) | Residential address → For IC holder. | Opened in Chrome: eservices.ica.gov.sg/esvclandingpage/ecoa. Downstream authenticated transactions were not performed. |
+| 024 | [LTVP and student pass address change entry](screenshots/024-ltvp-and-student-pass-address-change-entry.png) | Residential address → FOR_LTVP_STP_HOLDER. | Opened in Chrome: eservices.ica.gov.sg/esvclandingpage/ecoa. Downstream authenticated transactions were not performed. |
+| 025 | [Citizenship and permanent residence resume point](screenshots/025-citizenship-and-permanent-residence-resume-point.png) | Open Singapore Citizenship and Permanent Residence. | The earlier session paused here. All three links were opened when the walkthrough resumed. |
+| 026 | [Apply for Singapore Citizenship entry](screenshots/026-apply-for-singapore-citizenship-entry.png) | Citizenship and Permanent Residence → Apply for Singapore Citizenship. | Browser page: ICA - Singapore Citizenship. Address: eservices.ica.gov.sg/esvclandingpage/esc. |
+| 027 | [Apply for Permanent Residence entry](screenshots/027-apply-for-permanent-residence-entry.png) | Citizenship and Permanent Residence → Apply for Permanent Residence. | Browser page: ICA - Electronic Permanent Residence. Address: eservices.ica.gov.sg/esvclandingpage/epr. |
+| 028 | [Renewal or transfer of Re-entry Permit entry](screenshots/028-renewal-or-transfer-of-re-entry-permit-entry.png) | Citizenship and Permanent Residence → Apply Renewal / Transfer of Re-entry Permit. | Browser page: ICA - Re-Entry Permit. Address: eservices.ica.gov.sg/esvclandingpage/erep. |
+| 029 | [Long-Term Visit Pass and Student's Pass services](screenshots/029-long-term-visit-pass-and-student-s-pass-services.png) | Other e-Services → Long-Term Visit Pass and Student's Pass. | Captured |
+| 030 | [Apply / Renew Long-Term Visit Pass entry](screenshots/030-apply-renew-long-term-visit-pass-entry.png) | Long-Term Visit Pass and Student's Pass → Apply / Renew Long-Term Visit Pass. | Browser page: ICA - Visit Pass Application. Address: eservices.ica.gov.sg/esvclandingpage/evp. |
+| 031 | [Apply for Pre-Marriage Long-Term Visit Pass Assessment (PMLA) entry](screenshots/031-apply-for-pre-marriage-long-term-visit-pass-assessment-pmla-entry.png) | Long-Term Visit Pass and Student's Pass → Apply for Pre-Marriage Long-Term Visit Pass Assessment (PMLA). | Browser page: ICA - Visit Pass Assessment and Application. Address: eservices.ica.gov.sg/esvclandingpage/evpaa. |
+| 032 | [Apply / Renew Student's Pass for Institutes of Higher Learning entry](screenshots/032-apply-renew-student-s-pass-for-institutes-of-higher-learning-entry.png) | Long-Term Visit Pass and Student's Pass → Apply / Renew Student's Pass for Institutes of Higher Learning. | Browser page: Immigration & Checkpoints Authority - SOLAR. Address: eservices.ica.gov.sg/solar/index.xhtml. |
+| 033 | [Apply / Renew Student's Pass for Other Schools entry](screenshots/033-apply-renew-student-s-pass-for-other-schools-entry.png) | Long-Term Visit Pass and Student's Pass → Apply / Renew Student's Pass for Other Schools. | Browser page: ICA - Student's Pass OnLine Application and Registration+. Address: eservices.ica.gov.sg/esvclandingpage/solarplus. |
+| 034 | [Birth and Death services](screenshots/034-birth-and-death-services.png) | Other e-Services → Birth and Death. | Captured |
+| 035 | [Apply for Birth or Death Extract entry](screenshots/035-apply-for-birth-or-death-extract-entry.png) | Birth and Death → Apply for Birth or Death Extract. | Browser page: ICA - Birth and Death Extracts. Address: eservices.ica.gov.sg/esvclandingpage/extracts. |
+| 036 | [Other services menu](screenshots/036-other-services-menu.png) | Other e-Services → Others. | Captured |
+| 037 | [Apply for APEC Business Travel Card entry](screenshots/037-apply-for-apec-business-travel-card-entry.png) | Others → Apply for APEC Business Travel Card. | Browser page: ICA - APEC Business Travel Card. Address: eservices.ica.gov.sg/esvclandingpage/eabtc. |
+| 038 | [Apply for Singapore - United States of America Trusted Traveller Programme entry](screenshots/038-apply-for-singapore-united-states-of-america-trusted-traveller-programme-entry.png) | Others → Apply for Singapore - United States of America Trusted Traveller Programme. | The Trusted Traveller Programme link reached eservices.ica.gov.sg/404.html and displayed that the requested page cannot be found. |
+| 039 | [Apply to Change Race / Dialect entry](screenshots/039-apply-to-change-race-dialect-entry.png) | Others → Apply to Change Race / Dialect. | The government-link interstitial displayed a countdown at go.gov.sg/ica-race-dialect. Screen 043 records the loaded destination. |
+| 040 | [Appointment services](screenshots/040-appointment-services.png) | Other e-Services → Appointment. | Captured |
+| 041 | [Book/Change/Cancel Appointment entry](screenshots/041-book-change-cancel-appointment-entry.png) | Appointment → Book/Change/Cancel Appointment. | The appointment landing page loaded at eservices-stg.ica.gov.sg/eappt/, offering appointment management and check-in. |
+| 042 | [Online Check-in (Get Queue Number / View Queue Status) entry](screenshots/042-online-check-in-get-queue-number-view-queue-status-entry.png) | Appointment → Online Check-in (Get Queue Number / View Queue Status). | Online Check-in loaded at eservices-stg.ica.gov.sg/eappt/queue and requests an identity or application reference before Proceed. No check-in was submitted. |
+| 043 | [Change Race or Dialect destination after redirect](screenshots/043-change-race-or-dialect-destination-after-redirect.png) | Others → Apply to Change Race / Dialect; wait for the timed government-link redirect. | The redirect reached a FormSG Change of Race / Dialect form at form.gov.sg/682afae22dea99e8708b8868. Its instructions require Singpass app login; no form was submitted. |
+| 044 | [Customs Declaration entry](screenshots/044-customs-declaration-entry.png) | Other e-Services → Customs Declaration. | The link opened the Customs@SG Web Application information page on customs.gov.sg. No customs declaration or payment was made. |
+| 045 | [Service search empty query](screenshots/045-service-search-empty-query.png) | Tap the magnifying-glass icon in the catalogue header. | The empty search lists services, but many names and time estimates display raw translation keys. |
+| 046 | [Service search Report matches](screenshots/046-service-search-report-matches.png) | Search for Report, matching the repository's positive-search fixture. | Report returns exactly two cards: REPORT_LOST_PASSPORT and REPORT_LOST_IDENTITY_CARD. Labels and time estimates are untranslated keys. |
+| 047 | [Open a matched service search result](screenshots/047-open-a-matched-service-search-result.png) | Search Report → REPORT_LOST_PASSPORT. | Selecting REPORT_LOST_PASSPORT from search opened the Passport Online Report entry page. No report was submitted. |
+| 048 | [Service search with no matches](screenshots/048-service-search-with-no-matches.png) | Replace Report with test, the repository's negative-search fixture. | The query test leaves no service cards visible. No no-results message is displayed. |
+| 049 | [Clearing service search restores the list](screenshots/049-clearing-service-search-restores-the-list.png) | Clear the no-match query. | Clearing test restores the unfiltered service list. Raw translation keys remain visible. |

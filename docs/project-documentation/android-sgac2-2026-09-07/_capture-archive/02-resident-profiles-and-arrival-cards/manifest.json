@@ -1,0 +1,44 @@
+[
+  {
+    "step": 5,
+    "title": "Passport scanner camera",
+    "action": "Start the passport scan.",
+    "observation": "The emulator camera cannot complete passport extraction without a supplied passport test image.",
+    "status": "Requires passport test fixture",
+    "flow": "02-resident-profiles-and-arrival-cards",
+    "captured_at": "2026-09-07T17:24:31.812124+08:00",
+    "screenshot": "screenshots/005-passport-scanner-camera.png",
+    "source": "sources/005-passport-scanner-camera.xml",
+    "sha256": "16be5e4ba8e87a949613bd12ed3d8e4a529468c06d10d4aabdb804cd669dda03",
+    "capture_number": 5,
+    "archive_reason": "Repeated passport-scan tutorial before permission dialog."
+  },
+  {
+    "step": 26,
+    "title": "Update an existing SG Arrival Card",
+    "action": "Choose Update SG Arrival Card from the dashboard.",
+    "observation": "",
+    "status": "Captured",
+    "flow": "02-resident-profiles-and-arrival-cards",
+    "captured_at": "2026-09-07T17:30:00.584160+08:00",
+    "screenshot": "screenshots/026-update-an-existing-sg-arrival-card.png",
+    "source": "sources/026-update-an-existing-sg-arrival-card.xml",
+    "sha256": "b5ef92f2204fc4fcf241954c6925873b1cace7c3f479b47221e8daf7a7810add",
+    "capture_number": 26,
+    "archive_reason": "Webview loading transition before the loaded retrieval page."
+  },
+  {
+    "step": 29,
+    "title": "Resident web new submission",
+    "action": "Follow the portal link to make a new submission.",
+    "observation": "",
+    "status": "Captured",
+    "flow": "02-resident-profiles-and-arrival-cards",
+    "captured_at": "2026-09-07T17:30:35.393706+08:00",
+    "screenshot": "screenshots/029-resident-web-new-submission.png",
+    "source": "sources/029-resident-web-new-submission.xml",
+    "sha256": "7241cff44005cb2d417d0c189876def7ce49fbce32dee1e893320a5cdf2fd428",
+    "capture_number": 29,
+    "archive_reason": "Web page still displaying Loading before the next capture."
+  }
+]

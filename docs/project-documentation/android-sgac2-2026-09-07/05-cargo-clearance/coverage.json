@@ -1,0 +1,16 @@
+{
+  "title": "Cargo and convoy clearance",
+  "summary": "Vehicle-profile creation and editing, full and partial clearance permits, cargo review, existing-submission retrieval, and a two-vehicle convoy through review.",
+  "flows": [
+    {"name": "Create vehicle profile", "outcome": "Completed: SBA1234G saved with synthetic contact details after required-field validation."},
+    {"name": "Edit vehicle profile", "outcome": "Completed: email updated and the new value carried into the cargo submission form."},
+    {"name": "Cargo with full clearance", "outcome": "Synthetic permit IG2BB990001 saved and displayed in review."},
+    {"name": "Cargo with partial clearance", "outcome": "Synthetic permit IG2BB990002 with quantity 10 saved alongside the full-clearance permit and displayed in review."},
+    {"name": "Cargo submission", "outcome": "Review and Submit control reached. No declaration was sent and no application reference was generated."},
+    {"name": "Manage existing submission", "outcome": "ARN and vehicle-number retrieval form opened. A matching submitted reference is needed to continue."},
+    {"name": "Two-vehicle convoy", "outcome": "Two synthetic vehicles, contact details and permit IG2BB990003 accepted through review. No convoy declaration was sent."},
+    {"name": "Convoy low value goods", "outcome": "YES selected. Attempting Next without a permit showed Please fill in the field above; saving a permit allowed review."},
+    {"name": "Language", "outcome": "Cargo language selector opened. English retained."}
+  ],
+  "notes": ["The convoy page displays a 15-vehicle limit and the cargo permit page displays a 100-permit limit; these maxima were not exercised.", "Native screens belong to the staging app. In-app web endpoints may use a different environment. Only draft form navigation was performed; real-world declarations were not submitted.", "No barcode fixture, existing ARN or physical cargo-checkpoint equipment was supplied. Permit scanning, amendment of a submitted declaration and physical clearance remain outside the completed walkthrough."]
+}

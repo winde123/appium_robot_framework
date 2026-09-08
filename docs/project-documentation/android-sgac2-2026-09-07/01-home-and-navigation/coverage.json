@@ -1,0 +1,35 @@
+{
+  "title": "Home, navigation, settings and help",
+  "summary": "A visual guide to the installed MyICA staging app's home screen, service hubs, navigation drawer, settings and support destinations, including loaded privacy/terms pages and the home scam-advisory link.",
+  "flows": [
+    {
+      "name": "Home and service hubs",
+      "outcome": "Home, favourite shortcuts, Citizen and Resident hub, and Foreign Visitor hub opened."
+    },
+    {
+      "name": "Home external links",
+      "outcome": "Scam-advisory banner opened ScamShield. The translation-feedback link opened ICA Contact Us."
+    },
+    {
+      "name": "About",
+      "outcome": "About MyICA, About Us and ICA website opened. The app identifies itself as 2.0.0(13) (STAGING)."
+    },
+    {
+      "name": "Privacy and terms",
+      "outcome": "Both external pages fully loaded. Privacy overview text, the Terms section list and expanded General text captured."
+    },
+    {
+      "name": "Help",
+      "outcome": "Contact Us, Feedback, FAQ on AskGov, GovTech Report Vulnerability, and native Troubleshooting captured. No message or report sent."
+    },
+    {
+      "name": "Settings",
+      "outcome": "Language, tutorial and favourite-shortcut settings opened. English retained; no exhaustive language rerun."
+    }
+  ],
+  "notes": [
+    "The Android package reports versionName 2.0.0 and versionCode 420. The in-app version label uses a different suffix; both values are retained in environment.json.",
+    "Screens reflect this emulator's existing configuration. First-install onboarding and every language variant were not exercised.",
+    "The resumed session completed the remaining support and About destinations and returned to MyICA Home. External pages are entry/content snapshots, not submitted support forms."
+  ]
+}
