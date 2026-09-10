@@ -69,6 +69,67 @@ includes `Dummy Question 1`, `X country**`, duplicated resident questions/DOM ID
 `ALBANIA<h1>test</h1>` residence data, a four-times repeated cargo test announcement and mixed
 English month names in Hindi QR content.
 
+## Resident + foreigner module regression (2026-09-10)
+
+The [10 September regression report](../../../docs/testing/sgac2-build15-regression-2026-09-10.md)
+re-drove both SGAC profile-to-review flows on build 15 (2.0.0/422) with fresh synthetic
+identities (71 PNG / 70 XML evidence pairs). Both manual profiles created, saved and opened
+their web submission forms; the build 13 **Profile update required** loop again did not
+reproduce; both flows reached the final review/Submit boundary without submitting.
+Staging content deltas: `X country**` and the visitor `Dummy Question 1` are replaced by a
+properly worded Africa/Latin-America yellow-fever question (CDA link) in both flows, and
+resident health questions no longer repeat; the `ALBANIA<h1>test</h1>` residence option and
+the cosmetic `Required` helper on valid native fields remain. New automation hazard: a
+Google Password Manager save dialog interrupts the visitor web flow — mitigated 2026-09-10
+by nulling the AVD's `autofill_service`/`credential_service` secure settings (revert
+commands in the regression report). Locator impact: none —
+all verified locators in this tree resolved as recorded; no YAML changed.
+
+## QR module regression (2026-09-11)
+
+The [11 September QR regression report](../../../docs/testing/sgac2-build15-qr-regression-2026-09-11.md)
+re-drove the QR Code Clearance module on build 15 (2.0.0/422) via direct Appium UI
+(26 PNG/XML evidence pairs). Individual QR render, saved-group regenerate, new Car group
+creation (BUILD15 QR REG CAR: CHRISTINA HUNTER + JOHNATHAN BROWN), app-restart persistence
+and the 12-language selector all PASS; the foreign-visitor SGAC reminder fires correctly on
+generation. Defects: Hindi content still mixes English month names (8 Sept baseline defect
+reproduces); the cosmetic `Required` helper extends to the create-group form; the language
+list styles BENGALI in Latin script unlike its peers; the welcome/tutorial prompt reappears
+on every module entry unless suppressed. QR validity renders a fixed "31 August 2027" on all
+codes; group-list Expiry = earliest member passport expiry. Locator impact: none — this was
+UI regression evidence, not locator verification; `yaml_QR_pages/*` remain unverified sgac1
+copies.
+
+## Cargo + convoy module regression (2026-09-11)
+
+The [11 September cargo regression report](../../../docs/testing/sgac2-build15-cargo-regression-2026-09-11.md)
+re-drove the cargo submission and convoy flows on build 15 (2.0.0/422) via direct Appium UI
+(37 PNG/XML evidence pairs). All PASS to the review/Submit boundary without submitting:
+vehicle persistence (SBA1234G), new vehicle SGI5915Y saved via the verified Add Vehicle
+locators, no-vehicle validation dialog, cargo webview carry-over, full+partial permits
+(IG2BB990021/22 qty 10), convoy LVG=YES with two vehicles and permit IG2BB990023 including
+the no-permit required feedback, and the 12-language picker inventory. Defects: the 4×
+`This is for testing Common Broadcast Message.` announcement REMAINS (loads async — first
+paint can show only the legitimate Customs/REIA banner); cosmetic Required/Optional helpers
+on filled Add Vehicle fields; BENGALI Latin-script styling in the picker. Convoy does not
+prefill contact (by design). Locator impact: none — the verified cargo native locators
+resolved as recorded; webview parts remain documented as page markers (TODO(cargo-web)).
+
+## Build 15 in-app language sweep — all 12 languages × 3 modules (2026-09-11)
+
+The [11 September language sweep report](../../../docs/testing/sgac2-build15-language-sweep-2026-09-11.md)
+applied every language in every module picker on build 15 (42 PNG/XML pairs +
+results.json). All 36 applications succeeded; SGAC, QR and cargo home screens fully
+localize in all 12 languages; the language-button testIDs — `SGArrivalCardLanguage`
+(discovered this run), `QrLanguage`, `CargoLanguage` — resolve in every language; the
+SGAC setting is shared between resident and foreigner entries (Korean spot check).
+KEY DEFECT: English month names leak in ALL 11 non-English languages (QR expiry lines
+and SGAC passport-expiry lines; e.g. `Ablauf: 29 March 2028`, `만료: 29 March 2028`) —
+a date-formatting bug, generalizing the earlier Hindi-only observation. Minor: BENGALI
+Latin-script picker entry (all three pickers); possible Korean 도착/입국 terminology mix
+on the SGAC landing. This swept module home screens only; the 19-language build 13 form
+matrix below still stands for form-level coverage. No YAML changes.
+
 ## Language verification — all 19 languages (2026-09-06)
 Verified the SGAC **landing**, **profile-creation-method**, and **profile form (page 1)** across
 ALL 19 in-app languages (English, 中文, Bahasa Melayu, தமிழ், Bahasa Indonesia, Deutsch, Español,
