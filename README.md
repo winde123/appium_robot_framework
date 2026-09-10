@@ -54,6 +54,9 @@ Edit `robotconfig.yaml` for device and platform details. It is loaded by the sha
 - `APPIUM_SERVER_URL` is used by all test runs.
 - `ANDROID_PLATFORM_VERSION` can be overridden with the `ANDROID_PLATFORM_VERSION` env var (defaults to `16`).
 - iOS device name/UDID/version/Xcode org ID are required for real-device runs.
+- Mailinator email capture reads `MAILINATOR_API_TOKEN` from the root gitignored `.env`
+  (copy the blank `.env.example` for a new checkout), with process environment taking
+  precedence. See [Mailinator setup](docs/testing/mailinator-de-number.md).
 
 **Running tests**
 Start Appium, then run Robot Framework with a suite or a directory:

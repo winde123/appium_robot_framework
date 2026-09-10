@@ -1,0 +1,6 @@
+# User-approved UAT submission inboxes, shared by iOS/Android and both forks.
+# Non-secret routing only. Keep MAILINATOR_API_TOKEN in the environment or ignored .env.
+MAILINATOR_TEST_DOMAIN: team380551.testinator.email
+SGAC_RESIDENT_SUBMISSION_EMAIL: sgac-res@team380551.testinator.email
+SGAC_FOREIGNER_SUBMISSION_EMAIL: sgac-fore@team380551.testinator.email
+CARGO_SUBMISSION_EMAIL: cargo@team380551.testinator.email

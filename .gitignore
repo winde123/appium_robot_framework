@@ -16,3 +16,14 @@ Data/test_data/__pycache__/manual_field_random.cpython-311.pyc
 /network_egress/
 
 .DS_Store
+
+# Local credentials; only the blank example belongs in version control.
+.env
+.env.*
+!.env.example
+
+# Python bytecode caches anywhere in the tree
+__pycache__/
+
+# rf-mcp session artifacts
+/.robotmcp_artifacts/

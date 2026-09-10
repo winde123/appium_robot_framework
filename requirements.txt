@@ -30,6 +30,7 @@ PyRect==0.2.0
 PyScreeze==1.0.1
 PySocks==1.7.1
 pytest==9.0.2
+python-dotenv==1.2.3
 pytweening==1.2.0
 PyYAML==6.0.3
 robotframework==7.4
