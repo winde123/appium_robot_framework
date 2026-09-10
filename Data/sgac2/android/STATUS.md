@@ -1,6 +1,6 @@
 # SGAC2.0 Android locator tree — walk status (T31)
 
-Last reviewed: 2026-09-07
+Last reviewed: 2026-09-08
 
 Seeded 2026-09-05 by copying `Data/sgac1/android/**` (30 YAMLs), then corrected screen by
 screen against the live SGAC2.0 build (versionName 2.0.0, **versionCode 420**, installed via
@@ -48,6 +48,27 @@ returned to **MyICA Home**; check the device/session before any future continuat
 No YAML, keyword or Robot suite was changed by the documentation sessions. Artifact
 validation and repository checks are recorded in the package's `checks.json`.
 
+## Build 15 E2E continuation (2026-09-08)
+
+The [build 15 report](../../../docs/testing/sgac2-build15-e2e-2026-09-08.md) records 174
+validated PNG/XML pairs from versionName 2.0.0 / versionCode 422 (in-app build 15). The
+new resident and Australian visitor profiles both opened the web submission form and reached
+review, so the build 13 **Profile update required** loop did not reproduce with these complete
+profiles. No declaration was submitted.
+
+Build 15 profile contact pages now require country/region code, mobile number and email; the
+foreigner page also retains Place of Residence. This supersedes the build 13 email-only notes
+below. Individual and two-member Motorcycle group QR codes rendered. Cargo full/partial permits
+and a two-vehicle convoy reached review. Singpass visibly authenticated and handed back to
+MyICA, but returned to `Choose profile creation method` without populating MyInfo.
+
+The SGAC, QR and cargo module selectors each exposed 12 languages in this build. Bengali SGAC,
+Hindi QR and Simplified Chinese cargo were smoke-tested and English restored. This was not a
+repeat of the separate 19-language device-locale matrix retained below. Observed staging content
+includes `Dummy Question 1`, `X country**`, duplicated resident questions/DOM IDs, literal
+`ALBANIA<h1>test</h1>` residence data, a four-times repeated cargo test announcement and mixed
+English month names in Hindi QR content.
+
 ## Language verification — all 19 languages (2026-09-06)
 Verified the SGAC **landing**, **profile-creation-method**, and **profile form (page 1)** across
 ALL 19 in-app languages (English, 中文, Bahasa Melayu, தமிழ், Bahasa Indonesia, Deutsch, Español,
@@ -85,15 +106,15 @@ live-verified against captured page source; registered in `tools/fork_parity_all
 as sgac2-only (no sgac1/android counterpart); linter 0/0. New files:
 - `for_profile_form.yaml` — 3-page flow, pages 1+2: Profile Details (Full Name, **Sex**
   dropdown MALE/FEMALE/OTHERS, DOB, **Country/Place of Birth**, Nationality, Passport No.,
-  Passport Expiry) + Contact Details (**Place of Residence**, Email — no country-code/mobile).
+  Passport Expiry) + Contact Details (**Place of Residence**, country/region code, mobile and
+  email on build 15).
 - `for_profile_summary.yaml` — page 3: Passport Details + Contact Details cards, Edit,
   T&C checkbox (un/checked), SAVE.
 - `for_form_cty_page.yaml` / `for_form_nationality_page.yaml` / `for_form_residence_page.yaml`
   — the three searchable modals (`resource-id="modal"`, text="Search" input, "Close modal",
   options `content-desc="searchable dropdown accessible label <X>"`; residence options are
   `COUNTRY, CITY, CITY`). Build specific option locators via the `*-OPTION-BY-NAME-TEMPLATE`.
-Distinct from resident: foreigner has Sex + Country/Place of Birth, no NRIC, and contact is
-Residence+Email (resident is NRIC-based, contact email-only). NOTE: the legacy shared
+Distinct from resident: foreigner has Sex + Country/Place of Birth and no NRIC. NOTE: the legacy shared
 `manual_creation_profile_form.yaml` is now superseded for the foreigner flow by this tree.
 
 ## Cargo flow correctness walk (2026-09-06)
@@ -152,7 +173,7 @@ captured page source; linter 0/0. The 2.0 cargo module split into NATIVE and WEB
 | sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN: profile-centric (Manage/Create/Update); Individual/Group split + tutorial gate removed → T33 |
 | profile_creation_method_page.yaml | verified | 6/7 as-is; only PROFILE-CREATION-SINGPASS-LABEL text changed (button resolves) |
 | manual_creation_profile_form.yaml | copied | |
-| sgac/resident/resident_profile_creation_form_page.yaml | verified | page 1 fields resolve as-is; 2.0 adds REQUIRED Nationality/Passport No./Passport Expiry (Nationality = searchable dropdown picker). PAGE 2 (Contact) DIVERGED: 2.0 shows ONLY Email (电子邮件) — no separate country-code/mobile fields that sgac1 had. Full flow driven + saved to staging 2026-09-05 |
+| sgac/resident/resident_profile_creation_form_page.yaml | verified | page 1 fields resolve as-is; 2.0 adds REQUIRED Nationality/Passport No./Passport Expiry (Nationality = searchable dropdown picker). Build 15 page 2 requires country/region code, mobile and email; these locators were already present in the file. Full flow reached review 2026-09-08. |
 | sgac/resident/resident_confirmation_profile_page.yaml | verified | 3-page form's confirmation/summary (护照详情 + 联系方式 cards + T&C checkbox + Save); rendered correctly with all entered data; localizes across languages |
 | android_common_selectors.yaml | copied | |
 | sgac/individual_submission_page.yaml | copied | |

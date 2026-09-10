@@ -53,11 +53,16 @@ FOR-PROFILE-FORM-PASSPORT-EXPIRY-LABEL: //android.widget.TextView[@text="Date of
 FOR-PROFILE-FORM-REQUIRED-ERROR: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]
 FOR-PROFILE-FORM-FOOTER-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]
 
-# --- page 2: Contact Details (Place of Residence + Email only; no country-code/mobile) ---
+# --- page 2: Contact Details ---
+# Build 15 (2.0.0/422) requires Place of Residence, country/region code, mobile and email.
 FOR-PROFILE-FORM-CONTACT-SECTION-TITLE: //android.widget.TextView[@text="Contact Details"]
 # Place of Residence (opens for_form_residence_page modal; country,city,city options)
 FOR-PROFILE-FORM-RESIDENCE-LIST: //android.widget.TextView[@resource-id="ContactDetailsResidence"]
 FOR-PROFILE-FORM-RESIDENCE-LABEL: //android.widget.TextView[@text="Place of Residence"]
+FOR-PROFILE-FORM-COUNTRY-CODE-INPUT: //android.widget.EditText[@resource-id="ContactDetailsCountryCode"]
+FOR-PROFILE-FORM-COUNTRY-CODE-LABEL: //android.widget.TextView[@resource-id="ContactDetailsCountryCode-label-inactive"]
+FOR-PROFILE-FORM-MOBILE-NUMBER-INPUT: //android.widget.EditText[@resource-id="ContactDetailsMobileNumber"]
+FOR-PROFILE-FORM-MOBILE-NUMBER-LABEL: //android.widget.TextView[@resource-id="ContactDetailsMobileNumber-label-inactive"]
 FOR-PROFILE-FORM-EMAIL-INPUT: //android.widget.EditText[@resource-id="ContactDetailsEmailAddress"]
 FOR-PROFILE-FORM-EMAIL-LABEL: //android.widget.TextView[@text="Email Address"]
 FOR-PROFILE-FORM-CONTACT-NEXT-BUTTON: //android.view.ViewGroup[@resource-id="next"]
