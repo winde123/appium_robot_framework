@@ -2,7 +2,7 @@
 
 This document covers the shared test-data plumbing in `Data/test_data/`.
 
-Last reviewed: 2026-09-06
+Last reviewed: 2026-09-10
 
 ## Files
 
@@ -10,6 +10,7 @@ Last reviewed: 2026-09-06
 |------|---------|
 | `Data/test_data/manual_field_random.py` | Seeded profile/identity generators (Robot **Library** only; it is no longer imported as a `Variables` file) |
 | `Data/test_data/cargo_data.py` | Repository-anchored cargo permit file loader |
+| [`Data/test_data/sgac_foreigner_acknowledgement.json`](../../Data/test_data/sgac_foreigner_acknowledgement.json) | User-supplied dummy SGAC email: full Mailinator API response with HTML; [provenance and parser usage](mailinator-de-number.md#saved-dummy-email-fixture) |
 | `Cargo_Test_Data.txt` | Default cargo permit data file (repository root) |
 | `tests/unit/test_manual_field_random.py` | Unit tests for seeded profile records and Robot keyword execution |
 | `tests/unit/test_cargo_data.py` | Unit tests for cargo file loading |
@@ -37,6 +38,34 @@ The legacy `manual_field_random.readfromfile()` compatibility wrapper still
 returns the default permit list, but now enforces a 100-permit minimum so the
 Android 100-permit cargo test fails loudly instead of indexing past the end of
 the file.
+
+### UAT permit generator is a separate source
+
+For the UAT cargo fixtures identified by Edwin, use
+`manual_field_random.generateListofPermit(n)` (Robot: `Generate Listof Permit`),
+as used by `tests/ios/cargo/convoy.robot`:
+
+```python
+from Data.test_data.manual_field_random import generateListofPermit
+
+permits = generateListofPermit(3)
+assert permits == ["OO5E9900000", "OO5E9900001", "OO5E9900002"]
+```
+
+The prefix begins with two letter `O` characters. Preserve the exact helper output;
+do not substitute the `IG2BB...` values from `Cargo_Test_Data.txt`. Those are distinct
+fixture sources, despite both being exposed by the same module.
+
+In the [9 September iOS staging regression](ios-build15-regression-2026-09-09.md),
+`OO5E9900000` full clearance and `OO5E9900001` partial clearance with quantity 10
+were accepted by the backend, returned an ARN, and supported retrieval/update.
+`OO5E9900002` also supported successful two-vehicle convoy submission and update.
+Use distinct vehicles across simultaneously active cargo/convoy journeys: the backend
+rejected a convoy vehicle already tied to this run's unfinished cargo journey.
+The earlier `IG2BB990021`/`IG2BB990022` trial was rejected. This records observed
+UAT behavior, not a guarantee that every generated permit remains valid indefinitely.
+Verify the staging environment before submitting fixtures; a saved form/review alone
+does not establish backend validity.
 
 ## Profile records (`manual_field_random.py`)
 
