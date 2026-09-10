@@ -1,6 +1,15 @@
 # Visitor (foreigner) SGAC DE round trip — mission brief
 
-- Status: Ready — execute with the `sgac-de-roundtrip` OpenCode agent
+- Status: DONE 2026-09-10 — all three phases verified end-to-end; see
+  [the round-trip report](../../docs/testing/visitor-de-roundtrip-2026-09-10.md).
+  DE `X2350A4526` captured and exercised (update + persistence + negative check);
+  `Output/visitor-de-roundtrip-2026-09-10/de-record.json` remains valid for an
+  optional iOS-native update rerun. Executed by the OpenCode agents through
+  early phase 3; the dev lead completed the remainder directly after a
+  model-provider suspension and headless permission auto-rejects.
+  The iOS regression task's DE acceptance box is intentionally NOT ticked here —
+  that file is being actively rewritten by the concurrent Codex session; apply
+  the closure note when that run settles.
 - Author: Claude (dev lead), 2026-09-10
 - Closes: the last open acceptance box in
   [`todo/in-progress/ios-module-regression-2026-09-09.md`](in-progress/ios-module-regression-2026-09-09.md)

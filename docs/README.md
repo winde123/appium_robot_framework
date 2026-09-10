@@ -8,8 +8,9 @@ This directory is the durable reference point for humans and coding agents worki
 
 | Document | Purpose |
 | --- | --- |
-| [`testing/ios-1-19-1-regression-2026-09-10.md`](testing/ios-1-19-1-regression-2026-09-10.md) | Post-reinstall iOS 1.19.1 regression: authorized submissions, deletion semantics and mixed resident/foreigner group QR |
+| [`testing/ios-1-19-1-regression-2026-09-10.md`](testing/ios-1-19-1-regression-2026-09-10.md) | SGAC1.0 iOS 1.19.1(1) run on the wrong target version: retained submissions/deletion/QR evidence and staging web update; excluded from SGAC2.0 coverage |
 | [`testing/ios-build15-regression-2026-09-09.md`](testing/ios-build15-regression-2026-09-09.md) | Real-iPad build 15 regression results: resident/foreigner SGAC, cargo/convoy and QR; findings, evidence and remaining end-to-end prerequisites |
+| [`testing/visitor-de-roundtrip-2026-09-10.md`](testing/visitor-de-roundtrip-2026-09-10.md) | Visitor DE round trip verified end-to-end on Android SGAC2: submission, Mailinator DE capture, retrieval, update, persistence and negative checks; hotelCd defect |
 | [`project-documentation/README.md`](project-documentation/README.md) | Categorised Android emulator screen walkthroughs, original screenshots, and illustrated Word documents |
 | [`project-documentation/android-sgac2-2026-09-07/README.md`](project-documentation/android-sgac2-2026-09-07/README.md) | SGAC2 walkthrough: 200 documented screens, six Word documents, all 32 e-Service entry links, support destinations and coverage limits |
 | [`project-documentation/android-sgac2-2026-09-07/flow-inventory.md`](project-documentation/android-sgac2-2026-09-07/flow-inventory.md) | Live navigation and 24 Android test cases reconciled against manual captures, observed issues and unexercised variants |
