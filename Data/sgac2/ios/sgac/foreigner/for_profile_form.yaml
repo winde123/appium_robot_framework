@@ -1,12 +1,14 @@
 # selectors for SGAC Foreigner Profile Form page (iOS) — SGAC2.0
-# Correctness walk 2026-09-06 (drove the full flow on the live 2.0 iPad build). 3-page flow:
+# Correctness walk 2026-09-06 (build 13) + build-17 reconciliation 2026-09-19
+# (Output/evidence/myica-build17-regression-2026-09-16/ios, captures 065/066). 3-page flow:
 # p1 Profile Details (this file) -> p2 Contact Details (this file) -> p3 summary
 # (for_profile_summary.yaml). The Country/Place of Birth, Nationality and Place of Residence
 # fields open searchable modals (for_form_cty_page / for_form_nationality_page /
-# for_form_residence_page — all verified unchanged 8/8). DIVERGENCES from sgac1: DOB/Expiry
-# labels lost the "(DD/MM/YYYY)" text (now keyed on the language-independent -label-inactive
-# testID); the standalone "Full Name (In Passport)" label element is gone; and the Contact
-# page is now Place of Residence + Email ONLY (sgac1's country-code + mobile fields removed).
+# for_form_residence_page). DIVERGENCES from sgac1: DOB/Expiry labels lost the "(DD/MM/YYYY)"
+# text (keyed on the language-independent -label-inactive testID); the standalone
+# "Full Name (In Passport)" label is not a visible/accessible StaticText. The Contact page is
+# Place of Residence + Country/Region Code + Mobile Number + Email (build 17 restored the
+# country-code + mobile fields that build 13 had removed).
 # Key divergences recorded in tools/fork_parity_allowlist.yaml.
 FOR-PROFILE-FORM-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]
 FOR-PROFILE-FORM-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
@@ -56,16 +58,18 @@ FOR-PROFILE-FORM-PASSPORT-EXPIRY-REQUIRED: (//XCUIElementTypeStaticText[@name="R
 FOR-PROFILE-FORM-FOOTER-STEP: //XCUIElementTypeOther[@name="Step 1 of 3"]
 #FOR-PROFILE-FORM-FOOTER-NEXT: //XCUIElementTypeOther[@name="next" and @label="next"]
 
-# Contact details section (page 2 — Place of Residence + Email ONLY in 2.0)
+# Contact details section (page 2 — Place of Residence + Country/Region Code + Mobile + Email)
 FOR-PROFILE-FORM-CONTACT-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
 
 # Place of Residence (opens for_form_residence_page modal; COUNTRY, CITY, CITY options)
 FOR-PROFILE-FORM-CITY-RES-INPUT: //XCUIElementTypeOther[@name="city of residence text input"]
 FOR-PROFILE-FORM-CITY-RESIDENCE-REQUIRED: (//XCUIElementTypeOther[@name="city of residence text input"]/following::XCUIElementTypeStaticText[@name="Required"])[1]
 
-# --- sgac1-only, REMOVED in 2.0 (contact is residence + email; kept commented for T33) ---
-# FOR-PROFILE-FORM-COUNTRY-CODE-INPUT / -REQUIRED : country/region code field gone
-# FOR-PROFILE-FORM-MOBILE-NO-INPUT / -REQUIRED    : mobile number field gone
+# Country/Region Code + Mobile Number (restored on build 17 — 066-visitor-contact-form.xml)
+FOR-PROFILE-FORM-COUNTRY-CODE-INPUT: //XCUIElementTypeOther[@name="country/region code text inputtext input"]
+FOR-PROFILE-FORM-COUNTRY-CODE-REQUIRED: (//XCUIElementTypeOther[@name="country/region code text inputtext input"]/following::XCUIElementTypeStaticText[@name="Required"])[1]
+FOR-PROFILE-FORM-MOBILE-NO-INPUT: //XCUIElementTypeOther[@name="mobile number text input"]
+FOR-PROFILE-FORM-MOBILE-NUMBER-REQUIRED: (//XCUIElementTypeOther[@name="mobile number text input"]/following::XCUIElementTypeStaticText[@name="Required"])[1]
 
 FOR-PROFILE-FORM-EMAIL-INPUT: //XCUIElementTypeOther[@name="email address text inputtext input"]
 FOR-PROFILE-FORM-EMAIL-REQUIRED: (//XCUIElementTypeOther[@name="email address text inputtext input"]/following::XCUIElementTypeStaticText[@name="Required"])[1]

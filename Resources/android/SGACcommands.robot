@@ -2,6 +2,7 @@
 Variables    ../fork_config.py
 Library    AppiumLibrary
 Library    Collections
+Library    String
 Library    ../../Data/test_data/manual_field_random.py
 Resource    ../commands.robot
 Variables    ../../Data/test_data/input_fields_test_data.yaml
@@ -19,6 +20,14 @@ Variables    ${FORK_DATA_DIR}/android/sgac/singpass_login_page.yaml
 # Singpass runs on external staging infrastructure and is slower to settle than the app.
 ${SINGPASS-PAGE-TIMEOUT}      40s
 ${SINGPASS-SCROLL-ATTEMPTS}   ${4}
+
+# Foreigner profile persona (SGAC2.0 evidence: Australian visitor, build 2.0.0(15)).
+${FOREIGNER-COUNTRY-OF-BIRTH}    AUSTRALIA
+${FOREIGNER-NATIONALITY}         AUSTRALIAN
+${FOREIGNER-RESIDENCE-SEARCH}    SYDNEY
+${FOREIGNER-RESIDENCE-OPTION}    AUSTRALIA, NEW SOUTH WALES, SYDNEY (AUSTRALIA)
+${FOREIGNER-SEX}                 FEMALE
+${FOREIGNER-COUNTRY-CODE}        61
 
 *** Keywords ***
 Navigate to resident SGAC landing page
@@ -201,4 +210,174 @@ Scroll To Singpass Login Method Buttons
         END
     END
     Page Should Contain Element    ${SINGPASS-PASSWORD-AUTH-BUTTON}
-    
+
+# --- Foreigner profile CRUD (SGAC2.0 only) ---
+# SGAC1.0 Android has no dedicated foreigner locator tree; the sgac1 implementations
+# fail fast so a later implementation can add the tree.
+
+Import foreigner locator files
+    [Documentation]    Load the sgac2 foreigner YAMLs at runtime. They cannot be
+    ...    imported in Settings because Data/sgac1/android/sgac/foreigner/ does not exist.
+    Import Variables    ${FORK_DATA_DIR}/android/sgac/foreigner/for_profile_form.yaml
+    Import Variables    ${FORK_DATA_DIR}/android/sgac/foreigner/for_profile_summary.yaml
+    Import Variables    ${FORK_DATA_DIR}/android/sgac/foreigner/for_form_cty_page.yaml
+    Import Variables    ${FORK_DATA_DIR}/android/sgac/foreigner/for_form_nationality_page.yaml
+    Import Variables    ${FORK_DATA_DIR}/android/sgac/foreigner/for_form_residence_page.yaml
+
+Navigate to foreigner SGAC landing page
+    Run Keyword    Navigate to foreigner SGAC landing page for ${APP_FORK}
+
+Navigate to foreigner SGAC landing page for sgac1
+    Fail    Foreigner SGAC profile flow is not implemented for sgac1 on Android (no sgac1 foreigner locator tree); run with APP_FORK=sgac2
+
+Navigate to foreigner SGAC landing page for sgac2
+    Click on element    ${FORIEGNVISITOR-SGARRIVAL-CARD-FAV-BUTTON}
+    Wait Until Element Is Visible    ${SGAC-CREATE-NEW-PROFILE-BUTTON}    ${INTERACTION_WAIT_TIMEOUT}
+
+Navigate to foreigner profile creation method page
+    [Documentation]    Precondition: the SGAC foreigner landing page is open.
+    Run Keyword    Navigate to foreigner profile creation method page for ${APP_FORK}
+
+Navigate to foreigner profile creation method page for sgac1
+    Fail    Foreigner SGAC profile flow is not implemented for sgac1 on Android (no sgac1 foreigner locator tree); run with APP_FORK=sgac2
+
+Navigate to foreigner profile creation method page for sgac2
+    Click on element    ${SGAC-CREATE-NEW-PROFILE-BUTTON}
+    Wait Until Element Is Visible    ${PROFILE-CREATION-FILL-MANUALLY-BUTTON}    ${INTERACTION_WAIT_TIMEOUT}
+
+Fill foreigner profile form
+    [Documentation]    Precondition: the profile creation method page is open.
+    ...    Fills page 1 (passport details), page 2 (contact details), and ends on the summary.
+    [Arguments]    ${profile}
+    Run Keyword    Fill foreigner profile form for ${APP_FORK}    ${profile}
+
+Fill foreigner profile form for sgac1
+    [Arguments]    ${profile}
+    Fail    Foreigner SGAC profile flow is not implemented for sgac1 on Android (no sgac1 foreigner locator tree); run with APP_FORK=sgac2
+
+Fill foreigner profile form for sgac2
+    [Arguments]    ${profile}
+    Import foreigner locator files
+    Click on element    ${PROFILE-CREATION-FILL-MANUALLY-BUTTON}
+    Type text    ${FOR-PROFILE-FORM-FULL-NAME-INPUT}    ${profile}[name]
+    Select foreigner sex    ${FOREIGNER-SEX}
+    Type text    ${FOR-PROFILE-FORM-DOB-INPUT}    ${profile}[dob]
+    Select foreigner searchable option
+    ...    ${FOR-PROFILE-FORM-CTY-BIRTH-LIST}
+    ...    ${FOR-CTY-SEARCH-INPUT}
+    ...    ${FOR-CTY-OPTION-BY-NAME-TEMPLATE}
+    ...    ${FOREIGNER-COUNTRY-OF-BIRTH}
+    ...    ${FOREIGNER-COUNTRY-OF-BIRTH}
+    Select foreigner searchable option
+    ...    ${FOR-PROFILE-FORM-NATIONALITY-LIST}
+    ...    ${FOR-NATIONALITY-SEARCH-INPUT}
+    ...    ${FOR-NATIONALITY-OPTION-BY-NAME-TEMPLATE}
+    ...    ${FOREIGNER-NATIONALITY}
+    ...    ${FOREIGNER-NATIONALITY}
+    Type text    ${FOR-PROFILE-FORM-PASSPORT-NO-INPUT}    ${profile}[foreign_pp_num]
+    Type text    ${FOR-PROFILE-FORM-PASSPORT-EXPIRY-INPUT}    ${profile}[pp_expiry]
+    Click on element    ${FOR-PROFILE-FORM-FOOTER-NEXT-BUTTON}
+    Select foreigner searchable option
+    ...    ${FOR-PROFILE-FORM-RESIDENCE-LIST}
+    ...    ${FOR-RESIDENCE-SEARCH-INPUT}
+    ...    ${FOR-RESIDENCE-OPTION-BY-NAME-TEMPLATE}
+    ...    ${FOREIGNER-RESIDENCE-SEARCH}
+    ...    ${FOREIGNER-RESIDENCE-OPTION}
+    Type text    ${FOR-PROFILE-FORM-COUNTRY-CODE-INPUT}    ${profile}[cty_code]
+    Type text    ${FOR-PROFILE-FORM-MOBILE-NUMBER-INPUT}    ${profile}[phno]
+    Type text    ${FOR-PROFILE-FORM-EMAIL-INPUT}    ${profile}[email]
+    Click on element    ${FOR-PROFILE-FORM-CONTACT-NEXT-BUTTON}
+
+Select foreigner sex
+    [Documentation]    Open the Sex dropdown and tap the named option.
+    [Arguments]    ${sex}
+    Click on element    ${FOR-PROFILE-FORM-SEX-DROPDOWN-EXPAND}
+    Wait Until Element Is Visible    ${FOR-PROFILE-FORM-SEX-OPTION-${sex}}    ${INTERACTION_WAIT_TIMEOUT}
+    Click on element    ${FOR-PROFILE-FORM-SEX-OPTION-${sex}}
+
+Select foreigner searchable option
+    [Documentation]    Open a searchable modal, type the search text, and tap the option.
+    [Arguments]
+    ...    ${list_locator}
+    ...    ${search_locator}
+    ...    ${option_template}
+    ...    ${search_text}
+    ...    ${option_text}
+    Click on element    ${list_locator}
+    Wait Until Element Is Visible    ${search_locator}    ${INTERACTION_WAIT_TIMEOUT}
+    Type text    ${search_locator}    ${search_text}
+    ${option}=    Format String    ${option_template}    ${option_text}
+    Click on element    ${option}
+
+Verify foreigner profile summary
+    [Documentation]    Assert that the summary page displays the values from ${profile}.
+    [Arguments]    ${profile}
+    Run Keyword    Verify foreigner profile summary for ${APP_FORK}    ${profile}
+
+Verify foreigner profile summary for sgac1
+    [Arguments]    ${profile}
+    Fail    Foreigner SGAC profile flow is not implemented for sgac1 on Android (no sgac1 foreigner locator tree); run with APP_FORK=sgac2
+
+Verify foreigner profile summary for sgac2
+    [Arguments]    ${profile}
+    Import foreigner locator files
+    ${sex_letter}=    Get Substring    ${FOREIGNER-SEX}    0    1
+    ${name_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${profile}[name]
+    ${sex_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${sex_letter}
+    ${dob}=    helper_func.Date Field Formatter    ${profile}[dob]
+    ${dob_sel}=    Format String    //android.widget.TextView[contains(@text,"{}")]    ${dob}
+    ${cty_birth_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${FOREIGNER-COUNTRY-OF-BIRTH}
+    ${nationality_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${FOREIGNER-NATIONALITY}
+    ${pp_num_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${profile}[foreign_pp_num]
+    ${pp_expiry}=    helper_func.Date Field Formatter    ${profile}[pp_expiry]
+    ${pp_expiry_sel}=    Format String    //android.widget.TextView[contains(@text,"{}")]    ${pp_expiry}
+    ${residence_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${FOREIGNER-RESIDENCE-OPTION}
+    ${cty_code}=    Set Variable    +${profile}[cty_code]
+    ${cty_code_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${cty_code}
+    ${phno}=    Convert To String    ${profile}[phno]
+    ${phno_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${phno}
+    ${email_sel}=    Format String    //android.widget.TextView[@text="{}"]    ${profile}[email]
+    Expect Element    ${name_sel}    visible
+    Expect Element    ${sex_sel}    visible
+    Expect Element    ${dob_sel}    visible
+    Expect Element    ${cty_birth_sel}    visible
+    Expect Element    ${nationality_sel}    visible
+    Expect Element    ${pp_num_sel}    visible
+    Expect Element    ${pp_expiry_sel}    visible
+    Expect Element    ${residence_sel}    visible
+    Expect Element    ${cty_code_sel}    visible
+    Expect Element    ${phno_sel}    visible
+    Expect Element    ${email_sel}    visible
+
+Accept terms and save foreigner profile
+    Run Keyword    Accept terms and save foreigner profile for ${APP_FORK}
+
+Accept terms and save foreigner profile for sgac1
+    Fail    Foreigner SGAC profile flow is not implemented for sgac1 on Android (no sgac1 foreigner locator tree); run with APP_FORK=sgac2
+
+Accept terms and save foreigner profile for sgac2
+    Import foreigner locator files
+    Click on element    ${FOR-PROFILE-SUMMARY-TERMS-CHECKBOX-UNCHECKED}
+    Click on element    ${FOR-PROFILE-SUMMARY-SAVE-BUTTON}
+
+Create foreigner profile manually
+    [Documentation]    Precondition: the SGAC foreigner landing page is open.
+    ...    Generates a record when none is supplied and returns it.
+    [Arguments]    ${profile}=${NONE}
+    IF    $profile is None
+        ${profile}=    manual_field_random.Generate Profile Record
+    END
+    Set To Dictionary    ${profile}    cty_code=${FOREIGNER-COUNTRY-CODE}
+    Run Keyword    Create foreigner profile manually for ${APP_FORK}    ${profile}
+    RETURN    ${profile}
+
+Create foreigner profile manually for sgac1
+    [Arguments]    ${profile}
+    Fail    Foreigner SGAC profile flow is not implemented for sgac1 on Android (no sgac1 foreigner locator tree); run with APP_FORK=sgac2
+
+Create foreigner profile manually for sgac2
+    [Arguments]    ${profile}
+    Navigate to foreigner profile creation method page
+    Fill foreigner profile form    ${profile}
+    Accept terms and save foreigner profile
+

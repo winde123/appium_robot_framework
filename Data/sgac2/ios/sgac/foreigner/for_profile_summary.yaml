@@ -1,9 +1,12 @@
 # selectors for SGAC Foreigner Profile Summary (iOS) — SGAC2.0 (page 3 of 3)
-# Correctness walk 2026-09-06 (reached with a full foreigner profile). DIVERGENCES from sgac1:
-# Sex label shortened ("Sex as indicated in passport" -> "Sex"); EDIT -> "Edit"; contact card
-# is Residence + Email only (Country/Region Code + Mobile Number rows removed); the standalone
-# "Terms of Use and Privacy Policy" link is merged into the full-sentence element. Key
-# divergences recorded in tools/fork_parity_allowlist.yaml.
+# Correctness walk 2026-09-06 (build 13) + build-17 reconciliation 2026-09-19
+# (Output/evidence/myica-build17-regression-2026-09-16/ios, 069-visitor-summary.xml).
+# DIVERGENCES from sgac1: Sex label shortened ("Sex as indicated in passport" -> "Sex"); EDIT
+# -> "Edit"; the standalone "Terms of Use and Privacy Policy" link is merged into the
+# full-sentence element. The contact card is Residence + Country/Region Code + Mobile Number +
+# Email (build 17 restored the code + mobile rows that build 13 had removed). Sex renders as a
+# single letter (F/M/O), DOB/expiry as "dd / mm / yyyy". Key divergences recorded in
+# tools/fork_parity_allowlist.yaml.
 FOR-PROFILE-SUMMARY-HEADER: //XCUIElementTypeStaticText[@name="Add Profile"]
 FOR-PROFILE-SUMMARY-BACK: //XCUIElementTypeButton[@name="back"]
 
@@ -32,9 +35,9 @@ FOR-PROFILE-SUMMARY-CONTACT-TITLE: //XCUIElementTypeStaticText[@name="Contact De
 FOR-PROFILE-SUMMARY-RESIDENCE-LABEL: //XCUIElementTypeStaticText[@name="Place of Residence"]
 # value is data-dependent (COUNTRY, CITY, CITY) — read the label's following StaticText
 FOR-PROFILE-SUMMARY-RESIDENCE-VALUE: (//XCUIElementTypeStaticText[@name="Place of Residence"]/following::XCUIElementTypeStaticText)[1]
-# --- sgac1-only, REMOVED in 2.0 (contact card is residence + email) ---
-# FOR-PROFILE-SUMMARY-CODE-LABEL   : //XCUIElementTypeStaticText[@name="Country/Region Code"]
-# FOR-PROFILE-SUMMARY-MOBILE-LABEL : //XCUIElementTypeStaticText[@name="Mobile Number"]
+# Country/Region Code + Mobile Number rows restored on build 17 (069-visitor-summary.xml)
+FOR-PROFILE-SUMMARY-CODE-LABEL: //XCUIElementTypeStaticText[@name="Country/Region Code"]
+FOR-PROFILE-SUMMARY-MOBILE-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
 FOR-PROFILE-SUMMARY-EMAIL-LABEL: //XCUIElementTypeStaticText[@name="Email Address"]
 FOR-PROFILE-SUMMARY-CONTACT-EDIT: (//XCUIElementTypeOther[@name="Edit"])[2]
 

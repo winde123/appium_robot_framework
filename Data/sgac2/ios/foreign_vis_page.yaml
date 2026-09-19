@@ -1,19 +1,21 @@
-# selectors for Foreign Visitor page (iOS) — SGAC2.0 (checked 2026-09-06 on iPad)
+# selectors for Foreign Visitor page (iOS) — SGAC2.0 (checked 2026-09-06 on iPad;
+# re-confirmed 2026-09-19 vs build 17 capture 062-visitor-baseline.xml)
 #
 # PAGE REMOVED IN 2.0 (flow divergence -> T33): the Home "Foreign Visitor SG Arrival Card"
 # favourite no longer opens the sgac1 foreign-visitor hub (visitor e-services / Customs
 # Declaration / CBNI cards). It routes straight into the profile-centric SGAC landing
 # (same layout as citizen/resident — see sgac/sgac_landing_page.yaml) with a SEPARATE,
 # initially-empty foreigner profile store; its empty state reads "Save your details as a
-# profile to auto-fill future submission". Customs/CBNI shortcuts now live under
-# Other e-Services (Customs Declaration deep-links to Safari).
+# profile to auto-fill future submission" (also the SGAC-LANDING-EMPTY-STATE-HINT on build
+# 17). Customs/CBNI shortcuts now live under Other e-Services (Customs Declaration
+# deep-links to Safari).
 #
 # Empty-state marker unique to the foreigner SGAC landing:
 FOREIGN-SGAC-EMPTY-STATE-HINT: //XCUIElementTypeStaticText[@name="Save your details as a profile to auto-fill future submission"]
 
 # --- sgac1-only, page REMOVED in 2.0 (kept commented for T33 mapping) ---
 # FOREIGN-VIS-HEADER / FOREIGN-VIS-BACK-BUTTON
-# FOREIGN-VIS-SG-ARRIVAL-CARD (+ title/right icon)
+# FOREIGN-VIS-SGAC-CARD (+ title/right icon)
 # FOREIGN-VIS-VISITOR-ESERVICES-CARD (+ title/right icon)
 # FOREIGN-VIS-CUSTOMS-DECLARATION-CARD (+ title/right icon)
 # FOREIGN-VIS-CBNI-SUBMIT-CARD (+ title/right icon)

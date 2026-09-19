@@ -45,6 +45,28 @@ Implementation: OpenCode `moonshotai/kimi-k2.7-code`; review/merge: dev lead. Ta
 - Runtime risks for the emulator run (T42): `Type text` into the 2.0 DOB/expiry date inputs,
   keyboard state before the nationality modal and after the passport number, option tap timing.
 
+## T33 slice 2 — foreigner profile CRUD suite (2026-09-19, offline vs build 15)
+
+`tests/android/sgac/crud_for_profile.robot` (NEW, `fork:sgac2-only`) drives the SGAC2.0 foreigner
+Add Profile flow through fork-dispatched public keywords in `Resources/android/SGACcommands.robot`
+(`Navigate to foreigner SGAC landing page` / `… profile creation method page`, `Fill foreigner
+profile form`, `Verify foreigner profile summary`, `Accept terms and save foreigner profile`,
+`Create foreigner profile manually`; the `… for sgac1` implementations fail fast because SGAC1.0
+Android has no foreigner locator tree). Because `Data/sgac1/android/sgac/foreigner/` does not
+exist, the sgac2 keywords load the five foreigner YAMLs at runtime with `Import Variables` (a
+static Settings import would error on sgac1 runs) — this is the pattern for sgac2-only trees.
+Persona (matches the evidence): sex FEMALE (summary letter `F`), country of birth AUSTRALIA,
+nationality AUSTRALIAN (MALAYSIAN reveals an extra identity-card field), residence search SYDNEY
+→ `AUSTRALIA, NEW SOUTH WALES, SYDNEY (AUSTRALIA)`, country code 61 (`+61` on the summary;
+mobile renders unspaced, email as typed). All 22 sgac2 flow keys `verified` (exactly one node)
+with `tools/xpath_evidence_check.py` against the 09-10/09-11 captures and the tracked 7 Sept
+walkthrough sources; the option templates and the FEMALE option resolve to one node. No YAML
+change was needed — the 2026-09-06 foreigner tree already carried the build-15 contact fields.
+No device run: runtime acceptance stays with T42 (risks: sex dropdown tap, keyboard state around
+the modals, date `Type text`, `+` prefill of the country code). Implementation: OpenCode
+`moonshotai/kimi-k2.7-code`; review/merge: dev lead. Task record:
+`todo/done/t33-android-foreigner-profile-crud.md`.
+
 ## Screen documentation sessions (2026-09-07)
 
 The [dated walkthrough package](../../../docs/project-documentation/android-sgac2-2026-09-07/README.md)

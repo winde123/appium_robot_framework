@@ -1,6 +1,6 @@
 # SGAC 1.0 / SGAC 2.0 fork refactor — task board
 
-Last reviewed: 2026-09-19 (T33 slice 1 merged: resident profile CRUD fork dispatch)
+Last reviewed: 2026-09-19 (T33 slices 1–2 merged: resident + foreigner profile CRUD fork dispatch)
 
 **Goal:** the MyICA app has two major forks, SGAC1.0 and SGAC2.0. The starting repository
 (2026-09-05) was SGAC1.0-only. The refactor makes one codebase drive both forks, selected at
@@ -247,9 +247,23 @@ Device Farm project decisions remain deferred with T12 and are not required to c
   `todo/done/t33-{android,ios}-resident-profile-crud.md`. Implemented by OpenCode
   (Kimi k2.7-code Android ∥ DeepSeek v4-pro iOS) in isolated worktrees, reviewed and merged by
   the dev lead. Runtime acceptance of the sgac2 flows is T42 (devices were in use).
+- **2026-09-19 — slice 2 MERGED (foreigner/visitor profile CRUD, both platforms):** same
+  pattern and public-keyword shape as slice 1 (`Navigate to foreigner SGAC landing page`,
+  `Navigate to foreigner profile creation method page`, `Fill foreigner profile form`,
+  `Verify foreigner profile summary`, `Accept terms and save foreigner profile`,
+  `Create foreigner profile manually`). Android: NEW `tests/android/sgac/crud_for_profile.robot`
+  (`fork:sgac2-only` — SGAC1.0 Android has no foreigner tree; the `… for sgac1` keywords fail
+  fast) with the sgac2-only foreigner YAMLs loaded at runtime via `Import Variables` (the
+  pattern for sgac2-only trees). iOS: `crud_for_profile.robot` fork-agnostic; build-17
+  reconciliation restored the contact country-code/mobile keys and added Format-String option
+  templates to the three modal files. Persona on both: FEMALE / AUSTRALIA / AUSTRALIAN /
+  `AUSTRALIA, NEW SOUTH WALES, SYDNEY (AUSTRALIA)` / +61. Every sgac2 flow key verified offline
+  (Android 22/22, iOS 23/24 on build 17 + 1 on build 15). Implemented by OpenCode (Kimi ∥
+  DeepSeek), reviewed/merged by the dev lead; runtime acceptance = T42. Records:
+  `todo/done/t33-{android,ios}-foreigner-profile-crud.md`.
   Remaining T33 work: SGAC2.0 webview submission (resident + foreigner), QR module
   (`yaml_QR_pages/*` still sgac1 copies; `${NO-THANKS-OPTION}` gate), cargo webview
-  (TODO(cargo-web)), `myica_landing` scam-banner assertion, iOS foreigner profile suite.
+  (TODO(cargo-web)) and cargo vehicle-profile CRUD, `myica_landing` scam-banner assertion.
 
 ---
 

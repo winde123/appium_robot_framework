@@ -35,6 +35,42 @@ key was re-verified OFFLINE with `tools/xpath_evidence_check.py` (exactly one no
 - Runtime risks for the iPad run (T42): keyboard state when tapping the nationality option and
   before `next` after the new passport fields; whether SAVE needs an explicit wait post-checkbox.
 
+## T33 slice 2 — foreigner profile CRUD fork dispatch (2026-09-19, offline vs build 17)
+
+`Resources/ios/SGACcommands.robot` now dispatches the foreigner profile flow per fork
+(`Navigate to foreigner SGAC landing page` / `… profile creation method page`, `Fill foreigner
+profile form`, `Verify foreigner profile summary`, `Accept terms and save foreigner profile`,
+`Create foreigner profile manually`, plus the `Select foreigner modal option` helper) and
+`tests/ios/sgac/crud_for_profile.robot` is fork-agnostic (five keyword calls). sgac1 keeps its
+first-option picks and generated country code; sgac2 uses the persona sex FEMALE (`F`),
+AUSTRALIA, AUSTRALIAN, residence search SYDNEY → `AUSTRALIA, NEW SOUTH WALES, SYDNEY (AUSTRALIA)`,
+country code 61 (`+61`; mobile spaced, email upper-cased on the summary). Every sgac2 flow key
+`verified` (exactly one node) against the 519 build-17 page sources (visitor captures 062–071)
+with `tools/xpath_evidence_check.py`; the FEMALE option and the AUSTRALIA / AUSTRALIAN templates
+have no build-17 capture and were verified in the 9 Sept build-15 set (`047-foreigner-gender.xml`,
+`048-foreigner-birth-search.xml`, `250-resident-nationality.xml`). Implementation: OpenCode
+`deepseek/deepseek-v4-pro`; review/merge: dev lead. Task record:
+`todo/done/t33-ios-foreigner-profile-crud.md`.
+
+- **Build-17 reconciliation (already true on build 15):** the foreigner contact page is Place of
+  Residence + Country/Region Code + Mobile Number + Email — the build-13 "residence + email only"
+  annotation was stale. `FOR-PROFILE-FORM-COUNTRY-CODE-{INPUT,REQUIRED}`,
+  `FOR-PROFILE-FORM-MOBILE-NO-INPUT`, `FOR-PROFILE-FORM-MOBILE-NUMBER-REQUIRED` are restored in
+  `for_profile_form.yaml` (066) and `FOR-PROFILE-SUMMARY-{CODE,MOBILE}-LABEL` in
+  `for_profile_summary.yaml` (069); the allowlist `sgac1_only` lists shrink to
+  `FOR-PROFILE-FORM-FULL-NAME-LABEL` (build 17 has only an invisible, inaccessible RN shadow
+  StaticText) and `FOR-PROFILE-SUMMARY-TERMS-LINK` (merged sentence).
+- The three modal files gain `FOR-{CTY,NATIONALITY,RESIDENCE}-OPTION-BY-NAME-TEMPLATE`
+  (sgac2-only, Format String), mirroring the resident nationality template.
+- The country/nationality list wrappers keep their empty-state `name` (`country/place of birth
+  list`, `nationality/citizenship list`) and switch to a combined name once filled; the flow taps
+  them empty, so the locators hold.
+- No foreigner summary was captured in the T&C-checked state on build 15/17; the footer `save`
+  component is proven by the resident 022 capture.
+- Runtime risks for the iPad run (T42): keyboard state when tapping the sex/modal options,
+  `KEYBOARD-DONE-BTN` timing after the new fields, `+` prefill of the country code, SAVE wait
+  after the checkbox.
+
 ## Session 4 (2026-09-06 evening) — SGAC language verification (all 19 languages)
 Verified the SGAC **landing**, **profile-creation-method**, and **profile form (page 1)** across
 ALL 19 in-app languages on the live 2.0 build (English, 中文, Bahasa Melayu, தமிழ், Bahasa
@@ -204,8 +240,8 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 | sgac/foreigner/for_form_cty_page.yaml | verified | Country/Place of Birth searchable modal — unchanged 8/8 |
 | sgac/foreigner/for_form_nationality_page.yaml | verified | Nationality searchable modal — unchanged 8/8 |
 | sgac/foreigner/for_form_residence_page.yaml | verified | Place of Residence searchable modal — unchanged 8/8 |
-| sgac/foreigner/for_profile_form.yaml | verified/diverged | 3-page flow driven live; DOB/Expiry labels→testIDs; contact = Residence+Email only (country-code/mobile removed) |
-| sgac/foreigner/for_profile_summary.yaml | verified/diverged | Sex label shortened, EDIT→Edit, code/mobile rows removed, terms link merged |
+| sgac/foreigner/for_profile_form.yaml | verified/diverged | 3-page flow driven live; DOB/Expiry labels→testIDs; contact = Residence+Email only on build 13, residence+code+mobile+email on builds 15/17 (keys restored, T33 slice 2, 2026-09-19) |
+| sgac/foreigner/for_profile_summary.yaml | verified/diverged | Sex label shortened, EDIT→Edit, terms link merged; code/mobile rows removed on build 13 but back on builds 15/17 (restored, T33 slice 2, 2026-09-19) |
 | sgac/indv_submission_page.yaml | blocked (app bug) | same |
 | sgac/profile_creation_method_page.yaml | verified | 6/6 unchanged (mirrors Android) |
 | sgac/profile_list_page.yaml | verified | 6/6 unchanged (checked with a saved card); + new Delete key; empty state reuses card-container (see note in file) |
