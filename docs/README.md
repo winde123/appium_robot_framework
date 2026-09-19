@@ -21,6 +21,7 @@ This directory is the durable reference point for humans and coding agents worki
 | [`testing/helper-tools.md`](testing/helper-tools.md) | String/date helper contracts and import-safe QR/date utilities |
 | [`testing/eservices-templates.md`](testing/eservices-templates.md) | Shared e-services templates, case mappings, and device-free execution checks |
 | [`testing/interaction-waits.md`](testing/interaction-waits.md) | Configurable interaction waits, session-state preservation, and timing limits |
+| [`testing/offline-locator-verification.md`](testing/offline-locator-verification.md) | `tools/xpath_evidence_check.py` offline locator verification against captured page sources, the sgac2-only locator-tree pattern, and the device-free OpenCode slice workflow used for T33 |
 | [`../README.md`](../README.md) | Project overview, prerequisites, configuration, and basic test commands |
 | [`../AGENTS.md`](../AGENTS.md) | Repository-wide instructions for Codex, Claude Code, OpenCode, and other agents |
 | [`../CLAUDE.md`](../CLAUDE.md) | Detailed project context that every agent reads at startup |

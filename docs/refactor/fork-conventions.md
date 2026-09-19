@@ -193,6 +193,15 @@ content shrinks to almost nothing.
 Either way: locators stay in the per-fork `Data/` tree (§3) and are imported by the suite via
 `${FORK_DATA_DIR}` — dispatch code manipulates flow, not locators.
 
+**C. sgac2-only locator trees (added 2026-09-19).** When a screen family exists in only one
+fork's tree (e.g. `Data/sgac2/android/sgac/foreigner/`, registered under `files.sgac2_only` in
+`tools/fork_parity_allowlist.yaml`), a shared keyword file must NOT import it in Settings — the
+missing file would error on the other fork's runs and dry runs. Load it at runtime inside the
+fork-specific implementations instead (`Import Variables    ${FORK_DATA_DIR}/android/sgac/foreigner/for_profile_form.yaml`),
+make the other fork's `… for sgacN` implementation fail fast with an explicit message, and tag
+the suite `fork:sgac2-only` (or `fork:sgac1-only`). Worked example: the foreigner keywords in
+`Resources/android/SGACcommands.robot`; see `docs/testing/offline-locator-verification.md`.
+
 ## 7. Import ordering (mandatory)
 
 Settings are processed in order, so `fork_config.py` MUST be imported before anything that

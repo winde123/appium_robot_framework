@@ -45,6 +45,17 @@ verified, diverged and unverified locator files. Consult each tree's `STATUS.md`
 presence of the trees and a passing dry run do not establish complete SGAC2 flow coverage.
 Run `python3 tools/check_fork_parity.py` before finishing any change — it must stay at 0 errors.
 
+**T33 progress (2026-09-19):** slices 1–2 are merged (`c423241`, `1529e7a`). The SGAC resident
+and foreigner profile CRUD flows dispatch per fork behind identical public keywords in
+`Resources/{android,ios}/SGACcommands.robot`, and `tests/android/sgac/crud_profile.robot`,
+`tests/ios/sgac/crud_res_profile.robot`, `tests/ios/sgac/crud_for_profile.robot` are fork-agnostic
+(`tests/android/sgac/crud_for_profile.robot` is `fork:sgac2-only`; the native
+`crud_res_indv_submission` suites are `fork:sgac1-only` because the 2.0 submission is a webview).
+Every sgac2 locator on those paths was verified OFFLINE against captured page sources with
+`tools/xpath_evidence_check.py` — see [docs/testing/offline-locator-verification.md](docs/testing/offline-locator-verification.md);
+runtime acceptance on the emulator/iPad is still T42. Remaining T33 slices: webview submission,
+QR, cargo, scam banner (task board).
+
 ## Latest Android walkthrough and coverage boundaries
 
 The [7 September 2026 screen package](docs/project-documentation/android-sgac2-2026-09-07/README.md)
@@ -132,6 +143,9 @@ Data/
 tools/check_fork_parity.py      Parity linter: locator key parity between fork trees, import
                                 hygiene (no repo-root escapes, no literal fork paths), hardcoded
                                 fork values. Must stay at 0 errors
+tools/xpath_evidence_check.py   Offline locator verifier: evaluates YAML XPaths against captured
+                                page sources (exactly-one-node = verified); used to review fork
+                                slices without a device (docs/testing/offline-locator-verification.md)
 icaApp/{sgac1,sgac2}/app.apk    Android binaries per fork (gitignored, local); sgac_test.ipa is
                                 an iOS bundle-ID reference only
 robotconfig.yaml                Device/Appium config + per-fork FORKS: block (read by fork_config.py)
@@ -152,3 +166,5 @@ robotconfig.yaml                Device/Appium config + per-fork FORKS: block (re
 - `readfromfile()` is used by the Android cargo suite and now delegates to the portable cargo loader. It requires at least 100 nonblank permit entries before the caller indexes them.
 - Shared `Click on element` and `Type text` wait for visible/enabled elements and act once; configure `INTERACTION_WAIT_TIMEOUT` / `INTERACTION_WAIT_POLL` or per-call `timeout` / `poll`. Remote HTTP/action duration is not hard-cancelled by the polling deadline.
 - iOS keyword file prefixes some locators with `xpath=` at the call site; Android relies on AppiumLibrary's default XPath detection. Both work, just inconsistent.
+- sgac2-only locator trees (e.g. `Data/sgac2/android/sgac/foreigner/`) cannot be imported in a shared keyword file's Settings — the missing sgac1 file errors on sgac1 runs and dry runs. Load them at runtime inside the `… for sgac2` keywords with `Import Variables    ${FORK_DATA_DIR}/…` and make the sgac1 implementation fail fast (fork-conventions §6 C).
+- `Wait Until Element Is Visible` defaults to AppiumLibrary's short timeout; pass `${INTERACTION_WAIT_TIMEOUT}` for screen-transition waits, as the SGAC keyword files do.
