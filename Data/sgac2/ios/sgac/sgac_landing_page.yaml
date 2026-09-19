@@ -1,8 +1,14 @@
-# selectors for SGAC Landing page (iOS) — SGAC2.0 (verified 2026-09-06 vs build 2.0.0 on iPad)
+# selectors for SGAC Landing page (iOS) — SGAC2.0
+# (verified 2026-09-06 vs build 2.0.0 on iPad; re-verified 2026-09-19 vs build 2.0.0(17)
+# page sources in Output/evidence/myica-build17-regression-2026-09-16/ios — 005-resident-baseline.xml)
 #
 # DIVERGED FLOW (same as Android): SGAC2.0 replaced the Individual/Group Submission model
 # (+ tutorial gate) with a profile-centric model (Manage Profiles / Create New Profile /
 # Update SG Arrival Card / Select Profiles). Needs fork-specific keyword dispatch (T33).
+#
+# Build-17 note: unlike Android build 15, the iOS "add profile plus icon" tile
+# (SGAC-LANDING-ADD-PROFILE) is STILL PRESENT on the 2.0 landing (005-resident-baseline.xml).
+# The flow does not route through it; create-new-profile is used for resident creation.
 
 # --- unchanged chrome (verified) ---
 SGAC-LANDING-BACK-BUTTON: //XCUIElementTypeButton[@name="back"]

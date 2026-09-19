@@ -1,6 +1,8 @@
 # selectors for SGAC Resident Declaration Summary page (iOS) — SGAC2.0
-# (verified 2026-09-06 vs build 2.0.0 on iPad; step 3 of 3 of the Add Profile flow)
-# DIVERGED (same as Android): contact card is EMAIL ONLY (country-code/mobile rows gone);
+# (verified 2026-09-06 vs build 2.0.0 on iPad; re-verified 2026-09-19 vs build 2.0.0(17)
+# page sources in Output/evidence/myica-build17-regression-2026-09-16/ios; step 3 of 3)
+# DIVERGED (same as Android): contact card is Country/Region Code + Mobile Number + Email
+# (build 17 restored the code/mobile rows that build 13 had dropped — see 021/022 evidence);
 # passport card gains Nationality/Passport Number/Passport Expiry rows; "EDIT" renamed "Edit";
 # the standalone Terms link element is merged into the full-sentence element; the SAVE button
 # only appears after the T&C checkbox is checked.
@@ -24,17 +26,16 @@ RES-DECL-SUMMARY-PASSPORT-EXPIRY-LABEL: //XCUIElementTypeStaticText[@name="Date 
 RES-DECL-SUMMARY-PASSPORT-EXPIRY-VALUE: (//XCUIElementTypeStaticText[@name="Date of Passport Expiry"]/following::XCUIElementTypeStaticText)[1]
 RES-DECL-SUMMARY-PASSPORT-EDIT: (//XCUIElementTypeOther[@name="Edit"])[1]
 
-# Contact details card (EMAIL ONLY in 2.0)
+# Contact details card (Country/Region Code + Mobile Number + Email on build 17)
 RES-DECL-SUMMARY-CONTACT-CARD: (//XCUIElementTypeOther[@name="card-container-outer-layer"])[2]
 RES-DECL-SUMMARY-CONTACT-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
+RES-DECL-SUMMARY-COUNTRY-CODE-LABEL: //XCUIElementTypeStaticText[@name="Country/Region Code"]
+RES-DECL-SUMMARY-COUNTRY-CODE-VALUE: (//XCUIElementTypeStaticText[@name="Country/Region Code"]/following::XCUIElementTypeStaticText)[1]
+RES-DECL-SUMMARY-MOBILE-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
+RES-DECL-SUMMARY-MOBILE-VALUE: (//XCUIElementTypeStaticText[@name="Mobile Number"]/following::XCUIElementTypeStaticText)[1]
 RES-DECL-SUMMARY-EMAIL-LABEL: //XCUIElementTypeStaticText[@name="Email Address"]
 RES-DECL-SUMMARY-EMAIL-VALUE: (//XCUIElementTypeStaticText[@name="Email Address"]/following::XCUIElementTypeStaticText)[1]
 RES-DECL-SUMMARY-CONTACT-EDIT: (//XCUIElementTypeOther[@name="Edit"])[2]
-# --- sgac1-only, REMOVED in 2.0 (contact card is email-only; kept commented for T33) ---
-# RES-DECL-SUMMARY-COUNTRY-CODE-LABEL : //XCUIElementTypeStaticText[@name="Country/Region Code"]
-# RES-DECL-SUMMARY-COUNTRY-CODE-VALUE : "
-# RES-DECL-SUMMARY-MOBILE-LABEL       : //XCUIElementTypeStaticText[@name="Mobile Number"]
-# RES-DECL-SUMMARY-MOBILE-VALUE       : "
 
 # Terms & checkbox
 RES-DECL-SUMMARY-TERMS-CHECKBOX-UNCHECKED: //XCUIElementTypeOther[@name="uncheckterms of use checkbox"]

@@ -31,7 +31,8 @@ Resident reaches the Singpass login page from profile creation
     [Documentation]    The in-app path to Singpass: SG Arrival Card favourite -> Create New
     ...    Profile -> Retrieve Myinfo with Singpass hands off to Chrome and loads the Singpass
     ...    staging login for MYICAMOBILE. This stops at the handoff, so it needs no credentials.
-    Navigate to SGAC2 resident profile creation method page
+    Navigate to resident SGAC landing page
+    Navigate to resident profile creation method page
     Click on element    ${PROFILE-CREATION-SINGPASS-BUTTON}
     Wait Until Element Is Visible    ${SINGPASS-LOGIN-WEBVIEW}    ${SINGPASS-PAGE-TIMEOUT}
     Expect Element    ${SINGPASS-LOGIN-METHOD-HEADER}    visible
@@ -48,7 +49,8 @@ Singpass login succeeds but MyInfo retrieval returns no profile
     [Tags]    singpass    myinfo    known-defect
     Skip If    '${SINGPASS-NRIC}' == '' or '${SINGPASS-PASSWORD}' == ''
     ...    Set SINGPASS_NRIC and SINGPASS_PASSWORD to run the Singpass login tests.
-    Navigate to SGAC2 resident profile creation method page
+    Navigate to resident SGAC landing page
+    Navigate to resident profile creation method page
     Click on element    ${PROFILE-CREATION-SINGPASS-BUTTON}
     Log in to Singpass with password    ${SINGPASS-NRIC}    ${SINGPASS-PASSWORD}
     ## back in the app: the creation-method screen, not a retrieved profile

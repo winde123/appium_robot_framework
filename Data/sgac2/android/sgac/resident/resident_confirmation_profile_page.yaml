@@ -9,6 +9,15 @@ RES-CONFIRM-PROFILE-DOB-LABEL: //android.widget.TextView[@text="Date of Birth"]
 #RES-CONFIRM-PROFILE-DOB-VALUE: //android.widget.TextView[@text="01 / 01 / 2000"]
 RES-CONFIRM-PROFILE-NRIC-LABEL: //android.widget.TextView[@text="NRIC/FIN"]
 #RES-CONFIRM-PROFILE-NRIC-VALUE: //android.widget.TextView[@text="S6023815D"]
+
+# --- SGAC2.0-only Passport Details fields on the summary page (verified build 2.0.0/15) ---
+RES-CONFIRM-PROFILE-NATIONALITY-LABEL: //android.widget.TextView[@text="Nationality/Citizenship"]    # 010-res-summary.xml / 011-resident-summary-contact.xml
+#RES-CONFIRM-PROFILE-NATIONALITY-VALUE: //android.widget.TextView[@text="SINGAPOREAN"]
+RES-CONFIRM-PROFILE-PASSPORT-NUMBER-LABEL: //android.widget.TextView[@text="Passport Number"]    # 010-res-summary.xml / 011-resident-summary-contact.xml
+#RES-CONFIRM-PROFILE-PASSPORT-NUMBER-VALUE: //android.widget.TextView[@text="K6080950D"]
+RES-CONFIRM-PROFILE-PASSPORT-EXPIRY-LABEL: //android.widget.TextView[@text="Date of Passport Expiry"]    # 010-res-summary.xml / 011-resident-summary-contact.xml
+#RES-CONFIRM-PROFILE-PASSPORT-EXPIRY-VALUE: //android.widget.TextView[@text="29 / 04 / 2029"]
+
 RES-CONFIRM-PROFILE-PASSPORT-EDIT-BUTTON: //android.view.ViewGroup[@content-desc="EDIT"]
 RES-CONFIRM-PROFILE-PASSPORT-EDIT-LABEL: //android.widget.TextView[@text="EDIT"]
 

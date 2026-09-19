@@ -3,6 +3,38 @@
 Seeded 2026-09-05 by copying `Data/sgac1/ios/**` (37 YAMLs). To be corrected screen by
 screen against the live SGAC2.0 iOS build on Edwin's iPad (real device, XCUITest via Xcode).
 
+## T33 slice 1 — resident profile CRUD fork dispatch (2026-09-19, offline vs build 17)
+
+`Resources/ios/SGACcommands.robot` now dispatches the resident profile flow per fork (same public
+keyword names as Android: `Navigate to resident SGAC landing page`, `Navigate to profile list
+page`, `Navigate to resident profile creation method page`, `Fill resident profile form`,
+`Verify resident profile summary`, `Accept terms and save resident profile`, `Create resident
+profile manually`); `tests/ios/sgac/crud_res_profile.robot` is fork-agnostic;
+`crud_res_indv_submission.robot` is tagged `fork:sgac1-only` (TODO(T33-web)). Every sgac2 flow
+key was re-verified OFFLINE with `tools/xpath_evidence_check.py` (exactly one node) against the
+519 build-17 page sources in `Output/myica-build17-regression-2026-09-16/ios` (resident captures
+005–032); no device run (real-device only, T42). Implementation: OpenCode
+`deepseek/deepseek-v4-pro`; review/merge: dev lead. Task record:
+`todo/done/t33-ios-resident-profile-crud.md`.
+
+- **Build-17 reconciliation:** the resident contact page is Country/Region Code + Mobile Number +
+  Email again (build 13 was email-only): `RES-FORM-CTY-CODE-{INPUT,REQUIRED}` and
+  `RES-FORM-MOBILE-NUMBER-{INPUT,LABEL,REQUIRED}` are restored in `res_profile_form_page.yaml`
+  (019/020) and `RES-DECL-SUMMARY-{COUNTRY-CODE,MOBILE}-{LABEL,VALUE}` in
+  `res_profile_summary.yaml` (021/022); their `sgac1_only` allowlist entries were removed. The
+  summary renders the mobile with spaces (`8 1 2 3 4 5 6 7`), the email upper-cased and
+  DOB/expiry as `dd / mm / yyyy`. `RES-FORM-MOBILE-NUMBER-LABEL` has no standalone StaticText on
+  build 17 (kept at the sgac1 locator for parity; not a flow key).
+- `sgac/sgac_landing_page.yaml`: `SGAC-LANDING-ADD-PROFILE` ("add profile plus icon") IS still
+  present on iOS build 17 (005), unlike Android build 15; creation routes through
+  `SGAC-LANDING-CREATE-NEW-PROFILE`. The `SGAC-LANDING-PROFILE-UPDATE-*` alert keys have no
+  build-17 capture. `RES-PROFILE-LIST-HEADER` (`name="Profile"`) also matches on other screens,
+  so the sgac2 Manage Profiles list wait is weak and that list screen stays unverified.
+- Header/label keys that match two RN-duplicated StaticText nodes report `ambiguous` in the
+  checker; they are assertion-only and never tapped.
+- Runtime risks for the iPad run (T42): keyboard state when tapping the nationality option and
+  before `next` after the new passport fields; whether SAVE needs an explicit wait post-checkbox.
+
 ## Session 4 (2026-09-06 evening) — SGAC language verification (all 19 languages)
 Verified the SGAC **landing**, **profile-creation-method**, and **profile form (page 1)** across
 ALL 19 in-app languages on the live 2.0 build (English, 中文, Bahasa Melayu, தமிழ், Bahasa
@@ -178,9 +210,9 @@ Android — the Android divergence docs (docs/refactor/divergence/) apply direct
 | sgac/profile_creation_method_page.yaml | verified | 6/6 unchanged (mirrors Android) |
 | sgac/profile_list_page.yaml | verified | 6/6 unchanged (checked with a saved card); + new Delete key; empty state reuses card-container (see note in file) |
 | sgac/resident/res_declaration_summary.yaml | blocked (app bug) | same |
-| sgac/resident/res_profile_form_page.yaml | diverged | 3-PAGE FLOW (same as Android): p1 adds REQUIRED Nationality (searchable dropdown, `searchable dropdown accessible label <X>` options)/Passport No./Expiry; p2 Contact = EMAIL ONLY; full flow driven + saved 2026-09-06 |
-| sgac/resident/res_profile_summary.yaml | diverged | + Nationality/Passport No./Expiry rows; contact email-only; EDIT→"Edit"; terms link merged into sentence; SAVE appears only after T&C checked (28/29 + unchecked state verified) |
+| sgac/resident/res_profile_form_page.yaml | diverged | 3-PAGE FLOW (same as Android): p1 adds REQUIRED Nationality (searchable dropdown, `searchable dropdown accessible label <X>` options)/Passport No./Expiry; p2 Contact = EMAIL ONLY on build 13, code+mobile+email again on build 17 (keys restored, T33 2026-09-19); full flow driven + saved 2026-09-06 |
+| sgac/resident/res_profile_summary.yaml | diverged | + Nationality/Passport No./Expiry rows; contact email-only on build 13, code+mobile+email rows on build 17 (restored, T33 2026-09-19); EDIT→"Edit"; terms link merged into sentence; SAVE appears only after T&C checked (28/29 + unchecked state verified) |
 | sgac/resident/res_submission_form_page.yaml | blocked (app bug) | same |
 | sgac/sel_indv_profile_list_page.yaml | blocked (app bug) | same |
-| sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN (same as Android): profile-centric (Manage/Create/Update/Select); Individual/Group split + tutorial gate removed → T33 |
+| sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN (same as Android): profile-centric (Manage/Create/Update/Select); Individual/Group split + tutorial gate removed → T33 slice 1 dispatch merged 2026-09-19 (resident profile CRUD) |
 | sgac/sub_success_page.yaml | blocked (app bug) | same |

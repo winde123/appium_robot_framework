@@ -15,7 +15,7 @@ Variables    ${FORK_DATA_DIR}/ios/sgac/declaration_page.yaml
 Variables    ${FORK_DATA_DIR}/ios/sgac/sub_success_page.yaml
 Variables    ${FORK_DATA_DIR}/ios/other_e_services/e727_services_page.yaml
 Variables    ${FORK_DATA_DIR}/ios/other_e_services/customs_dec_services_page.yaml
-Force Tags       fork:both
+Force Tags       fork:sgac1-only
 Test Setup       Open MyICA App on iOS Device 
 Test Teardown    ios_appium_commands.Terminate App
 
@@ -23,6 +23,9 @@ Test Teardown    ios_appium_commands.Terminate App
 
 Create a resident submission and navigate to the e727 website
     [Documentation]    create submission and navigate to the cbni submission on the declaration success page
+    ...                sgac1-only: the native Individual Submission -> declaration -> captcha flow
+    ...                does not exist in SGAC2.0 (submission is web-based there); see
+    ...                docs/testing/ios-build17-regression-2026-09-16.md. TODO(T33-web).
     Navigate to resident SGAC landing page
     Navigate to individual submission creation page
     Create resident profile manually
@@ -58,6 +61,9 @@ Create a resident submission and navigate to the e727 website
 
 Create a resident submission and navigate to the customs website
     [Documentation]    create submission and navigate to the customs declaration on the declaration success page
+    ...                sgac1-only: the native Individual Submission -> declaration -> captcha flow
+    ...                does not exist in SGAC2.0 (submission is web-based there); see
+    ...                docs/testing/ios-build17-regression-2026-09-16.md. TODO(T33-web).
     Navigate to resident SGAC landing page
     Navigate to individual submission creation page
     Create resident profile manually 

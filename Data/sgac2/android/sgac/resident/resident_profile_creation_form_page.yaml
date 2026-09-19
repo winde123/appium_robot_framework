@@ -15,7 +15,7 @@ RES-PROFILE-NRIC-FIN-REQUIRED: //android.widget.TextView[@resource-id="errorMess
 
 RES-PROFILE-DOB-INPUT: //android.widget.EditText[@resource-id="PassportDetailsDateOfBirth"]
 RES-PROFILE-DOB-LABEL: //android.widget.TextView[@resource-id="PassportDetailsDateOfBirth-label-inactive"]
-RES-PROFILE-DOB-CALENDAR-BUTTON: //android.widget.Button[@resource-id="right-icon-adornment"]
+RES-PROFILE-DOB-CALENDAR-BUTTON: //android.widget.Button[@content-desc="date of birth (D D/M M/Y Y Y Y) calendar picker"]    # 004-res-empty-form.xml (content-desc: resource-id right-icon-adornment is shared with the expiry calendar)
 RES-PROFILE-DOB-REQUIRED: //android.widget.TextView[@text="Required"]
 
 RES-PROFILE-FOOTER-BACK-BUTTON: //android.view.ViewGroup[@resource-id="back"]
@@ -37,5 +37,23 @@ RES-PROFILE-CONTACT-MOBILE-NUMBER-REQUIRED: //android.widget.TextView[@resource-
 RES-PROFILE-CONTACT-EMAIL-INPUT: //android.widget.EditText[@resource-id="ContactDetailsEmailAddress"]
 RES-PROFILE-CONTACT-EMAIL-LABEL: //android.widget.TextView[@resource-id="ContactDetailsEmailAddress-label-inactive"]
 RES-PROFILE-CONTACT-EMAIL-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]
+
+# --- SGAC2.0-only extra fields on the Profile Details page (verified build 2.0.0/15) ---
+# Nationality/Citizenship opens a searchable modal; keys below model it the same way
+# the foreigner flow does, but kept in the resident file (do not import foreigner YAMLs).
+RES-PROFILE-NATIONALITY-DROPDOWN: //android.view.ViewGroup[@content-desc="nationality/citizenship list"]    # 004-res-empty-form.xml
+RES-PROFILE-NATIONALITY-VALUE: //android.widget.TextView[@resource-id="PassportDetailsNationality"]    # 004-res-empty-form.xml
+RES-PROFILE-NATIONALITY-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]    # 004-res-empty-form.xml
+RES-PROFILE-NATIONALITY-MODAL-SEARCH: //android.widget.EditText[@text="Search"]    # 005-res-nationality-modal.xml
+RES-PROFILE-NATIONALITY-OPTION-BY-NAME-TEMPLATE: //android.view.ViewGroup[@content-desc="searchable dropdown accessible label {}"]    # 005-res-nationality-modal.xml
+
+RES-PROFILE-PASSPORT-NUMBER-INPUT: //android.widget.EditText[@resource-id="PassportDetailsPassportNumber"]    # 004-res-empty-form.xml
+RES-PROFILE-PASSPORT-NUMBER-LABEL: //android.widget.TextView[@resource-id="PassportDetailsPassportNumber-label-inactive"]    # 004-res-empty-form.xml
+RES-PROFILE-PASSPORT-NUMBER-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]    # 004-res-empty-form.xml
+
+RES-PROFILE-PASSPORT-EXPIRY-INPUT: //android.widget.EditText[@resource-id="PassportDetailsDatePassportExpiry"]    # 004-res-empty-form.xml
+RES-PROFILE-PASSPORT-EXPIRY-LABEL: //android.widget.TextView[@resource-id="PassportDetailsDatePassportExpiry-label-inactive"]    # 004-res-empty-form.xml
+RES-PROFILE-PASSPORT-EXPIRY-CALENDAR-BUTTON: //android.widget.Button[@content-desc="date of passport expiry (D D/M M/Y Y Y Y) calendar picker"]    # 004-res-empty-form.xml (content-desc: the resource-id right-icon-adornment is shared with the DOB calendar)
+RES-PROFILE-PASSPORT-EXPIRY-REQUIRED: //android.widget.TextView[@resource-id="errorMessage" and @text="Required"]    # 004-res-empty-form.xml
 
 

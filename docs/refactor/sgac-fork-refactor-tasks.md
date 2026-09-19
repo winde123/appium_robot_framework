@@ -1,6 +1,6 @@
 # SGAC 1.0 / SGAC 2.0 fork refactor — task board
 
-Last reviewed: 2026-09-07 (walkthrough evidence and documentation synchronization)
+Last reviewed: 2026-09-19 (T33 slice 1 merged: resident profile CRUD fork dispatch)
 
 **Goal:** the MyICA app has two major forks, SGAC1.0 and SGAC2.0. The starting repository
 (2026-09-05) was SGAC1.0-only. The refactor makes one codebase drive both forks, selected at
@@ -232,6 +232,24 @@ Device Farm project decisions remain deferred with T12 and are not required to c
   saving an update; native downstream submission remains blocked. Cargo/convoy permit and
   review screens are captured in the in-app webview. No flow-dispatch implementation was
   changed during the documentation session.
+- **2026-09-19 — slice 1 MERGED (resident profile CRUD, both platforms):**
+  `Resources/{android,ios}/SGACcommands.robot` dispatch the resident profile flow with
+  fork-conventions §6 pattern A behind the same public names on both platforms
+  (`Navigate to resident SGAC landing page`, `Navigate to resident profile creation method
+  page`, `Fill resident profile form`, `Verify resident profile summary`, `Accept terms and
+  save resident profile`, `Create resident profile manually`); `tests/{android,ios}/sgac/`
+  `crud_profile.robot` / `crud_res_profile.robot` are fork-agnostic (five keyword calls, no
+  inline locators); the two native `crud_res_indv_submission.robot` suites are
+  `fork:sgac1-only` (TODO(T33-web): the 2.0 submission is a webview). sgac2 locators added
+  (Android nationality/passport keys) or reconciled (iOS build-17 contact fields restored) and
+  every flow key verified OFFLINE with the new `tools/xpath_evidence_check.py` against captured
+  page sources — see `Data/sgac2/{android,ios}/STATUS.md` and
+  `todo/done/t33-{android,ios}-resident-profile-crud.md`. Implemented by OpenCode
+  (Kimi k2.7-code Android ∥ DeepSeek v4-pro iOS) in isolated worktrees, reviewed and merged by
+  the dev lead. Runtime acceptance of the sgac2 flows is T42 (devices were in use).
+  Remaining T33 work: SGAC2.0 webview submission (resident + foreigner), QR module
+  (`yaml_QR_pages/*` still sgac1 copies; `${NO-THANKS-OPTION}` gate), cargo webview
+  (TODO(cargo-web)), `myica_landing` scam-banner assertion, iOS foreigner profile suite.
 
 ---
 

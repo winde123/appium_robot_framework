@@ -12,6 +12,39 @@ Status legend: `copied` = unverified sgac1 copy · `verified` = checked against 
 Method: Appium page source per screen → offline XPath eval with `scratchpad/walk_check.py`
 (lxml). A key is verified only when its XPath resolves to exactly the intended node on 2.0.
 
+## T33 slice 1 — resident profile CRUD fork dispatch (2026-09-19, offline vs build 15)
+
+`Resources/android/SGACcommands.robot` now dispatches the resident profile flow per fork
+(`Navigate to resident SGAC landing page` / `… profile list page` / `… profile creation method
+page`, `Fill resident profile form`, `Verify resident profile summary`, `Accept terms and save
+resident profile`, `Create resident profile manually`) and `tests/android/sgac/crud_profile.robot`
+is fork-agnostic; `crud_res_indv_submission.robot` is tagged `fork:sgac1-only` (the 2.0
+submission is an in-app webview — TODO(T33-web)). Every sgac2 flow key was verified OFFLINE with
+`tools/xpath_evidence_check.py` (exactly one node) against the build-15 captures in
+`Output/sgac2-build15-regression-2026-09-10` and `Output/android-sgac-regression-2026-09-11` plus
+the tracked 7 Sept walkthrough sources; no device run — runtime acceptance stays with T42.
+Implementation: OpenCode `moonshotai/kimi-k2.7-code`; review/merge: dev lead. Task record:
+`todo/done/t33-android-resident-profile-crud.md`.
+
+- `sgac/resident/resident_profile_creation_form_page.yaml`: NEW sgac2-only keys
+  `RES-PROFILE-NATIONALITY-{DROPDOWN,VALUE,REQUIRED,MODAL-SEARCH,OPTION-BY-NAME-TEMPLATE}`,
+  `RES-PROFILE-PASSPORT-NUMBER-{INPUT,LABEL,REQUIRED}`,
+  `RES-PROFILE-PASSPORT-EXPIRY-{INPUT,LABEL,CALENDAR-BUTTON,REQUIRED}` (004/005/006/007 and
+  006/007 captures); the `SINGAPOREAN` option template resolves to one node in
+  `005-res-nationality-modal.xml`. The DOB and expiry calendar buttons share
+  `resource-id="right-icon-adornment"`, so both calendar keys now use their content-desc
+  (`date of … (D D/M M/Y Y Y Y) calendar picker`).
+- `sgac/resident/resident_confirmation_profile_page.yaml`: NEW sgac2-only labels
+  `RES-CONFIRM-PROFILE-{NATIONALITY,PASSPORT-NUMBER,PASSPORT-EXPIRY}-LABEL`. The summary renders
+  DOB/expiry as `dd / mm / yyyy`, country code as `+65`, mobile unspaced, email as typed.
+- `sgac/sgac_landing_page.yaml`: `SGAC-ADD-PROFILE-BUTTON` ("add profile plus icon", verified on
+  build 420) appears in NO build-15 capture — retained for parity, not on the flow; creation
+  routes through `SGAC-CREATE-NEW-PROFILE-BUTTON` (its content-desc is the plural "Create New
+  Profiles"). The Manage Profiles LIST screen has no build-15 capture, so the sgac2
+  `Navigate to resident profile list page` only taps the tile and asserts nothing.
+- Runtime risks for the emulator run (T42): `Type text` into the 2.0 DOB/expiry date inputs,
+  keyboard state before the nationality modal and after the passport number, option tap timing.
+
 ## Screen documentation sessions (2026-09-07)
 
 The [dated walkthrough package](../../../docs/project-documentation/android-sgac2-2026-09-07/README.md)
@@ -231,10 +264,10 @@ captured page source; linter 0/0. The 2.0 cargo module split into NATIVE and WEB
 | landing_page.yaml | verified | favourites → `Home<CONSTANT>` resource-ids; scam-banner header removed (n/a) |
 | citizen_and_res_page.yaml | verified | unchanged in 2.0 — 10/10 locators resolve as-is |
 | eservices_landing_page.yaml | diverged | 10 service cards → SNAKE_CASE `EServices<CONSTANT>` rids (13/17 verified; 4 search-flow keys remain unverified despite the later manual search captures) |
-| sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN: profile-centric (Manage/Create/Update); Individual/Group split + tutorial gate removed → T33 |
+| sgac/sgac_landing_page.yaml | diverged | FLOW REDESIGN: profile-centric (Manage/Create/Update); Individual/Group split + tutorial gate removed → T33 slice 1 dispatch merged 2026-09-19 (resident profile CRUD); add-profile icon absent on build 15 |
 | profile_creation_method_page.yaml | verified | 6/7 as-is; only PROFILE-CREATION-SINGPASS-LABEL text changed (button resolves) |
 | manual_creation_profile_form.yaml | copied | |
-| sgac/resident/resident_profile_creation_form_page.yaml | verified | page 1 fields resolve as-is; 2.0 adds REQUIRED Nationality/Passport No./Passport Expiry (Nationality = searchable dropdown picker). Build 15 page 2 requires country/region code, mobile and email; these locators were already present in the file. Full flow reached review 2026-09-08. |
+| sgac/resident/resident_profile_creation_form_page.yaml | verified | + sgac2-only Nationality/Passport No./Expiry keys, verified offline vs build 15 (T33, 2026-09-19). page 1 fields resolve as-is; 2.0 adds REQUIRED Nationality/Passport No./Passport Expiry (Nationality = searchable dropdown picker). Build 15 page 2 requires country/region code, mobile and email; these locators were already present in the file. Full flow reached review 2026-09-08. |
 | sgac/resident/resident_confirmation_profile_page.yaml | verified | 3-page form's confirmation/summary (护照详情 + 联系方式 cards + T&C checkbox + Save); rendered correctly with all entered data; localizes across languages |
 | android_common_selectors.yaml | copied | |
 | sgac/individual_submission_page.yaml | copied | |

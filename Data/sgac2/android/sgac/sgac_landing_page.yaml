@@ -16,6 +16,9 @@ SGAC-LANGUAGE-BUTTON: //android.widget.Button[@resource-id="SGArrivalCardLanguag
 SGAC-MANAGE-PROFILES-BUTTON: //android.view.ViewGroup[@resource-id="Manage Profiles"]
 SGAC-CREATE-NEW-PROFILE-BUTTON: //android.view.ViewGroup[@resource-id="Create New Profile"]
 SGAC-UPDATE-ARRIVAL-CARD-BUTTON: //android.view.ViewGroup[@resource-id="Update SG Arrival Card"]
+# NOTE (build 2.0.0/15): this "add profile plus icon" affordance was NOT observed in any
+# build-15 capture. It is retained for parity/documentary purposes only; the SGAC2 path
+# routes profile creation through SGAC-CREATE-NEW-PROFILE-BUTTON instead.
 SGAC-ADD-PROFILE-BUTTON: //android.view.ViewGroup[@content-desc="add profile plus icon"]
 
 # --- sgac1-only, REMOVED/RESTRUCTURED in 2.0 (kept commented for T33 mapping) ---

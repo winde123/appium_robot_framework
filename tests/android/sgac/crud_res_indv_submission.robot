@@ -14,14 +14,16 @@ Variables    ${FORK_DATA_DIR}/android/sgac/declaration_page.yaml
 Variables    ${FORK_DATA_DIR}/android/sgac/sub_success_page.yaml
 Variables    ${FORK_DATA_DIR}/android/other_e_services/e727_service.yaml
 Variables    ${FORK_DATA_DIR}/android/other_e_services/customs_declaration_service.yaml
-Force Tags    fork:both
+Force Tags    fork:sgac1-only
 Test Setup       Open MyICA App on Android Emulator
 Test Teardown    Close Application
 
 *** Test Cases ***
 
 Create a resident submission and navigate to the e727 website
-    [Documentation]    create submission and navigate to the cbni submission on the declaration success page
+    [Documentation]    create submission and navigate to the cbni submission on the declaration success page.
+    ...    TODO(T33-web): the native Individual Submission flow is sgac1-only; SGAC2.0 uses an
+    ...    in-app webview submission flow. See docs/testing/sgac2-build15-submission-regression-2026-09-11.md.
     Navigate to resident SGAC landing page
     Navigate to individual submission creation page
     Create resident profile manually 
@@ -55,7 +57,9 @@ Create a resident submission and navigate to the e727 website
     Close Android Chrome Browser
 
 Create a resident submission and navigate to the customs website
-    [Documentation]    create submission and navigate to the customs declaration on the declaration success page
+    [Documentation]    create submission and navigate to the customs declaration on the declaration success page.
+    ...    TODO(T33-web): the native Individual Submission flow is sgac1-only; SGAC2.0 uses an
+    ...    in-app webview submission flow. See docs/testing/sgac2-build15-submission-regression-2026-09-11.md.
     Navigate to resident SGAC landing page
     Navigate to individual submission creation page
     Create resident profile manually 

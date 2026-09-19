@@ -1,10 +1,15 @@
-# selectors for SGAC Resident Form page (iOS) — SGAC2.0 (verified 2026-09-06 vs build 2.0.0 on iPad)
+# selectors for SGAC Resident Form page (iOS) — SGAC2.0
+# (verified 2026-09-06 vs build 2.0.0 on iPad; re-verified 2026-09-19 vs build 2.0.0(17)
+# page sources in Output/evidence/myica-build17-regression-2026-09-16/ios)
 #
 # DIVERGED FLOW (same as Android): the sgac1 single-page form is now a 3-page flow —
 # page 1 "Profile Details" (adds REQUIRED Nationality/Citizenship, Passport Number and
-# Date of Passport Expiry), page 2 "Contact Details" (EMAIL ONLY — the sgac1 country-code
-# and mobile-number fields are gone), page 3 summary (res_profile_summary.yaml).
-# Full flow driven end-to-end and profile saved on-device 2026-09-06.
+# Date of Passport Expiry), page 2 "Contact Details" (Country/Region Code + Mobile Number +
+# Email Address — build 17 restored the country-code/mobile inputs that build 13 had
+# dropped, so the contact page is NOT email-only any more), page 3 summary
+# (res_profile_summary.yaml).
+# Full flow driven end-to-end and profile saved on-device 2026-09-06 (build 13) and
+# re-captured on build 17 (016/018/019/020 evidence).
 # NOTE: RN wrapper inputs ("…text input" XCUIElementTypeOther) do NOT expose typed text
 # in the page source — assert values on the page-3 summary instead.
 
@@ -56,18 +61,27 @@ RES-FORM-PASSPORT-EXPIRY-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"
 RES-FORM-FOOTER-NEXT: //XCUIElementTypeOther[@name="next"]
 RES-FORM-FOOTER-STEP-1: //XCUIElementTypeOther[@name="Step 1 of 3"]
 
-# --- page 2: Contact Details (verified — EMAIL ONLY in 2.0) ---
+# --- page 2: Contact Details (verified — build 17 restores code+mobile+email) ---
 RES-FORM-CONTACT-DETAILS-HEADER: //XCUIElementTypeStaticText[@name="Contact Details"]
+
+# Country/Region code field (restored on build 17 — evidence 019-resident-contact-validation.xml)
+RES-FORM-CTY-CODE-INPUT: //XCUIElementTypeOther[@name="country/region code text inputtext input"]
+RES-FORM-CTY-CODE-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[1]
+
+# Mobile number field (restored on build 17 — evidence 019-resident-contact-validation.xml)
+RES-FORM-MOBILE-NUMBER-INPUT: //XCUIElementTypeOther[@name="mobile number text input"]
+# NOTE: build 17 renders no standalone "Mobile Number" StaticText label on the form page
+# (the field label is absent from the a11y tree; only the input and its Required marker are
+# exposed). Key retained at the sgac1 locator for parity; not used by the fill flow.
+RES-FORM-MOBILE-NUMBER-LABEL: //XCUIElementTypeStaticText[@name="Mobile Number"]
+RES-FORM-MOBILE-NUMBER-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[2]
+
+# Email address field (restored on build 17 — evidence 020-resident-invalid-email.xml)
 RES-FORM-EMAIL-INPUT: //XCUIElementTypeOther[@name="email address text inputtext input"]
-RES-FORM-EMAIL-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[1]
+RES-FORM-EMAIL-REQUIRED: (//XCUIElementTypeStaticText[@name="Required"])[3]
 RES-FORM-FOOTER-STEP-2: //XCUIElementTypeOther[@name="Step 2 of 3"]
 
 # --- sgac1-only, REMOVED in 2.0 (kept commented for T33 mapping) ---
 # RES-FORM-DOB-LABEL (old)      : //XCUIElementTypeStaticText[@name="Date of Birth (DD/MM/YYYY)"]
 #                                 — 2.0 label text is plain "Date of Birth"; key now points at the
 #                                 language-independent testID label instead
-# RES-FORM-CTY-CODE-INPUT       : country/region code field gone (contact page is email-only)
-# RES-FORM-CTY-CODE-REQUIRED    : "
-# RES-FORM-MOBILE-NUMBER-INPUT  : mobile number field gone
-# RES-FORM-MOBILE-NUMBER-LABEL  : "
-# RES-FORM-MOBILE-NUMBER-REQUIRED : "
