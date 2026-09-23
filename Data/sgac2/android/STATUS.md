@@ -1,6 +1,6 @@
 # SGAC2.0 Android locator tree — walk status (T31)
 
-Last reviewed: 2026-09-08
+Last reviewed: 2026-09-11
 
 Seeded 2026-09-05 by copying `Data/sgac1/android/**` (30 YAMLs), then corrected screen by
 screen against the live SGAC2.0 build (versionName 2.0.0, **versionCode 420**, installed via
@@ -11,6 +11,25 @@ Status legend: `copied` = unverified sgac1 copy · `verified` = checked against 
 
 Method: Appium page source per screen → offline XPath eval with `scratchpad/walk_check.py`
 (lxml). A key is verified only when its XPath resolves to exactly the intended node on 2.0.
+
+## Resident and foreigner submission regression (2026-09-11)
+
+The [11 September submission regression](../../../docs/testing/sgac2-build15-submission-regression-2026-09-11.md)
+verified installed 2.0.0/422 and About **2.0.0(15) (STAGING)**. Both fresh manual
+profiles saved and persisted through restart; one resident and one foreigner
+submission were accepted, both emails arrived, and both records were retrieved.
+The visitor used catalogue hotel L0059 successfully; its update form reached
+Review without re-entering masked mobile/purpose. Resident update validation and
+cancel, empty-profile/retrieval checks, invalid email, wrong arrival and wrong DE
+were exercised. No server update/deletion was submitted.
+
+Newly observed: both acknowledgement emails say **past 6 days** where both form
+reviews say **past 7 days** for the Africa/Latin America health question. The
+native residence list still exposes `ALBANIA<h1>test</h1>`; `Required` helper text
+remains under valid fields. Evidence: 100 PNG/XML pairs and matching emails in
+`Output/android-sgac-regression-2026-09-11/`; final app state Home, English.
+This is direct UI evidence, not Robot-suite or locator-tree certification; no
+YAML verification statuses below were changed by this run.
 
 ## T33 slice 1 — resident profile CRUD fork dispatch (2026-09-19, offline vs build 15)
 
