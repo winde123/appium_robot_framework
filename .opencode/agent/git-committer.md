@@ -11,13 +11,29 @@ tools:
 permission:
   edit: deny
   webfetch: deny
+  # NOTE (2026-09-23): a wildcard `"*": deny` removes the bash tool entirely in headless
+  # `opencode run` (the agent then has no way to run git — observed 2026-09-11 and 2026-09-23).
+  # Default to ask (auto-approved under `--auto`), allow the battery/git commands, and deny the
+  # dangerous shapes explicitly (listed last so they win under last-match precedence).
   bash:
+    "*": ask
     "git *": allow
     "venv/bin/python *": allow
     "venv/bin/robot *": allow
     "APP_FORK=* venv/bin/robot *": allow
     "ls *": allow
-    "*": deny
+    "git push --force*": deny
+    "git push -f*": deny
+    "git reset --hard*": deny
+    "git clean*": deny
+    "git add -A*": deny
+    "git add .": deny
+    "git add -u*": deny
+    "git stash*": deny
+    "git checkout *": deny
+    "git restore *": deny
+    "git rebase*": deny
+    "rm *": deny
 ---
 
 You are the commit/push agent for the appium_robot_framework repository. You
