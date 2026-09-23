@@ -1,6 +1,6 @@
 # Project documentation
 
-Last reviewed: 2026-09-08
+Last reviewed: 2026-09-19
 
 This directory is the durable reference point for humans and coding agents working on this repository. It should explain why the project is structured as it is, how important workflows operate, and which constraints should be preserved.
 
@@ -8,6 +8,11 @@ This directory is the durable reference point for humans and coding agents worki
 
 | Document | Purpose |
 | --- | --- |
+| [`testing/ios-build18-regression-2026-09-19.md`](testing/ios-build18-regression-2026-09-19.md) | Completed iPad-only MyICA 2.0.0(18) regression: ten active finding groups, build-17 comparison, nine transaction acknowledgements, cleanup and coverage boundaries |
+| [`testing/ios-build17-regression-2026-09-16.md`](testing/ios-build17-regression-2026-09-16.md) | Completed iPad-only MyICA 2.0.0(17) regression: Singpass result, ten finding groups, transaction/email evidence and cleanup |
+| [`testing/sgac2-build15-submission-regression-2026-09-11.md`](testing/sgac2-build15-submission-regression-2026-09-11.md) | Android resident/foreigner submissions, matching emails, DE retrieval, negative checks and update review; 7-day form versus 6-day email discrepancy; [next-session handover](../todo/done/android-sgac-submission-regression-2026-09-11.md#next-session-handover) |
+| [`exported/README.md`](exported/README.md) | Exported Word documents, including the illustrated iOS SGAC2 build-15 issue review |
+| [`testing/ios-sgac2-build15-regression-2026-09-10.md`](testing/ios-sgac2-build15-regression-2026-09-10.md) | Verified SGAC2.0 2.0.0(15) iPad continuation, consolidated issue status, reproduction paths and Word export |
 | [`testing/ios-1-19-1-regression-2026-09-10.md`](testing/ios-1-19-1-regression-2026-09-10.md) | SGAC1.0 iOS 1.19.1(1) run on the wrong target version: retained submissions/deletion/QR evidence and staging web update; excluded from SGAC2.0 coverage |
 | [`testing/ios-build15-regression-2026-09-09.md`](testing/ios-build15-regression-2026-09-09.md) | Real-iPad build 15 regression results: resident/foreigner SGAC, cargo/convoy and QR; findings, evidence and remaining end-to-end prerequisites |
 | [`testing/visitor-de-roundtrip-2026-09-10.md`](testing/visitor-de-roundtrip-2026-09-10.md) | Visitor DE round trip verified end-to-end on Android SGAC2: submission, Mailinator DE capture, retrieval, update, persistence and negative checks; hotelCd defect |

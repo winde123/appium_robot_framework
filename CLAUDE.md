@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Last reviewed: 2026-09-07
+Last reviewed: 2026-09-19
 
 This project context is shared by Codex, Claude Code, OpenCode, and any other repository agents.
 
@@ -55,6 +55,89 @@ Every sgac2 locator on those paths was verified OFFLINE against captured page so
 `tools/xpath_evidence_check.py` — see [docs/testing/offline-locator-verification.md](docs/testing/offline-locator-verification.md);
 runtime acceptance on the emulator/iPad is still T42. Remaining T33 slices: webview submission,
 QR, cargo, scam banner (task board).
+
+## Latest iOS regression
+
+The [19 September build-18 regression](docs/testing/ios-build18-regression-2026-09-19.md)
+is complete on the physical iPad Air 11-inch (M3), iPadOS 26.6.2, with installed
+metadata/About **2.0.0(18), STAGING**. This is iPad-only direct Appium UI coverage,
+not a live Robot-suite pass or a clean release sign-off. There are 521 paired
+PNG/XML captures, nine accepted staging operations with nine correlated delivered
+acknowledgements, 36 language selections and 111 reviewed navigation observations
+(including retries/native menus, not 111 unique services or passes).
+
+Ten active finding groups remain (proposed priorities: 2 High, 7 Medium, 1 Low).
+Eight build-17 groups reproduce at least in part. Saved visitor entry and the MRZ
+camera crash do not reproduce; six actual camera sessions finish without a new
+crash log. The French cargo heading is now French. New findings are failed
+land-checkpoint personal/all four group-vehicle QR generation and intermittent
+Customs download prompts. MyInfo required blank/locked fields still block save;
+visitor mobile-only acknowledgement still corrupts the full number, with explicit
+country-code re-entry verified as a workaround. All four CBNI form shortcuts are
+police-UAT-maintenance blocked, separately from app findings.
+
+The [completed task/handoff](todo/done/myica-build18-full-regression-2026-09-19.md)
+records cleanup and boundaries. Run-owned native profiles/QR group/cargo vehicle
+and cargo/convoy server records are removed; resident/visitor SGAC server records
+remain in staging. English, tutorial-on, original six favourites/order and the
+pre-link-sweep Safari tab set are restored. Camera permission remains allowed.
+MyICA was left at Home. The regression session, WDA host runner and USB forwarder
+are closed; Appium 3.7.0 remains ready on port 4723. Recheck runtime availability,
+restart WDA/forwarding and create a fresh session before further iPad testing.
+The separate SGAC2 iOS Robot dry run loads 42 tests; fork parity has 0 errors and
+0 warnings. No application code or locator files were changed for this regression.
+
+## Historical iOS build-15 regression and issue export
+
+The [10 September SGAC2 continuation](docs/testing/ios-sgac2-build15-regression-2026-09-10.md)
+verified installed metadata and About as **2.0.0(15), STAGING** on the physical iPad.
+Resident/visitor retrieval, one approved visitor health update, cargo/convoy retrieval
+and prior-update persistence, and individual/mixed QR flows were exercised. There
+are 117 paired screenshots/page sources; this is direct Appium UI evidence, not a
+live Robot-suite pass or certification of the locator tree.
+
+The [illustrated Word issue review](docs/exported/myica-ios-sgac2-build15-possible-issues-2026-09-10.docx)
+was completed on 11 September: eight findings, nine embedded original screenshots,
+19 rendered pages, reproduction steps and verification status. Current visible
+findings are cargo Important Note clipping, the `vechicle` typo and literal test
+markup in QR residence options. Missing visitor update email is a suspected delivery
+issue; independent health persistence remains unverified because retrieval masks it.
+The earlier same-day **1.19.1(1)** run is SGAC1.0 and must not contribute SGAC2 results.
+
+Use the [build-15 handover](todo/blocked/ios-module-regression-2026-09-09.md) for the
+remaining verification dependency, retained fixtures and completed approvals.
+The Word export and documentation work are complete; full regression sign-off
+remains open. **WDA was stopped at Edwin's request on 11 September, 00:28 SGT**;
+the regression Appium session and port-8100 USB forwarder are closed. The Appium
+server on port 4723 was left running. These build-15 runtime notes are historical;
+use the latest regression handoff above for the newer observed state.
+
+## Latest Android submission regression
+
+Start the next session with the [Android handover](todo/done/android-sgac-submission-regression-2026-09-11.md#next-session-handover)
+for retained retrieval fixtures, session readiness checks, completed authorization,
+open findings and working-tree state. The task is complete; runtime availability
+must be rechecked before any further device work.
+
+The [11 September resident/foreigner submission regression](docs/testing/sgac2-build15-submission-regression-2026-09-11.md)
+verified Android SGAC2 **2.0.0(15), versionCode 422, STAGING**. Both fresh manual
+profiles persisted after restart. Exactly one resident and one foreigner
+submission succeeded; both acknowledgement emails arrived and both records were
+retrieved, including visitor DE capture with `MailinatorDE.py`. Wrong arrival and
+wrong DE checks were rejected. The visitor's catalogue HOTEL submission succeeded,
+and its masked update form advanced to Review without mobile/purpose re-entry.
+Resident update required-field validation and cancel passed. No server update or
+deletion was submitted. There are 100 paired PNG/XML captures; the emulator was
+left open at Home, English, with both profiles/accepted records retained.
+The emulator was subsequently **closed at Edwin's request**, with process absence
+confirmed on 16 September. Saved app data was not cleared. Restart Pixel_7_Pro
+and create a new Appium session for future Android testing; the old session file
+is historical evidence. The Appium server was not stopped by this shutdown.
+
+Newly observed content mismatch: both emails describe **6 days**, whereas the
+submitted Africa/Latin America health question says **7 days**. Literal Albania
+test markup remains in the residence picker. This direct Appium regression does
+not establish a live Robot-suite pass or complete SGAC2 locator coverage.
 
 ## Latest Android walkthrough and coverage boundaries
 
