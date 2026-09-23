@@ -3,6 +3,28 @@
 Seeded 2026-09-05 by copying `Data/sgac1/ios/**` (37 YAMLs). To be corrected screen by
 screen against the live SGAC2.0 iOS build on Edwin's iPad (real device, XCUITest via Xcode).
 
+**Build correction — 10 September 2026:** Edwin confirmed that the later
+MyICA **1.19.1(1)** regression used **SGAC1.0**, the wrong target version. Its
+[report](../../../docs/testing/ios-1-19-1-regression-2026-09-10.md) and captures
+do not verify this SGAC2.0 locator tree or establish SGAC2.0 defects/passes.
+The SGAC2.0 sessions below remain historical evidence on their recorded builds.
+Edwin then installed **SGAC2.0 2.0.0(15)**. The resumed run verified both installed
+metadata and About as **2.0.0(15), STAGING** on the physical iPad (iOS 26.6.1).
+See the [separate SGAC2 continuation](../../../docs/testing/ios-sgac2-build15-regression-2026-09-10.md):
+resident/foreigner native-entry retrieval, acknowledged visitor health update,
+cargo/convoy retrieval and earlier-update persistence, and mixed QR checks.
+This is direct UI evidence; no locator files or Robot suites were migrated or
+certified by this continuation. The older locator status rows below retain their
+original verification dates and may not describe the current build.
+
+**Issue review / export — 11 September 2026:** screenshot review additionally
+confirmed literal `ALBANIA<h1>test</h1>` content in the QR residence picker (IOS-07).
+Cargo clipping (IOS-03) and the `vechicle` copy issue remain confirmed; missing
+visitor update email remains suspected, with independent health persistence
+unverified. The [Word issue review](../../../docs/exported/myica-ios-sgac2-build15-possible-issues-2026-09-10.docx)
+contains eight findings and nine original screenshots in 19 rendered pages.
+This export is complete and does not change locator verification status.
+
 ## T33 slice 1 — resident profile CRUD fork dispatch (2026-09-19, offline vs build 17)
 
 `Resources/ios/SGACcommands.robot` now dispatches the resident profile flow per fork (same public
